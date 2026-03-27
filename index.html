@@ -4,7 +4,88 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hawaii Card Shows — Your Guide to TCG Events Across the Islands</title>
-<meta name="description" content="The complete calendar of trading card game shows, trade nights, and collectible events across Hawaii. Find your next show on Oahu, Maui, Big Island, and Kauai.">
+<meta name="description" content="The complete calendar of trading card game shows, trade nights, and collectible events across Hawaii. Find Pokemon, sports cards, and TCG shows on Oahu, Maui, Big Island, and Kauai.">
+<meta name="keywords" content="Hawaii card shows, Pokemon card show Hawaii, trading card events Oahu, card show Honolulu, TCG events Hawaii, sports card show Hawaii, card show calendar Hawaii, Pokemon trade night Oahu, collectible show Hawaii">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hawaiicardshows.com/">
+
+<!-- Open Graph (social sharing) -->
+<meta property="og:title" content="Hawaii Card Shows — Every TCG Event Across the Islands">
+<meta property="og:description" content="The complete calendar of trading card game shows, trade nights, and collectible events across Hawaii.">
+<meta property="og:url" content="https://hawaiicardshows.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hawaii Card Shows">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hawaii Card Shows — Every TCG Event Across the Islands">
+<meta name="twitter:description" content="The complete calendar of trading card game shows, trade nights, and collectible events across Hawaii.">
+
+<!-- Structured Data: Website -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Hawaii Card Shows",
+  "url": "https://hawaiicardshows.com",
+  "description": "The complete calendar of trading card game shows, trade nights, and collectible events across Hawaii.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://hawaiicardshows.com/#calendar",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Structured Data: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Hawaii Card Shows",
+  "url": "https://hawaiicardshows.com",
+  "description": "Community-driven calendar of trading card game events across the Hawaiian Islands.",
+  "areaServed": {
+    "@type": "State",
+    "name": "Hawaii"
+  }
+}
+</script>
+
+<!-- Structured Data: FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where are card shows in Hawaii?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Hawaii has regular card shows across Oahu including the Paradise Card Show, Pearlridge Show (every 2nd Saturday and Sunday), Uncle Tony's Trade Night at Pearlridge (every 3rd Friday), and the Bayview Night Market (1st and 3rd Tuesdays). Annual events include the Aloha Card Show at Blaisdell Center and PopCon. Visit hawaiicardshows.com for the complete calendar." }
+    },
+    {
+      "@type": "Question",
+      "name": "When is the next Pokemon card show on Oahu?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oahu has multiple Pokemon and trading card shows every month, from weekly trade nights to large annual conventions. Check the Hawaii Card Shows calendar at hawaiicardshows.com for up-to-date listings of all upcoming events." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I become a vendor at a Hawaii card show?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Most Hawaii card shows accept vendor applications through online forms or direct contact with the organizer. Visit hawaiicardshows.com to find upcoming shows and their organizer contact information, or submit your own event to the calendar." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are there card shows on Maui, Big Island, or Kauai?",
+      "acceptedAnswer": { "@type": "Answer", "text": "While most regular card shows are on Oahu, events do happen on neighbor islands. Hawaii Card Shows tracks TCG events across all Hawaiian islands. If you know of a show on any island, you can submit it to our calendar." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I submit my card show to the Hawaii Card Shows calendar?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Visit hawaiicardshows.com and scroll to the Submit Your Event section. Fill out the form with your event details and our team will review and add it to the calendar." }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -187,6 +268,22 @@ select.form-input { cursor: pointer; }
   background: var(--ocean-pale); color: var(--ocean); padding: 16px;
   border-radius: 8px; font-weight: 500; display: none;
 }
+
+/* ── FAQ ── */
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 0; cursor: pointer; font-size: 16px; font-weight: 600;
+  color: var(--night); transition: color 0.2s;
+}
+.faq-q:hover { color: var(--ocean); }
+.faq-arrow { font-size: 22px; color: var(--text-lighter); transition: transform 0.2s; font-weight: 300; }
+.faq-item.open .faq-arrow { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease;
+  font-size: 15px; color: var(--text-light); line-height: 1.7; padding: 0 0 0 0;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-bottom: 20px; }
 
 /* ── Sponsors ── */
 .sponsors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
@@ -443,6 +540,58 @@ footer a:hover { text-decoration: underline; }
   <div style="margin-top:32px;text-align:center;">
     <p style="font-size:14px;color:var(--text-light);margin-bottom:12px;">Interested in sponsoring Hawaii's card show community?</p>
     <a href="#about" class="nav-cta" style="display:inline-block;padding:12px 28px;">Get in Touch</a>
+  </div>
+</section>
+
+<!-- ════════ FAQ ════════ -->
+<section class="section" id="faq">
+  <div class="section-header">
+    <div class="section-tag">Common Questions</div>
+    <div class="section-title">Frequently Asked Questions</div>
+  </div>
+  <div style="max-width:800px;">
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Where are card shows in Hawaii?</span>
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Hawaii has regular card shows across Oahu including the Paradise Card Show, the Pearlridge Show every 2nd Saturday and Sunday, Uncle Tony's Trade Night at Pearlridge every 3rd Friday, and the Bayview Night Market on the 1st and 3rd Tuesdays. Annual events include the Aloha Card Show at Blaisdell Center and PopCon. Check our calendar above for the complete list with dates and venues.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>When is the next Pokemon card show on Oahu?</span>
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Oahu has multiple Pokemon and trading card shows every month, ranging from weekly trade nights to large annual conventions with 50+ vendors. Our calendar stays up to date with every known show across the islands — scroll up to see what's coming next.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>How do I become a vendor at a Hawaii card show?</span>
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Most Hawaii card shows accept vendor applications through online sign-up forms or direct contact with the organizer. Each show in our calendar includes organizer details. Vendor table fees typically range from $100–$200 depending on the show. If you're new to vending, smaller trade nights are a great way to start.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Are there card shows on Maui, Big Island, or Kauai?</span>
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">While most regular card shows are currently on Oahu, events do happen on the neighbor islands. We track TCG events across all Hawaiian islands. If you know of a show on any island, submit it to our calendar and help the community stay connected.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>How do I submit my card show to this calendar?</span>
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Scroll to the "Submit Your Event" section on this page and fill out the form. Our team reviews every submission and adds approved events to the calendar, usually within 24–48 hours. It's free and open to any organizer running a TCG or collectible event in Hawaii.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What kinds of cards and collectibles are at these shows?</span>
+        <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Hawaii card shows feature a wide range of collectibles including Pokemon, sports cards (baseball, basketball, football), Yu-Gi-Oh, One Piece, Dragon Ball, Japanese imports, vintage cards, sealed product, graded slabs, and accessories. Some shows also include comics, Funko Pops, and other pop culture collectibles.</div>
+    </div>
   </div>
 </section>
 
