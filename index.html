@@ -126,8 +126,8 @@ nav {
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: var(--ocean); }
-.nav-links a.nav-cta { background: var(--ocean); color: var(--white); padding: 8px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
-.nav-links a.nav-cta:hover { background: var(--ocean-light); color: var(--white); }
+.nav-cta { background: var(--ocean); color: var(--white) !important; padding: 8px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s; display: inline-block; }
+.nav-cta:hover { background: var(--ocean-light); color: var(--white) !important; }
 .nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
 .nav-mobile svg { width: 24px; height: 24px; stroke: var(--text); }
 
@@ -363,6 +363,7 @@ footer a:hover { text-decoration: underline; }
   .form-row { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; }
   .upcoming-grid { grid-template-columns: 1fr; }
+  #sponsors .section-header + div { grid-template-columns: 1fr !important; }
   .cal-day { min-height: 50px; }
   .cal-event { font-size: 8px; }
   .newsletter { padding: 40px 20px; margin: 20px 16px; }
@@ -381,7 +382,7 @@ footer a:hover { text-decoration: underline; }
     <a href="#upcoming">Upcoming</a>
     <a href="#calendar">Calendar</a>
     <a href="#submit">Submit a Show</a>
-    <a href="#sponsors">Sponsors</a>
+    <a href="#sponsors">Partner</a>
     <a href="#about">About</a>
     <a href="#submit" class="nav-cta">Submit Your Event</a>
   </div>
@@ -527,19 +528,59 @@ footer a:hover { text-decoration: underline; }
   </div>
 </section>
 
-<!-- ════════ SPONSORS ════════ -->
-<section class="section" id="sponsors">
-  <div class="section-header">
-    <div class="section-tag">Our Partners</div>
-    <div class="section-title">Sponsors</div>
-    <div class="section-sub">Supporting Hawaii's trading card community.</div>
-  </div>
-  <div class="sponsors-grid" id="sponsorsGrid">
-    <div style="color:var(--text-lighter);font-size:14px;">Loading sponsors...</div>
-  </div>
-  <div style="margin-top:32px;text-align:center;">
-    <p style="font-size:14px;color:var(--text-light);margin-bottom:12px;">Interested in sponsoring Hawaii's card show community?</p>
-    <a href="#about" class="nav-cta" style="display:inline-block;padding:12px 28px;">Get in Touch</a>
+<!-- ════════ PARTNER / SPONSOR ════════ -->
+<section class="section" id="sponsors" style="background:var(--ocean-pale);max-width:100%;padding:80px 24px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-header">
+      <div class="section-tag">Get Involved</div>
+      <div class="section-title">Partner With Us</div>
+      <div class="section-sub">Whether you're a brand, a card shop, or a venue — there's a place for you in Hawaii's growing TCG community.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;">
+      <div style="background:var(--white);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);">
+        <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ocean);margin-bottom:8px;">For Brands & Sponsors</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:var(--night);margin-bottom:12px;">Reach Hawaii's Collectors</div>
+        <p style="font-size:14px;color:var(--text-light);line-height:1.6;margin-bottom:12px;">Hawaii's card show scene draws thousands of engaged collectors, families, and fans every month. Sponsoring a show puts your brand in front of a passionate community — through goodie bags, giveaways, signage, social media, and on-site activations.</p>
+        <p style="font-size:14px;color:var(--text-light);line-height:1.6;">Card shops, online platforms, lifestyle brands, and local businesses have all found success partnering with shows across the islands.</p>
+      </div>
+      <div style="background:var(--white);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);">
+        <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--lava);margin-bottom:8px;">For Venues</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:var(--night);margin-bottom:12px;">Monetize Your Space</div>
+        <p style="font-size:14px;color:var(--text-light);line-height:1.6;margin-bottom:12px;">Have a community hall, event space, or venue with downtime? Card shows bring hundreds to thousands of visitors through the door — along with vendor fees, concession opportunities, and repeat bookings.</p>
+        <p style="font-size:14px;color:var(--text-light);line-height:1.6;">We connect venue owners with established show organizers across the islands. <a href="/host-a-show.html" style="color:var(--ocean);font-weight:600;">Learn more about hosting a card show →</a></p>
+      </div>
+    </div>
+
+    <div class="form-card" style="max-width:600px;margin:0 auto;">
+      <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:var(--night);margin-bottom:4px;">Interested? Let's Talk.</div>
+      <p style="font-size:14px;color:var(--text-light);margin-bottom:20px;">Tell us a bit about yourself and we'll connect you with the right people.</p>
+      <form id="partnerForm">
+        <div class="form-row">
+          <div><label class="form-label">Your Name *</label><input class="form-input" name="name" required></div>
+          <div><label class="form-label">Business / Brand *</label><input class="form-input" name="business" required></div>
+        </div>
+        <div class="form-row">
+          <div><label class="form-label">Email *</label><input class="form-input" type="email" name="email" required></div>
+          <div><label class="form-label">I'm interested in...</label>
+            <select class="form-input" name="interest">
+              <option value="sponsoring">Sponsoring a card show</option>
+              <option value="venue">Hosting a show at my venue</option>
+              <option value="vending">Becoming a vendor</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tell us more (optional)</label>
+          <textarea class="form-input" name="message" rows="3" placeholder="What's your brand, what are you looking to do, etc."></textarea>
+        </div>
+        <button type="submit" class="form-btn" id="partnerBtn">Send Inquiry</button>
+      </form>
+      <div class="form-success" id="partnerSuccess">
+        Mahalo! We'll be in touch soon.
+      </div>
+    </div>
   </div>
 </section>
 
@@ -650,12 +691,6 @@ async function loadEvents() {
   renderAnnual();
   renderCalendar();
   updateStats();
-}
-
-async function loadSponsors() {
-  const { data, error } = await sb.from('sponsors').select('*').eq('active', true);
-  if (error) { console.error(error); return; }
-  renderSponsors(data || []);
 }
 
 // ── Render Upcoming ──
@@ -778,23 +813,6 @@ function updateStats() {
   document.getElementById('statRecurring').textContent = recurring;
 }
 
-// ── Sponsors ──
-function renderSponsors(sponsors) {
-  const grid = document.getElementById('sponsorsGrid');
-  if (sponsors.length === 0) {
-    grid.innerHTML = '<p style="color:var(--text-lighter)">Sponsor slots available — <a href="#about" style="color:var(--ocean)">get in touch</a> to support the community.</p>';
-    return;
-  }
-  grid.innerHTML = sponsors.map(s => `
-    <div class="sponsor-card">
-      <div class="sponsor-tier ${s.tier}">${s.tier}</div>
-      <div class="sponsor-name">${esc(s.name)}</div>
-      ${s.description ? `<div class="sponsor-desc">${esc(s.description)}</div>` : ''}
-      ${s.instagram ? `<a class="sponsor-link" href="https://instagram.com/${s.instagram}" target="_blank">@${esc(s.instagram)}</a>` : ''}
-    </div>
-  `).join('');
-}
-
 // ── Submit Form ──
 document.getElementById('submitForm').onsubmit = async (e) => {
   e.preventDefault();
@@ -826,12 +844,25 @@ document.getElementById('newsletterForm').onsubmit = async (e) => {
   document.getElementById('newsletterForm').style.display = 'none';
 };
 
+// ── Partner Form ──
+document.getElementById('partnerForm').onsubmit = async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('partnerBtn');
+  btn.disabled = true; btn.textContent = 'Sending...';
+  const fd = new FormData(e.target);
+  const payload = Object.fromEntries(fd.entries());
+  const { error } = await sb.from('partner_inquiries').insert([payload]);
+  btn.disabled = false; btn.textContent = 'Send Inquiry';
+  if (error) { alert('Something went wrong. Please try again.'); console.error(error); return; }
+  e.target.style.display = 'none';
+  document.getElementById('partnerSuccess').style.display = 'block';
+};
+
 // ── Utils ──
 function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 
 // ── Init ──
 loadEvents();
-loadSponsors();
 </script>
 </body>
 </html>
