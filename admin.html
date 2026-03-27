@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Hawaii Card Shows</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root {
+  --bg: #0f1117; --bg2: #181a24; --bg3: #1e2130;
+  --border: #2a2d3a; --border-light: #353848;
+  --text: #e0ddd5; --text-dim: #8a8d9a; --text-muted: #555869;
+  --ocean: #2a9d8f; --ocean-dim: #1a6b5a;
+  --lava: #e07a5f; --lava-dim: #a85a42;
+  --gold: #e8c547; --green: #4ade80; --red: #f87171;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+
+/* Login */
+.login-wrap { display:flex; align-items:center; justify-content:center; min-height:100vh; padding:24px; }
+.login-box { background:var(--bg2); border:1px solid var(--border); border-radius:16px; padding:48px; max-width:400px; width:100%; text-align:center; }
+.login-box h1 { font-family:'Outfit',sans-serif; font-size:24px; font-weight:700; color:var(--ocean); margin-bottom:8px; }
+.login-box p { color:var(--text-dim); font-size:14px; margin-bottom:32px; }
+.login-box input { width:100%; padding:12px 14px; background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; margin-bottom:12px; outline:none; }
+.login-box input:focus { border-color:var(--ocean); }
+.login-box button { width:100%; padding:12px; background:var(--ocean); color:white; border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; }
+.login-box button:hover { background:var(--ocean-dim); }
+.login-error { color:var(--red); font-size:13px; margin-top:8px; display:none; }
+
+/* Layout */
+.app { display:none; }
+.sidebar { position:fixed; top:0; left:0; bottom:0; width:220px; background:var(--bg2); border-right:1px solid var(--border); padding:20px 0; display:flex; flex-direction:column; }
+.sidebar-brand { font-family:'Outfit',sans-serif; font-size:16px; font-weight:700; color:var(--ocean); padding:0 20px 20px; border-bottom:1px solid var(--border); }
+.sidebar-brand span { color:var(--lava); font-size:11px; font-weight:500; display:block; margin-top:2px; letter-spacing:1px; }
+.sidebar-nav { flex:1; padding:12px 0; }
+.sidebar-item { display:flex; align-items:center; gap:10px; padding:10px 20px; color:var(--text-dim); font-size:13px; font-weight:500; cursor:pointer; transition:all 0.15s; border-left:3px solid transparent; }
+.sidebar-item:hover { color:var(--text); background:var(--bg3); }
+.sidebar-item.active { color:var(--ocean); background:rgba(42,157,143,0.08); border-left-color:var(--ocean); }
+.sidebar-item svg { width:18px; height:18px; stroke:currentColor; fill:none; flex-shrink:0; }
+.sidebar-badge { margin-left:auto; background:var(--lava); color:white; font-size:10px; font-weight:600; padding:2px 7px; border-radius:10px; }
+.sidebar-bottom { padding:12px 20px; border-top:1px solid var(--border); }
+.sidebar-logout { color:var(--text-muted); font-size:12px; cursor:pointer; transition:color 0.15s; }
+.sidebar-logout:hover { color:var(--red); }
+
+.main { margin-left:220px; padding:24px 32px; }
+.main-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
+.main-title { font-family:'Outfit',sans-serif; font-size:24px; font-weight:700; }
+.main-sub { color:var(--text-dim); font-size:13px; margin-top:4px; }
+
+/* Cards */
+.card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:12px; }
+.card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+.card-title { font-weight:600; font-size:15px; }
+.card-meta { color:var(--text-dim); font-size:12px; margin-top:2px; }
+
+/* Buttons */
+.btn { padding:6px 14px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; border:none; font-family:'DM Sans',sans-serif; transition:opacity 0.15s; }
+.btn:hover { opacity:0.85; }
+.btn-ocean { background:var(--ocean); color:white; }
+.btn-lava { background:var(--lava); color:white; }
+.btn-green { background:var(--green); color:var(--bg); }
+.btn-red { background:var(--red); color:white; }
+.btn-ghost { background:transparent; border:1px solid var(--border); color:var(--text-dim); }
+.btn-ghost:hover { border-color:var(--text-dim); color:var(--text); }
+.btn-sm { padding:4px 10px; font-size:11px; }
+.btn-group { display:flex; gap:6px; }
+
+/* Forms */
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.form-group { margin-bottom:12px; }
+.form-label { display:block; font-size:11px; font-weight:600; color:var(--text-dim); margin-bottom:4px; letter-spacing:0.5px; text-transform:uppercase; }
+.form-input { width:100%; padding:10px 12px; background:var(--bg); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:13px; outline:none; }
+.form-input:focus { border-color:var(--ocean); }
+textarea.form-input { resize:vertical; min-height:80px; }
+select.form-input { cursor:pointer; }
+
+/* Table */
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { text-align:left; padding:10px 12px; font-size:11px; font-weight:600; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid var(--border); }
+td { padding:10px 12px; border-bottom:1px solid var(--border); color:var(--text); }
+tr:hover td { background:var(--bg3); }
+
+/* Status badges */
+.badge { display:inline-block; padding:3px 10px; border-radius:6px; font-size:10px; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+.badge-approved { background:rgba(74,222,128,0.1); color:var(--green); }
+.badge-pending { background:rgba(232,197,71,0.1); color:var(--gold); }
+.badge-rejected { background:rgba(248,113,113,0.1); color:var(--red); }
+
+/* Toast */
+.toast { position:fixed; top:20px; right:20px; background:var(--green); color:var(--bg); padding:10px 20px; border-radius:8px; font-size:13px; font-weight:600; z-index:1000; display:none; }
+
+/* Modal */
+.modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:500; display:none; align-items:center; justify-content:center; padding:24px; }
+.modal-overlay.open { display:flex; }
+.modal { background:var(--bg2); border:1px solid var(--border); border-radius:16px; padding:28px; max-width:600px; width:100%; max-height:85vh; overflow-y:auto; }
+.modal-title { font-family:'Outfit',sans-serif; font-size:20px; font-weight:700; margin-bottom:20px; }
+.modal-actions { display:flex; gap:8px; justify-content:flex-end; margin-top:20px; }
+
+/* Stats row */
+.stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
+.stat-card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:16px 20px; }
+.stat-num { font-family:'Outfit',sans-serif; font-size:28px; font-weight:700; color:var(--ocean); }
+.stat-label { font-size:12px; color:var(--text-dim); margin-top:2px; }
+
+@media (max-width:768px) {
+  .sidebar { display:none; }
+  .main { margin-left:0; padding:16px; }
+  .stats-row { grid-template-columns:1fr 1fr; }
+  .form-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- ════════ LOGIN ════════ -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login-box">
+    <h1>Hawaii Card Shows</h1>
+    <p>Admin Panel</p>
+    <input type="email" placeholder="Email" id="loginEmail">
+    <input type="password" placeholder="Password" id="loginPassword">
+    <button onclick="doLogin()">Sign In</button>
+    <div class="login-error" id="loginError"></div>
+  </div>
+</div>
+
+<!-- ════════ APP ════════ -->
+<div class="app" id="app">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-brand">HCS Admin<span>HAWAII CARD SHOWS</span></div>
+    <div class="sidebar-nav">
+      <div class="sidebar-item active" data-tab="dashboard" onclick="switchTab('dashboard')">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v5a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 16a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2zM14 13a1 1 0 011-1h4a1 1 0 011 1v5a1 1 0 01-1 1h-4a1 1 0 01-1-1v-5z"/></svg>
+        Dashboard
+      </div>
+      <div class="sidebar-item" data-tab="events" onclick="switchTab('events')">
+        <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Events
+      </div>
+      <div class="sidebar-item" data-tab="submissions" onclick="switchTab('submissions')">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Submissions <span class="sidebar-badge" id="pendingBadge" style="display:none">0</span>
+      </div>
+      <div class="sidebar-item" data-tab="sponsors" onclick="switchTab('sponsors')">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Sponsors
+      </div>
+      <div class="sidebar-item" data-tab="newsletter" onclick="switchTab('newsletter')">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Newsletter
+      </div>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="sidebar-logout" onclick="doLogout()">Sign Out</div>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- ── DASHBOARD ── -->
+    <div class="tab-content" id="tab-dashboard">
+      <div class="main-header">
+        <div><div class="main-title">Dashboard</div><div class="main-sub">Overview of Hawaii Card Shows</div></div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num" id="dStatEvents">-</div><div class="stat-label">Total Events</div></div>
+        <div class="stat-card"><div class="stat-num" id="dStatPending">-</div><div class="stat-label">Pending Submissions</div></div>
+        <div class="stat-card"><div class="stat-num" id="dStatSponsors">-</div><div class="stat-label">Active Sponsors</div></div>
+        <div class="stat-card"><div class="stat-num" id="dStatSubs">-</div><div class="stat-label">Newsletter Subscribers</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Recent Submissions</div>
+        <div id="dashRecentSubs" style="margin-top:12px;color:var(--text-dim);font-size:13px;">Loading...</div>
+      </div>
+    </div>
+
+    <!-- ── EVENTS ── -->
+    <div class="tab-content" id="tab-events" style="display:none">
+      <div class="main-header">
+        <div><div class="main-title">Events</div><div class="main-sub">Manage all shows and events</div></div>
+        <button class="btn btn-ocean" onclick="openEventModal()">+ Add Event</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Event</th><th>Organizer</th><th>Date</th><th>Type</th><th>Island</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="eventsTable"><tr><td colspan="7" style="color:var(--text-dim)">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── SUBMISSIONS ── -->
+    <div class="tab-content" id="tab-submissions" style="display:none">
+      <div class="main-header">
+        <div><div class="main-title">Submissions</div><div class="main-sub">Review event submissions from the public</div></div>
+      </div>
+      <div id="submissionsList"><div style="color:var(--text-dim);font-size:13px;">Loading...</div></div>
+    </div>
+
+    <!-- ── SPONSORS ── -->
+    <div class="tab-content" id="tab-sponsors" style="display:none">
+      <div class="main-header">
+        <div><div class="main-title">Sponsors</div><div class="main-sub">Manage sponsor listings</div></div>
+        <button class="btn btn-ocean" onclick="openSponsorModal()">+ Add Sponsor</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Tier</th><th>Instagram</th><th>Active</th><th>Actions</th></tr></thead>
+          <tbody id="sponsorsTable"><tr><td colspan="5" style="color:var(--text-dim)">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── NEWSLETTER ── -->
+    <div class="tab-content" id="tab-newsletter" style="display:none">
+      <div class="main-header">
+        <div><div class="main-title">Newsletter</div><div class="main-sub">Email subscribers</div></div>
+        <button class="btn btn-ghost" onclick="exportEmails()">Export CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Email</th><th>Name</th><th>Subscribed</th></tr></thead>
+          <tbody id="newsletterTable"><tr><td colspan="3" style="color:var(--text-dim)">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════ EVENT MODAL ════════ -->
+<div class="modal-overlay" id="eventModal">
+  <div class="modal">
+    <div class="modal-title" id="eventModalTitle">Add Event</div>
+    <input type="hidden" id="eventId">
+    <div class="form-grid">
+      <div class="form-group"><label class="form-label">Event Name</label><input class="form-input" id="evName"></div>
+      <div class="form-group"><label class="form-label">Organizer</label><input class="form-input" id="evOrganizer"></div>
+      <div class="form-group"><label class="form-label">Event Type</label>
+        <select class="form-input" id="evType" onchange="document.getElementById('evRecurrenceGroup').style.display=this.value==='recurring'?'block':'none'">
+          <option value="one-time">One-time</option><option value="annual">Annual</option><option value="recurring">Recurring</option>
+        </select>
+      </div>
+      <div class="form-group" id="evRecurrenceGroup" style="display:none"><label class="form-label">Recurrence</label><input class="form-input" id="evRecurrence" placeholder="e.g. Every 2nd Saturday"></div>
+      <div class="form-group"><label class="form-label">Start Date</label><input class="form-input" type="date" id="evStartDate"></div>
+      <div class="form-group"><label class="form-label">End Date</label><input class="form-input" type="date" id="evEndDate"></div>
+      <div class="form-group"><label class="form-label">Start Time</label><input class="form-input" id="evStartTime" placeholder="1:00 PM"></div>
+      <div class="form-group"><label class="form-label">End Time</label><input class="form-input" id="evEndTime" placeholder="7:00 PM"></div>
+      <div class="form-group"><label class="form-label">Venue</label><input class="form-input" id="evVenue"></div>
+      <div class="form-group"><label class="form-label">Island</label>
+        <select class="form-input" id="evIsland"><option>Oahu</option><option>Maui</option><option>Big Island</option><option>Kauai</option><option>Molokai</option><option>Lanai</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Color</label><input class="form-input" type="color" id="evColor" value="#2a9d8f"></div>
+      <div class="form-group"><label class="form-label">Status</label>
+        <select class="form-input" id="evStatus"><option value="approved">Approved</option><option value="pending">Pending</option><option value="rejected">Rejected</option></select>
+      </div>
+    </div>
+    <div class="form-group"><label class="form-label">Description</label><textarea class="form-input" id="evDescription"></textarea></div>
+    <div class="form-group"><label class="form-label">Website URL</label><input class="form-input" id="evWebsite"></div>
+    <div class="form-group"><label class="form-label">Instagram</label><input class="form-input" id="evInstagram" placeholder="@handle"></div>
+    <div class="form-group" style="display:flex;align-items:center;gap:8px;">
+      <input type="checkbox" id="evFeatured"><label for="evFeatured" style="font-size:13px;color:var(--text-dim);">Featured event</label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('eventModal')">Cancel</button>
+      <button class="btn btn-ocean" onclick="saveEvent()">Save Event</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SPONSOR MODAL ════════ -->
+<div class="modal-overlay" id="sponsorModal">
+  <div class="modal">
+    <div class="modal-title" id="sponsorModalTitle">Add Sponsor</div>
+    <input type="hidden" id="sponsorId">
+    <div class="form-grid">
+      <div class="form-group"><label class="form-label">Name</label><input class="form-input" id="spName"></div>
+      <div class="form-group"><label class="form-label">Tier</label>
+        <select class="form-input" id="spTier"><option value="premier">Premier</option><option value="community">Community</option><option value="supporting">Supporting</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Instagram</label><input class="form-input" id="spInstagram" placeholder="@handle"></div>
+      <div class="form-group"><label class="form-label">Website</label><input class="form-input" id="spWebsite"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Description</label><textarea class="form-input" id="spDescription"></textarea></div>
+    <div class="form-group" style="display:flex;align-items:center;gap:8px;">
+      <input type="checkbox" id="spActive" checked><label for="spActive" style="font-size:13px;color:var(--text-dim);">Active</label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('sponsorModal')">Cancel</button>
+      <button class="btn btn-ocean" onclick="saveSponsor()">Save Sponsor</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://bcdgqqncycsdwnmrmuan.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjZGdxcW5jeWNzZHdubXJtdWFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NTU4MzgsImV4cCI6MjA5MDEzMTgzOH0.UXTTv99cBYcll_uw-g50tA4yG9jpbVIdt3xrDc_rTKs';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let currentTab = 'dashboard';
+
+// ── AUTH ──
+async function doLogin() {
+  const email = document.getElementById('loginEmail').value;
+  const pass = document.getElementById('loginPassword').value;
+  const errEl = document.getElementById('loginError');
+  errEl.style.display = 'none';
+  const { error } = await sb.auth.signInWithPassword({ email, password: pass });
+  if (error) { errEl.textContent = error.message; errEl.style.display = 'block'; return; }
+  showApp();
+}
+
+async function doLogout() {
+  await sb.auth.signOut();
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('loginWrap').style.display = 'flex';
+}
+
+async function checkSession() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) showApp();
+}
+
+function showApp() {
+  document.getElementById('loginWrap').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  loadDashboard();
+}
+
+// ── TABS ──
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + tab).style.display = 'block';
+  document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+  if (tab === 'dashboard') loadDashboard();
+  if (tab === 'events') loadEvents();
+  if (tab === 'submissions') loadSubmissions();
+  if (tab === 'sponsors') loadSponsors();
+  if (tab === 'newsletter') loadNewsletter();
+}
+
+// ── TOAST ──
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 2500);
+}
+
+// ── MODALS ──
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+// ── DASHBOARD ──
+async function loadDashboard() {
+  const { count: evCount } = await sb.from('events').select('*', { count: 'exact', head: true });
+  const { count: pendCount } = await sb.from('submissions').select('*', { count: 'exact', head: true }).eq('status', 'pending');
+  const { count: spCount } = await sb.from('sponsors').select('*', { count: 'exact', head: true }).eq('active', true);
+  const { count: nlCount } = await sb.from('newsletter').select('*', { count: 'exact', head: true });
+  document.getElementById('dStatEvents').textContent = evCount || 0;
+  document.getElementById('dStatPending').textContent = pendCount || 0;
+  document.getElementById('dStatSponsors').textContent = spCount || 0;
+  document.getElementById('dStatSubs').textContent = nlCount || 0;
+  updatePendingBadge(pendCount);
+
+  const { data: recent } = await sb.from('submissions').select('*').order('created_at', { ascending: false }).limit(5);
+  const el = document.getElementById('dashRecentSubs');
+  if (!recent || recent.length === 0) { el.innerHTML = 'No submissions yet.'; return; }
+  el.innerHTML = recent.map(s => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
+      <div><strong>${esc(s.event_name)}</strong> <span style="color:var(--text-muted)">by ${esc(s.organizer_name)}</span></div>
+      <span class="badge badge-${s.status}">${s.status}</span>
+    </div>
+  `).join('');
+}
+
+function updatePendingBadge(count) {
+  const badge = document.getElementById('pendingBadge');
+  if (count > 0) { badge.textContent = count; badge.style.display = 'inline'; }
+  else badge.style.display = 'none';
+}
+
+// ── EVENTS ──
+async function loadEvents() {
+  const { data } = await sb.from('events').select('*').order('start_date', { ascending: false });
+  const tbody = document.getElementById('eventsTable');
+  if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="7" style="color:var(--text-dim)">No events.</td></tr>'; return; }
+  tbody.innerHTML = data.map(e => `
+    <tr>
+      <td><strong>${esc(e.name)}</strong></td>
+      <td>${esc(e.organizer)}</td>
+      <td>${e.event_type === 'recurring' ? esc(e.recurrence || '—') : (e.start_date || '—')}</td>
+      <td>${e.event_type}</td>
+      <td>${esc(e.island)}</td>
+      <td><span class="badge badge-${e.status}">${e.status}</span></td>
+      <td>
+        <div class="btn-group">
+          <button class="btn btn-ghost btn-sm" onclick="editEvent('${e.id}')">Edit</button>
+          <button class="btn btn-red btn-sm" onclick="deleteEvent('${e.id}')">Del</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+let allEventsCache = [];
+async function editEvent(id) {
+  const { data } = await sb.from('events').select('*').eq('id', id).single();
+  if (!data) return;
+  document.getElementById('eventModalTitle').textContent = 'Edit Event';
+  document.getElementById('eventId').value = data.id;
+  document.getElementById('evName').value = data.name || '';
+  document.getElementById('evOrganizer').value = data.organizer || '';
+  document.getElementById('evType').value = data.event_type || 'one-time';
+  document.getElementById('evRecurrence').value = data.recurrence || '';
+  document.getElementById('evRecurrenceGroup').style.display = data.event_type === 'recurring' ? 'block' : 'none';
+  document.getElementById('evStartDate').value = data.start_date || '';
+  document.getElementById('evEndDate').value = data.end_date || '';
+  document.getElementById('evStartTime').value = data.start_time || '';
+  document.getElementById('evEndTime').value = data.end_time || '';
+  document.getElementById('evVenue').value = data.venue || '';
+  document.getElementById('evIsland').value = data.island || 'Oahu';
+  document.getElementById('evColor').value = data.color || '#2a9d8f';
+  document.getElementById('evStatus').value = data.status || 'approved';
+  document.getElementById('evDescription').value = data.description || '';
+  document.getElementById('evWebsite').value = data.website_url || '';
+  document.getElementById('evInstagram').value = data.instagram || '';
+  document.getElementById('evFeatured').checked = data.featured || false;
+  document.getElementById('eventModal').classList.add('open');
+}
+
+function openEventModal() {
+  document.getElementById('eventModalTitle').textContent = 'Add Event';
+  document.getElementById('eventId').value = '';
+  ['evName','evOrganizer','evRecurrence','evStartDate','evEndDate','evStartTime','evEndTime','evVenue','evDescription','evWebsite','evInstagram'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('evType').value = 'one-time';
+  document.getElementById('evIsland').value = 'Oahu';
+  document.getElementById('evColor').value = '#2a9d8f';
+  document.getElementById('evStatus').value = 'approved';
+  document.getElementById('evFeatured').checked = false;
+  document.getElementById('evRecurrenceGroup').style.display = 'none';
+  document.getElementById('eventModal').classList.add('open');
+}
+
+async function saveEvent() {
+  const id = document.getElementById('eventId').value;
+  const payload = {
+    name: document.getElementById('evName').value,
+    organizer: document.getElementById('evOrganizer').value,
+    event_type: document.getElementById('evType').value,
+    recurrence: document.getElementById('evRecurrence').value || null,
+    start_date: document.getElementById('evStartDate').value || null,
+    end_date: document.getElementById('evEndDate').value || null,
+    start_time: document.getElementById('evStartTime').value || null,
+    end_time: document.getElementById('evEndTime').value || null,
+    venue: document.getElementById('evVenue').value || null,
+    island: document.getElementById('evIsland').value,
+    color: document.getElementById('evColor').value,
+    status: document.getElementById('evStatus').value,
+    description: document.getElementById('evDescription').value || null,
+    website_url: document.getElementById('evWebsite').value || null,
+    instagram: document.getElementById('evInstagram').value || null,
+    featured: document.getElementById('evFeatured').checked,
+    updated_at: new Date().toISOString(),
+  };
+  let error;
+  if (id) { ({ error } = await sb.from('events').update(payload).eq('id', id)); }
+  else { ({ error } = await sb.from('events').insert([payload])); }
+  if (error) { alert('Error: ' + error.message); return; }
+  closeModal('eventModal');
+  toast(id ? 'Event updated' : 'Event created');
+  loadEvents();
+}
+
+async function deleteEvent(id) {
+  if (!confirm('Delete this event?')) return;
+  await sb.from('events').delete().eq('id', id);
+  toast('Event deleted');
+  loadEvents();
+}
+
+// ── SUBMISSIONS ──
+async function loadSubmissions() {
+  const { data } = await sb.from('submissions').select('*').order('created_at', { ascending: false });
+  const el = document.getElementById('submissionsList');
+  if (!data || data.length === 0) { el.innerHTML = '<div style="color:var(--text-dim);font-size:13px;">No submissions yet.</div>'; return; }
+  el.innerHTML = data.map(s => `
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">${esc(s.event_name)}</div>
+          <div class="card-meta">by ${esc(s.organizer_name)} &bull; ${esc(s.organizer_email)} ${s.organizer_instagram ? '&bull; @' + esc(s.organizer_instagram) : ''}</div>
+        </div>
+        <span class="badge badge-${s.status}">${s.status}</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-dim);line-height:1.5;">
+        <strong>Type:</strong> ${s.event_type}${s.recurrence ? ' — ' + esc(s.recurrence) : ''} &bull;
+        <strong>Date:</strong> ${s.start_date || '—'}${s.end_date && s.end_date !== s.start_date ? ' to ' + s.end_date : ''} &bull;
+        <strong>Time:</strong> ${s.start_time || '—'}${s.end_time ? ' — ' + s.end_time : ''} &bull;
+        <strong>Venue:</strong> ${esc(s.venue) || '—'} &bull;
+        <strong>Island:</strong> ${esc(s.island)}
+        ${s.description ? '<br><strong>Description:</strong> ' + esc(s.description) : ''}
+      </div>
+      ${s.status === 'pending' ? `
+        <div class="btn-group" style="margin-top:12px;">
+          <button class="btn btn-green btn-sm" onclick="approveSubmission('${s.id}')">Approve & Create Event</button>
+          <button class="btn btn-red btn-sm" onclick="rejectSubmission('${s.id}')">Reject</button>
+        </div>
+      ` : ''}
+    </div>
+  `).join('');
+}
+
+async function approveSubmission(id) {
+  const { data: s } = await sb.from('submissions').select('*').eq('id', id).single();
+  if (!s) return;
+  // Create event from submission
+  await sb.from('events').insert([{
+    name: s.event_name,
+    organizer: s.organizer_name,
+    event_type: s.event_type,
+    recurrence: s.recurrence,
+    start_date: s.start_date,
+    end_date: s.end_date,
+    start_time: s.start_time,
+    end_time: s.end_time,
+    venue: s.venue,
+    island: s.island,
+    description: s.description,
+    instagram: s.organizer_instagram,
+    status: 'approved',
+  }]);
+  await sb.from('submissions').update({ status: 'approved' }).eq('id', id);
+  toast('Submission approved — event created');
+  loadSubmissions();
+  loadDashboard();
+}
+
+async function rejectSubmission(id) {
+  if (!confirm('Reject this submission?')) return;
+  await sb.from('submissions').update({ status: 'rejected' }).eq('id', id);
+  toast('Submission rejected');
+  loadSubmissions();
+  loadDashboard();
+}
+
+// ── SPONSORS ──
+async function loadSponsors() {
+  const { data } = await sb.from('sponsors').select('*').order('created_at', { ascending: false });
+  const tbody = document.getElementById('sponsorsTable');
+  if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="5" style="color:var(--text-dim)">No sponsors yet.</td></tr>'; return; }
+  tbody.innerHTML = data.map(s => `
+    <tr>
+      <td><strong>${esc(s.name)}</strong></td>
+      <td><span class="badge badge-${s.tier === 'premier' ? 'pending' : s.tier === 'community' ? 'approved' : 'rejected'}">${s.tier}</span></td>
+      <td>${s.instagram ? '@' + esc(s.instagram) : '—'}</td>
+      <td>${s.active ? '✓' : '—'}</td>
+      <td>
+        <div class="btn-group">
+          <button class="btn btn-ghost btn-sm" onclick="editSponsor('${s.id}')">Edit</button>
+          <button class="btn btn-red btn-sm" onclick="deleteSponsor('${s.id}')">Del</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function openSponsorModal() {
+  document.getElementById('sponsorModalTitle').textContent = 'Add Sponsor';
+  document.getElementById('sponsorId').value = '';
+  ['spName','spInstagram','spWebsite','spDescription'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('spTier').value = 'community';
+  document.getElementById('spActive').checked = true;
+  document.getElementById('sponsorModal').classList.add('open');
+}
+
+async function editSponsor(id) {
+  const { data } = await sb.from('sponsors').select('*').eq('id', id).single();
+  if (!data) return;
+  document.getElementById('sponsorModalTitle').textContent = 'Edit Sponsor';
+  document.getElementById('sponsorId').value = data.id;
+  document.getElementById('spName').value = data.name || '';
+  document.getElementById('spTier').value = data.tier || 'community';
+  document.getElementById('spInstagram').value = data.instagram || '';
+  document.getElementById('spWebsite').value = data.website_url || '';
+  document.getElementById('spDescription').value = data.description || '';
+  document.getElementById('spActive').checked = data.active;
+  document.getElementById('sponsorModal').classList.add('open');
+}
+
+async function saveSponsor() {
+  const id = document.getElementById('sponsorId').value;
+  const payload = {
+    name: document.getElementById('spName').value,
+    tier: document.getElementById('spTier').value,
+    instagram: document.getElementById('spInstagram').value || null,
+    website_url: document.getElementById('spWebsite').value || null,
+    description: document.getElementById('spDescription').value || null,
+    active: document.getElementById('spActive').checked,
+  };
+  let error;
+  if (id) { ({ error } = await sb.from('sponsors').update(payload).eq('id', id)); }
+  else { ({ error } = await sb.from('sponsors').insert([payload])); }
+  if (error) { alert('Error: ' + error.message); return; }
+  closeModal('sponsorModal');
+  toast(id ? 'Sponsor updated' : 'Sponsor added');
+  loadSponsors();
+}
+
+async function deleteSponsor(id) {
+  if (!confirm('Delete this sponsor?')) return;
+  await sb.from('sponsors').delete().eq('id', id);
+  toast('Sponsor deleted');
+  loadSponsors();
+}
+
+// ── NEWSLETTER ──
+async function loadNewsletter() {
+  const { data } = await sb.from('newsletter').select('*').order('subscribed_at', { ascending: false });
+  const tbody = document.getElementById('newsletterTable');
+  if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="color:var(--text-dim)">No subscribers yet.</td></tr>'; return; }
+  tbody.innerHTML = data.map(n => `
+    <tr>
+      <td>${esc(n.email)}</td>
+      <td>${esc(n.name) || '—'}</td>
+      <td>${new Date(n.subscribed_at).toLocaleDateString()}</td>
+    </tr>
+  `).join('');
+}
+
+function exportEmails() {
+  const rows = document.querySelectorAll('#newsletterTable tr');
+  let csv = 'Email,Name,Subscribed\n';
+  rows.forEach(r => {
+    const cells = r.querySelectorAll('td');
+    if (cells.length) csv += `${cells[0].textContent},${cells[1].textContent},${cells[2].textContent}\n`;
+  });
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'newsletter-subscribers.csv';
+  a.click();
+}
+
+// ── UTILS ──
+function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ── INIT ──
+checkSession();
+</script>
+</body>
+</html>
