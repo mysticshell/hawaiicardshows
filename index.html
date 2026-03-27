@@ -674,4 +674,15 @@ document.getElementById('newsletterForm').onsubmit = async (e) => {
   btn.disabled = false; btn.textContent = 'Subscribe';
   if (error && error.code === '23505') { document.getElementById('newsletterSuccess').textContent = "You're already subscribed!"; }
   document.getElementById('newsletterSuccess').style.display = 'block';
-  document.getElementById('newsletterForm').style.display 
+  document.getElementById('newsletterForm').style.display = 'none';
+};
+
+// ── Utils ──
+function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ── Init ──
+loadEvents();
+loadSponsors();
+</script>
+</body>
+</html>
