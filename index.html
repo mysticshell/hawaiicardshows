@@ -126,8 +126,8 @@ nav {
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: var(--ocean); }
-.nav-cta { background: var(--ocean); color: var(--white); padding: 8px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
-.nav-cta:hover { background: var(--ocean-light); color: var(--white); }
+.nav-links a.nav-cta { background: var(--ocean); color: var(--white); padding: 8px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+.nav-links a.nav-cta:hover { background: var(--ocean-light); color: var(--white); }
 .nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
 .nav-mobile svg { width: 24px; height: 24px; stroke: var(--text); }
 
@@ -772,7 +772,7 @@ document.getElementById('calNext').onclick = () => { if (calMonth === 11) { calM
 // ── Stats ──
 function updateStats() {
   const today = new Date().toISOString().split('T')[0];
-  const upcoming = allEvents.filter(e => e.event_type === 'one-time' && e.start_date >= today).length;
+  const upcoming = allEvents.filter(e => (e.event_type === 'one-time' || e.event_type === 'annual') && e.start_date && e.start_date >= today).length;
   const recurring = allEvents.filter(e => e.event_type === 'recurring').length;
   document.getElementById('statEvents').textContent = upcoming;
   document.getElementById('statRecurring').textContent = recurring;
