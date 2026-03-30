@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Monetize Your Venue with Trading Card Shows | Hawaii Card Shows</title>
+<meta name="description" content="Learn how community halls, event spaces, and venues across Hawaii are earning revenue by hosting trading card shows. A guide for venue owners looking to fill downtime and bring in foot traffic.">
+<meta name="keywords" content="host a card show Hawaii, venue for card show, monetize event space Hawaii, trading card event venue, card show venue rental, community hall events Hawaii">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hawaiicardshows.com/host-a-show.html">
+
+<meta property="og:title" content="How to Monetize Your Venue with Trading Card Shows">
+<meta property="og:description" content="A guide for Hawaii venue owners looking to earn revenue by hosting trading card shows and collectible events.">
+<meta property="og:url" content="https://hawaiicardshows.com/host-a-show.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hawaii Card Shows">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Monetize Your Venue with Trading Card Shows">
+<meta name="twitter:description" content="A guide for Hawaii venue owners on hosting card shows and collectible events.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Monetize Your Venue with Trading Card Shows",
+  "description": "A guide for venue owners in Hawaii looking to earn revenue by hosting trading card shows and collectible events.",
+  "datePublished": "2026-03-27",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hawaii Card Shows",
+    "url": "https://hawaiicardshows.com"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root {
+  --sand: #f5f0e8; --sand-dark: #e8e0d0; --ocean: #1a6b5a; --ocean-light: #2a8b72;
+  --ocean-pale: #e8f4f0; --lava: #d4582a; --lava-light: #f0714a; --night: #1a1a1a;
+  --text: #2c2c2c; --text-light: #6a6a6a; --text-lighter: #999; --white: #ffffff;
+  --radius: 12px; --shadow: 0 2px 20px rgba(0,0,0,0.06); --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--sand); }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(245,240,232,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 0 24px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 18px; color: var(--ocean); letter-spacing: -0.5px; text-decoration: none; }
+.nav-brand span { color: var(--lava); }
+.nav-back { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+.nav-back:hover { color: var(--ocean); }
+
+.hero {
+  padding: 100px 24px 48px; max-width: 800px; margin: 0 auto;
+}
+.hero-tag {
+  display: inline-block; background: var(--lava); color: var(--white);
+  padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Outfit', sans-serif; font-size: clamp(28px, 5vw, 42px);
+  font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;
+  color: var(--night); margin-bottom: 16px;
+}
+.hero p { font-size: 18px; color: var(--text-light); line-height: 1.6; }
+
+.content { max-width: 800px; margin: 0 auto; padding: 32px 24px 80px; }
+.content p { font-size: 17px; line-height: 1.8; color: var(--text); margin-bottom: 20px; }
+.content h2 {
+  font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 700;
+  color: var(--night); margin: 48px 0 16px; letter-spacing: -0.5px;
+}
+.content h3 {
+  font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 600;
+  color: var(--night); margin: 32px 0 12px;
+}
+.content a { color: var(--ocean); font-weight: 600; text-decoration: none; }
+.content a:hover { text-decoration: underline; }
+.content ul { margin: 0 0 20px 24px; }
+.content li { font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 8px; }
+
+.stat-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin: 32px 0;
+}
+.stat-card {
+  background: var(--white); border-radius: var(--radius); padding: 24px;
+  text-align: center; box-shadow: var(--shadow);
+}
+.stat-card-num { font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 700; color: var(--ocean); }
+.stat-card-label { font-size: 13px; color: var(--text-light); margin-top: 4px; }
+
+.callout {
+  background: var(--ocean-pale); border-radius: var(--radius); padding: 28px;
+  margin: 32px 0; border-left: 4px solid var(--ocean);
+}
+.callout p { margin-bottom: 0; }
+
+.venue-types {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0;
+}
+.venue-type {
+  background: var(--white); border-radius: var(--radius); padding: 20px;
+  box-shadow: var(--shadow);
+}
+.venue-type-name { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: var(--night); margin-bottom: 6px; }
+.venue-type-desc { font-size: 14px; color: var(--text-light); line-height: 1.5; }
+
+.cta-box {
+  background: var(--night); border-radius: 16px; padding: 48px 32px;
+  text-align: center; margin: 48px 0;
+}
+.cta-box h3 { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.cta-box p { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 20px; }
+.cta-btn {
+  display: inline-block; background: var(--ocean); color: var(--white);
+  padding: 14px 32px; border-radius: 8px; font-weight: 600;
+  text-decoration: none; font-size: 15px; transition: background 0.2s;
+}
+.cta-btn:hover { background: var(--ocean-light); }
+
+.form-card {
+  background: var(--white); border-radius: var(--radius); padding: 32px;
+  box-shadow: var(--shadow); max-width: 600px; margin: 32px auto;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-group { margin-bottom: 16px; }
+.form-label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.form-input {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--sand-dark);
+  border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px;
+  color: var(--text); background: var(--sand); outline: none;
+}
+.form-input:focus { border-color: var(--ocean); background: var(--white); }
+textarea.form-input { resize: vertical; min-height: 80px; }
+.form-btn {
+  background: var(--ocean); color: var(--white); border: none;
+  padding: 14px 32px; border-radius: 8px; font-family: 'DM Sans', sans-serif;
+  font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%;
+}
+.form-btn:hover { background: var(--ocean-light); }
+.form-success {
+  background: var(--ocean-pale); color: var(--ocean); padding: 16px;
+  border-radius: 8px; font-weight: 500; display: none; text-align: center;
+}
+
+footer {
+  text-align: center; padding: 40px 24px;
+  border-top: 1px solid rgba(0,0,0,0.06); color: var(--text-lighter); font-size: 13px;
+}
+footer a { color: var(--ocean); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .stat-row { grid-template-columns: 1fr; }
+  .venue-types { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <a href="https://hawaiicardshows.com" class="nav-back">
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Calendar
+  </a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">For Venue Owners</div>
+  <h1>Your Venue Could Be Hawaii's Next Card Show Hotspot</h1>
+  <p>Trading card shows are one of the fastest-growing event categories in Hawaii. Here's how venue owners are turning downtime into revenue — and how you can too.</p>
+</div>
+
+<div class="content">
+
+  <h2>The Opportunity</h2>
+
+  <p>Hawaii's trading card scene has exploded. What used to be a niche hobby has become a community movement — with shows drawing hundreds to thousands of attendees on a single day. Pokemon, sports cards, One Piece, and other collectibles bring out families, serious collectors, and casual fans who are ready to spend money and have a good time.</p>
+
+  <p>These shows need venues. And right now, demand is outpacing supply.</p>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-card-num">1,400+</div>
+      <div class="stat-card-label">Attendees at a recent Oahu show</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-num">50–65</div>
+      <div class="stat-card-label">Vendors per mid-size show</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-num">10+</div>
+      <div class="stat-card-label">Regular shows on Oahu alone</div>
+    </div>
+  </div>
+
+  <h2>What a Card Show Looks Like</h2>
+
+  <p>A typical card show is a one-day event running 5–8 hours. Vendors rent table space (usually 6-foot tables) to sell, trade, and display their inventory. Attendees browse, buy, and connect. Some shows include giveaways, raffles, and sponsor activations. The atmosphere is family-friendly and high-energy.</p>
+
+  <p>For a venue, this means:</p>
+  <ul>
+    <li>A steady stream of foot traffic for the duration of the event</li>
+    <li>Revenue from space rental — show organizers typically pay a flat venue fee</li>
+    <li>Concession and food sales opportunities if your venue has that capability</li>
+    <li>Exposure to a loyal community that comes back for recurring events</li>
+    <li>No inventory, no setup cost — the organizer handles everything inside the space</li>
+  </ul>
+
+  <h2>What Kind of Venue Works?</h2>
+
+  <p>Card shows are flexible. They don't need a convention center. Some of the most successful shows in Hawaii happen in spaces you might not expect:</p>
+
+  <div class="venue-types">
+    <div class="venue-type">
+      <div class="venue-type-name">Community Halls & Churches</div>
+      <div class="venue-type-desc">Open floor plans with tables and chairs available. Great for shows with 20–40 vendors. Affordable for organizers, which means more frequent bookings.</div>
+    </div>
+    <div class="venue-type">
+      <div class="venue-type-name">Mall Event Spaces</div>
+      <div class="venue-type-desc">Built-in foot traffic from shoppers. Shows at malls benefit from visibility and impulse attendance. Works well for recurring monthly events.</div>
+    </div>
+    <div class="venue-type">
+      <div class="venue-type-name">Restaurants & Bars</div>
+      <div class="venue-type-desc">Smaller trade nights during slow hours. The venue earns from food and drink sales while the organizer brings the crowd. Low commitment, high upside.</div>
+    </div>
+    <div class="venue-type">
+      <div class="venue-type-name">Event Venues & Concert Halls</div>
+      <div class="venue-type-desc">For larger shows with 50+ vendors and 1,000+ expected attendees. These are ticketed events with higher production value and sponsor involvement.</div>
+    </div>
+    <div class="venue-type">
+      <div class="venue-type-name">Golf Courses & Outdoor Spaces</div>
+      <div class="venue-type-desc">Evening markets and casual trade nights work well in outdoor settings. Bayview Golf Course on Oahu hosts a popular Tuesday night market.</div>
+    </div>
+    <div class="venue-type">
+      <div class="venue-type-name">Hotel Conference Rooms</div>
+      <div class="venue-type-desc">Ideal for premium or themed shows. Professional setting appeals to high-end collectors and graded card dealers.</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>The key requirements:</strong> Open floor space for tables, accessible parking, and enough room for foot traffic flow. Power outlets help for vendors with display lighting. Climate control is a plus but not required for shorter events.</p>
+  </div>
+
+  <h2>How the Money Works</h2>
+
+  <p>Every show is structured a little differently, but here's the general picture:</p>
+
+  <h3>For the Venue</h3>
+  <p>The show organizer pays you a flat rental fee for the space, typically for 8–10 hours including setup and breakdown. Pricing depends on your space size, location, and amenities. Some venues negotiate a percentage of ticket sales instead of (or in addition to) a flat fee. If you have food service, that's additional revenue the organizer doesn't touch.</p>
+
+  <h3>For the Organizer</h3>
+  <p>Organizers earn revenue through vendor table fees (typically $100–$200 per table), admission fees ($5–$10 per attendee), and sponsorships. A show with 55 vendors at $150 per table generates $8,250 in vendor fees alone — before admission and sponsors. That's why organizers are actively looking for venues: the economics work.</p>
+
+  <h3>For Recurring Events</h3>
+  <p>The real value for venues is repeat bookings. Many shows in Hawaii run monthly or twice monthly. A venue that hosts a recurring show gets predictable revenue and a built-in community that associates your space with the event. That's the kind of loyalty that's hard to buy.</p>
+
+  <h2>What You Don't Have to Worry About</h2>
+
+  <p>Show organizers handle the heavy lifting:</p>
+  <ul>
+    <li>Vendor recruitment and management</li>
+    <li>Event promotion and marketing</li>
+    <li>Day-of logistics, setup, and breakdown</li>
+    <li>Ticketing and admission</li>
+    <li>Insurance (most established organizers carry event liability)</li>
+  </ul>
+  <p>Your role is providing the space, and optionally any services you'd normally offer (parking management, concessions, security for larger events).</p>
+
+  <h2>Getting Started</h2>
+
+  <p>If you have a space that could work, the next step is simple: let us know. We'll connect you with established show organizers in Hawaii who are actively looking for venues. There's no cost and no commitment — it's a conversation to see if there's a fit.</p>
+
+  <div class="form-card">
+    <div style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:var(--night);margin-bottom:4px;">Tell Us About Your Space</div>
+    <p style="font-size:14px;color:var(--text-light);margin-bottom:20px;">We'll connect you with show organizers looking for venues like yours.</p>
+    <form id="venueForm">
+      <div class="form-row">
+        <div><label class="form-label">Your Name *</label><input class="form-input" name="name" required></div>
+        <div><label class="form-label">Business / Venue Name *</label><input class="form-input" name="business" required></div>
+      </div>
+      <div class="form-row">
+        <div><label class="form-label">Email *</label><input class="form-input" type="email" name="email" required></div>
+        <div><label class="form-label">Phone (optional)</label><input class="form-input" name="phone"></div>
+      </div>
+      <div class="form-row">
+        <div><label class="form-label">Venue Location (city / area)</label><input class="form-input" name="location" placeholder="e.g. Aiea, Kailua, Lahaina"></div>
+        <div><label class="form-label">Approximate Capacity</label><input class="form-input" name="capacity" placeholder="e.g. 200 people, 40 tables"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tell us about your space</label>
+        <textarea class="form-input" name="message" placeholder="What kind of space is it? What's the availability like? Any questions you have for us?"></textarea>
+      </div>
+      <button type="submit" class="form-btn" id="venueBtn">Submit Your Venue</button>
+    </form>
+    <div class="form-success" id="venueSuccess">
+      Mahalo! We'll review your space and connect you with the right organizers.
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>Not a Venue Owner?</h3>
+    <p>Check out the full calendar of trading card shows happening across Hawaii.</p>
+    <a href="https://hawaiicardshows.com" class="cta-btn">Browse All Shows</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="https://hawaiicardshows.com">Back to Calendar</a> &bull; <a href="https://hawaiicardshows.com/#submit">Submit an Event</a></p>
+</footer>
+
+<script>
+const SUPABASE_URL = 'https://bcdgqqncycsdwnmrmuan.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjZGdxcW5jeWNzZHdubXJtdWFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NTU4MzgsImV4cCI6MjA5MDEzMTgzOH0.UXTTv99cBYcll_uw-g50tA4yG9jpbVIdt3xrDc_rTKs';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+document.getElementById('venueForm').onsubmit = async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('venueBtn');
+  btn.disabled = true; btn.textContent = 'Submitting...';
+  const fd = new FormData(e.target);
+  const payload = Object.fromEntries(fd.entries());
+  payload.interest = 'venue';
+  const { error } = await sb.from('partner_inquiries').insert([payload]);
+  btn.disabled = false; btn.textContent = 'Submit Your Venue';
+  if (error) { alert('Something went wrong. Please try again.'); console.error(error); return; }
+  e.target.style.display = 'none';
+  document.getElementById('venueSuccess').style.display = 'block';
+};
+</script>
+
+</body>
+</html>
