@@ -3,51 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paradise Card Show Recap — March 22, 2026 | 64 Vendors, 1400+ Attendees at The Republik</title>
-<meta name="description" content="Recap of the Paradise Card Show on March 22, 2026 at The Republik in Honolulu. 64 vendors, 1400+ attendees, goodie bags for the first 100 keiki, and giveaways from Toylynx and GetNutz.">
-<meta name="keywords" content="Paradise Card Show, card show Honolulu, The Republik card show, Pokemon card show Oahu, trading card event Hawaii, Paradise Card Show recap March 2026">
+<title>Show Recaps — Hawaii Card Shows</title>
+<meta name="description" content="Recaps and coverage of trading card shows across Hawaii. Relive the best moments from Pokemon, sports card, and TCG events on Oahu, Maui, and beyond.">
+<meta name="keywords" content="Hawaii card show recap, Pokemon card show recap, trading card event Hawaii, card show coverage, Hawaii TCG recap">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://hawaiicardshows.com/recaps/paradise-card-show-march-2026.html">
+<link rel="canonical" href="https://hawaiicardshows.com/recaps/">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Paradise Card Show Recap — March 22, 2026">
-<meta property="og:description" content="64 vendors, 1400+ attendees, lines around the block. Recap of Paradise Card Show #3 at The Republik.">
-<meta property="og:url" content="https://hawaiicardshows.com/recaps/paradise-card-show-march-2026.html">
-<meta property="og:type" content="article">
+<meta property="og:title" content="Show Recaps — Hawaii Card Shows">
+<meta property="og:description" content="Recaps and coverage of trading card shows across Hawaii.">
+<meta property="og:url" content="https://hawaiicardshows.com/recaps/">
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="Hawaii Card Shows">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Paradise Card Show Recap — March 22, 2026">
-<meta name="twitter:description" content="64 vendors, 1400+ attendees, lines around the block at The Republik.">
-
-<!-- Structured Data: Article -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Paradise Card Show Recap — March 22, 2026",
-  "description": "Recap of the Paradise Card Show at The Republik in Honolulu. 64 vendors, 1400+ attendees, goodie bags, giveaways, and community energy.",
-  "datePublished": "2026-03-27",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Hawaii Card Shows",
-    "url": "https://hawaiicardshows.com"
-  },
-  "about": {
-    "@type": "Event",
-    "name": "Paradise Card Show",
-    "startDate": "2026-03-22",
-    "endDate": "2026-03-22",
-    "location": {
-      "@type": "Place",
-      "name": "The Republik",
-      "address": { "@type": "PostalAddress", "addressLocality": "Honolulu", "addressRegion": "HI" }
-    },
-    "organizer": { "@type": "Organization", "name": "Paradise Card Show" }
-  }
-}
-</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -56,12 +22,11 @@
   --sand: #f5f0e8; --sand-dark: #e8e0d0; --ocean: #1a6b5a; --ocean-light: #2a8b72;
   --ocean-pale: #e8f4f0; --lava: #d4582a; --lava-light: #f0714a; --night: #1a1a1a;
   --text: #2c2c2c; --text-light: #6a6a6a; --text-lighter: #999; --white: #ffffff;
-  --radius: 12px; --shadow: 0 2px 20px rgba(0,0,0,0.06);
+  --radius: 12px; --shadow: 0 2px 20px rgba(0,0,0,0.06); --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--sand); }
 
-/* Nav */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(245,240,232,0.92); backdrop-filter: blur(20px);
@@ -71,238 +36,103 @@ nav {
 }
 .nav-brand { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 18px; color: var(--ocean); letter-spacing: -0.5px; text-decoration: none; }
 .nav-brand span { color: var(--lava); }
-.nav-back { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+.nav-back { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; transition: color 0.2s; }
 .nav-back:hover { color: var(--ocean); }
 
-/* Hero */
-.recap-hero {
-  padding: 100px 24px 48px; max-width: 800px; margin: 0 auto;
+.page-hero {
+  padding: 100px 24px 48px; text-align: center;
+  background: linear-gradient(180deg, var(--sand) 0%, var(--ocean-pale) 100%);
 }
-.recap-tag {
-  display: inline-block; background: var(--ocean); color: var(--white);
-  padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
-}
-.recap-hero h1 {
-  font-family: 'Outfit', sans-serif; font-size: clamp(28px, 5vw, 44px);
+.page-hero h1 {
+  font-family: 'Outfit', sans-serif; font-size: clamp(30px, 5vw, 48px);
   font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;
-  color: var(--night); margin-bottom: 16px;
+  color: var(--night); margin-bottom: 12px;
 }
-.recap-meta {
-  display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; color: var(--text-light);
-  padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.08);
-}
-.recap-meta-item { display: flex; align-items: center; gap: 6px; }
-.recap-meta-item svg { width: 16px; height: 16px; stroke: var(--ocean); fill: none; }
+.page-hero h1 em { font-style: normal; color: var(--ocean); }
+.page-hero p { font-size: 18px; color: var(--text-light); max-width: 520px; margin: 0 auto; line-height: 1.6; }
 
-/* Stats bar */
-.stats-bar {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-  max-width: 800px; margin: 32px auto; padding: 0 24px;
+.recaps-grid {
+  max-width: 900px; margin: 0 auto; padding: 60px 24px 80px;
+  display: grid; grid-template-columns: 1fr; gap: 20px;
 }
-.stat-box {
-  background: var(--white); border-radius: var(--radius); padding: 20px;
-  text-align: center; box-shadow: var(--shadow);
+.recap-card {
+  background: var(--white); border-radius: var(--radius); padding: 32px;
+  box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+  border-left: 4px solid var(--ocean); text-decoration: none; display: block;
 }
-.stat-num { font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 700; color: var(--ocean); }
-.stat-label { font-size: 13px; color: var(--text-light); margin-top: 4px; }
+.recap-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.recap-card-date {
+  font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--lava); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
+}
+.recap-card-title {
+  font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 700;
+  color: var(--night); margin-bottom: 8px;
+}
+.recap-card-desc { font-size: 15px; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; }
+.recap-card-stats { display: flex; gap: 20px; flex-wrap: wrap; }
+.recap-card-stat {
+  font-size: 13px; color: var(--ocean); font-weight: 600;
+  background: var(--ocean-pale); padding: 4px 12px; border-radius: 6px;
+}
+.recap-card-link { color: var(--ocean); font-weight: 600; font-size: 14px; margin-top: 12px; display: inline-block; }
 
-/* Content */
-.recap-content {
-  max-width: 800px; margin: 0 auto; padding: 32px 24px 80px;
-  font-size: 17px; line-height: 1.8; color: var(--text);
-}
-.recap-content p { margin-bottom: 20px; }
-.recap-content h2 {
-  font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700;
-  color: var(--night); margin: 40px 0 16px; letter-spacing: -0.5px;
-}
-.recap-content a { color: var(--ocean); font-weight: 600; text-decoration: none; }
-.recap-content a:hover { text-decoration: underline; }
-
-/* Highlight box */
-.highlight-box {
-  background: var(--ocean-pale); border-radius: var(--radius); padding: 24px;
-  margin: 24px 0; border-left: 4px solid var(--ocean);
-}
-.highlight-box strong { color: var(--ocean); }
-
-/* Photo grid */
-.photo-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 12px; margin: 32px 0;
-}
-.photo-placeholder {
-  background: var(--sand-dark); border-radius: var(--radius); aspect-ratio: 4/3;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text-lighter); font-size: 13px;
-}
-.photo-grid img {
-  width: 100%; border-radius: var(--radius); object-fit: cover; aspect-ratio: 4/3;
+.empty-state {
+  text-align: center; padding: 60px 24px;
+  color: var(--text-lighter); font-size: 16px;
 }
 
-/* Sponsors callout */
-.sponsor-callout {
-  background: var(--white); border-radius: var(--radius); padding: 24px;
-  box-shadow: var(--shadow); margin: 32px 0;
-  display: flex; flex-wrap: wrap; gap: 20px; align-items: center;
-}
-.sponsor-callout-label {
-  font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--text-lighter); width: 100%;
-}
-.sponsor-callout-item {
-  font-size: 15px; font-weight: 600; color: var(--night);
-  padding: 8px 16px; background: var(--ocean-pale); border-radius: 8px;
-}
-
-/* CTA */
-.recap-cta {
-  background: var(--night); border-radius: 16px; padding: 48px 32px;
-  text-align: center; margin: 48px 0;
-}
-.recap-cta h3 { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
-.recap-cta p { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 20px; }
-.recap-cta a {
-  display: inline-block; background: var(--ocean); color: var(--white);
-  padding: 12px 28px; border-radius: 8px; font-weight: 600;
-  text-decoration: none; font-size: 15px; transition: background 0.2s;
-}
-.recap-cta a:hover { background: var(--ocean-light); }
-
-/* Footer */
 footer {
   text-align: center; padding: 40px 24px;
   border-top: 1px solid rgba(0,0,0,0.06); color: var(--text-lighter); font-size: 13px;
 }
 footer a { color: var(--ocean); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
 
 @media (max-width: 768px) {
-  .stats-bar { grid-template-columns: 1fr; }
-  .recap-content { font-size: 16px; }
-  .sponsor-callout { flex-direction: column; }
+  .recaps-grid { padding: 40px 16px 60px; }
+  .recap-card { padding: 24px; }
 }
 </style>
 </head>
 <body>
 
-<!-- Nav -->
 <nav>
   <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
-  <a href="https://hawaiicardshows.com" class="nav-back">
-    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Back to Calendar
-  </a>
+  <a href="https://hawaiicardshows.com" class="nav-back">Back to Calendar</a>
 </nav>
 
-<!-- Hero -->
-<div class="recap-hero">
-  <div class="recap-tag">Show Recap</div>
-  <h1>Paradise Card Show #3 — Lines Around the Block at The Republik</h1>
-  <div class="recap-meta">
-    <div class="recap-meta-item">
-      <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 10h18"/></svg>
-      Sunday, March 22, 2026
+<section class="page-hero">
+  <h1>Show <em>Recaps</em></h1>
+  <p>Relive the best moments from trading card shows across the islands.</p>
+</section>
+
+<div class="recaps-grid">
+
+  <a href="/recaps/moiliili-card-show-march-2026.html" class="recap-card">
+    <div class="recap-card-date">March 28, 2026</div>
+    <div class="recap-card-title">Moiliili Card Show</div>
+    <div class="recap-card-desc">The inaugural Moiliili Card Show at Moiliili Hongwanji drew a massive crowd for its debut, with all proceeds going back to the community.</div>
+    <div class="recap-card-stats">
+      <span class="recap-card-stat">1,000+ Collectors</span>
+      <span class="recap-card-stat">25 Vendors</span>
+      <span class="recap-card-stat">Inaugural Show</span>
     </div>
-    <div class="recap-meta-item">
-      <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg>
-      1:00 PM — 8:00 PM
+    <span class="recap-card-link">Read the full recap →</span>
+  </a>
+
+  <a href="/recaps/paradise-card-show-march-2026.html" class="recap-card">
+    <div class="recap-card-date">March 22, 2026</div>
+    <div class="recap-card-title">Paradise Card Show</div>
+    <div class="recap-card-desc">Coverage from the Paradise Card Show — one of Oahu's premier trading card events. Full recap and photos coming soon.</div>
+    <div class="recap-card-stats">
+      <span class="recap-card-stat">Photos Coming Soon</span>
     </div>
-    <div class="recap-meta-item">
-      <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/></svg>
-      The Republik, Honolulu
-    </div>
-    <div class="recap-meta-item">
-      <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-      $6 Admission
-    </div>
-  </div>
-</div>
-
-<!-- Stats -->
-<div class="stats-bar">
-  <div class="stat-box">
-    <div class="stat-num">64</div>
-    <div class="stat-label">Vendors</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-num">1,400+</div>
-    <div class="stat-label">Adults & Keiki</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-num">#3</div>
-    <div class="stat-label">Paradise Card Show</div>
-  </div>
-</div>
-
-<!-- Content -->
-<div class="recap-content">
-
-  <p>Paradise Card Show came back for its third show and delivered the biggest one yet. Over 1,400 adults and keiki came through the doors at The Republik in Honolulu for a day of trading, collecting, and community that had lines wrapping around the block before the doors even opened.</p>
-
-  <p>That line was a sign of the demand, and while the wait was long for some, it's a problem most shows would love to have. Paradise controlled the flow of traffic into the venue to keep the experience manageable inside, though the team knows there's room to improve the entry process. Javin, the founder of Paradise Card Show, has been open about that — publicly committing to making the collector experience better with every show. With 64 vendors inside, there was no shortage of product to browse: Pokemon, sports cards, One Piece, Japanese imports, sealed product, graded slabs, and everything in between.</p>
-
-  <h2>Keiki First</h2>
-
-  <p>One of the highlights of the day was watching the first 100 keiki come through the door and receive a free goodie bag. On top of that, several hundred attendees walked away with a free pack just for showing up. In a hobby that can feel expensive, these kinds of touches make the show accessible and bring families in who might be checking out a card show for the first time.</p>
-
-  <h2>Sponsors That Showed Up</h2>
-
-  <div class="highlight-box">
-    <strong><a href="https://www.toylynx.com/" target="_blank">Toylynx</a></strong> — a staple card shop in Honolulu known for its competitive TCG player base — partnered with Paradise Card Show as the headline sponsor. Toylynx funded all of the goodie bags and free packs, and included store credit for every single person who walked through the door. They also had staff on-site supporting the event. That's not just sponsorship — that's community investment.
-  </div>
-
-  <div class="highlight-box">
-    <strong><a href="https://getnutzwear.com/" target="_blank">GetNutz</a></strong> — one of Hawaii's powerhouse culture brands — brought the energy with giveaways throughout the day, including a golf bag and apparel. GetNutz added a layer of excitement that kept the crowd buzzing all afternoon.
-  </div>
-
-  <p>Shoutout to <strong><a href="https://instagram.com/pkmn.collective" target="_blank">PKMN Collective</a></strong> as well for their support in making this show happen. Paradise Card Show, supported by PKMN Collective, continues to carve out its own lane in the Hawaii card show scene.</p>
-
-  <h2>A Different Kind of Show</h2>
-
-  <p>What makes Paradise Card Show stand out is the space it fills. Hawaii's card show scene has generally been split between small trade nights and massive conventions at the Blaisdell. Paradise sits right in the sweet spot — big enough to feel like an event, intimate enough that vendors and attendees are actually connecting. At 64 vendors and 1,400+ attendees, the ratio felt right.</p>
-
-  <p>This was only the third Paradise Card Show, and the growth from show to show has been clear. The team behind it — Javin and the Paradise crew — are building something with staying power.</p>
-
-  <!-- Photo grid - ready for images -->
-  <!--
-  <h2>Photos from the Show</h2>
-  <div class="photo-grid">
-    <img src="photo1.jpg" alt="Paradise Card Show March 2026 vendors">
-    <img src="photo2.jpg" alt="Line outside The Republik for Paradise Card Show">
-    <img src="photo3.jpg" alt="Keiki receiving goodie bags at Paradise Card Show">
-  </div>
-  -->
-
-  <h2>What's Next</h2>
-
-  <p>Paradise Card Show isn't slowing down. The next event is a <strong>Trade Night on Sunday, April 5</strong> — a more casual format with approximately 55 vendors and new hours from 1:00–7:00 PM. This one will also include a community component: donations being collected for North Shore residents affected by the recent storms.</p>
-
-  <p>After that, a special collaboration with <strong>GetNutz x Paradise Card Show on April 19</strong> marks GetNutz's first-ever show, and the summer lineup is already taking shape with a show targeted for July.</p>
-
-  <div class="sponsor-callout">
-    <div class="sponsor-callout-label">This show was made possible by</div>
-    <a href="https://www.toylynx.com/" target="_blank" class="sponsor-callout-item" style="text-decoration:none;color:var(--night);">Toylynx</a>
-    <a href="https://getnutzwear.com/" target="_blank" class="sponsor-callout-item" style="text-decoration:none;color:var(--night);">GetNutz</a>
-    <a href="https://instagram.com/pkmn.collective" target="_blank" class="sponsor-callout-item" style="text-decoration:none;color:var(--night);">PKMN Collective</a>
-  </div>
-
-  <!-- Paradise Cards Follow CTA -->
-  <div style="background:var(--ocean-pale);border-radius:var(--radius);padding:24px;margin:32px 0;text-align:center;">
-    <p style="font-size:16px;font-weight:600;color:var(--night);margin-bottom:8px;">Follow Paradise Card Show for updates on upcoming events</p>
-    <a href="https://instagram.com/paradisecards_" target="_blank" style="display:inline-block;background:var(--ocean);color:var(--white);padding:10px 24px;border-radius:8px;font-weight:600;text-decoration:none;font-size:14px;">Follow @paradisecards_ on Instagram</a>
-  </div>
-
-  <!-- CTA -->
-  <div class="recap-cta">
-    <h3>Don't Miss the Next One</h3>
-    <p>Stay up to date on every card show, trade night, and TCG event in Hawaii.</p>
-    <a href="https://hawaiicardshows.com">Browse the Full Calendar</a>
-  </div>
+    <span class="recap-card-link">Read the full recap →</span>
+  </a>
 
 </div>
 
-<!-- Footer -->
 <footer>
   <p>&copy; 2026 Hawaii Card Shows &bull; <a href="https://hawaiicardshows.com">Back to Calendar</a> &bull; <a href="https://hawaiicardshows.com/#submit">Submit an Event</a></p>
 </footer>
