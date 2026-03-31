@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moiliili Card Show Recap — March 2026 | Hawaii Card Shows</title>
+<meta name="description" content="Recap of the inaugural Moiliili Card Show at Moiliili Hongwanji on March 28, 2026. Over 1,000 collectors, 25 vendors, and all proceeds benefiting the Hongwanji community.">
+<meta name="keywords" content="Moiliili card show, Moiliili Hongwanji card show, Pokemon card show Honolulu, trading card show Hawaii, card show recap Hawaii, just for kicks cards, Hawaii card show March 2026">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hawaiicardshows.com/recaps/moiliili-card-show-march-2026.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Moiliili Card Show Recap — March 2026 | Hawaii Card Shows">
+<meta property="og:description" content="The inaugural Moiliili Card Show drew over 1,000 collectors and 25 vendors, with all proceeds supporting the Hongwanji community.">
+<meta property="og:url" content="https://hawaiicardshows.com/recaps/moiliili-card-show-march-2026.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hawaii Card Shows">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Moiliili Card Show Recap — March 2026">
+<meta name="twitter:description" content="The inaugural Moiliili Card Show drew over 1,000 collectors and 25 vendors, with all proceeds supporting the Hongwanji community.">
+
+<!-- Structured Data: Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Moiliili Card Show Recap — March 2026",
+  "description": "Recap of the inaugural Moiliili Card Show at Moiliili Hongwanji. Over 1,000 collectors, 25 vendors, and all proceeds benefiting the Hongwanji community.",
+  "datePublished": "2026-03-30",
+  "dateModified": "2026-03-30",
+  "author": {
+    "@type": "Organization",
+    "name": "Hawaii Card Shows",
+    "url": "https://hawaiicardshows.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hawaii Card Shows",
+    "url": "https://hawaiicardshows.com"
+  }
+}
+</script>
+
+<!-- Structured Data: Event -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Moiliili Card Show",
+  "description": "Inaugural trading card show at Moiliili Hongwanji featuring 25 vendors and over 1,000 collectors. All proceeds benefit the Hongwanji community.",
+  "startDate": "2026-03-28T10:00:00-10:00",
+  "endDate": "2026-03-28T18:00:00-10:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "Moiliili Hongwanji Mission",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "902 University Avenue",
+      "addressLocality": "Honolulu",
+      "addressRegion": "HI",
+      "postalCode": "96826",
+      "addressCountry": "US"
+    }
+  },
+  "organizer": {
+    "@type": "Person",
+    "name": "Landon",
+    "url": "https://www.instagram.com/just_for_kicks"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sand: #f5f0e8;
+  --sand-dark: #e8e0d0;
+  --ocean: #1a6b5a;
+  --ocean-light: #2a8b72;
+  --ocean-pale: #e8f4f0;
+  --lava: #d4582a;
+  --lava-light: #f0714a;
+  --night: #1a1a1a;
+  --night-soft: #2a2a2a;
+  --text: #2c2c2c;
+  --text-light: #6a6a6a;
+  --text-lighter: #999;
+  --white: #ffffff;
+  --radius: 12px;
+  --shadow: 0 2px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--sand); }
+
+/* ── Nav ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(245,240,232,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 0 24px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 18px; color: var(--ocean); letter-spacing: -0.5px; text-decoration: none; }
+.nav-brand span { color: var(--lava); }
+.nav-back { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+.nav-back:hover { color: var(--ocean); }
+
+/* ── Hero ── */
+.recap-hero {
+  padding: 100px 24px 48px;
+  background: linear-gradient(180deg, var(--sand) 0%, var(--ocean-pale) 100%);
+  text-align: center;
+}
+.recap-tag {
+  display: inline-block; background: var(--lava); color: var(--white);
+  padding: 6px 16px; border-radius: 20px; font-size: 11px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
+}
+.recap-hero h1 {
+  font-family: 'Outfit', sans-serif; font-size: clamp(30px, 5vw, 48px);
+  font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;
+  color: var(--night); max-width: 700px; margin: 0 auto 16px;
+}
+.recap-hero h1 em { font-style: normal; color: var(--ocean); }
+.recap-date {
+  font-size: 16px; color: var(--text-light); margin-bottom: 32px;
+}
+.recap-stats {
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+  padding-top: 28px; border-top: 1px solid rgba(0,0,0,0.08);
+  max-width: 600px; margin: 0 auto;
+}
+.recap-stat { text-align: center; }
+.recap-stat-num { font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 700; color: var(--ocean); }
+.recap-stat-label { font-size: 13px; color: var(--text-lighter); margin-top: 2px; }
+
+/* ── Content ── */
+.recap-content {
+  max-width: 760px; margin: 0 auto; padding: 60px 24px 80px;
+}
+.recap-content h2 {
+  font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 700;
+  color: var(--night); margin: 48px 0 16px; letter-spacing: -0.5px;
+}
+.recap-content h2:first-of-type { margin-top: 0; }
+.recap-content p {
+  font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 20px;
+}
+.recap-content a { color: var(--ocean); font-weight: 600; text-decoration: none; }
+.recap-content a:hover { text-decoration: underline; }
+
+/* ── Highlight Box ── */
+.highlight-box {
+  background: var(--ocean-pale); border-radius: var(--radius); padding: 28px 32px;
+  margin: 32px 0; border-left: 4px solid var(--ocean);
+}
+.highlight-box p {
+  font-size: 15px; color: var(--ocean); font-weight: 500; line-height: 1.7; margin-bottom: 0;
+}
+
+/* ── Info Card ── */
+.info-card {
+  background: var(--white); border-radius: var(--radius); padding: 28px 32px;
+  box-shadow: var(--shadow); margin: 32px 0;
+}
+.info-card-title {
+  font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700;
+  color: var(--night); margin-bottom: 16px; text-transform: uppercase;
+  letter-spacing: 1px; font-size: 12px;
+}
+.info-card-row {
+  display: flex; gap: 12px; align-items: baseline; margin-bottom: 10px;
+  font-size: 15px; color: var(--text-light);
+}
+.info-card-label { font-weight: 600; color: var(--text); min-width: 100px; }
+
+/* ── Photo Placeholder ── */
+.photo-placeholder {
+  background: var(--sand-dark); border-radius: var(--radius); padding: 48px 24px;
+  text-align: center; margin: 32px 0; border: 2px dashed rgba(0,0,0,0.1);
+}
+.photo-placeholder p { color: var(--text-lighter); font-size: 14px; margin-bottom: 0; }
+
+/* ── CTA ── */
+.recap-cta {
+  text-align: center; padding: 60px 24px;
+  background: var(--ocean-pale);
+}
+.recap-cta h2 {
+  font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 700;
+  color: var(--night); margin-bottom: 12px;
+}
+.recap-cta p {
+  font-size: 16px; color: var(--text-light); margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto;
+}
+.cta-btn {
+  display: inline-block; background: var(--ocean); color: var(--white);
+  padding: 14px 32px; border-radius: 10px; text-decoration: none;
+  font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600;
+  transition: background 0.2s;
+}
+.cta-btn:hover { background: var(--ocean-light); }
+
+/* ── Footer ── */
+footer {
+  text-align: center; padding: 40px 24px;
+  border-top: 1px solid rgba(0,0,0,0.06); color: var(--text-lighter); font-size: 13px;
+}
+footer a { color: var(--ocean); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .recap-hero h1 { font-size: 30px; letter-spacing: -1px; }
+  .recap-stats { gap: 24px; }
+  .recap-stat-num { font-size: 28px; }
+  .recap-content { padding: 40px 16px 60px; }
+  .info-card-row { flex-direction: column; gap: 2px; }
+  .info-card-label { min-width: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav>
+  <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <a href="https://hawaiicardshows.com" class="nav-back">Back to Calendar</a>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section class="recap-hero">
+  <div class="recap-tag">Show Recap</div>
+  <h1>The <em>Moiliili Card Show</em> Came Out Swinging</h1>
+  <div class="recap-date">Saturday, March 28, 2026 &bull; Moiliili Hongwanji Mission &bull; Honolulu, HI</div>
+  <div class="recap-stats">
+    <div class="recap-stat"><div class="recap-stat-num">1,000+</div><div class="recap-stat-label">Collectors</div></div>
+    <div class="recap-stat"><div class="recap-stat-num">25</div><div class="recap-stat-label">Vendors</div></div>
+    <div class="recap-stat"><div class="recap-stat-num">1st</div><div class="recap-stat-label">Show at This Venue</div></div>
+  </div>
+</section>
+
+<!-- ════════ CONTENT ════════ -->
+<div class="recap-content">
+
+  <h2>A First Show That Felt Like a Movement</h2>
+  <p>The Moiliili Card Show made its debut on Saturday, March 28, 2026 — and it didn't just show up, it showed out. Over 1,000 collectors packed into the Moiliili Hongwanji Mission for the venue's very first trading card event, making it one of the strongest inaugural shows Hawaii has seen in recent memory.</p>
+  <p>Organized by Landon (<a href="https://www.instagram.com/just_for_kicks" target="_blank" rel="noopener">@just_for_kicks</a> on Instagram), the show brought together 25 vendors and a community that clearly came ready to buy, trade, and connect. From the moment doors opened at 10 AM, the energy was undeniable.</p>
+
+  <h2>Lines Out the Door — And That Was a Good Thing</h2>
+  <p>The turnout exceeded expectations. Collectors were lined up well before the show opened, and the wait continued throughout the day. Landon came out multiple times to personally apologize to those waiting in line — a class move that spoke to how much he cared about the experience.</p>
+  <p>But the lines weren't a problem. They were a sign the team behind the show had it figured out. Rather than flooding the venue and creating chaos, Landon and his crew controlled the flow of attendees, keeping the inside manageable and ensuring every collector could actually browse, shop, and enjoy the show. That kind of crowd management is hard to pull off at a first event, and they nailed it.</p>
+
+  <div class="highlight-box">
+    <p>All proceeds from the Moiliili Card Show go directly to the Moiliili Hongwanji Mission to support community programs and activities. This isn't just a card show — it's the hobby giving back.</p>
+  </div>
+
+  <h2>Community First</h2>
+  <p>What makes this show stand apart is its purpose. Every dollar raised goes back to the Moiliili Hongwanji itself, funding community activities and supporting the mission that has served the Moiliili neighborhood since 1906. In an era where card shows are big business, the Moiliili Card Show is proof that the hobby's community roots run deep.</p>
+  <p>The support from the Hongwanji community was evident. This wasn't just a rented space — it was a partnership. The venue felt right, the atmosphere was welcoming, and the whole event carried a spirit that's hard to manufacture: genuine aloha.</p>
+
+  <h2>What's Next</h2>
+  <p>With a debut this strong, the Moiliili Card Show has put itself on the map. Whether this becomes a recurring event or a one-time legendary first outing, one thing is clear — Landon and the Hongwanji community proved that there's demand, there's heart, and there's room for more shows like this in Hawaii.</p>
+  <p>Follow <a href="https://www.instagram.com/just_for_kicks" target="_blank" rel="noopener">@just_for_kicks</a> on Instagram for updates on future shows.</p>
+
+  <!-- Photo placeholder -->
+  <div class="photo-placeholder">
+    <p>Photos from the event coming soon.</p>
+  </div>
+
+  <!-- Event Details Card -->
+  <div class="info-card">
+    <div class="info-card-title">Event Details</div>
+    <div class="info-card-row"><span class="info-card-label">Event</span> Moiliili Card Show</div>
+    <div class="info-card-row"><span class="info-card-label">Date</span> Saturday, March 28, 2026</div>
+    <div class="info-card-row"><span class="info-card-label">Time</span> 10:00 AM — 6:00 PM</div>
+    <div class="info-card-row"><span class="info-card-label">Venue</span> Moiliili Hongwanji Mission</div>
+    <div class="info-card-row"><span class="info-card-label">Address</span> 902 University Avenue, Honolulu, HI 96826</div>
+    <div class="info-card-row"><span class="info-card-label">Organizer</span> <span style="white-space:nowrap;">Landon &mdash; <a href="https://www.instagram.com/just_for_kicks" target="_blank" rel="noopener">@just_for_kicks</a></span></div>
+    <div class="info-card-row"><span class="info-card-label">Vendors</span> 25</div>
+    <div class="info-card-row"><span class="info-card-label">Attendance</span> 1,000+ collectors</div>
+  </div>
+
+</div>
+
+<!-- ════════ CTA ════════ -->
+<section class="recap-cta">
+  <h2>Don't Miss the Next One</h2>
+  <p>Check the full calendar of trading card shows happening across Hawaii.</p>
+  <a href="https://hawaiicardshows.com" class="cta-btn" style="color: #ffffff;">Browse All Shows</a>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="https://hawaiicardshows.com">Back to Calendar</a> &bull; <a href="https://hawaiicardshows.com/#submit">Submit an Event</a></p>
+</footer>
+
+</body>
+</html>
