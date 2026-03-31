@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Show Recaps — Hawaii Card Shows</title>
+<meta name="description" content="Recaps and coverage of trading card shows across Hawaii. Relive the best moments from Pokemon, sports card, and TCG events on Oahu, Maui, and beyond.">
+<meta name="keywords" content="Hawaii card show recap, Pokemon card show recap, trading card event Hawaii, card show coverage, Hawaii TCG recap">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hawaiicardshows.com/recaps/">
+
+<meta property="og:title" content="Show Recaps — Hawaii Card Shows">
+<meta property="og:description" content="Recaps and coverage of trading card shows across Hawaii.">
+<meta property="og:url" content="https://hawaiicardshows.com/recaps/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hawaii Card Shows">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sand: #f5f0e8; --sand-dark: #e8e0d0; --ocean: #1a6b5a; --ocean-light: #2a8b72;
+  --ocean-pale: #e8f4f0; --lava: #d4582a; --lava-light: #f0714a; --night: #1a1a1a;
+  --text: #2c2c2c; --text-light: #6a6a6a; --text-lighter: #999; --white: #ffffff;
+  --radius: 12px; --shadow: 0 2px 20px rgba(0,0,0,0.06); --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--sand); }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(245,240,232,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 0 24px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 18px; color: var(--ocean); letter-spacing: -0.5px; text-decoration: none; }
+.nav-brand span { color: var(--lava); }
+.nav-back { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+.nav-back:hover { color: var(--ocean); }
+
+.page-hero {
+  padding: 100px 24px 48px; text-align: center;
+  background: linear-gradient(180deg, var(--sand) 0%, var(--ocean-pale) 100%);
+}
+.page-hero h1 {
+  font-family: 'Outfit', sans-serif; font-size: clamp(30px, 5vw, 48px);
+  font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;
+  color: var(--night); margin-bottom: 12px;
+}
+.page-hero h1 em { font-style: normal; color: var(--ocean); }
+.page-hero p { font-size: 18px; color: var(--text-light); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+.recaps-grid {
+  max-width: 900px; margin: 0 auto; padding: 60px 24px 80px;
+  display: grid; grid-template-columns: 1fr; gap: 20px;
+}
+.recap-card {
+  background: var(--white); border-radius: var(--radius); padding: 32px;
+  box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+  border-left: 4px solid var(--ocean); text-decoration: none; display: block;
+}
+.recap-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.recap-card-date {
+  font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--lava); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
+}
+.recap-card-title {
+  font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 700;
+  color: var(--night); margin-bottom: 8px;
+}
+.recap-card-desc { font-size: 15px; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; }
+.recap-card-stats { display: flex; gap: 20px; flex-wrap: wrap; }
+.recap-card-stat {
+  font-size: 13px; color: var(--ocean); font-weight: 600;
+  background: var(--ocean-pale); padding: 4px 12px; border-radius: 6px;
+}
+.recap-card-link { color: var(--ocean); font-weight: 600; font-size: 14px; margin-top: 12px; display: inline-block; }
+
+.empty-state {
+  text-align: center; padding: 60px 24px;
+  color: var(--text-lighter); font-size: 16px;
+}
+
+footer {
+  text-align: center; padding: 40px 24px;
+  border-top: 1px solid rgba(0,0,0,0.06); color: var(--text-lighter); font-size: 13px;
+}
+footer a { color: var(--ocean); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .recaps-grid { padding: 40px 16px 60px; }
+  .recap-card { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <a href="https://hawaiicardshows.com" class="nav-back">Back to Calendar</a>
+</nav>
+
+<section class="page-hero">
+  <h1>Show <em>Recaps</em></h1>
+  <p>Relive the best moments from trading card shows across the islands.</p>
+</section>
+
+<div class="recaps-grid">
+
+  <a href="/recaps/moiliili-card-show-march-2026.html" class="recap-card">
+    <div class="recap-card-date">March 28, 2026</div>
+    <div class="recap-card-title">Moiliili Card Show</div>
+    <div class="recap-card-desc">The inaugural Moiliili Card Show at Moiliili Hongwanji drew a massive crowd for its debut, with all proceeds going back to the community.</div>
+    <div class="recap-card-stats">
+      <span class="recap-card-stat">1,000+ Collectors</span>
+      <span class="recap-card-stat">25 Vendors</span>
+      <span class="recap-card-stat">Inaugural Show</span>
+    </div>
+    <span class="recap-card-link">Read the full recap →</span>
+  </a>
+
+  <a href="/recaps/paradise-card-show-march-2026.html" class="recap-card">
+    <div class="recap-card-date">March 2026</div>
+    <div class="recap-card-title">Paradise Card Show</div>
+    <div class="recap-card-desc">Coverage from the Paradise Card Show — one of Oahu's premier trading card events. Full recap and photos coming soon.</div>
+    <div class="recap-card-stats">
+      <span class="recap-card-stat">Photos Coming Soon</span>
+    </div>
+    <span class="recap-card-link">Read the full recap →</span>
+  </a>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="https://hawaiicardshows.com">Back to Calendar</a> &bull; <a href="https://hawaiicardshows.com/#submit">Submit an Event</a></p>
+</footer>
+
+</body>
+</html>
