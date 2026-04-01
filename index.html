@@ -179,8 +179,22 @@ nav {
   background: var(--white); border-radius: var(--radius); padding: 24px;
   box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
   border-left: 4px solid var(--ocean); cursor: default;
+  position: relative; overflow: hidden;
 }
 .event-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.event-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(105deg, transparent 20%, rgba(255,200,50,0.07) 30%, rgba(100,220,180,0.09) 38%, rgba(130,160,255,0.09) 46%, rgba(220,130,255,0.07) 54%, transparent 65%);
+  background-size: 200% 100%; opacity: 0; transition: opacity 0.3s;
+  pointer-events: none; z-index: 1;
+}
+.event-card:hover::after {
+  opacity: 1; animation: holoShimmer 2s ease-in-out infinite;
+}
+@keyframes holoShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
 .event-card-date {
   font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
   color: var(--lava); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
