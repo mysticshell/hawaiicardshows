@@ -188,6 +188,13 @@ nav {
   text-align: center; margin: 32px 0; border: 2px dashed rgba(0,0,0,0.1);
 }
 .photo-placeholder p { color: var(--text-lighter); font-size: 14px; margin-bottom: 0; }
+.photo-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px; margin: 32px 0;
+}
+.photo-grid img {
+  width: 100%; border-radius: var(--radius); object-fit: cover; aspect-ratio: 4/3;
+}
 
 /* ── CTA ── */
 .recap-cta {
@@ -271,9 +278,11 @@ footer a:hover { text-decoration: underline; }
   <p>With a debut this strong, the Moiliili Card Show has put itself on the map. Whether this becomes a recurring event or a one-time legendary first outing, one thing is clear — Landon and the Hongwanji community proved that there's demand, there's heart, and there's room for more shows like this in Hawaii.</p>
   <p>Follow <a href="https://www.instagram.com/just_for_kicks" target="_blank" rel="noopener">@just_for_kicks</a> on Instagram for updates on future shows.</p>
 
-  <!-- Photo placeholder -->
-  <div class="photo-placeholder">
-    <p>Photos from the event coming soon.</p>
+  <h2>Photos from the Show</h2>
+  <div class="photo-grid">
+    <img src="https://hawaiicardshows.com/images/Moiliili-Action-Photo.jpg" alt="Collectors browsing vendors at the Moiliili Card Show">
+    <img src="https://hawaiicardshows.com/images/Moiliili-Sweets-Cheesin.jpg" alt="Good vibes at the Moiliili Card Show">
+    <img src="https://hawaiicardshows.com/images/Moiliili-Team-Photo.jpg" alt="The team behind the Moiliili Card Show at Moiliili Hongwanji">
   </div>
 
   <!-- Event Details Card -->
