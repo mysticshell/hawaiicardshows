@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hawaii Card Shows — Your Guide to TCG Events Across the Islands</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-48ZSPW63VV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-48ZSPW63VV');
+</script>
 <meta name="description" content="The complete calendar of trading card game shows, trade nights, and collectible events across Hawaii. Find Pokemon, sports cards, and TCG shows on Oahu, Maui, Big Island, and Kauai.">
 <meta name="keywords" content="Hawaii card shows, Pokemon card show Hawaii, trading card events Oahu, card show Honolulu, TCG events Hawaii, sports card show Hawaii, card show calendar Hawaii, Pokemon trade night Oahu, collectible show Hawaii">
 <meta name="robots" content="index, follow">
@@ -711,7 +720,7 @@ footer a:hover { text-decoration: underline; }
       <h3>Get in Touch</h3>
       <div class="about-contact-item">
         <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        <span>info@hawaiicardshows.com</span>
+        <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a73747c755a727b6d7b7373797b687e6972756d6934797577">[email&#160;protected]</a></span>
       </div>
       <div class="about-contact-item">
         <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -730,7 +739,7 @@ footer a:hover { text-decoration: underline; }
 </footer>
 
 <!-- ════════ JAVASCRIPT ════════ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const SUPABASE_URL = 'https://bcdgqqncycsdwnmrmuan.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjZGdxcW5jeWNzZHdubXJtdWFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NTU4MzgsImV4cCI6MjA5MDEzMTgzOH0.UXTTv99cBYcll_uw-g50tA4yG9jpbVIdt3xrDc_rTKs';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -1070,14 +1079,4 @@ document.getElementById('partnerForm').onsubmit = async (e) => {
     description: payload.message || ''
   });
   e.target.style.display = 'none';
-  document.getElementById('partnerSuccess').style.display = 'block';
-};
-
-// ── Utils ──
-function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-
-// ── Init ──
-loadEvents();
-</script>
-</body>
-</html>
+  document.getElementById('partnerSuccess')
