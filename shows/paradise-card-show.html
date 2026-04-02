@@ -262,6 +262,58 @@
   }
   .btn-secondary:hover { background: rgba(255,255,255,0.18); transform: translateY(-1px); }
 
+  /* ═══════ NEXT SHOW CALLOUT ═══════ */
+  .next-show-callout {
+    background: var(--white);
+    border: 2px solid var(--show-primary);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-top: -40px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    animation: heroFadeIn 0.6s ease-out 0.5s both;
+  }
+  .next-show-badge {
+    background: var(--show-primary);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .next-show-content { flex: 1; min-width: 200px; }
+  .next-show-date {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700; font-size: 18px;
+    color: var(--night);
+  }
+  .next-show-details {
+    font-size: 14px; color: var(--text-light);
+    margin-top: 2px;
+  }
+  .next-show-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 14px;
+    color: var(--show-primary);
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.2s;
+  }
+  .next-show-cta:hover { color: var(--show-primary-dark); }
+  @media (max-width: 600px) {
+    .next-show-callout { margin-top: -24px; padding: 20px; }
+  }
+
   /* ═══════ CONTENT SECTIONS ═══════ */
   .content-wrap {
     max-width: 900px;
@@ -356,9 +408,22 @@
   /* ═══════ PHOTO GALLERY ═══════ */
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 12px;
     margin-top: 32px;
+  }
+  .gallery-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .gallery-img:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
   }
   .gallery-placeholder {
     aspect-ratio: 4/3;
@@ -621,6 +686,18 @@
   </div>
 </header>
 
+<!-- ═══════ UPCOMING SHOW CALLOUT ═══════ -->
+<div class="content-wrap">
+  <div id="nextShowCallout" class="next-show-callout" style="display:none;">
+    <div class="next-show-badge">Next Show</div>
+    <div class="next-show-content">
+      <div class="next-show-date" id="nextShowDate"></div>
+      <div class="next-show-details" id="nextShowDetails"></div>
+    </div>
+    <a href="https://www.instagram.com/paradisecards_/" target="_blank" rel="noopener" class="next-show-cta">Get Details →</a>
+  </div>
+</div>
+
 <!-- ═══════ ABOUT ═══════ -->
 <div class="content-wrap">
 
@@ -705,12 +782,9 @@
     <h2 class="section-title">Scenes from Paradise</h2>
     <p class="section-text">Photos from past Paradise Card Show events.</p>
     <div class="gallery-grid">
-      <div class="gallery-placeholder">Photos coming soon</div>
-      <div class="gallery-placeholder">Photos coming soon</div>
-      <div class="gallery-placeholder">Photos coming soon</div>
-      <div class="gallery-placeholder">Photos coming soon</div>
-      <div class="gallery-placeholder">Photos coming soon</div>
-      <div class="gallery-placeholder">Photos coming soon</div>
+      <img src="https://hawaiicardshows.com/shows/images/paradise-2026-show-floor.jpeg" alt="Paradise Card Show March 2026 — show floor packed with collectors and vendors" class="gallery-img" loading="lazy">
+      <img src="https://hawaiicardshows.com/shows/images/paradise-2026-view-from-stage.jpeg" alt="Paradise Card Show March 2026 — view from the stage at The Republik" class="gallery-img" loading="lazy">
+      <img src="https://hawaiicardshows.com/shows/images/paradise-2026-giveaways.jpeg" alt="Paradise Card Show March 2026 — giveaways and prizes" class="gallery-img" loading="lazy">
     </div>
   </section>
 
@@ -854,6 +928,37 @@
     }
   ]
 }
+</script>
+
+<script>
+// ═══ Fetch next upcoming Paradise Card Show from Supabase ═══
+(async function() {
+  const SUPABASE_URL = 'https://bcdgqqncycsdwnmrmuan.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjZGdxcW5jeWNzZHdubXJtdWFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NTU4MzgsImV4cCI6MjA5MDEzMTgzOH0.UXTTv99cBYcll_uw-g50tA4yG9jpbVIdt3xrDc_rTKs';
+
+  try {
+    const today = new Date().toISOString().split('T')[0];
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/events?select=*&or=(instagram.eq.%40paradisecards_,instagram.eq.paradisecards_)&start_date=gte.${today}&approved=eq.true&order=start_date.asc&limit=1`,
+      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY } }
+    );
+    if (!res.ok) return;
+    const events = await res.json();
+    if (!events || events.length === 0) return;
+
+    const e = events[0];
+    const d = new Date(e.start_date + 'T12:00:00');
+    const dateStr = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    const timeStr = e.start_time ? ` · ${e.start_time}${e.end_time ? ' — ' + e.end_time : ''}` : '';
+
+    document.getElementById('nextShowDate').textContent = dateStr;
+    document.getElementById('nextShowDetails').textContent = (e.venue || 'The Republik') + timeStr;
+    document.getElementById('nextShowCallout').style.display = 'flex';
+  } catch (err) {
+    // Silently fail — callout just stays hidden
+    console.log('Could not load next show:', err);
+  }
+})();
 </script>
 
 </body>
