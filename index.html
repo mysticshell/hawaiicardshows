@@ -416,6 +416,30 @@ footer {
 footer a { color: var(--ocean); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
+/* ── Mobile Calendar List ── */
+.cal-mobile-list { display: none; }
+.cal-mobile-day {
+  background: var(--white); border-radius: var(--radius); padding: 16px;
+  margin-bottom: 10px; box-shadow: var(--shadow);
+}
+.cal-mobile-day.is-today { border-left: 4px solid var(--ocean); background: var(--ocean-pale); }
+.cal-mobile-date {
+  font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700;
+  color: var(--night); margin-bottom: 8px;
+}
+.cal-mobile-day.is-today .cal-mobile-date { color: var(--ocean); }
+.cal-mobile-event {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 0; font-size: 14px; color: var(--text); line-height: 1.4;
+}
+.cal-mobile-event-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.cal-mobile-empty {
+  text-align: center; padding: 40px 16px;
+  color: var(--text-lighter); font-size: 14px;
+}
+
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .nav-links { display: none; }
@@ -431,8 +455,8 @@ footer a:hover { text-decoration: underline; }
   .about-grid { grid-template-columns: 1fr; }
   .upcoming-grid { grid-template-columns: 1fr; }
   #sponsors .section-header + div { grid-template-columns: 1fr !important; }
-  .cal-day { min-height: 50px; }
-  .cal-event { font-size: 8px; }
+  .cal-grid { display: none; }
+  .cal-mobile-list { display: block; }
   .newsletter { padding: 40px 20px; margin: 20px 16px; }
   .newsletter-form { flex-direction: column; }
   .section { padding: 60px 16px; }
@@ -534,6 +558,7 @@ footer a:hover { text-decoration: underline; }
     <button class="cal-nav-btn" id="calNext">Next &rarr;</button>
   </div>
   <div class="cal-grid" id="calGrid"></div>
+  <div class="cal-mobile-list" id="calMobileList"></div>
 </section>
 
 <!-- ════════ SUBMIT ════════ -->
@@ -720,7 +745,7 @@ footer a:hover { text-decoration: underline; }
       <h3>Get in Touch</h3>
       <div class="about-contact-item">
         <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        <span><a href="mailto:info@hawaiicardshows.com">info@hawaiicardshows.com</a></span>
+        <span><a href="/cdn-cgi/l/email-protection#167f787079567e7761777f7f75776472657e7961653875797b"><span class="__cf_email__" data-cfemail="f59c9b939ab59d9482949c9c96948791869d9a8286db969a98">[email&#160;protected]</span></a></span>
       </div>
       <div class="about-contact-item">
         <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -739,7 +764,7 @@ footer a:hover { text-decoration: underline; }
 </footer>
 
 <!-- ════════ JAVASCRIPT ════════ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const SUPABASE_URL = 'https://bcdgqqncycsdwnmrmuan.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjZGdxcW5jeWNzZHdubXJtdWFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NTU4MzgsImV4cCI6MjA5MDEzMTgzOH0.UXTTv99cBYcll_uw-g50tA4yG9jpbVIdt3xrDc_rTKs';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -976,6 +1001,24 @@ function renderCalendar() {
     return `<div class="cal-day${isToday ? ' today' : ''}"><div class="cal-day-num">${day}</div>${evHtml}${more}</div>`;
   }).join('');
   document.getElementById('calGrid').innerHTML = headers + blanks + days;
+
+  // ── Mobile list view ──
+  const mobileList = document.getElementById('calMobileList');
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  let mobileHtml = '';
+  let hasEvents = false;
+  for (let i = 1; i <= daysInMonth; i++) {
+    const ds = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`;
+    const isToday = ds === todayStr;
+    const dayEvents = getEventsForDate(ds);
+    if (dayEvents.length === 0) continue;
+    hasEvents = true;
+    const d = new Date(ds + 'T12:00:00');
+    const dateLabel = dayNames[d.getDay()] + ', ' + MONTHS_FULL[calMonth] + ' ' + i;
+    const eventsHtml = dayEvents.map(e => `<div class="cal-mobile-event"><span class="cal-mobile-event-dot" style="background:${e.color||'var(--ocean)'}"></span>${esc(e.name)}</div>`).join('');
+    mobileHtml += `<div class="cal-mobile-day${isToday ? ' is-today' : ''}"><div class="cal-mobile-date">${dateLabel}</div>${eventsHtml}</div>`;
+  }
+  mobileList.innerHTML = hasEvents ? mobileHtml : '<div class="cal-mobile-empty">No events this month.</div>';
 }
 
 function getEventsForDate(ds) {
@@ -1078,14 +1121,4 @@ document.getElementById('partnerForm').onsubmit = async (e) => {
     island: '',
     description: payload.message || ''
   });
-  e.target.style.display = 'none';
-  document.getElementById('partnerSuccess').style.display = 'block';
-};
-
-function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
-
-loadEvents();
-</script>
-
-</body>
-</html>
+  e
