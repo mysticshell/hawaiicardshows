@@ -47,6 +47,9 @@ nav {
 .nav-brand span { color: var(--lava); }
 .nav-back { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; transition: color 0.2s; }
 .nav-back:hover { color: var(--ocean); }
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-ig { display: flex; align-items: center; color: var(--text-light); transition: color 0.2s; }
+.nav-ig:hover { color: var(--ocean); }
 
 .page-hero {
   padding: 100px 24px 48px; text-align: center;
@@ -108,7 +111,10 @@ footer a:hover { text-decoration: underline; }
 
 <nav>
   <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
-  <a href="https://hawaiicardshows.com" class="nav-back">Back to Calendar</a>
+  <div class="nav-right">
+    <a href="https://hawaiicardshows.com" class="nav-back">Back to Calendar</a>
+    <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" class="nav-ig" aria-label="Follow us on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+  </div>
 </nav>
 
 <section class="page-hero">
@@ -145,7 +151,7 @@ footer a:hover { text-decoration: underline; }
 </div>
 
 <footer>
-  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="https://hawaiicardshows.com">Back to Calendar</a> &bull; <a href="https://hawaiicardshows.com/#submit">Submit an Event</a></p>
+  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="https://hawaiicardshows.com">Back to Calendar</a> &bull; <a href="https://hawaiicardshows.com/#submit">Submit an Event</a> &bull; <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
 </footer>
 
 </body>
