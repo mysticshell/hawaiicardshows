@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Shops in Hawaii — Find Trading Card Stores Across the Islands | Hawaii Card Shows</title>
+<meta name="description" content="Directory of trading card shops across Hawaii. Find Pokemon, sports card, and TCG stores on Oahu, Maui, Big Island, and Kauai with addresses, hours, and what they carry.">
+<meta name="keywords" content="card shops Hawaii, Pokemon card store Oahu, trading card shop Honolulu, sports card shop Hawaii, TCG store Hawaii, card shop near me Hawaii">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Card Shops in Hawaii — Find TCG Stores Across the Islands">
+<meta property="og:description" content="Directory of trading card shops across Hawaii. Pokemon, sports cards, TCG, and more.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hawaiicardshows.com/shops/">
+<meta property="og:site_name" content="Hawaii Card Shows">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Card Shops in Hawaii — Find TCG Stores Across the Islands">
+
+<link rel="canonical" href="https://hawaiicardshows.com/shops/">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-48ZSPW63VV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-48ZSPW63VV');
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sand: #f5f0e8;
+    --sand-dark: #e8e0d0;
+    --ocean: #1a6b5a;
+    --ocean-light: #2a8b72;
+    --ocean-pale: #e8f4f0;
+    --lava: #d4582a;
+    --lava-light: #f0714a;
+    --night: #1a1a1a;
+    --night-soft: #2a2a2a;
+    --text: #2c2c2c;
+    --text-light: #6a6a6a;
+    --text-lighter: #999;
+    --white: #ffffff;
+    --radius: 12px;
+    --shadow: 0 2px 20px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--sand);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ═══════ NAV ═══════ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    height: 64px;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px;
+  }
+  .nav-brand {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800; font-size: 18px;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: var(--ocean);
+  }
+  .nav-brand span { color: var(--lava); }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 14px;
+    color: var(--text-light); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ocean); }
+  .nav-links a.active { color: var(--ocean); font-weight: 600; }
+  .nav-cta {
+    background: var(--ocean) !important; color: var(--white) !important;
+    padding: 8px 18px !important; border-radius: 8px;
+    font-weight: 600 !important; font-size: 13px !important;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--ocean-light) !important; }
+  .nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-mobile svg { width: 24px; height: 24px; stroke: var(--text); }
+  .nav-ig { display: flex; align-items: center; color: var(--text-light); transition: color 0.2s; }
+  .nav-ig:hover { color: var(--ocean); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-mobile { display: block; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 64px; left: 0; right: 0;
+      background: rgba(245,240,232,0.98);
+      backdrop-filter: blur(20px);
+      padding: 16px 24px; gap: 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+  }
+
+  /* ═══════ HERO ═══════ */
+  .hero {
+    padding: 120px 24px 60px;
+    text-align: center;
+  }
+  .hero-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--ocean);
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800; font-size: clamp(32px, 6vw, 48px);
+    color: var(--night);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--ocean);
+  }
+  .hero-sub {
+    font-size: 17px; color: var(--text-light);
+    max-width: 550px; margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ═══════ ISLAND SECTIONS ═══════ */
+  .content-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+  }
+  .island-section {
+    margin-bottom: 48px;
+  }
+  .island-header {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800; font-size: 24px;
+    color: var(--night);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ocean);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .island-count {
+    font-size: 12px; font-weight: 600;
+    background: var(--ocean-pale); color: var(--ocean);
+    padding: 3px 10px; border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ═══════ SHOP CARDS ═══════ */
+  .shops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .shop-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 4px solid var(--ocean);
+  }
+  .shop-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .shop-card-name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700; font-size: 18px;
+    color: var(--night);
+    margin-bottom: 6px;
+  }
+  .shop-card-address {
+    font-size: 13px; color: var(--text-light);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .shop-card-tags {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .shop-tag {
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    line-height: 1;
+  }
+  .tag-tcg { background: #e8f0e9; color: #3d6643; }
+  .tag-sports { background: #e8ecf4; color: #2c4a7c; }
+  .tag-collectibles { background: #f0e8f4; color: #6a3d7c; }
+  .tag-tournaments { background: #fef3c7; color: #b45309; }
+  .shop-card-link {
+    font-size: 13px; color: var(--text-lighter);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .shop-card-link svg {
+    width: 14px; height: 14px;
+    stroke: var(--text-lighter); fill: none;
+    stroke-width: 2; stroke-linecap: round;
+  }
+
+  /* ═══════ FOOTER CTA ═══════ */
+  .footer-cta {
+    background: var(--night);
+    padding: 64px 24px;
+    text-align: center;
+  }
+  .footer-cta h2 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800; font-size: 28px;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .footer-cta p {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    margin-bottom: 28px;
+    max-width: 450px; margin-left: auto; margin-right: auto;
+  }
+  .btn-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--ocean); color: var(--white);
+    padding: 14px 32px; border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 16px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-cta:hover { background: var(--ocean-light); transform: translateY(-1px); }
+
+  /* ═══════ FOOTER ═══════ */
+  footer {
+    background: var(--sand);
+    padding: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-light);
+    border-top: 1px solid var(--sand-dark);
+  }
+  footer a { color: var(--ocean); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ═══════ RESPONSIVE ═══════ */
+  @media (max-width: 600px) {
+    .shops-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav>
+  <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="https://hawaiicardshows.com/#upcoming">Upcoming</a>
+    <a href="https://hawaiicardshows.com/shows/">Shows</a>
+    <a href="https://hawaiicardshows.com/shops/" class="active">Shops</a>
+    <a href="https://hawaiicardshows.com/#submit">Submit</a>
+    <a href="https://hawaiicardshows.com/#sponsors">Partner</a>
+    <a href="https://hawaiicardshows.com/#submit" class="nav-cta">Submit Your Event</a>
+    <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" class="nav-ig" aria-label="Follow us on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+  </div>
+  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero">
+  <div class="hero-label">Shop Directory</div>
+  <h1>Hawaii's <em>Card Shops</em></h1>
+  <p class="hero-sub">Every trading card and collectible store across the islands. Find what's near you, what they carry, and where to play.</p>
+</header>
+
+<!-- ═══════ SHOP DIRECTORY ═══════ -->
+<div class="content-wrap">
+
+  <!-- ── OAHU ── -->
+  <div class="island-section">
+    <div class="island-header">Oahu <span class="island-count">9 shops</span></div>
+    <div class="shops-grid">
+
+      <div class="shop-card">
+        <div class="shop-card-name">Aloha Card Shop — Ward</div>
+        <div class="shop-card-address">320 Ward Ave, Ste 200, Honolulu, HI 96814</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-tcg">TCG</span>
+          <span class="shop-tag tag-sports">Sports</span>
+          <span class="shop-tag tag-tournaments">Tournaments</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Honolulu</div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-card-name">Aloha Card Shop — Windward</div>
+        <div class="shop-card-address">Windward Mall, Kaneohe, HI</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-tcg">TCG</span>
+          <span class="shop-tag tag-sports">Sports</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Kaneohe</div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-card-name">Aloha Card Shop — Kahala</div>
+        <div class="shop-card-address">4211 Waialae Ave, Honolulu, HI 96816 (Kahala Mall)</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-tcg">TCG</span>
+          <span class="shop-tag tag-sports">Sports</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Kahala</div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-card-name">ToyLynx / Ideal808</div>
+        <div class="shop-card-address">650 Iwilei Rd, Ste 120, Honolulu, HI 96817</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-tcg">TCG</span>
+          <span class="shop-tag tag-tournaments">Tournaments</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Iwilei</div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-card-name">808 Showcase</div>
+        <div class="shop-card-address">98-1005 Moanalua Rd, Ste 2207, Aiea, HI 96701 (Pearlridge Center)</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-tcg">TCG</span>
+          <span class="shop-tag tag-sports">Sports</span>
+          <span class="shop-tag tag-collectibles">Collectibles</span>
+          <span class="shop-tag tag-tournaments">Tournaments</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Aiea</div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-card-name">Box Jellyz</div>
+        <div class="shop-card-address">98-104 Kanuku St, Ste 102, Aiea, HI 96701</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-tcg">TCG</span>
+          <span class="shop-tag tag-collectibles">Collectibles</span>
+          <span class="shop-tag tag-tournaments">Tournaments</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Aiea</div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-card-name">Best of the Best in Sportscards</div>
+        <div class="shop-card-address">98-1268 Ka'ahumanu St, Ste 104, Pearl City, HI 96782</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-sports">Sports</span>
+          <span class="shop-tag tag-tcg">TCG</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Pearl City</div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-card-name">iWinGames</div>
+        <div class="shop-card-address">94-1144 Ka Uka Blvd, Ste 12, Waipahu, HI 96797</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-tcg">TCG</span>
+          <span class="shop-tag tag-tournaments">Tournaments</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Waipahu</div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-card-name">Space 62</div>
+        <div class="shop-card-address">Ala Moana Center, Honolulu, HI</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-tcg">TCG</span>
+          <span class="shop-tag tag-collectibles">Collectibles</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Ala Moana</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── BIG ISLAND ── -->
+  <div class="island-section">
+    <div class="island-header">Big Island <span class="island-count">2 shops</span></div>
+    <div class="shops-grid">
+
+      <div class="shop-card">
+        <div class="shop-card-name">TCG Hawaii</div>
+        <div class="shop-card-address">315 E Kawili St, Unit 106, Hilo, HI</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-tcg">TCG</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Hilo</div>
+      </div>
+
+      <div class="shop-card">
+        <div class="shop-card-name">4 Pillars Hobby Shop</div>
+        <div class="shop-card-address">75-5706 Kuakini Hwy, Ste 114, Kailua-Kona, HI 96740</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-tcg">TCG</span>
+          <span class="shop-tag tag-collectibles">Collectibles</span>
+          <span class="shop-tag tag-tournaments">Tournaments</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Kailua-Kona</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── MAUI ── -->
+  <div class="island-section">
+    <div class="island-header">Maui <span class="island-count">1 shop</span></div>
+    <div class="shops-grid">
+
+      <div class="shop-card">
+        <div class="shop-card-name">yoCards</div>
+        <div class="shop-card-address">840 Alua St, Unit 204, Wailuku, HI 96793</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-sports">Sports</span>
+          <span class="shop-tag tag-tcg">TCG</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Wailuku</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── KAUAI ── -->
+  <div class="island-section">
+    <div class="island-header">Kauai <span class="island-count">1 shop</span></div>
+    <div class="shops-grid">
+
+      <div class="shop-card">
+        <div class="shop-card-name">Bubbah's Toy Box</div>
+        <div class="shop-card-address">3-2600 Kaumualii Hwy, Lihue, HI 96766 (Kukui Grove Center)</div>
+        <div class="shop-card-tags">
+          <span class="shop-tag tag-tcg">TCG</span>
+          <span class="shop-tag tag-collectibles">Collectibles</span>
+        </div>
+        <div class="shop-card-link"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Lihue</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── MISSING A SHOP? ── -->
+  <div style="text-align:center;margin-top:48px;padding-top:48px;border-top:1px solid var(--sand-dark);">
+    <p style="font-size:16px;color:var(--text-light);margin-bottom:8px;">Know a card shop we're missing?</p>
+    <p style="font-size:14px;color:var(--text-lighter);">Email us at <a href="mailto:info@hawaiicardshows.com" style="color:var(--ocean);font-weight:600;text-decoration:none;">info@hawaiicardshows.com</a> and we'll add them to the directory.</p>
+  </div>
+
+</div>
+
+<!-- ═══════ FOOTER CTA ═══════ -->
+<section class="footer-cta">
+  <h2>Looking for Card Shows Instead?</h2>
+  <p>Browse recurring shows, trade nights, and events across the islands.</p>
+  <a href="https://hawaiicardshows.com/shows/" class="btn-cta">Browse Shows</a>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="https://hawaiicardshows.com">Back to Calendar</a> &bull; <a href="https://hawaiicardshows.com/#submit">Submit an Event</a> &bull; <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+</footer>
+
+</body>
+</html>
