@@ -101,20 +101,31 @@ footer {
 footer a { color: var(--ocean); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) {.nav-links{display:none}.nav-mobile{display:block}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(245,240,232,0.98);backdrop-filter:blur(20px);padding:16px 24px;gap:16px;border-bottom:1px solid rgba(0,0,0,0.06)}
   .recaps-grid { padding: 40px 16px 60px; }
   .recap-card { padding: 24px; }
 }
+
+/* Shared nav */
+.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;color:var(--text-light);text-decoration:none;transition:color 0.2s}.nav-links a:hover{color:var(--ocean)}.nav-cta{background:var(--ocean)!important;color:var(--white)!important;padding:8px 18px!important;border-radius:8px;font-weight:600!important;font-size:13px!important;transition:background 0.2s}.nav-cta:hover{background:var(--ocean-light)!important}.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:4px}.nav-mobile svg{width:24px;height:24px;stroke:var(--text)}.nav-ig{display:flex;align-items:center;color:var(--text-light);transition:color 0.2s}.nav-ig:hover{color:var(--ocean)}
 </style>
 </head>
 <body>
 
 <nav>
   <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
-  <div class="nav-right">
-    <a href="https://hawaiicardshows.com" class="nav-back">Back to Calendar</a>
+  <div class="nav-links" id="navLinks">
+    <a href="https://hawaiicardshows.com/#upcoming">Upcoming</a>
+    <a href="https://hawaiicardshows.com/shows/">Shows</a>
+    <a href="https://hawaiicardshows.com/shops/">Shops</a>
+    <a href="https://hawaiicardshows.com/#submit">Submit</a>
+    <a href="https://hawaiicardshows.com/#sponsors">Partner</a>
+    <a href="https://hawaiicardshows.com/#submit" class="nav-cta">Submit Your Event</a>
     <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" class="nav-ig" aria-label="Follow us on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
   </div>
+  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
 </nav>
 
 <section class="page-hero">
