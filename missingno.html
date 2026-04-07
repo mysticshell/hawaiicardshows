@@ -267,7 +267,7 @@ tr:hover td { background:var(--bg3); }
       <div class="form-group"><label class="form-label">Organizer</label><input class="form-input" id="evOrganizer"></div>
       <div class="form-group"><label class="form-label">Event Type</label>
         <select class="form-input" id="evType" onchange="document.getElementById('evRecurrenceGroup').style.display=this.value==='recurring'?'block':'none'">
-          <option value="one-time">One-time</option><option value="annual">Annual</option><option value="recurring">Recurring</option>
+          <option value="one-time">New Event</option><option value="annual">Annual</option><option value="recurring">Recurring</option>
         </select>
       </div>
       <div class="form-group" id="evRecurrenceGroup" style="display:none"><label class="form-label">Recurrence</label><input class="form-input" id="evRecurrence" placeholder="e.g. Every 2nd Saturday"></div>
