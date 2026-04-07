@@ -399,7 +399,7 @@ async function loadDashboard() {
       } else {
         document.getElementById('dStatViews').textContent = '—';
         document.getElementById('dStatUniques').textContent = '—';
-        if(data.error) console.warn('Analytics Notice:', data.error);
+        if(data.error) console.warn('Analytics Notice:', data.error, data.details || '');
       }
     } catch(err) {
       console.error('Analytics fetch error:', err);

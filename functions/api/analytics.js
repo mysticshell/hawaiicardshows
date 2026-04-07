@@ -59,6 +59,11 @@ export async function onRequestGet({ request, env }) {
       body: JSON.stringify({ query })
     });
 
+    if (!cfRes.ok) {
+       const text = await cfRes.text();
+       throw new Error(`CF API HTTP ${cfRes.status}: ${text}`);
+    }
+
     const cfData = await cfRes.json();
     
     // Process results
@@ -81,6 +86,10 @@ export async function onRequestGet({ request, env }) {
     });
 
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'Failed to fetch analytics' }), { status: 500 });
+    return new Response(JSON.stringify({ 
+      error: 'Failed to fetch analytics', 
+      details: error.message,
+      stack: error.stack
+    }), { status: 500 });
   }
 }
