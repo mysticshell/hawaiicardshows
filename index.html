@@ -281,9 +281,17 @@ function renderUpcoming() {
             let timeStr = 'TBD';
             if (e.start_time) {
                 timeStr = e.start_time;
-                if (e.name === 'Sports Cards & Collectibles Show' || timeStr.toLowerCase().includes('sat') || timeStr.toLowerCase().includes('sun')) {
-                    if (day.date.getDay() === 6) timeStr = '10:00am - 6:00pm';
-                    else if (day.date.getDay() === 0) timeStr = '10:00am - 5:00pm';
+                if (timeStr.includes(',')) {
+                    const chunks = timeStr.split(',');
+                    const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                    const currentDayName = dayLabels[day.date.getDay()].toLowerCase();
+                    const match = chunks.find(c => c.toLowerCase().includes(currentDayName));
+                    if (match) {
+                        timeStr = match.trim();
+                        // Strip day name shorthand from string so it's beautifully just the time
+                        const regex = new RegExp(`^${currentDayName}[a-z]*\\s*`, 'i');
+                        timeStr = timeStr.replace(regex, '');
+                    }
                 } else if (/^([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/.test(timeStr)) {
                     const parts = timeStr.split(':');
                     const h = parseInt(parts[0], 10);
@@ -322,6 +330,7 @@ function renderUpcoming() {
                   <div style="font-size:13px; color:var(--text-light); margin-top:4px; display:flex; align-items:center; gap:6px;">
                      ${e.venue ? esc(e.venue) + ' <span style="opacity:0.4">&bull;</span> ' : ''}${esc(e.island)}
                   </div>
+                  ${e.name.toLowerCase().includes('tcg tavern') ? `<div style="font-size:11px;color:var(--lava);margin-top:6px;font-weight:600;">*Hours and days frequently fluctuate! Check shop instagram @tcgtavernhi before going</div>` : ''}
                </div>
                <div>${btn}</div>
             </div>`;
