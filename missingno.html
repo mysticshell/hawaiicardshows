@@ -284,7 +284,9 @@ tr:hover td { background:var(--bg3); }
         <select class="form-input" id="evStatus"><option value="approved">Approved</option><option value="pending">Pending</option><option value="rejected">Rejected</option></select>
       </div>
     </div>
-    <div class="form-group"><label class="form-label">Description</label><textarea class="form-input" id="evDescription"></textarea></div>
+    <div class="form-group"><label class="form-label">Description (Short)</label><textarea class="form-input" id="evDescription"></textarea></div>
+    <div class="form-group"><label class="form-label">Long Description</label><textarea class="form-input" id="evLongDescription" style="min-height:200px" placeholder="Markdown, HTML, extensive instructions allowed..."></textarea></div>
+    <div class="form-group"><label class="form-label">Logo URL</label><input class="form-input" id="evLogoUrl" placeholder="https://..."></div>
     <div class="form-group"><label class="form-label">Website URL</label><input class="form-input" id="evWebsite"></div>
     <div class="form-group"><label class="form-label">Instagram</label><input class="form-input" id="evInstagram" placeholder="@handle"></div>
     <div class="form-group" style="display:flex;align-items:center;gap:8px;">
@@ -481,6 +483,8 @@ async function editEvent(id) {
   document.getElementById('evColor').value = data.color || '#2a9d8f';
   document.getElementById('evStatus').value = data.status || 'approved';
   document.getElementById('evDescription').value = data.description || '';
+  document.getElementById('evLongDescription').value = data.long_description || '';
+  document.getElementById('evLogoUrl').value = data.logo_url || '';
   document.getElementById('evWebsite').value = data.website_url || '';
   document.getElementById('evInstagram').value = data.instagram || '';
   document.getElementById('evFeatured').checked = data.featured || false;
@@ -490,7 +494,7 @@ async function editEvent(id) {
 function openEventModal() {
   document.getElementById('eventModalTitle').textContent = 'Add Event';
   document.getElementById('eventId').value = '';
-  ['evName','evOrganizer','evRecurrence','evStartDate','evEndDate','evStartTime','evEndTime','evVenue','evDescription','evWebsite','evInstagram'].forEach(id => document.getElementById(id).value = '');
+  ['evName','evOrganizer','evRecurrence','evStartDate','evEndDate','evStartTime','evEndTime','evVenue','evDescription','evLongDescription','evLogoUrl','evWebsite','evInstagram'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('evType').value = 'one-time';
   document.getElementById('evIsland').value = 'Oahu';
   document.getElementById('evColor').value = '#2a9d8f';
@@ -516,6 +520,8 @@ async function saveEvent() {
     color: document.getElementById('evColor').value,
     status: document.getElementById('evStatus').value,
     description: document.getElementById('evDescription').value || null,
+    long_description: document.getElementById('evLongDescription').value || null,
+    logo_url: document.getElementById('evLogoUrl').value || null,
     website_url: document.getElementById('evWebsite').value || null,
     instagram: document.getElementById('evInstagram').value || null,
     featured: document.getElementById('evFeatured').checked,
