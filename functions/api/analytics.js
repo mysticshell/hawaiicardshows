@@ -50,10 +50,11 @@ export async function onRequestGet({ request, env }) {
   `;
 
   try {
+    const safeToken = env.CLOUDFLARE_API_TOKEN.replace(/[^A-Za-z0-9_\-]/g, '');
     const cfRes = await fetch('https://api.cloudflare.com/client/v4/graphql', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${env.CLOUDFLARE_API_TOKEN.trim()}`,
+        'Authorization': `Bearer ${safeToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ query })
