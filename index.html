@@ -278,14 +278,27 @@ function renderUpcoming() {
         else if (day.dateStr === offsetTmrw) label = `Tomorrow — ${dateNum}`;
         
         let rowHtml = day.events.map(e => {
-            const timeRaw = e.start_time;
             let timeStr = 'TBD';
-            if (timeRaw && timeRaw.includes(':')) {
-                const parts = timeRaw.split(':');
-                const h = parseInt(parts[0], 10);
-                const ampm = h >= 12 ? 'pm' : 'am';
-                const hr = h % 12 || 12;
-                timeStr = `${hr}:${parts[1]}${ampm}`;
+            if (e.start_time) {
+                timeStr = e.start_time;
+                if (/^([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/.test(timeStr)) {
+                    const parts = timeStr.split(':');
+                    const h = parseInt(parts[0], 10);
+                    const ampm = h >= 12 ? 'pm' : 'am';
+                    const hr = h % 12 || 12;
+                    timeStr = `${hr}:${parts[1]}${ampm}`;
+                }
+                if (e.end_time) {
+                    let endStr = e.end_time;
+                    if (/^([01]\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/.test(endStr)) {
+                        const ep = endStr.split(':');
+                        const eh = parseInt(ep[0], 10);
+                        const eampm = eh >= 12 ? 'pm' : 'am';
+                        const ehr = eh % 12 || 12;
+                        endStr = `${ehr}:${ep[1]}${eampm}`;
+                    }
+                    timeStr += ` - ${endStr}`;
+                }
             } else if (e.event_type === 'recurring') {
                 timeStr = 'Check IG';
             }
@@ -296,8 +309,8 @@ function renderUpcoming() {
               
             return `
             <div style="background:var(--white); border-radius:16px; box-shadow:var(--shadow); padding:20px 24px; display:flex; align-items:center; gap:24px; border-left:4px solid ${e.color || 'var(--ocean)'}; margin-bottom:12px; position:relative; flex-wrap:wrap;">
-               <div style="min-width:70px;">
-                  <div style="font-size:12px; font-weight:800; color:var(--text-light); text-transform:uppercase; letter-spacing:1px;">${timeStr}</div>
+               <div style="min-width:70px; max-width:140px;">
+                  <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; letter-spacing:1.5px; line-height:1.4;">${esc(timeStr)}</div>
                </div>
                <div style="flex:1; min-width:200px;">
                   <div style="font-family:'Outfit', sans-serif; font-size:18px; font-weight:700; color:var(--night);">${esc(e.name)}</div>
