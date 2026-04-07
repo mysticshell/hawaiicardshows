@@ -460,10 +460,69 @@ let allShows = [];
 
 function esc(s){const d=document.createElement('div');d.textContent=s||'';return d.innerHTML;}
 
+function computeNextDate(recStr) {
+  if(!recStr) return null;
+  const s = recStr.toLowerCase();
+  const now = new Date();
+  let y = now.getFullYear();
+  let m = now.getMonth();
+  
+  function getNthDay(yx, mx, n, dow) {
+      let d = new Date(yx, mx, 1);
+      let count = 0;
+      while(d.getMonth() === mx) {
+          if(d.getDay() === dow) {
+              count++;
+              if(count === n) return d;
+          }
+          d.setDate(d.getDate() + 1);
+      }
+      return null;
+  }
+  function getLastDay(yx, mx, dow) {
+      let d = new Date(yx, mx + 1, 0);
+      while(d.getDay() !== dow) { d.setDate(d.getDate() - 1); }
+      return d;
+  }
+
+  let p = [];
+  if (s.includes("1st and 3rd tuesday")) {
+      p.push(getNthDay(y, m, 1, 2), getNthDay(y, m, 3, 2), getNthDay(y, m+1, 1, 2), getNthDay(y, m+1, 3, 2));
+  } else if (s.includes("2nd weekend") || s.includes("2nd saturday")) {
+      p.push(getNthDay(y, m, 2, 6), getNthDay(y, m+1, 2, 6)); // Saturdays
+  } else if (s.includes("3rd friday")) {
+      p.push(getNthDay(y, m, 3, 5), getNthDay(y, m+1, 3, 5));
+  } else if (s.includes("last sunday")) {
+      p.push(getLastDay(y, m, 0), getLastDay(y, m+1, 0));
+  }
+
+  const todayStr = new Date(now.getTime() - (now.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+  let nextD = null;
+  
+  for(let d of p) {
+      if(!d) continue;
+      let dStr = new Date(d.getTime() - (d.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+      if (dStr >= todayStr) {
+          if(!nextD || dStr < nextD.toISOString().split('T')[0]) nextD = d;
+      }
+  }
+  if (nextD) return new Date(nextD.getTime() - (nextD.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+  return null;
+}
+
 async function loadShows() {
   const { data, error } = await sb.from('events').select('*').eq('status', 'approved');
   if (!error && data) {
-    allShows = data.sort((a,b) => {
+    allShows = data.map(e => {
+        if (e.event_type === 'recurring' && e.recurrence) {
+            let n = computeNextDate(e.recurrence);
+            if (n) {
+                e.start_date = n;
+                e.is_auto_calculated = true;
+            }
+        }
+        return e;
+    }).sort((a,b) => {
         // sort by date ascending (chronological)
         if (!a.start_date && b.start_date) return 1;
         if (a.start_date && !b.start_date) return -1;
@@ -549,13 +608,23 @@ function buildCardHtml(e, isFeatured) {
   else if(e.event_type === 'annual') tagHtml = `<span class="show-card-tag" style="background:#e8ecf4;color:#2c4a7c;">Returning Event</span>`;
   else tagHtml = `<span class="show-card-tag" style="background:#fce8e8;color:#b44545;">New Event</span>`;
   
-  const desc = e.description ? `<div class="show-card-desc">${esc(e.description)}</div>` : '';
+  let descHtml = e.description ? `<div class="show-card-desc">${esc(e.description)}</div>` : '';
+  if (e.is_auto_calculated) {
+      descHtml += `<div style="font-size:11px;color:var(--lava);margin-top:2px;font-weight:600;">*Date auto-calculated. Subject to change! <br>Officially: "${esc(e.recurrence)}"</div>`;
+  }
   
   let metaHtml = '';
   if(e.venue) metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>${esc(e.venue)}</span>`;
   metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945"/></svg>${esc(e.island)}</span>`;
   if(e.start_date || (e.event_type === 'recurring' && e.recurrence)) {
-      let text = (e.event_type==='recurring'&&e.recurrence) ? e.recurrence : e.start_date;
+      let text = '';
+      if(e.start_date) {
+         const dt = new Date(e.start_date+'T12:00:00');
+         text = dt.toLocaleDateString('en-US',{month:'short', day:'numeric', year:'numeric'});
+         if(e.is_auto_calculated) text += '*';
+      } else {
+         text = e.recurrence;
+      }
       metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${esc(text)}</span>`;
   }
   
@@ -566,7 +635,7 @@ function buildCardHtml(e, isFeatured) {
     <div class="show-card-body">
       <div class="show-card-tags">${tagHtml}</div>
       <div class="show-card-name">${esc(e.name)}</div>
-      ${desc}
+      ${descHtml}
       <div class="show-card-meta">${metaHtml}</div>
       ${arrow}
     </div>
