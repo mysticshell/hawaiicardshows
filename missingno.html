@@ -184,6 +184,13 @@ tr:hover td { background:var(--bg3); }
         <div class="stat-card"><div class="stat-num" id="dStatUniques">-</div><div class="stat-label">Unique Visitors</div></div>
       </div>
 
+      <div class="card-title" style="margin-top:20px;margin-bottom:12px;color:var(--ocean);font-family:'Outfit',sans-serif;">Audience Geography (Last 7 Days)</div>
+      <div class="stats-row" style="grid-template-columns:repeat(3,1fr);">
+        <div class="stat-card"><div class="stat-num" id="dStatHawaii">-</div><div class="stat-label">Hawaii Users</div></div>
+        <div class="stat-card"><div class="stat-num" id="dStatMainland">-</div><div class="stat-label">US Mainland</div></div>
+        <div class="stat-card"><div class="stat-num" id="dStatInternational">-</div><div class="stat-label">International</div></div>
+      </div>
+
       <div class="card-title" style="margin-bottom:12px;color:var(--ocean);font-family:'Outfit',sans-serif;">Database</div>
       <div class="stats-row">
         <div class="stat-card"><div class="stat-num" id="dStatEvents">-</div><div class="stat-label">Total Events</div></div>
@@ -400,6 +407,14 @@ async function loadDashboard() {
         document.getElementById('dStatViews').textContent = '—';
         document.getElementById('dStatUniques').textContent = '—';
         if(data.error) console.warn('Analytics Notice:', data.error, data.details || '');
+      }
+
+      if (data.geo && data.geo.active) {
+        document.getElementById('dStatHawaii').textContent = data.geo.hawaii.toLocaleString();
+        document.getElementById('dStatMainland').textContent = data.geo.mainland.toLocaleString();
+        document.getElementById('dStatInternational').textContent = data.geo.international.toLocaleString();
+      } else if (data.geo && data.geo.error) {
+        console.warn('GA4 Notice:', data.geo.error);
       }
     } catch(err) {
       console.error('Analytics fetch error:', err);

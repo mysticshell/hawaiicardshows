@@ -1,3 +1,47 @@
+async function getGoogleToken(clientEmail, privateKey) {
+  const header = { alg: "RS256", typ: "JWT" };
+  const now = Math.floor(Date.now() / 1000);
+  const payload = {
+    iss: clientEmail,
+    sub: clientEmail,
+    aud: "https://oauth2.googleapis.com/token",
+    iat: now,
+    exp: now + 3600
+  };
+
+  const strToB64url = (str) => btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  
+  const encodedHeader = strToB64url(JSON.stringify(header));
+  const encodedPayload = strToB64url(JSON.stringify(payload));
+  const dataToSign = `${encodedHeader}.${encodedPayload}`;
+
+  const binaryKey = atob(privateKey.replace(/-----BEGIN PRIVATE KEY-----/, '').replace(/-----END PRIVATE KEY-----/, '').replace(/\s+/g, ''));
+  const bytes = new Uint8Array(binaryKey.length);
+  for (let i = 0; i < binaryKey.length; i++) bytes[i] = binaryKey.charCodeAt(i);
+
+  const key = await crypto.subtle.importKey(
+    "pkcs8",
+    bytes.buffer,
+    { name: "RSASSA-PKCS1-v1_5", hash: { name: "SHA-256" } },
+    false,
+    ["sign"]
+  );
+
+  const signature = await crypto.subtle.sign("RSASSA-PKCS1-v1_5", key, new TextEncoder().encode(dataToSign));
+  const encodedSignature = btoa(String.fromCharCode(...new Uint8Array(signature))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  const jwt = `${dataToSign}.${encodedSignature}`;
+
+  const res = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=${jwt}`
+  });
+  
+  const data = await res.json();
+  if (data.error) throw new Error("Google Auth Error: " + data.error_description);
+  return data.access_token;
+}
+
 export async function onRequestGet({ request, env }) {
   const authHeader = request.headers.get('Authorization');
   if (!authHeader) {
@@ -79,9 +123,47 @@ export async function onRequestGet({ request, env }) {
       }
     }
 
+    // 4. Fetch GA4 Geography Data
+    let geo = { hawaii: 0, mainland: 0, international: 0, active: false, error: null };
+    if (env.GA4_CLIENT_EMAIL && env.GA4_PRIVATE_KEY && env.GA4_PROPERTY_ID) {
+      try {
+        const pk = env.GA4_PRIVATE_KEY.replace(/\\n/g, '\n');
+        const gToken = await getGoogleToken(env.GA4_CLIENT_EMAIL, pk);
+        const gaRes = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${env.GA4_PROPERTY_ID}:runReport`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${gToken}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            dateRanges: [{ startDate: '7daysAgo', endDate: 'today' }],
+            dimensions: [{ name: 'country' }, { name: 'region' }],
+            metrics: [{ name: 'activeUsers' }]
+          })
+        });
+        const gaJson = await gaRes.json();
+        if (!gaRes.ok) throw new Error(gaJson.error?.message || "GA4 Fetch Error");
+        
+        geo.active = true;
+        if (gaJson.rows) {
+          for (const row of gaJson.rows) {
+            const country = row.dimensionValues[0].value;
+            const region = row.dimensionValues[1].value;
+            const users = parseInt(row.metricValues[0].value, 10);
+            if (country === 'United States') {
+              if (region === 'Hawaii') geo.hawaii += users;
+              else geo.mainland += users;
+            } else {
+              geo.international += users;
+            }
+          }
+        }
+      } catch (err) {
+        geo.error = err.message;
+      }
+    }
+
     return new Response(JSON.stringify({
       pageViews7d: totalPageViews,
-      uniques7d: totalUniques
+      uniques7d: totalUniques,
+      geo: geo
     }), {
       headers: { 'Content-Type': 'application/json' }
     });
