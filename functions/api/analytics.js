@@ -5,6 +5,7 @@ async function getGoogleToken(clientEmail, privateKey) {
     iss: clientEmail,
     sub: clientEmail,
     aud: "https://oauth2.googleapis.com/token",
+    scope: "https://www.googleapis.com/auth/analytics.readonly",
     iat: now,
     exp: now + 3600
   };
