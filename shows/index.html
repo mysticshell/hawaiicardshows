@@ -264,6 +264,25 @@
     margin-top: 8px;
   }
 
+  /* Featured Card Enhancements */
+  .shows-grid-header { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--ocean); margin-bottom: 20px; }
+  .show-card.featured {
+    border: 3px solid var(--ocean);
+    box-shadow: 0 12px 40px rgba(26, 107, 90, 0.15);
+    position: relative;
+    overflow: visible;
+  }
+  .show-card.featured::before {
+    content: "FEATURED";
+    position: absolute; top: -12px; left: 24px;
+    background: var(--ocean); color: var(--white);
+    font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+    padding: 6px 12px; border-radius: 4px; z-index: 10;
+  }
+  .show-card.featured .show-card-visual { background: var(--ocean-pale) !important; width: 240px; }
+  .show-card.featured .show-card-visual img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+  .show-card.featured .show-card-name { font-size: 28px; }
+
   /* Filter Bar */
   .filter-bar {
     display: flex; gap: 16px; margin-bottom: 32px; background: var(--white); padding: 16px 24px; border-radius: var(--radius); box-shadow: var(--shadow); align-items: center; justify-content: space-between; flex-wrap: wrap;
@@ -389,12 +408,21 @@
         <option value="All">All Show Types</option>
         <option value="one-time">New Events</option>
         <option value="recurring">Recurring (Weekly/Monthly)</option>
-        <option value="annual">Annual Events</option>
+        <option value="annual">Returning Events</option>
+      </select>
+      <select id="fDate" class="filter-select" onchange="applyFilters()">
+        <option value="Upcoming" selected>Upcoming Shows</option>
+        <option value="Past">Past Shows</option>
+        <option value="All">All Time</option>
       </select>
     </div>
     <div style="font-size: 13px; color: var(--text-lighter); font-weight: 600;" id="fCount">Loading shows...</div>
   </div>
 
+  <div id="featuredHeader" style="display:none;" class="shows-grid-header">Featured Events</div>
+  <div class="shows-grid" id="featuredGrid" style="margin-bottom: 48px; gap: 32px;"></div>
+
+  <div id="standardHeader" style="display:none;" class="shows-grid-header">All Shows</div>
   <div class="shows-grid" id="showsGrid">
     <p style="color:var(--text-light);text-align:center;padding:40px 0;">Connecting to database...</p>
   </div>
@@ -436,9 +464,7 @@ async function loadShows() {
   const { data, error } = await sb.from('events').select('*').eq('status', 'approved');
   if (!error && data) {
     allShows = data.sort((a,b) => {
-        // sort recurring to bottom, then by date
-        if(a.event_type==='recurring' && b.event_type!=='recurring') return 1;
-        if(a.event_type!=='recurring' && b.event_type==='recurring') return -1;
+        // sort by date ascending (chronological)
         if (!a.start_date && b.start_date) return 1;
         if (a.start_date && !b.start_date) return -1;
         if (a.start_date && b.start_date) return a.start_date.localeCompare(b.start_date);
@@ -451,63 +477,100 @@ async function loadShows() {
 function applyFilters() {
   const fIsland = document.getElementById('fIsland').value;
   const fType = document.getElementById('fType').value;
+  const fDate = document.getElementById('fDate').value;
   
   let filtered = allShows;
   if(fIsland !== 'All') filtered = filtered.filter(e => e.island === fIsland);
   if(fType !== 'All') filtered = filtered.filter(e => e.event_type === fType);
   
+  const today = new Date().toISOString().split('T')[0];
+  
+  if (fDate === 'Upcoming') {
+    filtered = filtered.filter(e => {
+        if(e.event_type === 'recurring') return true;
+        if(!e.start_date && !e.end_date) return true;
+        const target = e.end_date || e.start_date;
+        return target >= today;
+    });
+  } else if (fDate === 'Past') {
+    filtered = filtered.filter(e => {
+        if(e.event_type === 'recurring') return false;
+        if(!e.start_date && !e.end_date) return false;
+        const target = e.end_date || e.start_date;
+        return target < today;
+    });
+  }
+  
   renderGrid(filtered);
 }
 
 function renderGrid(shows) {
-  const grid = document.getElementById('showsGrid');
+  const fGrid = document.getElementById('featuredGrid');
+  const sGrid = document.getElementById('showsGrid');
+  const fHead = document.getElementById('featuredHeader');
+  const sHead = document.getElementById('standardHeader');
+  
   document.getElementById('fCount').textContent = shows.length + (shows.length === 1 ? ' show found' : ' shows found');
   
   if (shows.length === 0) {
-    grid.innerHTML = '<p style="color:var(--text-lighter);grid-column:1/-1;text-align:center;padding:40px 0;">No shows match these filters.</p>';
+    fGrid.innerHTML = '';
+    fHead.style.display = 'none';
+    sHead.style.display = 'none';
+    sGrid.innerHTML = '<p style="color:var(--text-lighter);grid-column:1/-1;text-align:center;padding:40px 0;">No shows match these filters.</p>';
     return;
   }
   
-  grid.innerHTML = shows.map(e => {
-    const hasPage = e.long_description && e.long_description.trim().length > 0;
-    const wrapStart = hasPage ? `<a href="/shows/show.html?id=${e.id}" class="show-card">` : `<div class="show-card coming-soon">`;
-    const wrapEnd = hasPage ? `</a>` : `</div>`;
-    
-    let visHtml = '';
-    if (e.logo_url && e.logo_url.trim() !== '') {
-       visHtml = `<div class="show-card-visual" style="background:var(--sand-dark);"><img src="${esc(e.logo_url)}" alt="${esc(e.name)}" style="width:100%;height:100%;object-fit:cover;border-radius:0;"></div>`;
-    } else {
-       visHtml = `<div class="show-card-visual" style="background:var(--ocean);"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>`;
-    }
-    
-    let tagHtml = '';
-    if(e.event_type === 'recurring') tagHtml = `<span class="show-card-tag" style="background:#e8f0e9;color:#3d6643;">Recurring</span>`;
-    else if(e.event_type === 'annual') tagHtml = `<span class="show-card-tag" style="background:#e8ecf4;color:#2c4a7c;">Annual Event</span>`;
-    else tagHtml = `<span class="show-card-tag" style="background:#fce8e8;color:#b44545;">New Event</span>`;
-    
-    const desc = e.description ? `<div class="show-card-desc">${esc(e.description)}</div>` : '';
-    
-    let metaHtml = '';
-    if(e.venue) metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>${esc(e.venue)}</span>`;
-    metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945"/></svg>${esc(e.island)}</span>`;
-    if(e.start_date || (e.event_type === 'recurring' && e.recurrence)) {
-        let text = (e.event_type==='recurring'&&e.recurrence) ? e.recurrence : e.start_date;
-        metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${esc(text)}</span>`;
-    }
-    
-    const arrow = hasPage ? `<div class="show-card-arrow">View Show Details →</div>` : `<div class="coming-soon-badge">Page coming soon</div>`;
-    
-    return `${wrapStart}
-      ${visHtml}
-      <div class="show-card-body">
-        <div class="show-card-tags">${tagHtml}</div>
-        <div class="show-card-name">${esc(e.name)}</div>
-        ${desc}
-        <div class="show-card-meta">${metaHtml}</div>
-        ${arrow}
-      </div>
-    ${wrapEnd}`;
-  }).join('');
+  const featured = shows.filter(e => e.featured);
+  const standard = shows.filter(e => !e.featured);
+  
+  fGrid.innerHTML = featured.map(e => buildCardHtml(e, true)).join('');
+  sGrid.innerHTML = standard.map(e => buildCardHtml(e, false)).join('');
+  
+  fHead.style.display = featured.length > 0 ? 'block' : 'none';
+  sHead.style.display = standard.length > 0 ? 'block' : 'none';
+}
+
+function buildCardHtml(e, isFeatured) {
+  const hasPage = e.long_description && e.long_description.trim().length > 0;
+  const wrapCls = isFeatured ? 'show-card featured' : 'show-card' + (!hasPage ? ' coming-soon' : '');
+  const wrapStart = hasPage ? `<a href="/shows/show.html?id=${e.id}" class="${wrapCls}">` : `<div class="${wrapCls}">`;
+  const wrapEnd = hasPage ? `</a>` : `</div>`;
+  
+  let visHtml = '';
+  if (e.logo_url && e.logo_url.trim() !== '') {
+     const iStyle = isFeatured ? 'width:100%;height:100%;object-fit:cover;border-radius:0;' : 'width:100%;height:100%;object-fit:contain;border-radius:0;';
+     visHtml = `<div class="show-card-visual" style="background:var(--sand-dark);"><img src="${esc(e.logo_url)}" alt="${esc(e.name)}" style="${iStyle}"></div>`;
+  } else {
+     visHtml = `<div class="show-card-visual" style="background:var(--ocean);"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>`;
+  }
+  
+  let tagHtml = '';
+  if(e.event_type === 'recurring') tagHtml = `<span class="show-card-tag" style="background:#e8f0e9;color:#3d6643;">Recurring</span>`;
+  else if(e.event_type === 'annual') tagHtml = `<span class="show-card-tag" style="background:#e8ecf4;color:#2c4a7c;">Returning Event</span>`;
+  else tagHtml = `<span class="show-card-tag" style="background:#fce8e8;color:#b44545;">New Event</span>`;
+  
+  const desc = e.description ? `<div class="show-card-desc">${esc(e.description)}</div>` : '';
+  
+  let metaHtml = '';
+  if(e.venue) metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>${esc(e.venue)}</span>`;
+  metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945"/></svg>${esc(e.island)}</span>`;
+  if(e.start_date || (e.event_type === 'recurring' && e.recurrence)) {
+      let text = (e.event_type==='recurring'&&e.recurrence) ? e.recurrence : e.start_date;
+      metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${esc(text)}</span>`;
+  }
+  
+  const arrow = hasPage ? `<div class="show-card-arrow">${isFeatured ? 'Explore Show →' : 'View Details →'}</div>` : `<div class="coming-soon-badge">Page coming soon</div>`;
+  
+  return `${wrapStart}
+    ${visHtml}
+    <div class="show-card-body">
+      <div class="show-card-tags">${tagHtml}</div>
+      <div class="show-card-name">${esc(e.name)}</div>
+      ${desc}
+      <div class="show-card-meta">${metaHtml}</div>
+      ${arrow}
+    </div>
+  ${wrapEnd}`;
 }
 
 loadShows();
