@@ -53,7 +53,7 @@ export async function onRequestGet({ request, env }) {
     const cfRes = await fetch('https://api.cloudflare.com/client/v4/graphql', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${env.CLOUDFLARE_API_TOKEN}`,
+        'Authorization': `Bearer ${env.CLOUDFLARE_API_TOKEN.trim()}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ query })
