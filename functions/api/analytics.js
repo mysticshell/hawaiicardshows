@@ -15,7 +15,14 @@ async function getGoogleToken(clientEmail, privateKey) {
   const encodedPayload = strToB64url(JSON.stringify(payload));
   const dataToSign = `${encodedHeader}.${encodedPayload}`;
 
-  const binaryKey = atob(privateKey.replace(/-----BEGIN PRIVATE KEY-----/, '').replace(/-----END PRIVATE KEY-----/, '').replace(/\s+/g, ''));
+  const cleanKey = privateKey
+    .replace(/-----BEGIN PRIVATE KEY-----/gi, '')
+    .replace(/-----END PRIVATE KEY-----/gi, '')
+    .replace(/\\n/g, '')
+    .replace(/["']/g, '')
+    .replace(/\s+/g, '');
+  
+  const binaryKey = atob(cleanKey);
   const bytes = new Uint8Array(binaryKey.length);
   for (let i = 0; i < binaryKey.length; i++) bytes[i] = binaryKey.charCodeAt(i);
 
