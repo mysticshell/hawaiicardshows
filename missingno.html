@@ -178,6 +178,13 @@ tr:hover td { background:var(--bg3); }
       <div class="main-header">
         <div><div class="main-title">Dashboard</div><div class="main-sub">Overview of Hawaii Card Shows</div></div>
       </div>
+      <div class="card-title" style="margin-bottom:12px;color:var(--ocean);font-family:'Outfit',sans-serif;">Traffic (Last 7 Days)</div>
+      <div class="stats-row" style="grid-template-columns:repeat(2,1fr);">
+        <div class="stat-card"><div class="stat-num" id="dStatViews">-</div><div class="stat-label">Total Page Views</div></div>
+        <div class="stat-card"><div class="stat-num" id="dStatUniques">-</div><div class="stat-label">Unique Visitors</div></div>
+      </div>
+
+      <div class="card-title" style="margin-bottom:12px;color:var(--ocean);font-family:'Outfit',sans-serif;">Database</div>
       <div class="stats-row">
         <div class="stat-card"><div class="stat-num" id="dStatEvents">-</div><div class="stat-label">Total Events</div></div>
         <div class="stat-card"><div class="stat-num" id="dStatPending">-</div><div class="stat-label">Pending Submissions</div></div>
@@ -377,6 +384,27 @@ async function loadDashboard() {
   document.getElementById('dStatSponsors').textContent = spCount || 0;
   document.getElementById('dStatSubs').textContent = nlCount || 0;
   updatePendingBadge(pendCount);
+
+  // Fetch external analytics securely
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) {
+    try {
+      const res = await fetch('/api/analytics', {
+        headers: { 'Authorization': `Bearer ${session.access_token}` }
+      });
+      const data = await res.json();
+      if (data.pageViews7d !== undefined) {
+        document.getElementById('dStatViews').textContent = data.pageViews7d.toLocaleString();
+        document.getElementById('dStatUniques').textContent = data.uniques7d.toLocaleString();
+      } else {
+        document.getElementById('dStatViews').textContent = '—';
+        document.getElementById('dStatUniques').textContent = '—';
+        if(data.error) console.warn('Analytics Notice:', data.error);
+      }
+    } catch(err) {
+      console.error('Analytics fetch error:', err);
+    }
+  }
 
   const { data: recent } = await sb.from('submissions').select('*').order('created_at', { ascending: false }).limit(5);
   const el = document.getElementById('dashRecentSubs');
