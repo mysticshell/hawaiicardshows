@@ -610,12 +610,15 @@ function buildCardHtml(e, isFeatured) {
   
   let descHtml = e.description ? `<div class="show-card-desc">${esc(e.description)}</div>` : '';
   if (e.is_auto_calculated) {
-      descHtml += `<div style="font-size:11px;color:var(--lava);margin-top:2px;font-weight:600;">*Date auto-calculated. Subject to change! <br>Officially: "${esc(e.recurrence)}"</div>`;
+      descHtml += `<div style="font-size:11px;color:var(--lava);margin-top:2px;font-weight:600;">*Dates can fluctuate, check instagram for updates</div>`;
   }
   
   let metaHtml = '';
   if(e.venue) metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>${esc(e.venue)}</span>`;
   metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945"/></svg>${esc(e.island)}</span>`;
+  if(e.instagram) {
+     metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>${esc(e.instagram)}</span>`;
+  }
   if(e.start_date || (e.event_type === 'recurring' && e.recurrence)) {
       let text = '';
       if(e.start_date) {
