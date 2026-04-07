@@ -175,24 +175,52 @@ async function loadData() {
 
   // Markdown-like simple newlines to HTML <p> parser or exact HTML rendering for long desc
   let finalDesc = event.long_description || event.description || "No full description provided for this event.";
-  // basic parse line breaks
-  finalDesc = finalDesc.split('\n').filter(p=>p.trim()!=='').map(p=>`<p>${esc(p)}</p>`).join('');
+  if (finalDesc.indexOf('<') === -1) {
+    finalDesc = finalDesc.split('\n').filter(p=>p.trim()!=='').map(p=>`<p>${esc(p)}</p>`).join('');
+  }
   document.getElementById('hDesc').innerHTML = finalDesc;
 
   // Sidebar Elements
-  let orgHtml = esc(event.organizer) || 'N/A';
-  if (event.instagram) {
-    const handle = event.instagram.replace('@','');
-    orgHtml += `<br><a href="https://instagram.com/${esc(handle)}" target="_blank" style="font-size:13px; font-weight:600; text-decoration:none;">@${esc(handle)}</a>`;
+  let orgHtml = '';
+  if (event.organizer && event.organizer.trim() !== '' && event.organizer.toLowerCase() !== 'n/a') {
+    orgHtml += esc(event.organizer);
   }
-  document.getElementById('tOrg').innerHTML = orgHtml;
+  if (event.instagram && event.instagram.trim() !== '') {
+    const handle = event.instagram.replace('@','');
+    if (orgHtml !== '') orgHtml += '<br>';
+    orgHtml += `<a href="https://instagram.com/${esc(handle)}" target="_blank" style="font-size:13px; font-weight:600; text-decoration:none;">@${esc(handle)}</a>`;
+  }
+  
+  if (orgHtml === '') {
+    document.getElementById('infoRowOrg').style.display = 'none';
+  } else {
+    document.getElementById('tOrg').innerHTML = orgHtml;
+  }
   
   let dateText = '';
-  if (event.event_type === 'recurring' && event.recurrence) dateText = event.recurrence;
-  else if (event.start_date) {
-    const s = new Date(event.start_date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    const eStr = (event.end_date && event.end_date !== event.start_date) ? ` — ${new Date(event.end_date+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric'})}` : '';
-    dateText = s + eStr;
+  if (event.event_type === 'recurring' && event.recurrence) {
+    dateText = event.recurrence;
+  } else if (event.start_date) {
+    const d1 = new Date(event.start_date+'T12:00:00');
+    const m1 = d1.toLocaleDateString('en-US', {month:'long'});
+    const ds1 = d1.getDate();
+    const y1 = d1.getFullYear();
+    
+    if (event.end_date && event.end_date !== event.start_date) {
+        const d2 = new Date(event.end_date+'T12:00:00');
+        const m2 = d2.toLocaleDateString('en-US', {month:'long'});
+        const ds2 = d2.getDate();
+        const y2 = d2.getFullYear();
+        if (m1 === m2 && y1 === y2) {
+           dateText = `${m1} ${ds1} - ${ds2}, ${y1}`;
+        } else if (y1 === y2) {
+           dateText = `${m1} ${ds1} - ${m2} ${ds2}, ${y1}`;
+        } else {
+           dateText = `${m1} ${ds1}, ${y1} - ${m2} ${ds2}, ${y2}`;
+        }
+    } else {
+        dateText = `${m1} ${ds1}, ${y1}`;
+    }
   } else {
     dateText = 'Date TBD';
   }
