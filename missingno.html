@@ -324,6 +324,47 @@ tr:hover td { background:var(--bg3); }
   </div>
 </div>
 
+<!-- ════════ REVIEW SUBMISSION MODAL ════════ -->
+<div class="modal-overlay" id="reviewModal">
+  <div class="modal" style="max-width:680px;">
+    <div class="modal-title">Review & Approve Submission</div>
+    <input type="hidden" id="reviewSubId">
+    <!-- Original submitter info -->
+    <div id="reviewSubmitterInfo" style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:12px;color:var(--text-dim);line-height:1.6;">
+    </div>
+    <p style="font-size:12px;color:var(--gold);margin-bottom:16px;">✏️ Edit any fields below before approving. Fixes to spelling, capitalization, and details will be applied to the live event.</p>
+    <div class="form-grid">
+      <div class="form-group"><label class="form-label">Event Name</label><input class="form-input" id="rvName"></div>
+      <div class="form-group"><label class="form-label">Organizer</label><input class="form-input" id="rvOrganizer"></div>
+      <div class="form-group"><label class="form-label">Event Type</label>
+        <select class="form-input" id="rvType" onchange="document.getElementById('rvRecurrenceGroup').style.display=this.value==='recurring'?'block':'none'">
+          <option value="one-time">New Event</option><option value="annual">Annual</option><option value="recurring">Recurring</option>
+        </select>
+      </div>
+      <div class="form-group" id="rvRecurrenceGroup" style="display:none"><label class="form-label">Recurrence</label><input class="form-input" id="rvRecurrence" placeholder="e.g. Every 2nd Saturday"></div>
+      <div class="form-group"><label class="form-label">Start Date</label><input class="form-input" type="date" id="rvStartDate"></div>
+      <div class="form-group"><label class="form-label">End Date</label><input class="form-input" type="date" id="rvEndDate"></div>
+      <div class="form-group"><label class="form-label">Start Time</label><input class="form-input" id="rvStartTime" placeholder="1:00 PM"></div>
+      <div class="form-group"><label class="form-label">End Time</label><input class="form-input" id="rvEndTime" placeholder="7:00 PM"></div>
+      <div class="form-group"><label class="form-label">Venue</label><input class="form-input" id="rvVenue"></div>
+      <div class="form-group"><label class="form-label">Island</label>
+        <select class="form-input" id="rvIsland"><option>Oahu</option><option>Maui</option><option>Big Island</option><option>Kauai</option><option>Molokai</option><option>Lanai</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Color</label><input class="form-input" type="color" id="rvColor" value="#2a9d8f"></div>
+      <div class="form-group"><label class="form-label">Instagram</label><input class="form-input" id="rvInstagram" placeholder="@handle"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Description (Short)</label><textarea class="form-input" id="rvDescription"></textarea></div>
+    <div class="form-group"><label class="form-label">Long Description (for show page — optional)</label><textarea class="form-input" id="rvLongDescription" style="min-height:140px" placeholder="Add detail for the show page... You can use HTML or just write paragraphs."></textarea></div>
+    <div class="form-group"><label class="form-label">Logo URL (optional)</label><input class="form-input" id="rvLogoUrl" placeholder="https://..."></div>
+    <div class="form-group"><label class="form-label">Website URL (optional)</label><input class="form-input" id="rvWebsite"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('reviewModal')">Cancel</button>
+      <button class="btn btn-red btn-sm" onclick="rejectFromReview()" style="margin-right:auto;">Reject</button>
+      <button class="btn btn-green" onclick="confirmApproval()" style="padding:8px 20px;">✓ Approve & Go Live</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const SUPABASE_URL = 'https://bcdgqqncycsdwnmrmuan.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjZGdxcW5jeWNzZHdubXJtdWFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NTU4MzgsImV4cCI6MjA5MDEzMTgzOH0.UXTTv99cBYcll_uw-g50tA4yG9jpbVIdt3xrDc_rTKs';
@@ -568,7 +609,7 @@ async function loadSubmissions() {
       </div>
       ${s.status === 'pending' ? `
         <div class="btn-group" style="margin-top:12px;">
-          <button class="btn btn-green btn-sm" onclick="approveSubmission('${s.id}')">Approve & Create Event</button>
+          <button class="btn btn-ocean btn-sm" onclick="reviewSubmission('${s.id}')">Review & Approve</button>
           <button class="btn btn-red btn-sm" onclick="rejectSubmission('${s.id}')">Reject</button>
         </div>
       ` : ''}
@@ -576,29 +617,80 @@ async function loadSubmissions() {
   `).join('');
 }
 
-async function approveSubmission(id) {
+async function reviewSubmission(id) {
   const { data: s } = await sb.from('submissions').select('*').eq('id', id).single();
   if (!s) return;
-  // Create event from submission
-  await sb.from('events').insert([{
-    name: s.event_name,
-    organizer: s.organizer_name,
-    event_type: s.event_type,
-    recurrence: s.recurrence,
-    start_date: s.start_date,
-    end_date: s.end_date,
-    start_time: s.start_time,
-    end_time: s.end_time,
-    venue: s.venue,
-    island: s.island,
-    description: s.description,
-    instagram: s.organizer_instagram,
+  // Store submission id
+  document.getElementById('reviewSubId').value = id;
+  // Show who submitted it
+  document.getElementById('reviewSubmitterInfo').innerHTML = `
+    <strong style="color:var(--text);">Submitted by:</strong> ${esc(s.organizer_name)} &bull; ${esc(s.organizer_email)}
+    ${s.organizer_instagram ? '&bull; <span style="color:var(--ocean);">@' + esc(s.organizer_instagram) + '</span>' : ''}
+    <br><strong style="color:var(--text);">Submitted:</strong> ${new Date(s.created_at).toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'})}
+  `;
+  // Pre-fill all fields from submission
+  document.getElementById('rvName').value = s.event_name || '';
+  document.getElementById('rvOrganizer').value = s.organizer_name || '';
+  document.getElementById('rvType').value = s.event_type || 'one-time';
+  document.getElementById('rvRecurrence').value = s.recurrence || '';
+  document.getElementById('rvRecurrenceGroup').style.display = s.event_type === 'recurring' ? 'block' : 'none';
+  document.getElementById('rvStartDate').value = s.start_date || '';
+  document.getElementById('rvEndDate').value = s.end_date || '';
+  document.getElementById('rvStartTime').value = s.start_time || '';
+  document.getElementById('rvEndTime').value = s.end_time || '';
+  document.getElementById('rvVenue').value = s.venue || '';
+  document.getElementById('rvIsland').value = s.island || 'Oahu';
+  document.getElementById('rvColor').value = '#2a9d8f';
+  document.getElementById('rvInstagram').value = s.organizer_instagram || '';
+  document.getElementById('rvDescription').value = s.description || '';
+  document.getElementById('rvLongDescription').value = '';
+  document.getElementById('rvLogoUrl').value = '';
+  document.getElementById('rvWebsite').value = '';
+  // Open modal
+  document.getElementById('reviewModal').classList.add('open');
+}
+
+async function confirmApproval() {
+  const subId = document.getElementById('reviewSubId').value;
+  if (!subId) return;
+  const payload = {
+    name: document.getElementById('rvName').value,
+    organizer: document.getElementById('rvOrganizer').value,
+    event_type: document.getElementById('rvType').value,
+    recurrence: document.getElementById('rvRecurrence').value || null,
+    start_date: document.getElementById('rvStartDate').value || null,
+    end_date: document.getElementById('rvEndDate').value || null,
+    start_time: document.getElementById('rvStartTime').value || null,
+    end_time: document.getElementById('rvEndTime').value || null,
+    venue: document.getElementById('rvVenue').value || null,
+    island: document.getElementById('rvIsland').value,
+    color: document.getElementById('rvColor').value,
+    instagram: document.getElementById('rvInstagram').value || null,
+    description: document.getElementById('rvDescription').value || null,
+    long_description: document.getElementById('rvLongDescription').value || null,
+    logo_url: document.getElementById('rvLogoUrl').value || null,
+    website_url: document.getElementById('rvWebsite').value || null,
     status: 'approved',
-  }]);
-  await sb.from('submissions').update({ status: 'approved' }).eq('id', id);
-  toast('Submission approved — event created');
+  };
+  const { error } = await sb.from('events').insert([payload]);
+  if (error) { alert('Error creating event: ' + error.message); return; }
+  await sb.from('submissions').update({ status: 'approved' }).eq('id', subId);
+  closeModal('reviewModal');
+  toast('✓ Approved — event is now live on the calendar');
   loadSubmissions();
   loadDashboard();
+}
+
+function rejectFromReview() {
+  const subId = document.getElementById('reviewSubId').value;
+  if (!subId) return;
+  if (!confirm('Reject this submission?')) return;
+  sb.from('submissions').update({ status: 'rejected' }).eq('id', subId).then(() => {
+    closeModal('reviewModal');
+    toast('Submission rejected');
+    loadSubmissions();
+    loadDashboard();
+  });
 }
 
 async function rejectSubmission(id) {
