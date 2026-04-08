@@ -459,6 +459,7 @@ const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 let allShows = [];
 
 function esc(s){const d=document.createElement('div');d.textContent=s||'';return d.innerHTML;}
+function getShowUrl(e){return e.custom_url||`/shows/show.html?id=${e.id}`;}
 
 function computeNextDate(recStr) {
   if(!recStr) return null;
@@ -595,7 +596,7 @@ function renderGrid(shows) {
 
 function buildCardHtml(e, isFeatured) {
   const wrapCls = isFeatured ? 'show-card featured' : 'show-card';
-  const wrapStart = `<a href="/shows/show.html?id=${e.id}" class="${wrapCls}" style="border-top:4px solid ${e.color || 'var(--ocean)'}">`;
+  const wrapStart = `<a href="${getShowUrl(e)}" class="${wrapCls}" style="border-top:4px solid ${e.color || 'var(--ocean)'}">`;
   const wrapEnd = `</a>`;
   
   let tagHtml = '';
