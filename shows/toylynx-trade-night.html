@@ -337,6 +337,58 @@
   .faq-a-inner { padding: 0 0 20px; font-size: 15px; line-height: 1.7; color: var(--text-light); }
   .faq-item.open .faq-a { max-height: 300px; }
 
+  /* ═══════ NEXT TRADE NIGHT CALLOUT ═══════ */
+  .next-show-callout {
+    background: var(--white);
+    border: 2px solid var(--show-primary);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-top: -40px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    animation: heroFadeIn 0.6s ease-out 0.5s both;
+  }
+  .next-show-badge {
+    background: var(--show-primary);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .next-show-content { flex: 1; min-width: 200px; }
+  .next-show-date {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700; font-size: 18px;
+    color: var(--night);
+  }
+  .next-show-details {
+    font-size: 14px; color: var(--text-light);
+    margin-top: 2px;
+  }
+  .next-show-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 14px;
+    color: var(--show-primary);
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.2s;
+  }
+  .next-show-cta:hover { color: var(--show-primary-dark); }
+  @media (max-width: 600px) {
+    .next-show-callout { margin-top: -24px; padding: 20px; }
+  }
+
   /* ═══════ FOOTER CTA ═══════ */
   .footer-cta { background: var(--show-hero-bg); padding: 64px 24px; text-align: center; }
   .footer-cta h2 { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 28px; color: var(--white); margin-bottom: 12px; }
@@ -427,6 +479,18 @@
     </div>
   </div>
 </header>
+
+<!-- ═══════ NEXT TRADE NIGHT CALLOUT ═══════ -->
+<div class="content-wrap">
+  <div id="nextTradeNight" class="next-show-callout">
+    <div class="next-show-badge">Next Trade Night</div>
+    <div class="next-show-content">
+      <div class="next-show-date" id="nextDate"></div>
+      <div class="next-show-details">ToyLynx · 650 Iwilei Rd, Honolulu</div>
+    </div>
+    <a href="https://www.instagram.com/toylynx" target="_blank" rel="noopener" class="next-show-cta">Get Details →</a>
+  </div>
+</div>
 
 <!-- ═══════ ABOUT ═══════ -->
 <div class="content-wrap">
@@ -645,6 +709,19 @@
     }
   ]
 }
+</script>
+
+<script>
+// Auto-compute next Thursday
+(function() {
+  const now = new Date();
+  const day = now.getDay(); // 0=Sun, 4=Thu
+  let daysUntilThursday = (4 - day + 7) % 7;
+  if (daysUntilThursday === 0) daysUntilThursday = 7; // if today is Thursday, show next week
+  const nextThurs = new Date(now.getTime() + daysUntilThursday * 24 * 60 * 60 * 1000);
+  const formatted = nextThurs.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  document.getElementById('nextDate').textContent = formatted;
+})();
 </script>
 
 </body>
