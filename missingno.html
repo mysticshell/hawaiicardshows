@@ -290,6 +290,12 @@ tr:hover td { background:var(--bg3); }
     <div class="form-group"><label class="form-label">Logo URL</label><input class="form-input" id="evLogoUrl" placeholder="https://..."></div>
     <div class="form-group"><label class="form-label">Website URL</label><input class="form-input" id="evWebsite"></div>
     <div class="form-group"><label class="form-label">Instagram</label><input class="form-input" id="evInstagram" placeholder="@handle"></div>
+    <div class="form-group">
+      <label class="form-label">Photos <span style="font-weight:400;color:var(--text-muted);text-transform:none;letter-spacing:0;">— one URL per line</span></label>
+      <textarea class="form-input" id="evPhotos" style="min-height:100px" placeholder="/shows/images/my-photo.jpeg
+https://example.com/photo2.jpg"></textarea>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">For repo images: /shows/images/filename.jpeg • External: full URL</div>
+    </div>
     <div class="form-group" style="display:flex;align-items:center;gap:8px;">
       <input type="checkbox" id="evFeatured"><label for="evFeatured" style="font-size:13px;color:var(--text-dim);">Featured event</label>
     </div>
@@ -530,13 +536,22 @@ async function editEvent(id) {
   document.getElementById('evWebsite').value = data.website_url || '';
   document.getElementById('evInstagram').value = data.instagram || '';
   document.getElementById('evFeatured').checked = data.featured || false;
+  // Photos: convert JSON array to one-per-line
+  let photoLines = '';
+  if (data.photos) {
+    try {
+      const arr = typeof data.photos === 'string' ? JSON.parse(data.photos) : data.photos;
+      if (Array.isArray(arr)) photoLines = arr.join('\n');
+    } catch(e) {}
+  }
+  document.getElementById('evPhotos').value = photoLines;
   document.getElementById('eventModal').classList.add('open');
 }
 
 function openEventModal() {
   document.getElementById('eventModalTitle').textContent = 'Add Event';
   document.getElementById('eventId').value = '';
-  ['evName','evOrganizer','evRecurrence','evStartDate','evEndDate','evStartTime','evEndTime','evVenue','evDescription','evLongDescription','evLogoUrl','evWebsite','evInstagram'].forEach(id => document.getElementById(id).value = '');
+  ['evName','evOrganizer','evRecurrence','evStartDate','evEndDate','evStartTime','evEndTime','evVenue','evDescription','evLongDescription','evLogoUrl','evWebsite','evInstagram','evPhotos'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('evType').value = 'one-time';
   document.getElementById('evIsland').value = 'Oahu';
   document.getElementById('evColor').value = '#2a9d8f';
@@ -567,6 +582,10 @@ async function saveEvent() {
     website_url: document.getElementById('evWebsite').value || null,
     instagram: document.getElementById('evInstagram').value || null,
     featured: document.getElementById('evFeatured').checked,
+    photos: (() => {
+      const lines = document.getElementById('evPhotos').value.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+      return lines.length > 0 ? lines : null;
+    })(),
     updated_at: new Date().toISOString(),
   };
   let error;
