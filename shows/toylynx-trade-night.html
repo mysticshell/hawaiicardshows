@@ -452,11 +452,11 @@
   <div class="hero-content">
     <img src="https://hawaiicardshows.com/shops/images/toylynx-mascot.png" alt="ToyLynx Mascot" style="width:140px;height:auto;margin-bottom:24px;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.4));animation:heroFadeIn 0.8s ease-out 0.05s both;">
     <h1>ToyLynx <em>Trade Night</em></h1>
-    <p class="hero-tagline">Honolulu's weekly community trading event. Bring your binder, bring your trades — every Thursday at ToyLynx on Iwilei Rd.</p>
+    <p class="hero-tagline">Honolulu's community trading event. Bring your binder, bring your trades — 1st and 3rd Thursday of every month at ToyLynx on Iwilei Rd.</p>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num">Weekly</div>
-        <div class="hero-stat-label">Every Thursday</div>
+        <div class="hero-stat-num">2x/mo</div>
+        <div class="hero-stat-label">1st & 3rd Thursday</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num">All TCGs</div>
@@ -523,8 +523,8 @@
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <div class="detail-card-label">Schedule</div>
-        <div class="detail-card-value">Every Thursday</div>
-        <div class="detail-card-note">Check <a href="https://www.instagram.com/toylynx" target="_blank" rel="noopener" style="color:var(--show-primary);">@toylynx</a> for any schedule changes</div>
+        <div class="detail-card-value">1st & 3rd Thursday</div>
+        <div class="detail-card-note">Twice a month · Check <a href="https://www.instagram.com/toylynx" target="_blank" rel="noopener" style="color:var(--show-primary);">@toylynx</a> for any schedule changes</div>
       </div>
 
       <div class="detail-card">
@@ -656,8 +656,8 @@
         <div class="faq-a"><div class="faq-a-inner">Yes. Many people come to buy and sell in addition to trading. Cash, Venmo, and PayPal are all commonly used. Just be respectful of the space — this isn't a vendor booth setup, it's casual person-to-person transactions.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is Trade Night every single Thursday?</button>
-        <div class="faq-a"><div class="faq-a-inner">It's on the regular weekly schedule, but special events or holidays may affect timing. Always check <a href="https://www.instagram.com/toylynx" target="_blank" rel="noopener" style="color:var(--show-primary);">@toylynx on Instagram</a> or <a href="https://www.toylynx.com" target="_blank" rel="noopener" style="color:var(--show-primary);">toylynx.com</a> to confirm for any given week.</div></div>
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How often is Trade Night?</button>
+        <div class="faq-a"><div class="faq-a-inner">Trade Night runs on the 1st and 3rd Thursday of every month, but special events or holidays may affect timing. Always check <a href="https://www.instagram.com/toylynx" target="_blank" rel="noopener" style="color:var(--show-primary);">@toylynx on Instagram</a> or <a href="https://www.toylynx.com" target="_blank" rel="noopener" style="color:var(--show-primary);">toylynx.com</a> to confirm for any given month.</div></div>
       </div>
     </div>
   </section>
@@ -712,15 +712,26 @@
 </script>
 
 <script>
-// Auto-compute next Thursday
+// ═══ Next Trade Night — set manually, falls back to "Coming Soon" ═══
+// To update: change the date string below. Set to null when unknown.
+const NEXT_TRADE_NIGHT = '2026-04-16';
+
 (function() {
-  const now = new Date();
-  const day = now.getDay(); // 0=Sun, 4=Thu
-  let daysUntilThursday = (4 - day + 7) % 7;
-  if (daysUntilThursday === 0) daysUntilThursday = 7; // if today is Thursday, show next week
-  const nextThurs = new Date(now.getTime() + daysUntilThursday * 24 * 60 * 60 * 1000);
-  const formatted = nextThurs.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
-  document.getElementById('nextDate').textContent = formatted;
+  const el = document.getElementById('nextDate');
+  if (NEXT_TRADE_NIGHT) {
+    const d = new Date(NEXT_TRADE_NIGHT + 'T12:00:00');
+    const now = new Date();
+    // Only show if the date is in the future
+    if (d >= new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
+      el.textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    } else {
+      el.textContent = 'Coming Soon';
+      el.parentElement.querySelector('.next-show-details').textContent = 'Follow @toylynx on Instagram for the next date';
+    }
+  } else {
+    el.textContent = 'Coming Soon';
+    el.parentElement.querySelector('.next-show-details').textContent = 'Follow @toylynx on Instagram for the next date';
+  }
 })();
 </script>
 
