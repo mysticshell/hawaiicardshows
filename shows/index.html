@@ -594,10 +594,9 @@ function renderGrid(shows) {
 }
 
 function buildCardHtml(e, isFeatured) {
-  const hasPage = e.long_description && e.long_description.trim().length > 0;
-  const wrapCls = isFeatured ? 'show-card featured' : 'show-card' + (!hasPage ? ' coming-soon' : '');
-  const wrapStart = hasPage ? `<a href="/shows/show.html?id=${e.id}" class="${wrapCls}" style="border-top:4px solid ${e.color || 'var(--ocean)'}">` : `<div class="${wrapCls}" style="border-top:4px solid ${e.color || 'var(--ocean)'}">`;
-  const wrapEnd = hasPage ? `</a>` : `</div>`;
+  const wrapCls = isFeatured ? 'show-card featured' : 'show-card';
+  const wrapStart = `<a href="/shows/show.html?id=${e.id}" class="${wrapCls}" style="border-top:4px solid ${e.color || 'var(--ocean)'}">`;
+  const wrapEnd = `</a>`;
   
   let tagHtml = '';
   if(e.event_type === 'recurring') tagHtml = `<span class="show-card-tag" style="background:#e8f0e9;color:#3d6643;">Recurring</span>`;
@@ -627,7 +626,7 @@ function buildCardHtml(e, isFeatured) {
       metaHtml += `<span class="show-card-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${esc(text)}</span>`;
   }
   
-  const arrow = hasPage ? `<div class="show-card-arrow">${isFeatured ? 'Explore Show →' : 'View Details →'}</div>` : `<div class="coming-soon-badge">Page coming soon</div>`;
+  const arrow = `<div class="show-card-arrow">${isFeatured ? 'Explore Show →' : 'View Details →'}</div>`;
   
   const logoHtml = e.logo_url 
      ? `<div style="width:56px;height:56px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--white);border:1px solid var(--sand-dark);box-shadow:0 4px 12px rgba(0,0,0,0.06);"><img src="${esc(e.logo_url)}" style="width:100%;height:100%;object-fit:cover;" alt="${esc(e.name)}"></div>`
