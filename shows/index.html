@@ -461,7 +461,7 @@ let allShows = [];
 function esc(s){const d=document.createElement('div');d.textContent=s||'';return d.innerHTML;}
 function getShowUrl(e){return e.custom_url||`/shows/show.html?id=${e.id}`;}
 
-function computeNextDate(recStr) {
+function computeNextDate(recStr, skipDates) {
   if(!recStr) return null;
   const s = recStr.toLowerCase();
   const now = new Date();
@@ -508,9 +508,11 @@ function computeNextDate(recStr) {
   const todayStr = new Date(now.getTime() - (now.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
   let nextD = null;
   
+  const skips = skipDates || [];
   for(let d of p) {
       if(!d) continue;
       let dStr = new Date(d.getTime() - (d.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+      if (skips.includes(dStr)) continue;
       if (dStr >= todayStr) {
           if(!nextD || dStr < nextD.toISOString().split('T')[0]) nextD = d;
       }
@@ -524,7 +526,7 @@ async function loadShows() {
   if (!error && data) {
     allShows = data.map(e => {
         if (e.event_type === 'recurring' && e.recurrence) {
-            let n = computeNextDate(e.recurrence);
+            let n = computeNextDate(e.recurrence, e.skip_dates);
             if (n) {
                 e.start_date = n;
                 e.is_auto_calculated = true;
