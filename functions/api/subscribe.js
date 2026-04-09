@@ -27,6 +27,7 @@ export async function onRequestPost({ request, env }) {
         },
         body: JSON.stringify({
           email,
+          send_welcome_email: true,
           utm_source: 'website',
           utm_medium: 'organic',
         }),
