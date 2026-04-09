@@ -8,7 +8,6 @@
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-48ZSPW63VV"></script>
-<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
 <script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -110,11 +109,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,240,232,
 .about-contact{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow)}
 .about-contact h3{font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;margin-bottom:16px}
 .about-contact-item{display:flex;align-items:center;gap:12px;margin-bottom:12px;font-size:14px;color:var(--text-light)}.about-contact-item svg{width:18px;height:18px;stroke:var(--ocean);flex-shrink:0}
-.newsletter{background:var(--night);border-radius:20px;padding:32px 24px 20px;text-align:center;margin:40px auto;max-width:600px}
-.newsletter h2{font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;color:var(--white);margin-bottom:6px}
-.newsletter p{color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:0}
-.newsletter .beehiiv-embed{display:block !important;width:100% !important;max-width:440px;margin:0 auto !important;border:none;background:transparent}
-@media(max-width:768px){.newsletter{padding:24px 16px 16px;max-width:100%;border-radius:16px}.newsletter h2{font-size:20px}.newsletter .beehiiv-embed{max-width:100%;min-height:100px !important;height:auto !important}}
+.newsletter{background:var(--night);border-radius:20px;padding:60px 40px;text-align:center;margin:40px auto;max-width:1100px}
+.newsletter h2{font-family:'Outfit',sans-serif;font-size:32px;font-weight:700;color:var(--white);margin-bottom:8px}
+.newsletter p{color:rgba(255,255,255,0.6);font-size:16px;margin-bottom:24px}
+.newsletter-form{display:flex;gap:8px;max-width:440px;margin:0 auto}
+.newsletter-input{flex:1;padding:14px 16px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;background:rgba(255,255,255,0.08);color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;outline:none}
+.newsletter-input::placeholder{color:rgba(255,255,255,0.35)}.newsletter-input:focus{border-color:var(--ocean-light);background:rgba(255,255,255,0.12)}
+.newsletter-btn{background:var(--lava);color:var(--white);border:none;padding:14px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background 0.2s}.newsletter-btn:hover{background:var(--lava-light)}
+.newsletter-success{color:var(--ocean-light);font-size:14px;margin-top:12px;display:none}
 .month-group{margin-bottom:24px}
 .month-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:14px 20px;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);transition:background 0.2s}.month-header:hover{background:var(--ocean-pale)}
 .month-header-title{font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:var(--night);display:flex;align-items:center;gap:12px}
@@ -171,7 +173,12 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06)
   <div class="newsletter" style="margin-top:-20px;">
     <h2>Never Miss a Show</h2>
     <p>Get show announcements and community updates delivered to your inbox.</p>
-    <iframe src="https://subscribe-forms.beehiiv.com/7867d257-6c77-4741-a4b8-7c9e3414158f" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no"></iframe>
+    <form class="newsletter-form" id="newsletterForm">
+      <input class="newsletter-input" type="email" placeholder="your@email.com" required id="newsletterEmail">
+      <button type="submit" class="newsletter-btn" id="newsletterBtn">Subscribe</button>
+    </form>
+    <div class="newsletter-success" id="newsletterSuccess">You're in! Mahalo for subscribing.</div>
+    <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:12px;">We'll never share your email. Unsubscribe anytime.</p>
   </div>
 </div>
 <section class="section" id="upcoming">
@@ -388,7 +395,7 @@ emailjs.init('L5pQdc_5n7HvBApOn');
 function sendNotification(params){emailjs.send('service_mlb6yck','template_zj8ubcp',params).catch(err=>console.log('EmailJS:',err));}
 document.getElementById('submitForm').onsubmit=async(e)=>{e.preventDefault();const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='Submitting...';const fd=new FormData(e.target);const payload=Object.fromEntries(fd.entries());const{error}=await sb.from('submissions').insert([payload]);btn.disabled=false;btn.textContent='Submit Event for Review';if(error){alert('Something went wrong. Please try again.');console.error(error);return;}sendNotification({event_name:payload.event_name||'',organizer_name:payload.organizer_name||'',organizer_email:payload.organizer_email||'',organizer_instagram:payload.organizer_instagram||'',event_type:payload.event_type||'',start_date:payload.start_date||'',venue:payload.venue||'',island:payload.island||'',description:payload.description||''});e.target.style.display='none';document.getElementById('submitSuccess').style.display='block';};
 function toggleRecurrence(){document.getElementById('recurrenceGroup').style.display=document.getElementById('eventType').value==='recurring'?'block':'none';}
-
+document.getElementById('newsletterForm').onsubmit=async(e)=>{e.preventDefault();const btn=document.getElementById('newsletterBtn');const email=document.getElementById('newsletterEmail').value;btn.disabled=true;btn.textContent='Subscribing...';try{const res=await fetch('https://api.beehiiv.com/v2/publications/pub_1da82bcf-32f7-41e8-855a-b1a0c4c41e0e/subscriptions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer Ll60y7Z2ZEA8w5V9tXn3ZPsrFVSHyhHpUJcIc1UZiz3OlACZdT9cqmj8AS3pS1HL'},body:JSON.stringify({email:email,utm_source:'website',utm_medium:'organic'})});btn.disabled=false;btn.textContent='Subscribe';if(res.ok||res.status===409){document.getElementById('newsletterSuccess').style.display='block';document.getElementById('newsletterForm').style.display='none';if(res.status===409)document.getElementById('newsletterSuccess').textContent="You're already subscribed!";}else{alert('Something went wrong. Please try again.');}}catch(err){btn.disabled=false;btn.textContent='Subscribe';alert('Something went wrong. Please try again.');console.error(err);}};
 document.getElementById('partnerForm').onsubmit=async(e)=>{e.preventDefault();const btn=document.getElementById('partnerBtn');btn.disabled=true;btn.textContent='Sending...';const fd=new FormData(e.target);const payload=Object.fromEntries(fd.entries());const{error}=await sb.from('partner_inquiries').insert([payload]);btn.disabled=false;btn.textContent='Send Inquiry';if(error){alert('Something went wrong. Please try again.');console.error(error);return;}sendNotification({event_name:'Partner Inquiry — '+(payload.interest||''),organizer_name:payload.name||'',organizer_email:payload.email||'',organizer_instagram:'',event_type:payload.interest||'',start_date:'',venue:payload.business||'',island:'',description:payload.message||''});e.target.style.display='none';document.getElementById('partnerSuccess').style.display='block';};
 document.querySelectorAll('.faq-q').forEach(q=>{q.onclick=()=>q.parentElement.classList.toggle('open');});
 loadEvents();
