@@ -251,7 +251,11 @@ async function loadData() {
   // Sidebar
   let orgHtml = '';
   if (event.organizer && event.organizer.trim() !== '' && event.organizer.toLowerCase() !== 'n/a') {
-    orgHtml += esc(event.organizer);
+    if (event.website_url && event.website_url.trim() !== '') {
+      orgHtml += `<a href="${esc(event.website_url)}" style="color:var(--ocean);font-weight:600;text-decoration:none;">${esc(event.organizer)}</a>`;
+    } else {
+      orgHtml += esc(event.organizer);
+    }
   }
   if (event.instagram && event.instagram.trim() !== '') {
     const handle = event.instagram.replace('@','');
