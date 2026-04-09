@@ -14,13 +14,16 @@ export async function onRequestPost({ request, env }) {
       });
     }
 
+    const pubId = env.BEEHIIV_PUB_ID || 'pub_1da82bcf-32f7-41e8-855a-b1a0c4c41e0e';
+    const apiKey = env.BEEHIIV_API_KEY || 'Ll60y7Z2ZEA8w5V9tXn3ZPsrFVSHyhHpUJcIc1UZiz3OlACZdT9cqmj8AS3pS1HL';
+
     const res = await fetch(
-      `https://api.beehiiv.com/v2/publications/${env.BEEHIIV_PUB_ID}/subscriptions`,
+      `https://api.beehiiv.com/v2/publications/${pubId}/subscriptions`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${env.BEEHIIV_API_KEY}`,
+          'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
           email,
