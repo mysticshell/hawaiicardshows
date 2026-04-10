@@ -71,6 +71,16 @@ a.shop-card:hover .shop-card-name{color:var(--ocean)}
 .shop-card-tags{display:flex;gap:6px;flex-wrap:wrap}
 .shop-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;padding:3px 8px;border-radius:20px}
 .tag-tcg{background:#e8f0e9;color:#3d6643}.tag-sports{background:#e8ecf4;color:#2c4a7c}.tag-collectibles{background:#f0e8f4;color:#6a3d7c}.tag-tournaments{background:#fef3c7;color:#b45309}
+.shop-status{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:3px 10px;border-radius:20px;margin-bottom:8px}
+.shop-status-open{background:#e6f4ea;color:#1e7e34}
+.shop-status-closed{background:#f0f0f0;color:#999}
+.shop-status-vary{background:#fff8e1;color:#b8860b}
+.shop-status::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.shop-status-open::before{background:#1e7e34}
+.shop-status-closed::before{background:#ccc}
+.shop-status-vary::before{background:#b8860b}
+.shop-card.is-closed{opacity:0.75}
+.shop-card.is-closed:hover{opacity:1}
 .footer-cta{background:var(--night);padding:64px 24px;text-align:center}
 .footer-cta h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:28px;color:var(--white);margin-bottom:12px}
 .footer-cta p{color:rgba(255,255,255,0.6);font-size:16px;margin-bottom:28px;max-width:450px;margin-left:auto;margin-right:auto}
@@ -103,19 +113,19 @@ footer{background:var(--sand);padding:24px;text-align:center;font-size:13px;colo
 <!-- Island Stats -->
 <div class="island-stats">
   <div class="island-stat" onclick="document.querySelector('[data-value=oahu]').click()">
-    <div class="island-stat-num">9</div>
+    <div class="island-stat-num">16</div>
     <div class="island-stat-label">Oahu</div>
   </div>
   <div class="island-stat" onclick="document.querySelector('[data-value=big-island]').click()">
-    <div class="island-stat-num">2</div>
+    <div class="island-stat-num">4</div>
     <div class="island-stat-label">Big Island</div>
   </div>
   <div class="island-stat" onclick="document.querySelector('[data-value=maui]').click()">
-    <div class="island-stat-num">1</div>
+    <div class="island-stat-num">2</div>
     <div class="island-stat-label">Maui</div>
   </div>
   <div class="island-stat" onclick="document.querySelector('[data-value=kauai]').click()">
-    <div class="island-stat-num">1</div>
+    <div class="island-stat-num">2</div>
     <div class="island-stat-label">Kauai</div>
   </div>
 </div>
@@ -141,13 +151,21 @@ footer{background:var(--sand);padding:24px;text-align:center;font-size:13px;colo
       <button class="filter-btn" data-filter="category" data-value="tournaments" onclick="toggleFilter(this)">Tournaments</button>
     </div>
   </div>
-  <div class="filter-count" id="filterCount">Showing 13 shops</div>
+  <div class="filter-group">
+    <div class="filter-group-label">Status</div>
+    <div class="filter-row">
+      <button class="filter-btn active" data-filter="status" data-value="all" onclick="toggleFilter(this)">All</button>
+      <button class="filter-btn" data-filter="status" data-value="open" onclick="toggleFilter(this)">Open Now</button>
+    </div>
+  </div>
+  <div class="filter-count" id="filterCount">Showing 24 shops</div>
 </div>
 
 <div class="content-wrap">
   <div class="shops-grid" id="shopsGrid">
 
-    <a href="https://hawaiicardshows.com/shops/toylynx.html" class="shop-card has-logo" data-island="oahu" data-tags="tcg sports tournaments" style="order:-2;">
+    <!-- FEATURED: ToyLynx -->
+    <a href="https://hawaiicardshows.com/shops/toylynx.html" class="shop-card has-logo" data-island="oahu" data-tags="tcg sports tournaments" data-hours='{"0":[{"o":"11:00","c":"18:30"}],"1":[{"o":"11:00","c":"18:30"}],"2":[{"o":"11:00","c":"18:30"}],"3":[{"o":"11:00","c":"18:30"}],"4":[{"o":"11:00","c":"18:30"}],"5":[{"o":"10:00","c":"20:00"}],"6":[{"o":"10:00","c":"20:00"}]}'>
       <div class="shop-card-logo" style="background:#1a1008;">
         <img src="https://hawaiicardshows.com/shops/images/toylynx-logo.png" alt="ToyLynx logo" style="height:60px;width:auto;">
       </div>
@@ -159,7 +177,8 @@ footer{background:var(--sand);padding:24px;text-align:center;font-size:13px;colo
       </div>
     </a>
 
-    <a href="https://hawaiicardshows.com/shops/tcg-tavern.html" class="shop-card has-logo" data-island="oahu" data-tags="tcg sports tournaments" style="order:-1;">
+    <!-- FEATURED: TCG Tavern -->
+    <a href="https://hawaiicardshows.com/shops/tcg-tavern.html" class="shop-card has-logo" data-island="oahu" data-tags="tcg sports tournaments" data-hours='{"0":[{"o":"13:00","c":"24:00"}],"1":[{"o":"13:00","c":"24:00"}],"2":[{"o":"13:00","c":"24:00"}],"3":[{"o":"13:00","c":"24:00"}],"4":[{"o":"13:00","c":"24:00"}],"5":[{"o":"13:00","c":"24:00"}],"6":[{"o":"13:00","c":"24:00"}]}'>
       <div class="shop-card-logo" style="background:#0f0a1a;">
         <img src="https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/event-logos/tcg%20tavern%20logo.jpg" alt="TCG Tavern logo" style="height:60px;width:auto;border-radius:8px;">
       </div>
@@ -171,89 +190,163 @@ footer{background:var(--sand);padding:24px;text-align:center;font-size:13px;colo
       </div>
     </a>
 
-    <div class="shop-card shop-card-soon" data-island="oahu" data-tags="tcg sports tournaments">
-      <div class="shop-card-island">Oahu · Honolulu</div>
-      <div class="shop-card-name">Aloha Card Shop — Ward</div>
-      <div class="shop-card-address">320 Ward Ave, Ste 200, Honolulu, HI 96814</div>
+    <!-- OAHU -->
+    <a href="https://hawaiicardshows.com/shops/aloha-card-shop.html" class="shop-card" data-island="oahu" data-tags="tcg sports tournaments" data-hours='{"1":[{"o":"11:00","c":"19:00"}],"2":[{"o":"11:00","c":"19:00"}],"3":[{"o":"11:00","c":"19:00"}],"4":[{"o":"11:00","c":"19:00"}],"5":[{"o":"11:00","c":"19:00"}],"6":[{"o":"11:00","c":"19:00"}]}'>
+      <div class="shop-card-island">Oahu · 3 Locations</div>
+      <div class="shop-card-name">Aloha Card Shop</div>
+      <div class="shop-card-address">Ward · Windward Mall · Kahala Mall</div>
       <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-sports">Sports</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
-    </div>
+    </a>
 
-    <div class="shop-card shop-card-soon" data-island="oahu" data-tags="tcg sports">
-      <div class="shop-card-island">Oahu · Kaneohe</div>
-      <div class="shop-card-name">Aloha Card Shop — Windward</div>
-      <div class="shop-card-address">Windward Mall, Kaneohe, HI</div>
-      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-sports">Sports</span></div>
-    </div>
-
-    <div class="shop-card shop-card-soon" data-island="oahu" data-tags="tcg sports">
-      <div class="shop-card-island">Oahu · Kahala</div>
-      <div class="shop-card-name">Aloha Card Shop — Kahala</div>
-      <div class="shop-card-address">4211 Waialae Ave, Honolulu, HI 96816 (Kahala Mall)</div>
-      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-sports">Sports</span></div>
-    </div>
-
-    <div class="shop-card shop-card-soon" data-island="oahu" data-tags="tcg sports collectibles tournaments">
+    <a href="https://hawaiicardshows.com/shops/808-showcase.html" class="shop-card" data-island="oahu" data-tags="tcg sports collectibles tournaments" data-hours='{"0":[{"o":"10:00","c":"18:00"}],"1":[{"o":"10:00","c":"20:00"}],"2":[{"o":"10:00","c":"20:00"}],"3":[{"o":"10:00","c":"20:00"}],"4":[{"o":"10:00","c":"20:00"}],"5":[{"o":"10:00","c":"20:00"}],"6":[{"o":"10:00","c":"20:00"}]}'>
       <div class="shop-card-island">Oahu · Aiea (Pearlridge)</div>
       <div class="shop-card-name">808 Showcase</div>
       <div class="shop-card-address">98-1005 Moanalua Rd, Ste 2207, Aiea, HI 96701</div>
       <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-sports">Sports</span><span class="shop-tag tag-collectibles">Collectibles</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
-    </div>
+    </a>
 
-    <div class="shop-card shop-card-soon" data-island="oahu" data-tags="tcg collectibles tournaments">
+    <a href="https://hawaiicardshows.com/shops/box-jellyz.html" class="shop-card" data-island="oahu" data-tags="tcg collectibles tournaments" data-hours='{"0":[{"o":"12:00","c":"20:00"}],"1":[{"o":"12:00","c":"20:00"}],"2":[{"o":"12:00","c":"20:00"}],"3":[{"o":"12:00","c":"20:00"}],"4":[{"o":"12:00","c":"20:00"}],"5":[{"o":"12:00","c":"20:00"}],"6":[{"o":"12:00","c":"20:00"}]}'>
       <div class="shop-card-island">Oahu · Aiea</div>
       <div class="shop-card-name">Box Jellyz</div>
       <div class="shop-card-address">98-104 Kanuku St, Ste 102, Aiea, HI 96701</div>
       <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-collectibles">Collectibles</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
-    </div>
+    </a>
 
-    <div class="shop-card shop-card-soon" data-island="oahu" data-tags="sports tcg">
+    <a href="https://hawaiicardshows.com/shops/best-of-the-best.html" class="shop-card" data-island="oahu" data-tags="sports tcg" data-hours='{"0":[{"o":"10:30","c":"18:00"}],"1":[{"o":"11:00","c":"18:00"}],"2":[{"o":"11:00","c":"18:00"}],"3":[{"o":"11:00","c":"18:00"}],"4":[{"o":"11:00","c":"18:00"}],"5":[{"o":"11:00","c":"18:00"}]}'>
       <div class="shop-card-island">Oahu · Pearl City</div>
       <div class="shop-card-name">Best of the Best in Sportscards</div>
       <div class="shop-card-address">98-1268 Ka'ahumanu St, Ste 104, Pearl City, HI 96782</div>
       <div class="shop-card-tags"><span class="shop-tag tag-sports">Sports</span><span class="shop-tag tag-tcg">TCG</span></div>
-    </div>
+    </a>
 
-    <div class="shop-card shop-card-soon" data-island="oahu" data-tags="tcg tournaments">
+    <a href="https://hawaiicardshows.com/shops/iwingames.html" class="shop-card" data-island="oahu" data-tags="tcg tournaments" data-hours='{"0":[{"o":"13:00","c":"27:00"}],"1":[{"o":"17:30","c":"24:00"}],"2":[{"o":"17:30","c":"24:00"}],"4":[{"o":"17:30","c":"24:00"}],"5":[{"o":"17:30","c":"29:00"}],"6":[{"o":"17:00","c":"27:00"}]}'>
       <div class="shop-card-island">Oahu · Waipahu</div>
       <div class="shop-card-name">iWinGames</div>
       <div class="shop-card-address">94-1144 Ka Uka Blvd, Ste 12, Waipahu, HI 96797</div>
       <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
-    </div>
+    </a>
 
-    <div class="shop-card shop-card-soon" data-island="oahu" data-tags="tcg collectibles">
+    <a href="https://hawaiicardshows.com/shops/space-62.html" class="shop-card" data-island="oahu" data-tags="tcg collectibles">
       <div class="shop-card-island">Oahu · Ala Moana</div>
       <div class="shop-card-name">Space 62</div>
-      <div class="shop-card-address">Ala Moana Center, Honolulu, HI</div>
+      <div class="shop-card-address">Ala Moana Center, 3rd Floor, Honolulu, HI</div>
       <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-collectibles">Collectibles</span></div>
-    </div>
+    </a>
 
-    <div class="shop-card shop-card-soon" data-island="big-island" data-tags="tcg tournaments">
+    <a href="https://hawaiicardshows.com/shops/da-planet.html" class="shop-card" data-island="oahu" data-tags="tcg tournaments" data-hours='{"1":[{"o":"15:00","c":"20:00"}],"2":[{"o":"15:00","c":"20:00"}],"3":[{"o":"15:00","c":"20:00"}],"4":[{"o":"15:00","c":"20:00"}],"5":[{"o":"15:00","c":"20:00"}],"6":[{"o":"13:00","c":"18:00"}]}'>
+      <div class="shop-card-island">Oahu · Honolulu</div>
+      <div class="shop-card-name">Da-Planet</div>
+      <div class="shop-card-address">1210 Artesian St, Ste 102, Honolulu, HI 96826</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
+    </a>
+
+    <a href="https://hawaiicardshows.com/shops/paulas-sports-cards.html" class="shop-card" data-island="oahu" data-tags="sports tcg" data-hours='{"2":[{"o":"12:00","c":"17:30"}],"3":[{"o":"12:00","c":"17:30"}],"4":[{"o":"12:00","c":"17:30"}],"5":[{"o":"12:00","c":"17:30"}],"6":[{"o":"12:00","c":"17:30"}]}'>
+      <div class="shop-card-island">Oahu · Honolulu</div>
+      <div class="shop-card-name">Paula's Sports Cards</div>
+      <div class="shop-card-address">1231 Wilder Ave, Suite 206, Honolulu, HI 96822</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-sports">Sports</span><span class="shop-tag tag-tcg">TCG</span></div>
+    </a>
+
+    <a href="https://hawaiicardshows.com/shops/other-realms.html" class="shop-card" data-island="oahu" data-tags="tcg tournaments collectibles" data-hours='{"0":[{"o":"10:00","c":"18:00"}],"1":[{"o":"10:00","c":"18:00"}],"2":[{"o":"10:00","c":"20:00"}],"3":[{"o":"10:00","c":"20:00"}],"4":[{"o":"10:00","c":"20:00"}],"5":[{"o":"10:00","c":"20:00"}],"6":[{"o":"10:00","c":"20:00"}]}'>
+      <div class="shop-card-island">Oahu · Honolulu</div>
+      <div class="shop-card-name">Other Realms</div>
+      <div class="shop-card-address">1130 N Nimitz Hwy, Ste C-140, Honolulu, HI 96817</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-tournaments">Tournaments</span><span class="shop-tag tag-collectibles">Collectibles</span></div>
+    </a>
+
+    <a href="https://hawaiicardshows.com/shops/evolving-realms.html" class="shop-card" data-island="oahu" data-tags="tcg collectibles" data-hours='{"0":[{"o":"12:00","c":"18:00"}],"1":[{"o":"12:00","c":"18:00"}],"2":[{"o":"12:00","c":"18:00"}],"3":[{"o":"12:00","c":"18:00"}],"5":[{"o":"12:00","c":"18:00"}],"6":[{"o":"12:00","c":"18:00"}]}'>
+      <div class="shop-card-island">Oahu · Kaimuki</div>
+      <div class="shop-card-name">Evolving Realms</div>
+      <div class="shop-card-address">1132 Koko Head Ave, Ste B, Honolulu, HI 96816</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-collectibles">Collectibles</span></div>
+    </a>
+
+    <a href="https://hawaiicardshows.com/shops/from-the-heart.html" class="shop-card" data-island="oahu" data-tags="tcg sports collectibles" data-hours='{"0":[{"o":"10:00","c":"18:00"}],"1":[{"o":"10:00","c":"18:00"}],"2":[{"o":"10:00","c":"18:00"}],"3":[{"o":"10:00","c":"18:00"}],"4":[{"o":"10:00","c":"18:00"}],"5":[{"o":"10:00","c":"18:00"}],"6":[{"o":"10:00","c":"18:00"}]}'>
+      <div class="shop-card-island">Oahu · Honolulu</div>
+      <div class="shop-card-name">From the Heart</div>
+      <div class="shop-card-address">1199 Dillingham Blvd, Ste C-103, Honolulu, HI 96817</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-sports">Sports</span><span class="shop-tag tag-collectibles">Collectibles</span></div>
+    </a>
+
+    <a href="https://hawaiicardshows.com/shops/dragons-lair.html" class="shop-card" data-island="oahu" data-tags="tcg collectibles" data-hours='{"0":[{"o":"10:00","c":"19:00"}],"1":[{"o":"10:00","c":"19:00"}],"2":[{"o":"10:00","c":"19:00"}],"3":[{"o":"10:00","c":"19:00"}],"4":[{"o":"10:00","c":"19:00"}],"5":[{"o":"10:00","c":"20:00"}],"6":[{"o":"10:00","c":"19:00"}]}'>
+      <div class="shop-card-island">Oahu · Mililani</div>
+      <div class="shop-card-name">Dragon's Lair</div>
+      <div class="shop-card-address">95-390 Kuahelani Ave, Unit 3B, Mililani, HI 96789</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-collectibles">Collectibles</span></div>
+    </a>
+
+    <a href="https://hawaiicardshows.com/shops/windward-collectibles.html" class="shop-card" data-island="oahu" data-tags="sports tcg collectibles" data-hours='{"0":[{"o":"10:00","c":"18:00"}],"1":[{"o":"10:00","c":"19:00"}],"2":[{"o":"10:00","c":"19:00"}],"3":[{"o":"10:00","c":"19:00"}],"4":[{"o":"10:00","c":"19:00"}],"5":[{"o":"10:00","c":"19:00"}],"6":[{"o":"10:00","c":"18:00"}]}'>
+      <div class="shop-card-island">Oahu · Kaneohe</div>
+      <div class="shop-card-name">Windward Collectibles</div>
+      <div class="shop-card-address">45-480 Kaneohe Bay Dr, Ste B11, Kaneohe, HI 96744</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-sports">Sports</span><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-collectibles">Collectibles</span></div>
+    </a>
+
+    <a href="https://hawaiicardshows.com/shops/armchair-adventurer.html" class="shop-card" data-island="oahu" data-tags="tcg tournaments" data-hours='{"0":[{"o":"11:00","c":"22:00"}],"1":[{"o":"11:00","c":"22:00"}],"2":[{"o":"11:00","c":"22:00"}],"3":[{"o":"11:00","c":"22:00"}],"4":[{"o":"11:00","c":"22:00"}],"5":[{"o":"11:00","c":"22:00"}],"6":[{"o":"11:00","c":"22:00"}]}'>
+      <div class="shop-card-island">Oahu · Honolulu</div>
+      <div class="shop-card-name">Armchair Adventurer</div>
+      <div class="shop-card-address">650 Iwilei Rd, Ste 160, Honolulu, HI 96817</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
+    </a>
+
+    <!-- BIG ISLAND -->
+    <a href="https://hawaiicardshows.com/shops/tcg-hawaii.html" class="shop-card" data-island="big-island" data-tags="tcg sports tournaments" data-hours='{"0":[{"o":"10:00","c":"22:00"}],"1":[{"o":"10:00","c":"22:00"}],"2":[{"o":"10:00","c":"22:00"}],"3":[{"o":"10:00","c":"22:00"}],"4":[{"o":"10:00","c":"22:00"}],"5":[{"o":"10:00","c":"22:00"}],"6":[{"o":"10:00","c":"22:00"}]}'>
       <div class="shop-card-island">Big Island · Hilo</div>
       <div class="shop-card-name">TCG Hawaii</div>
-      <div class="shop-card-address">315 E Kawili St, Unit 106, Hilo, HI</div>
-      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
-    </div>
+      <div class="shop-card-address">315 E Kawili St, Unit 106, Hilo, HI 96720</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-sports">Sports</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
+    </a>
 
-    <div class="shop-card shop-card-soon" data-island="big-island" data-tags="tcg collectibles tournaments">
+    <a href="https://hawaiicardshows.com/shops/4-pillars.html" class="shop-card" data-island="big-island" data-tags="tcg collectibles tournaments" data-hours='{"0":[{"o":"17:00","c":"24:00"}],"2":[{"o":"17:00","c":"24:00"}],"3":[{"o":"17:00","c":"24:00"}],"4":[{"o":"17:00","c":"24:00"}],"5":[{"o":"17:00","c":"24:00"}],"6":[{"o":"17:00","c":"24:00"}]}'>
       <div class="shop-card-island">Big Island · Kailua-Kona</div>
       <div class="shop-card-name">4 Pillars Hobby Shop</div>
       <div class="shop-card-address">75-5706 Kuakini Hwy, Ste 114, Kailua-Kona, HI 96740</div>
       <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-collectibles">Collectibles</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
-    </div>
+    </a>
 
-    <div class="shop-card shop-card-soon" data-island="maui" data-tags="sports tcg">
+    <a href="https://hawaiicardshows.com/shops/gam3-escape.html" class="shop-card" data-island="big-island" data-tags="tcg tournaments" data-hours='{"0":[{"o":"12:00","c":"18:00"}],"1":[{"o":"15:00","c":"21:00"}],"2":[{"o":"15:00","c":"21:00"}],"3":[{"o":"15:00","c":"21:00"}],"4":[{"o":"15:00","c":"21:00"}],"5":[{"o":"15:00","c":"22:00"}],"6":[{"o":"12:00","c":"22:00"}]}'>
+      <div class="shop-card-island">Big Island · Hilo</div>
+      <div class="shop-card-name">Gam3 Escape</div>
+      <div class="shop-card-address">57 Shipman St, Hilo, HI 96720</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
+    </a>
+
+    <a href="https://hawaiicardshows.com/shops/slow-your-roll.html" class="shop-card" data-island="big-island" data-tags="tcg tournaments" data-hours='{"0":[{"o":"11:00","c":"21:00"}],"1":[{"o":"11:00","c":"21:00"}],"2":[{"o":"11:00","c":"21:00"}],"3":[{"o":"11:00","c":"21:00"}],"4":[{"o":"11:00","c":"21:00"}],"5":[{"o":"11:00","c":"21:00"}],"6":[{"o":"11:00","c":"21:00"}]}'>
+      <div class="shop-card-island">Big Island · Hilo</div>
+      <div class="shop-card-name">Slow Your Roll</div>
+      <div class="shop-card-address">190 Keawe St, Suite 21, Hilo, HI 96720</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
+    </a>
+
+    <!-- MAUI -->
+    <a href="https://hawaiicardshows.com/shops/yocards.html" class="shop-card" data-island="maui" data-tags="sports tcg">
       <div class="shop-card-island">Maui · Wailuku</div>
       <div class="shop-card-name">yoCards</div>
       <div class="shop-card-address">840 Alua St, Unit 204, Wailuku, HI 96793</div>
       <div class="shop-card-tags"><span class="shop-tag tag-sports">Sports</span><span class="shop-tag tag-tcg">TCG</span></div>
-    </div>
+    </a>
 
-    <div class="shop-card shop-card-soon" data-island="kauai" data-tags="tcg collectibles">
+    <a href="https://hawaiicardshows.com/shops/maui-sports-cards.html" class="shop-card" data-island="maui" data-tags="sports tcg" data-hours='{"0":[{"o":"11:00","c":"17:00"}],"1":[{"o":"11:00","c":"18:00"}],"2":[{"o":"11:00","c":"18:00"}],"4":[{"o":"11:00","c":"18:00"}],"5":[{"o":"11:00","c":"18:00"}],"6":[{"o":"11:00","c":"18:00"}]}'>
+      <div class="shop-card-island">Maui · Kahului</div>
+      <div class="shop-card-name">Maui Sports Cards</div>
+      <div class="shop-card-address">340 Hana Hwy, Suite C, Kahului, HI 96732</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-sports">Sports</span><span class="shop-tag tag-tcg">TCG</span></div>
+    </a>
+
+    <!-- KAUAI -->
+    <a href="https://hawaiicardshows.com/shops/bubbahs-toy-box.html" class="shop-card" data-island="kauai" data-tags="tcg collectibles" data-hours='{"0":[{"o":"11:00","c":"18:00"}],"1":[{"o":"11:00","c":"18:00"}],"2":[{"o":"11:00","c":"18:00"}],"3":[{"o":"11:00","c":"18:00"}],"4":[{"o":"11:00","c":"18:00"}],"5":[{"o":"11:00","c":"21:00"}],"6":[{"o":"11:00","c":"18:00"}]}'>
       <div class="shop-card-island">Kauai · Lihue</div>
       <div class="shop-card-name">Bubbah's Toy Box</div>
-      <div class="shop-card-address">3-2600 Kaumualii Hwy, Lihue, HI 96766 (Kukui Grove Center)</div>
+      <div class="shop-card-address">3-2600 Kaumualii Hwy, Lihue, HI 96766</div>
       <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-collectibles">Collectibles</span></div>
-    </div>
+    </a>
+
+    <a href="https://hawaiicardshows.com/shops/crows-nest.html" class="shop-card" data-island="kauai" data-tags="tcg tournaments" data-hours='{"0":[{"o":"12:00","c":"16:00"}],"1":[{"o":"14:00","c":"20:00"}],"2":[{"o":"14:00","c":"20:00"}],"3":[{"o":"12:00","c":"21:00"}],"5":[{"o":"12:00","c":"22:00"}],"6":[{"o":"12:00","c":"22:00"}]}'>
+      <div class="shop-card-island">Kauai · Lihue</div>
+      <div class="shop-card-name">Crow's Nest</div>
+      <div class="shop-card-address">3-2600 Kaumualii Hwy, Ste 1640, Lihue, HI 96766</div>
+      <div class="shop-card-tags"><span class="shop-tag tag-tcg">TCG</span><span class="shop-tag tag-tournaments">Tournaments</span></div>
+    </a>
 
   </div>
   <div class="no-results" id="noResults">No shops match that filter. Try a different combination.</div>
@@ -274,29 +367,135 @@ footer{background:var(--sand);padding:24px;text-align:center;font-size:13px;colo
 </footer>
 
 <script>
-let activeIsland='all',activeCategory='all';
+let activeIsland='all',activeCategory='all',activeStatus='all';
+
+function getHawaiiTime(){
+  const now=new Date();
+  const fmt=new Intl.DateTimeFormat('en-US',{timeZone:'Pacific/Honolulu',hour12:false,weekday:'short',hour:'2-digit',minute:'2-digit'});
+  const parts={};
+  fmt.formatToParts(now).forEach(p=>{parts[p.type]=p.value;});
+  const dayMap={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+  const day=dayMap[parts.weekday];
+  const hour=parseInt(parts.hour,10);
+  const minute=parseInt(parts.minute,10);
+  return{day,totalMinutes:hour*60+minute};
+}
+
+function parseTime(str){const[h,m]=str.split(':').map(Number);return h*60+m;}
+
+function formatTime(minutes){
+  let h=Math.floor(minutes/60);const m=minutes%60;
+  const ampm=h>=12?'PM':'AM';
+  if(h>12)h-=12;if(h===0)h=12;
+  return m===0?h+' '+ampm:h+':'+String(m).padStart(2,'0')+' '+ampm;
+}
+
+function checkOpen(hoursJson){
+  if(!hoursJson)return{status:'vary',label:'Hours vary'};
+  let hours;
+  try{hours=JSON.parse(hoursJson);}catch{return{status:'vary',label:'Hours vary'};}
+  const{day,totalMinutes}=getHawaiiTime();
+  const todaySlots=hours[String(day)]||[];
+  for(const slot of todaySlots){
+    const openMin=parseTime(slot.o);const closeMin=parseTime(slot.c);
+    if(totalMinutes>=openMin&&totalMinutes<closeMin)return{status:'open',label:'Open'};
+  }
+  const yesterday=(day+6)%7;
+  const yesterdaySlots=hours[String(yesterday)]||[];
+  for(const slot of yesterdaySlots){
+    const closeMin=parseTime(slot.c);
+    if(closeMin>1440&&totalMinutes<(closeMin-1440))return{status:'open',label:'Open'};
+  }
+  return{status:'closed',label:getNextOpenLabel(hours,day,totalMinutes)};
+}
+
+function getNextOpenLabel(hours,currentDay,currentMinutes){
+  const todaySlots=hours[String(currentDay)]||[];
+  for(const slot of todaySlots){
+    const openMin=parseTime(slot.o);
+    if(openMin>currentMinutes)return'Opens '+formatTime(openMin);
+  }
+  for(let offset=1;offset<=7;offset++){
+    const checkDay=(currentDay+offset)%7;
+    const slots=hours[String(checkDay)]||[];
+    if(slots.length>0){
+      const openMin=parseTime(slots[0].o);
+      if(offset===1)return'Opens tomorrow '+formatTime(openMin);
+      const dayNames=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      return'Opens '+dayNames[checkDay]+' '+formatTime(openMin);
+    }
+  }
+  return'Closed';
+}
+
+function updateStatuses(){
+  document.querySelectorAll('.shop-card').forEach(card=>{
+    const hoursJson=card.getAttribute('data-hours');
+    const{status,label}=checkOpen(hoursJson);
+    card.dataset.status=status;
+    card.classList.toggle('is-open',status==='open');
+    card.classList.toggle('is-closed',status==='closed');
+    const body=card.querySelector('.shop-card-body')||card;
+    let badge=body.querySelector('.shop-status');
+    if(!badge){
+      badge=document.createElement('span');
+      badge.className='shop-status';
+      const island=body.querySelector('.shop-card-island');
+      if(island&&island.nextSibling)island.parentNode.insertBefore(badge,island.nextSibling);
+      else body.prepend(badge);
+    }
+    badge.className='shop-status shop-status-'+status;
+    badge.textContent=label;
+  });
+  sortCards();
+}
+
+function sortCards(){
+  const grid=document.getElementById('shopsGrid');
+  const cards=Array.from(grid.querySelectorAll('.shop-card'));
+  cards.sort((a,b)=>{
+    const aFeatured=a.tagName==='A'&&a.classList.contains('has-logo');
+    const bFeatured=b.tagName==='A'&&b.classList.contains('has-logo');
+    if(aFeatured&&!bFeatured)return-1;
+    if(!aFeatured&&bFeatured)return 1;
+    if(aFeatured&&bFeatured)return(parseInt(a.style.order)||0)-(parseInt(b.style.order)||0);
+    const statusOrder={open:0,vary:1,closed:2};
+    const aStatus=statusOrder[a.dataset.status]??1;
+    const bStatus=statusOrder[b.dataset.status]??1;
+    return aStatus-bStatus;
+  });
+  cards.forEach(card=>grid.appendChild(card));
+}
+
 function toggleFilter(btn){
   const row=btn.parentElement;
   row.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   if(btn.dataset.filter==='island')activeIsland=btn.dataset.value;
   if(btn.dataset.filter==='category')activeCategory=btn.dataset.value;
+  if(btn.dataset.filter==='status')activeStatus=btn.dataset.value;
   applyFilters();
 }
+
 function applyFilters(){
   const cards=document.querySelectorAll('.shop-card');
   let visible=0;
   cards.forEach(card=>{
     const island=card.dataset.island;
     const tags=card.dataset.tags;
+    const status=card.dataset.status;
     const matchIsland=activeIsland==='all'||island===activeIsland;
     const matchCategory=activeCategory==='all'||tags.includes(activeCategory);
-    if(matchIsland&&matchCategory){card.classList.remove('hidden');visible++;}
+    const matchStatus=activeStatus==='all'||status===activeStatus;
+    if(matchIsland&&matchCategory&&matchStatus){card.classList.remove('hidden');visible++;}
     else{card.classList.add('hidden');}
   });
   document.getElementById('filterCount').textContent='Showing '+visible+' shop'+(visible!==1?'s':'');
   document.getElementById('noResults').style.display=visible===0?'block':'none';
 }
+
+updateStatuses();
+setInterval(updateStatuses,60000);
 </script>
 </body>
 </html>
