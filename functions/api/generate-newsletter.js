@@ -1,13 +1,18 @@
 // Weekly newsletter generator for Hawaii Card Shows.
-// Queries Supabase for upcoming events and creates a DRAFT post in Beehiiv.
-// Never auto-publishes — Tyler reviews and sends from Beehiiv.
+// Queries Supabase for upcoming events and creates a post in Beehiiv.
+//
+// Default behavior: creates a DRAFT post for manual review.
+// With confirm=1 and send_at: creates a CONFIRMED post scheduled to send at send_at.
 //
 // Query params:
-//   secret  (required)  — must match NEWSLETTER_SECRET env var
-//   days    (optional)  — window size, default 7, max 30
-//   preview (optional)  — ?preview=1 returns rendered HTML instead of creating draft
-//   dry     (optional)  — ?dry=1 returns JSON summary without hitting Beehiiv
-//   title   (optional)  — override the post title / subject
+//   secret   (required)  — must match NEWSLETTER_SECRET env var
+//   days     (optional)  — window size, default 7, max 30
+//   preview  (optional)  — ?preview=1 returns rendered HTML instead of creating draft
+//   dry      (optional)  — ?dry=1 returns JSON summary without hitting Beehiiv
+//   title    (optional)  — override the post title / subject
+//   confirm  (optional)  — ?confirm=1 publishes as "confirmed" (auto-send) instead of draft
+//   send_at  (optional)  — ISO 8601 timestamp for Beehiiv to schedule delivery
+//                          (only used with confirm=1; defaults to "next Monday 9 AM HST" if omitted)
 
 const BRAND = {
   green: '#1a6b5a',
@@ -31,6 +36,8 @@ export async function onRequestGet({ request, env }) {
     const days = Math.max(1, Math.min(30, Number(url.searchParams.get('days')) || 7));
     const preview = url.searchParams.get('preview') === '1';
     const dry = url.searchParams.get('dry') === '1';
+    const confirm = url.searchParams.get('confirm') === '1';
+    const sendAtParam = url.searchParams.get('send_at');
 
     // --- Fetch events ---
     const events = await fetchEvents(env);
@@ -70,21 +77,59 @@ export async function onRequestGet({ request, env }) {
       });
     }
 
-    // --- Create Beehiiv draft ---
-    const { postId, editUrl } = await createBeehiivDraft(env, { title: subject, subject, previewText, html });
+    // --- Safety: if confirm=1 requested but no events, fall back to draft ---
+    // Don't auto-send an empty newsletter.
+    const safeConfirm = confirm && totalCount > 0;
+    const fellBackToDraft = confirm && !safeConfirm;
+
+    // --- Resolve send_at: explicit param, or default to next Monday 9 AM HST ---
+    let sendAt = null;
+    if (safeConfirm) {
+      sendAt = sendAtParam || getNextMonday9amHst();
+    }
+
+    // --- Create Beehiiv post (draft or confirmed) ---
+    const { postId, editUrl, status } = await createBeehiivPost(env, {
+      title: subject,
+      subject,
+      previewText,
+      html,
+      confirmed: safeConfirm,
+      sendAt,
+    });
 
     return json({
       ok: true,
       postId,
       editUrl,
+      status,
       weekLabel,
       counts: { oneTime: oneTime.length, recurring: recurring.length, total: totalCount },
       htmlBytes: html.length,
+      scheduled: safeConfirm ? sendAt : null,
+      fellBackToDraft: fellBackToDraft || undefined,
+      reason: fellBackToDraft ? 'No events in window — did not auto-send' : undefined,
     });
   } catch (err) {
     console.error('generate-newsletter error:', err);
     return json({ error: err.message || 'Server error' }, 500);
   }
+}
+
+// Compute next Monday 9:00 AM HST as an ISO 8601 string with -10:00 offset.
+// Hawaii doesn't observe DST, so UTC-10 is always correct.
+function getNextMonday9amHst() {
+  const nowHst = new Date(new Date().toLocaleString('en-US', { timeZone: 'Pacific/Honolulu' }));
+  const day = nowHst.getDay(); // 0=Sun..6=Sat
+  // Days until next Monday (if today is Monday, target next Monday, not today)
+  const daysUntilMonday = day === 1 ? 7 : (8 - day) % 7 || 7;
+  const target = new Date(nowHst);
+  target.setDate(nowHst.getDate() + daysUntilMonday);
+  target.setHours(9, 0, 0, 0);
+  const y = target.getFullYear();
+  const m = String(target.getMonth() + 1).padStart(2, '0');
+  const d = String(target.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}T09:00:00-10:00`;
 }
 
 export async function onRequestOptions() {
@@ -485,9 +530,23 @@ function buildFooter() {
 // BEEHIIV
 // ═══════════════════════════════════════════════════════════════
 
-async function createBeehiivDraft(env, { title, subject, previewText, html }) {
+async function createBeehiivPost(env, { title, subject, previewText, html, confirmed, sendAt }) {
   const pubId = env.BEEHIIV_PUB_ID || 'pub_1da82bcf-32f7-41e8-855a-b1a0c4c41e0e';
   const apiKey = env.BEEHIIV_API_KEY || 'Ll60y7Z2ZEA8w5V9tXn3ZPsrFVSHyhHpUJcIc1UZiz3OlACZdT9cqmj8AS3pS1HL';
+
+  const status = confirmed ? 'confirmed' : 'draft';
+  const body = {
+    title,
+    status,
+    body_content: html,
+    email_settings: {
+      email_subject_line: subject,
+      email_preview_text: previewText,
+    },
+  };
+  if (confirmed && sendAt) {
+    body.scheduled_at = sendAt;
+  }
 
   const res = await fetch(
     `https://api.beehiiv.com/v2/publications/${pubId}/posts`,
@@ -497,15 +556,7 @@ async function createBeehiivDraft(env, { title, subject, previewText, html }) {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
       },
-      body: JSON.stringify({
-        title,
-        status: 'draft',
-        body_content: html,
-        email_settings: {
-          email_subject_line: subject,
-          email_preview_text: previewText,
-        },
-      }),
+      body: JSON.stringify(body),
     }
   );
 
@@ -517,6 +568,7 @@ async function createBeehiivDraft(env, { title, subject, previewText, html }) {
   const postId = data?.data?.id;
   return {
     postId,
+    status,
     editUrl: postId ? `https://app.beehiiv.com/p/${pubId}/posts/${postId}` : null,
   };
 }
