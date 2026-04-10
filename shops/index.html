@@ -60,8 +60,8 @@ a.shop-card:hover .shop-card-name{color:var(--ocean)}
 .shops-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
 .shop-card{background:var(--white);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);transition:transform 0.2s,box-shadow 0.2s;border-left:4px solid var(--ocean)}
 .shop-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-.shop-card.hidden{display:none}
 .shop-card.has-logo{display:flex;overflow:hidden;padding:0;border-left:none}
+.shop-card.hidden,.shop-card.has-logo.hidden{display:none}
 .shop-card-logo{width:100px;min-height:100%;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:16px}
 .shop-card-body{padding:20px 24px;flex:1}
 .shop-card.has-logo .shop-card-island,.shop-card.has-logo .shop-card-name,.shop-card.has-logo .shop-card-address,.shop-card.has-logo .shop-card-tags{margin-bottom:4px}
