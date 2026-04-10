@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>Hawaii Card Shows — Event Details</title>
+<meta name="description" content="Event details for Hawaii card shows, trade nights, and trading card events across the islands.">
+<meta property="og:title" content="Hawaii Card Shows — Event Details">
+<meta property="og:description" content="Event details for Hawaii card shows, trade nights, and trading card events across the islands.">
+<meta property="og:type" content="event">
+<meta property="og:site_name" content="Hawaii Card Shows">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hawaii Card Shows — Event Details">
+<meta name="twitter:description" content="Event details for Hawaii card shows, trade nights, and trading card events across the islands.">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-48ZSPW63VV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-48ZSPW63VV');</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -215,6 +227,121 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') navLightbox(e, 1);
 });
 
+function setMeta(selector, attr, value) {
+  if (!value) return;
+  let el = document.head.querySelector(selector);
+  if (!el) {
+    el = document.createElement('meta');
+    const parts = selector.replace(/^meta\[/,'').replace(/\]$/,'').split('=');
+    if (parts.length === 2) {
+      el.setAttribute(parts[0], parts[1].replace(/^"|"$/g,''));
+    }
+    document.head.appendChild(el);
+  }
+  el.setAttribute(attr, value);
+}
+
+function fmtTimeForSchema(t) {
+  if (!t) return null;
+  const m = String(t).match(/^(\d{1,2}):(\d{2})$/);
+  if (!m) return null;
+  return m[1].padStart(2,'0') + ':' + m[2];
+}
+
+function injectSEO(event) {
+  const title = event.name + ' — Hawaii Card Shows';
+  const rawDesc = event.description || event.long_description || '';
+  const cleanDesc = rawDesc.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim();
+  const description = cleanDesc
+    ? cleanDesc.substring(0, 160) + (cleanDesc.length > 160 ? '...' : '')
+    : `${event.name} — card show details, location, and dates in ${event.island || 'Hawaii'}. Find more Hawaii card shows at hawaiicardshows.com.`;
+  const canonicalUrl = 'https://hawaiicardshows.com' + (event.custom_url || '/shows/show.html?id=' + event.id);
+  const imageUrl = event.logo_url || 'https://hawaiicardshows.com/favicon.svg';
+
+  // Standard meta tags
+  setMeta('meta[name="description"]', 'content', description);
+
+  // Canonical URL
+  let canonical = document.head.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    document.head.appendChild(canonical);
+  }
+  canonical.href = canonicalUrl;
+
+  // Open Graph
+  setMeta('meta[property="og:title"]', 'content', title);
+  setMeta('meta[property="og:description"]', 'content', description);
+  setMeta('meta[property="og:url"]', 'content', canonicalUrl);
+  setMeta('meta[property="og:image"]', 'content', imageUrl);
+  setMeta('meta[property="og:type"]', 'content', 'event');
+  setMeta('meta[property="og:site_name"]', 'content', 'Hawaii Card Shows');
+
+  // Twitter Card
+  setMeta('meta[name="twitter:card"]', 'content', 'summary_large_image');
+  setMeta('meta[name="twitter:title"]', 'content', title);
+  setMeta('meta[name="twitter:description"]', 'content', description);
+  setMeta('meta[name="twitter:image"]', 'content', imageUrl);
+
+  // Schema.org Event markup
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: event.name,
+    description: cleanDesc || undefined,
+    url: canonicalUrl,
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: {
+      '@type': 'Place',
+      name: event.venue || event.island || 'Hawaii',
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: event.island || 'Hawaii',
+        addressCountry: 'US'
+      }
+    },
+    organizer: {
+      '@type': 'Organization',
+      name: event.organizer || 'Hawaii Card Shows'
+    }
+  };
+
+  if (event.logo_url) schema.image = event.logo_url;
+  if (event.website_url) schema.organizer.url = event.website_url;
+  if (event.organizer_email) schema.organizer.email = event.organizer_email;
+
+  // Build datetime strings in Hawaii timezone
+  if (event.event_type === 'recurring') {
+    // Recurring events don't have a single date, use current week as example
+    const now = new Date();
+    const ds = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+    const startT = fmtTimeForSchema(event.start_time) || '10:00';
+    const endT = fmtTimeForSchema(event.end_time) || '18:00';
+    schema.startDate = ds + 'T' + startT + ':00-10:00';
+    schema.endDate = ds + 'T' + endT + ':00-10:00';
+    schema.eventSchedule = {
+      '@type': 'Schedule',
+      repeatFrequency: 'P1W',
+      byDay: event.recurrence || 'Various'
+    };
+  } else if (event.start_date) {
+    const startT = fmtTimeForSchema(event.start_time) || '10:00';
+    const endT = fmtTimeForSchema(event.end_time) || '18:00';
+    schema.startDate = event.start_date + 'T' + startT + ':00-10:00';
+    schema.endDate = (event.end_date || event.start_date) + 'T' + endT + ':00-10:00';
+  }
+
+  // Remove any previous event schema and inject new one
+  document.querySelectorAll('script[data-event-schema]').forEach(s => s.remove());
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.setAttribute('data-event-schema', 'true');
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
 async function loadData() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
@@ -232,6 +359,9 @@ async function loadData() {
   }
 
   document.title = `${event.name} — Hawaii Card Shows`;
+
+  // --- SEO: Dynamic meta tags, Open Graph, Twitter Cards, Schema.org ---
+  injectSEO(event);
 
   // Hero Logo vs Text
   document.getElementById('hTag').textContent = event.island ? `${event.island} • ${event.event_type}` : 'Event Info';
