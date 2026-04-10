@@ -33,25 +33,78 @@
 
 <!-- Schema.org -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Store",
-  "name": "Aloha Card Shop",
-  "description": "Hawaii's premier sports cards and Pokemon store with 3 locations across Oahu. Pokemon, sports cards, graded slabs, sealed product, singles, and supplies.",
-  "url": "https://alohacardshop.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "320 Ward Ave, Ste 200",
-    "addressLocality": "Honolulu",
-    "addressRegion": "HI",
-    "postalCode": "96814",
-    "addressCountry": "US"
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Aloha Card Shop — Ward",
+    "description": "Hawaii's premier sports cards and Pokemon store. Flagship location at Ward Ave in Honolulu. Pokemon, sports cards, graded slabs, sealed product, singles, and supplies.",
+    "url": "https://alohacardshop.com",
+    "image": "https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/event-logos/Aloha%20Card%20Shop%20Logo.webp",
+    "telephone": "(808) 591-9955",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "320 Ward Ave, Ste 200",
+      "addressLocality": "Honolulu",
+      "addressRegion": "HI",
+      "postalCode": "96814",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "11:00", "closes": "19:00" }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/alohacardshop",
+      "https://www.whatnot.com/user/alohacardshop",
+      "https://www.facebook.com/p/Aloha-Card-Shop-100088192646611/"
+    ]
   },
-  "telephone": "(808) 591-9955",
-  "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "11:00", "closes": "19:00" }
-  ]
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Aloha Card Shop — Windward Mall",
+    "description": "Aloha Card Shop's Kaneohe location at Windward Mall. Pokemon, sports cards, graded slabs, sealed product, and singles.",
+    "url": "https://alohacardshop.com",
+    "image": "https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/event-logos/Aloha%20Card%20Shop%20Logo.webp",
+    "telephone": "(808) 590-9176",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "46-056 Kamehameha Hwy, Unit F03",
+      "addressLocality": "Kaneohe",
+      "addressRegion": "HI",
+      "postalCode": "96744",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "11:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "10:00", "closes": "19:00" }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/alohacardshopwindward"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Aloha Card Shop — Kahala Mall",
+    "description": "Aloha Card Shop's Kahala Mall location. Pokemon, sports cards, graded slabs, sealed product, and singles.",
+    "url": "https://alohacardshop.com",
+    "image": "https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/event-logos/Aloha%20Card%20Shop%20Logo.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4211 Waialae Ave",
+      "addressLocality": "Honolulu",
+      "addressRegion": "HI",
+      "postalCode": "96816",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "10:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "10:00", "closes": "20:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "18:00" }
+    ]
+  }
+]
 </script>
 
 <style>
