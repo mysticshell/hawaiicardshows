@@ -282,7 +282,83 @@ function esc(s){const d=document.createElement('div');d.textContent=s||'';return
 function fmtTime(t){if(!t)return'';if(t.match(/^\d{1,2}:\d{2}$/)){const[h,m]=t.split(':').map(Number);const ampm=h>=12?'PM':'AM';const h12=h>12?h-12:h===0?12:h;return m===0?h12+' '+ampm:h12+':'+String(m).padStart(2,'0')+' '+ampm;}return t;}
 function fmtTimeRange(e){if(!e.start_time)return'TBD';const s=fmtTime(e.start_time);const en=fmtTime(e.end_time);return en?s+' \u2013 '+en:s;}
 function getShowUrl(e){return e.custom_url||`/shows/show.html?id=${e.id}`;}
-async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true});if(error){console.error(error);return;}allEvents=data||[];renderUpcoming();renderRecurring();renderAnnual();renderCalendar();updateStats();renderAgenda();}
+async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true});if(error){console.error(error);return;}allEvents=data||[];renderUpcoming();renderRecurring();renderAnnual();renderCalendar();updateStats();renderAgenda();injectEventSchema();}
+
+function injectEventSchema(){
+  // Remove any previously injected event schema
+  document.querySelectorAll('script[data-event-schema]').forEach(s=>s.remove());
+  const todayStr=getHawaiiDateStr(0);
+  const eventsForSchema=[];
+
+  // One-time and annual events (upcoming only)
+  allEvents.forEach(e=>{
+    if((e.event_type==='one-time'||e.event_type==='annual')&&e.start_date&&(e.end_date||e.start_date)>=todayStr){
+      eventsForSchema.push(buildEventSchema(e,e.start_date,e.end_date||e.start_date));
+    }
+  });
+
+  // Recurring events: emit next 4 occurrences in the next 60 days
+  for(let i=0;i<60&&eventsForSchema.length<50;i++){
+    const ds=getHawaiiDateStr(i);
+    const evs=getEventsForDate(ds);
+    evs.forEach(e=>{
+      if(e.event_type==='recurring'){
+        eventsForSchema.push(buildEventSchema(e,ds,ds));
+      }
+    });
+  }
+
+  if(eventsForSchema.length===0)return;
+
+  const script=document.createElement('script');
+  script.type='application/ld+json';
+  script.setAttribute('data-event-schema','true');
+  script.textContent=JSON.stringify({
+    '@context':'https://schema.org',
+    '@graph':eventsForSchema.slice(0,50)
+  });
+  document.head.appendChild(script);
+}
+
+function buildEventSchema(e,startDate,endDate){
+  const parseStart=parseEventTime(e.start_time)||'10:00';
+  const parseEnd=parseEventTime(e.end_time)||'18:00';
+  const startDateTime=startDate+'T'+parseStart+':00-10:00';
+  const endDateTime=endDate+'T'+parseEnd+':00-10:00';
+  const schema={
+    '@type':'Event',
+    'name':e.name,
+    'startDate':startDateTime,
+    'endDate':endDateTime,
+    'eventAttendanceMode':'https://schema.org/OfflineEventAttendanceMode',
+    'eventStatus':'https://schema.org/EventScheduled',
+    'location':{
+      '@type':'Place',
+      'name':e.venue||e.organizer||'Hawaii',
+      'address':{
+        '@type':'PostalAddress',
+        'addressRegion':e.island||'Hawaii',
+        'addressCountry':'US'
+      }
+    },
+    'organizer':{
+      '@type':'Organization',
+      'name':e.organizer||'Hawaii Card Shows'
+    },
+    'url':'https://hawaiicardshows.com'+getShowUrl(e)
+  };
+  if(e.description)schema.description=e.description.substring(0,500);
+  if(e.logo_url)schema.image=e.logo_url;
+  if(e.organizer_email)schema.organizer.email=e.organizer_email;
+  return schema;
+}
+
+function parseEventTime(t){
+  if(!t)return null;
+  const m=t.match(/^(\d{1,2}):(\d{2})$/);
+  if(m)return m[1].padStart(2,'0')+':'+m[2];
+  return null;
+}
 
 function getHawaiiDateStr(offsetDays){
   const now=new Date();
