@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Page Not Found — Hawaii Card Shows</title>
+<meta name="description" content="The page you're looking for doesn't exist. Head back to the Hawaii Card Shows calendar to find upcoming trading card events across the islands.">
+<meta name="robots" content="noindex, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Page Not Found — Hawaii Card Shows">
+<meta property="og:description" content="Oops, that page doesn't exist. Find all Hawaii trading card shows at hawaiicardshows.com.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hawaiicardshows.com/404.html">
+<meta property="og:site_name" content="Hawaii Card Shows">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-48ZSPW63VV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-48ZSPW63VV');
+  gtag('event', 'page_view', { page_title: '404', page_path: window.location.pathname });
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sand: #f5f0e8;
+    --sand-dark: #e8e0d0;
+    --ocean: #1a6b5a;
+    --ocean-light: #2a8b72;
+    --ocean-pale: #e8f4f0;
+    --lava: #d4582a;
+    --lava-light: #f0714a;
+    --night: #1a1a1a;
+    --text: #2c2c2c;
+    --text-light: #6a6a6a;
+    --text-lighter: #999;
+    --white: #ffffff;
+    --radius: 12px;
+    --shadow: 0 2px 20px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--sand);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    height: 64px;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px;
+  }
+  .nav-brand { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -0.5px; text-decoration: none; color: var(--ocean); }
+  .nav-brand span { color: var(--lava); }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--text-light); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ocean); }
+  .nav-cta { background: var(--ocean) !important; color: var(--white) !important; padding: 8px 18px !important; border-radius: 8px; font-weight: 600 !important; font-size: 13px !important; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--ocean-light) !important; }
+
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px;
+    text-align: center;
+  }
+
+  .hero {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .error-code {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(120px, 20vw, 200px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -6px;
+    background: linear-gradient(135deg, var(--ocean), var(--lava));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 5vw, 40px);
+    color: var(--night);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ocean);
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--ocean-light); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    color: var(--ocean);
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    border: 1.5px solid var(--sand-dark);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--ocean); background: var(--ocean-pale); }
+
+  .quick-links {
+    margin-top: 16px;
+  }
+
+  .quick-links-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-lighter);
+    margin-bottom: 16px;
+  }
+
+  .quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .quick-link {
+    background: var(--white);
+    padding: 18px 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: var(--night);
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 3px solid var(--ocean);
+  }
+  .quick-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  footer {
+    background: var(--sand);
+    padding: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-light);
+    border-top: 1px solid var(--sand-dark);
+  }
+  footer a { color: var(--ocean); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .cta-group { flex-direction: column; align-items: stretch; max-width: 280px; margin-left: auto; margin-right: auto; }
+    .quick-links-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <div class="nav-links">
+    <a href="/#upcoming">Upcoming</a>
+    <a href="/shows/">Shows</a>
+    <a href="/shops/">Shops</a>
+    <a href="/#submit" class="nav-cta">Submit Your Event</a>
+  </div>
+</nav>
+
+<main>
+  <div class="hero">
+    <div class="error-code">404</div>
+    <h1>This page took a detour</h1>
+    <p class="subtitle">
+      The page you're looking for doesn't exist or may have moved. No worries &mdash; the calendar is still rolling with shows across the islands.
+    </p>
+
+    <div class="cta-group">
+      <a href="/" class="btn-primary">Back to Calendar &rarr;</a>
+      <a href="/shops/" class="btn-secondary">Browse Card Shops</a>
+    </div>
+
+    <div class="quick-links">
+      <div class="quick-links-label">Or jump to</div>
+      <div class="quick-links-grid">
+        <a href="/#upcoming" class="quick-link">Upcoming Shows</a>
+        <a href="/shows/" class="quick-link">All Events</a>
+        <a href="/shops/" class="quick-link">Card Shops</a>
+        <a href="/recaps/" class="quick-link">Show Recaps</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="/">Back to Calendar</a> &bull; <a href="/#submit">Submit an Event</a> &bull; <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+</footer>
+
+</body>
+</html>

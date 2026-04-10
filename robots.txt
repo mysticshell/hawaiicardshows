@@ -1,5 +1,40 @@
+# Hawaii Card Shows — robots.txt
+# Community-driven directory of trading card events and shops across the Hawaiian Islands.
+
 User-agent: *
 Allow: /
-Disallow: /missingno.html
 
+# Admin and API endpoints
+Disallow: /missingno.html
+Disallow: /missingno
+Disallow: /admin
+Disallow: /api/
+
+# Prevent indexing of URL parameters (fbclid, utm_*, etc.)
+Disallow: /*?fbclid=
+Disallow: /*?utm_
+
+# Allow all major search and social crawlers explicitly
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Sitemap
 Sitemap: https://hawaiicardshows.com/sitemap.xml
