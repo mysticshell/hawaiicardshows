@@ -284,6 +284,16 @@ function injectSEO(event) {
   setMeta('meta[name="twitter:description"]', 'content', description);
   setMeta('meta[name="twitter:image"]', 'content', imageUrl);
 
+  // Build organizer URL — prefer website, fallback to Instagram (first handle only), fallback to event page
+  const organizerName = event.organizer || 'Hawaii Card Shows';
+  let organizerUrl = canonicalUrl;
+  if (event.website_url) {
+    organizerUrl = event.website_url;
+  } else if (event.instagram) {
+    const handle = event.instagram.split(/[\s,]+/)[0].replace(/^@/, '');
+    if (handle) organizerUrl = 'https://instagram.com/' + handle;
+  }
+
   // Schema.org Event markup
   const schema = {
     '@context': 'https://schema.org',
@@ -304,12 +314,24 @@ function injectSEO(event) {
     },
     organizer: {
       '@type': 'Organization',
-      name: event.organizer || 'Hawaii Card Shows'
+      name: organizerName,
+      url: organizerUrl
+    },
+    performer: {
+      '@type': 'Organization',
+      name: organizerName,
+      url: organizerUrl
+    },
+    offers: {
+      '@type': 'Offer',
+      url: canonicalUrl,
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock'
     }
   };
 
   if (event.logo_url) schema.image = event.logo_url;
-  if (event.website_url) schema.organizer.url = event.website_url;
   if (event.organizer_email) schema.organizer.email = event.organizer_email;
 
   // Build datetime strings in Hawaii timezone
@@ -321,6 +343,7 @@ function injectSEO(event) {
     const endT = fmtTimeForSchema(event.end_time) || '18:00';
     schema.startDate = ds + 'T' + startT + ':00-10:00';
     schema.endDate = ds + 'T' + endT + ':00-10:00';
+    schema.offers.validFrom = ds;
     schema.eventSchedule = {
       '@type': 'Schedule',
       repeatFrequency: 'P1W',
@@ -331,6 +354,7 @@ function injectSEO(event) {
     const endT = fmtTimeForSchema(event.end_time) || '18:00';
     schema.startDate = event.start_date + 'T' + startT + ':00-10:00';
     schema.endDate = (event.end_date || event.start_date) + 'T' + endT + ':00-10:00';
+    schema.offers.validFrom = event.start_date;
   }
 
   // Remove any previous event schema and inject new one

@@ -325,6 +325,11 @@ function buildEventSchema(e,startDate,endDate){
   const parseEnd=parseEventTime(e.end_time)||'18:00';
   const startDateTime=startDate+'T'+parseStart+':00-10:00';
   const endDateTime=endDate+'T'+parseEnd+':00-10:00';
+  const eventUrl='https://hawaiicardshows.com'+getShowUrl(e);
+  const organizerName=e.organizer||'Hawaii Card Shows';
+  let organizerUrl=eventUrl;
+  if(e.website_url){organizerUrl=e.website_url;}
+  else if(e.instagram){const handle=e.instagram.split(/[\s,]+/)[0].replace(/^@/,'');if(handle)organizerUrl='https://instagram.com/'+handle;}
   const schema={
     '@type':'Event',
     'name':e.name,
@@ -343,9 +348,23 @@ function buildEventSchema(e,startDate,endDate){
     },
     'organizer':{
       '@type':'Organization',
-      'name':e.organizer||'Hawaii Card Shows'
+      'name':organizerName,
+      'url':organizerUrl
     },
-    'url':'https://hawaiicardshows.com'+getShowUrl(e)
+    'performer':{
+      '@type':'Organization',
+      'name':organizerName,
+      'url':organizerUrl
+    },
+    'offers':{
+      '@type':'Offer',
+      'url':eventUrl,
+      'price':'0',
+      'priceCurrency':'USD',
+      'availability':'https://schema.org/InStock',
+      'validFrom':startDate
+    },
+    'url':eventUrl
   };
   if(e.description)schema.description=e.description.substring(0,500);
   if(e.logo_url)schema.image=e.logo_url;
