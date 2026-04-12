@@ -493,8 +493,12 @@ function computeNextDate(recStr, skipDates) {
       p.push(getNthDay(y, m, 1, 4), getNthDay(y, m, 3, 4), getNthDay(y, m+1, 1, 4), getNthDay(y, m+1, 3, 4));
   } else if (s.includes("2nd weekend") || s.includes("2nd saturday")) {
       p.push(getNthDay(y, m, 2, 6), getNthDay(y, m+1, 2, 6)); // Saturdays
+  } else if (s.includes("1st friday") && !s.includes("3rd")) {
+      p.push(getNthDay(y, m, 1, 5), getNthDay(y, m+1, 1, 5));
   } else if (s.includes("1st saturday") && !s.includes("3rd")) {
       p.push(getNthDay(y, m, 1, 6), getNthDay(y, m+1, 1, 6));
+  } else if (s.includes("1st sunday") && !s.includes("3rd")) {
+      p.push(getNthDay(y, m, 1, 0), getNthDay(y, m+1, 1, 0));
   } else if (s.includes("3rd friday")) {
       p.push(getNthDay(y, m, 3, 5), getNthDay(y, m+1, 3, 5));
   } else if (s.includes("last sunday")) {

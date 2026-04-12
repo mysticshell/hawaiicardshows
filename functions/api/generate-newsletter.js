@@ -249,7 +249,11 @@ function getEventsForDate(ds, allEvents) {
         results.push(ev);
       } else if (r.includes('3rd') && r.includes('friday') && dow === 5 && weekNum === 3) {
         results.push(ev);
+      } else if (r.includes('1st friday') && !r.includes('3rd') && dow === 5 && weekNum === 1) {
+        results.push(ev);
       } else if (r.includes('1st saturday') && !r.includes('3rd') && dow === 6 && weekNum === 1) {
+        results.push(ev);
+      } else if (r.includes('1st sunday') && !r.includes('3rd') && dow === 0 && weekNum === 1) {
         results.push(ev);
       } else if (r.includes('every saturday & sunday') && (dow === 6 || dow === 0)) {
         results.push(ev);
