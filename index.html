@@ -129,13 +129,13 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06)
 @media(max-width:768px){.nav-links{display:none}.nav-mobile{display:block}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--sand);padding:16px 24px;gap:16px;border-bottom:1px solid rgba(0,0,0,0.06)}.hero h1{font-size:36px;letter-spacing:-1px}.hero-stats{flex-direction:column;gap:16px}.form-row{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.upcoming-grid{grid-template-columns:1fr}#sponsors .section-header+div{grid-template-columns:1fr!important}.cal-day{min-height:50px}.cal-event{font-size:8px}.newsletter{padding:40px 20px;margin:20px 16px}.newsletter-form{flex-direction:column}.section{padding:60px 16px}.form-card{padding:24px}.view-toggles{display:none!important}#calGridContainer{display:none!important}#calAgendaContainer{display:block!important}}
 
 .view-toggles { display: inline-flex; background: var(--sand-dark); padding: 4px; border-radius: 8px; }
-.view-toggle { background: transparent; border: none; padding: 6px 16px; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--text-light); cursor: pointer; transition: all 0.2s; }
+.view-toggle { background: transparent; border: none; padding: 6px 16px; border-radius: 6px; font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 600; color: var(--text-light); cursor: pointer; transition: all 0.2s; }
 .view-toggle.active { background: var(--white); color: var(--ocean); box-shadow: var(--shadow); }
-.agenda-date-head { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: var(--night); margin: 32px 0 16px; border-bottom: 2px solid var(--sand-dark); padding-bottom: 8px; }
+.agenda-date-head { font-family: 'Phudu', sans-serif; font-size: 18px; font-weight: 700; color: var(--ocean); margin: 32px 0 16px; border-bottom: 2px solid var(--ocean); padding-bottom: 8px; }
 .agenda-date-head:first-child { margin-top: 0; }
 .agenda-row { display: flex; align-items: center; gap: 16px; padding: 16px; background: var(--white); border-radius: var(--radius); margin-bottom: 8px; box-shadow: var(--shadow); border-left: 4px solid var(--ocean); transition: transform 0.2s; cursor: pointer; text-decoration: none; }
 .agenda-row:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.agenda-time { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: var(--lava); min-width: 80px; text-transform: uppercase; }
+.agenda-time { font-family: 'Phudu', sans-serif; font-size: 14px; font-weight: 700; color: var(--lava); min-width: 80px; text-transform: uppercase; }
 .agenda-info { flex: 1; display:flex; flex-direction:column; gap:4px; }
 .agenda-name { font-weight: 700; font-size: 16px; color: var(--night); }
 .agenda-loc { font-size: 13px; color: var(--text-light); display:flex; align-items:center; gap:4px; }
@@ -423,7 +423,7 @@ function renderUpcoming() {
                   <div style="font-size:11px; font-weight:800; color:var(--text-light); text-transform:uppercase; letter-spacing:1.5px; line-height:1.4;">${esc(timeStr)}</div>
                </div>
                <div style="flex:1; min-width:200px;">
-                  <div style="font-family:'Outfit', sans-serif; font-size:18px; font-weight:700; color:var(--night);">${esc(e.name)}</div>
+                  <div style="font-family:'Phudu', sans-serif; font-size:18px; font-weight:700; color:var(--night);">${esc(e.name)}</div>
                   <div style="font-size:13px; color:var(--text-light); margin-top:4px; display:flex; align-items:center; gap:6px;">
                      ${e.venue ? esc(e.venue) + ' <span style="opacity:0.4">&bull;</span> ' : ''}${esc(e.island)}
                   </div>
@@ -434,7 +434,7 @@ function renderUpcoming() {
         }).join('');
         
         html += `<div style="margin-bottom:32px;">
-           <h3 style="font-family:'Outfit', sans-serif; font-size:14px; font-weight:800; color:var(--lava); margin-bottom:16px; letter-spacing:1px; text-transform:uppercase;">${label}</h3>
+           <h3 style="font-family:'Phudu', sans-serif; font-size:14px; font-weight:800; color:var(--lava); margin-bottom:16px; letter-spacing:1px; text-transform:uppercase;">${label}</h3>
            ${rowHtml}
         </div>`;
      }
