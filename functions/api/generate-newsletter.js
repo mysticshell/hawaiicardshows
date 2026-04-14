@@ -245,6 +245,8 @@ function getEventsForDate(ds, allEvents) {
         results.push(ev);
       } else if (r.includes('1st') && r.includes('3rd') && r.includes('thursday') && dow === 4 && (weekNum === 1 || weekNum === 3)) {
         results.push(ev);
+      } else if (r.includes('2nd') && r.includes('4th') && r.includes('thursday') && dow === 4 && (weekNum === 2 || weekNum === 4)) {
+        results.push(ev);
       } else if ((r.includes('2nd weekend') || r.includes('2nd saturday')) && (dow === 6 || dow === 0) && weekNum === 2) {
         results.push(ev);
       } else if (r.includes('3rd') && r.includes('friday') && dow === 5 && weekNum === 3) {
