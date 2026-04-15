@@ -1,7 +1,7 @@
 name: Weekly Newsletter
 
 # Triggers the generate-newsletter Cloudflare Function every Sunday to create
-# a Beehiiv post scheduled to send Monday morning at 9 AM HST.
+# a Buttondown email scheduled to send Monday morning at 9 AM HST.
 #
 # Schedule: Sunday 6:00 PM HST = Monday 04:00 UTC
 # (Hawaii is UTC-10 year-round — no DST.)
@@ -49,7 +49,7 @@ jobs:
             URL="${URL}&confirm=1"
             echo "Mode: CONFIRM (will schedule auto-send for next Monday 9 AM HST)"
           else
-            echo "Mode: DRAFT ONLY (manual review required in Beehiiv)"
+            echo "Mode: DRAFT ONLY (manual review required in Buttondown)"
           fi
 
           echo "Calling newsletter endpoint..."

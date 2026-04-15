@@ -14,42 +14,52 @@ export async function onRequestPost({ request, env }) {
       });
     }
 
-    const pubId = env.BEEHIIV_PUB_ID || 'pub_1da82bcf-32f7-41e8-855a-b1a0c4c41e0e';
-    const apiKey = env.BEEHIIV_API_KEY || 'Ll60y7Z2ZEA8w5V9tXn3ZPsrFVSHyhHpUJcIc1UZiz3OlACZdT9cqmj8AS3pS1HL';
+    const apiKey = env.BUTTONDOWN_API_KEY;
+    if (!apiKey) {
+      return new Response(JSON.stringify({ error: 'Newsletter not configured' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders },
+      });
+    }
 
-    const res = await fetch(
-      `https://api.beehiiv.com/v2/publications/${pubId}/subscriptions`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-          email,
-          send_welcome_email: true,
-          utm_source: 'website',
-          utm_medium: 'organic',
-        }),
-      }
-    );
+    const res = await fetch('https://api.buttondown.com/v1/subscribers', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${apiKey}`,
+      },
+      body: JSON.stringify({
+        email_address: email,
+        type: 'regular',
+      }),
+    });
 
-    const data = await res.json();
-
-    if (res.ok) {
+    // Success: 201 Created
+    if (res.status === 201) {
       return new Response(JSON.stringify({ success: true }), {
         status: 200,
         headers: { 'Content-Type': 'application/json', ...corsHeaders },
       });
     }
 
-    if (res.status === 409) {
+    // Duplicate: 400 Bad Request
+    if (res.status === 400) {
       return new Response(JSON.stringify({ success: true, duplicate: true }), {
         status: 200,
         headers: { 'Content-Type': 'application/json', ...corsHeaders },
       });
     }
 
+    // Rate limit
+    if (res.status === 429) {
+      return new Response(JSON.stringify({ error: 'Too many requests. Please try again later.' }), {
+        status: 429,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders },
+      });
+    }
+
+    // Other errors
+    const data = await res.text();
     return new Response(JSON.stringify({ error: 'Subscription failed' }), {
       status: res.status,
       headers: { 'Content-Type': 'application/json', ...corsHeaders },

@@ -1,17 +1,17 @@
 // Weekly newsletter generator for Hawaii Card Shows.
-// Queries Supabase for upcoming events and creates a post in Beehiiv.
+// Queries Supabase for upcoming events and creates an email in Buttondown.
 //
-// Default behavior: creates a DRAFT post for manual review.
-// With confirm=1 and send_at: creates a CONFIRMED post scheduled to send at send_at.
+// Default behavior: creates a DRAFT email for manual review.
+// With confirm=1 and send_at: creates a SCHEDULED email to send at send_at.
 //
 // Query params:
 //   secret   (required)  — must match NEWSLETTER_SECRET env var
 //   days     (optional)  — window size, default 7, max 30
 //   preview  (optional)  — ?preview=1 returns rendered HTML instead of creating draft
-//   dry      (optional)  — ?dry=1 returns JSON summary without hitting Beehiiv
+//   dry      (optional)  — ?dry=1 returns JSON summary without hitting Buttondown
 //   title    (optional)  — override the post title / subject
-//   confirm  (optional)  — ?confirm=1 publishes as "confirmed" (auto-send) instead of draft
-//   send_at  (optional)  — ISO 8601 timestamp for Beehiiv to schedule delivery
+//   confirm  (optional)  — ?confirm=1 publishes as "scheduled" (auto-send) instead of draft
+//   send_at  (optional)  — ISO 8601 timestamp for Buttondown to schedule delivery
 //                          (only used with confirm=1; defaults to "next Monday 9 AM HST" if omitted)
 
 const BRAND = {
@@ -88,8 +88,8 @@ export async function onRequestGet({ request, env }) {
       sendAt = sendAtParam || getNextMonday9amHst();
     }
 
-    // --- Create Beehiiv post (draft or confirmed) ---
-    const { postId, editUrl, status } = await createBeehiivPost(env, {
+    // --- Create Buttondown email (draft or scheduled) ---
+    const { postId, editUrl, status } = await createButtondownEmail(env, {
       title: subject,
       subject,
       previewText,
@@ -116,8 +116,9 @@ export async function onRequestGet({ request, env }) {
   }
 }
 
-// Compute next Monday 9:00 AM HST as an ISO 8601 string with -10:00 offset.
+// Compute next Monday 9:00 AM HST as a UTC ISO 8601 string.
 // Hawaii doesn't observe DST, so UTC-10 is always correct.
+// 9 AM HST = 19:00 UTC.
 function getNextMonday9amHst() {
   const nowHst = new Date(new Date().toLocaleString('en-US', { timeZone: 'Pacific/Honolulu' }));
   const day = nowHst.getDay(); // 0=Sun..6=Sat
@@ -126,10 +127,12 @@ function getNextMonday9amHst() {
   const target = new Date(nowHst);
   target.setDate(nowHst.getDate() + daysUntilMonday);
   target.setHours(9, 0, 0, 0);
+  // Convert to UTC: HST is UTC-10, so add 10 hours
+  const utcHour = 19; // 9 AM HST = 19:00 UTC
   const y = target.getFullYear();
   const m = String(target.getMonth() + 1).padStart(2, '0');
   const d = String(target.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}T09:00:00-10:00`;
+  return `${y}-${m}-${d}T${utcHour}:00:00Z`;
 }
 
 export async function onRequestOptions() {
@@ -533,48 +536,50 @@ function buildFooter() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// BEEHIIV
+// BUTTONDOWN
 // ═══════════════════════════════════════════════════════════════
 
-async function createBeehiivPost(env, { title, subject, previewText, html, confirmed, sendAt }) {
-  const pubId = env.BEEHIIV_PUB_ID || 'pub_1da82bcf-32f7-41e8-855a-b1a0c4c41e0e';
-  const apiKey = env.BEEHIIV_API_KEY || 'Ll60y7Z2ZEA8w5V9tXn3ZPsrFVSHyhHpUJcIc1UZiz3OlACZdT9cqmj8AS3pS1HL';
-
-  const status = confirmed ? 'confirmed' : 'draft';
-  const body = {
-    title,
-    status,
-    body_content: html,
-    email_settings: {
-      email_subject_line: subject,
-      email_preview_text: previewText,
-    },
-  };
-  if (confirmed && sendAt) {
-    body.scheduled_at = sendAt;
+async function createButtondownEmail(env, { title, subject, previewText, html, confirmed, sendAt }) {
+  const apiKey = env.BUTTONDOWN_API_KEY;
+  if (!apiKey) {
+    throw new Error('BUTTONDOWN_API_KEY not configured');
   }
 
-  const res = await fetch(
-    `https://api.beehiiv.com/v2/publications/${pubId}/posts`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(body),
+  const status = confirmed ? 'scheduled' : 'draft';
+  const body = {
+    subject,
+    body: '<!-- buttondown-editor-mode: fancy -->\n' + html,
+    status,
+  };
+  if (confirmed && sendAt) {
+    // Buttondown expects UTC ISO 8601 for publish_date
+    // Convert HST offset (-10:00) to UTC if needed
+    let utcDate = sendAt;
+    if (sendAt.includes('-10:00')) {
+      const d = new Date(sendAt);
+      utcDate = d.toISOString();
     }
-  );
+    body.publish_date = utcDate;
+  }
+
+  const res = await fetch('https://api.buttondown.com/v1/emails', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${apiKey}`,
+    },
+    body: JSON.stringify(body),
+  });
 
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
-    throw new Error(`Beehiiv ${res.status}: ${JSON.stringify(data).slice(0, 400)}`);
+    throw new Error(`Buttondown ${res.status}: ${JSON.stringify(data).slice(0, 400)}`);
   }
 
-  const postId = data?.data?.id;
+  const postId = data?.id;
   return {
     postId,
     status,
-    editUrl: postId ? `https://app.beehiiv.com/p/${pubId}/posts/${postId}` : null,
+    editUrl: postId ? `https://buttondown.com/emails/${postId}` : null,
   };
 }
