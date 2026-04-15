@@ -27,6 +27,7 @@ export async function onRequestPost({ request, env }) {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Token ${apiKey}`,
+        'X-Buttondown-Bypass-Firewall': 'true',
       },
       body: JSON.stringify({
         email_address: email,
