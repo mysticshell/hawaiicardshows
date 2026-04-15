@@ -44,7 +44,25 @@ export async function onRequestPost({ request, env }) {
 
     // Duplicate: 400 Bad Request
     if (res.status === 400) {
-      return new Response(JSON.stringify({ success: true, duplicate: true }), {
+      const body = await res.text().catch(() => '');
+      // Check if it's actually a duplicate vs another 400 error
+      if (body.includes('already') || body.includes('exists') || body.includes('duplicate')) {
+        return new Response(JSON.stringify({ success: true, duplicate: true }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json', ...corsHeaders },
+        });
+      }
+      // Not a duplicate — return the actual error for debugging
+      return new Response(JSON.stringify({ error: 'Subscription failed', detail: body.slice(0, 300), status: 400 }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders },
+      });
+    }
+
+    // Auth error
+    if (res.status === 401 || res.status === 403) {
+      const body = await res.text().catch(() => '');
+      return new Response(JSON.stringify({ error: 'API auth error', detail: body.slice(0, 300), status: res.status }), {
         status: 200,
         headers: { 'Content-Type': 'application/json', ...corsHeaders },
       });
