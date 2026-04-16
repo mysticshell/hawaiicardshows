@@ -328,11 +328,7 @@ function buildEmail({ subject, previewText, weekLabel, totalCount, oneTime, recu
 ${buildHeader()}
 ${buildIntro(weekLabel, totalCount)}
 ${buildDivider()}
-${buildOneTimeSection(oneTime)}
-${buildDivider()}
-${buildRecurringSection(recurring)}
-${buildDivider()}
-${buildShopCta()}
+${buildIslandSections(oneTime, recurring)}
 ${buildFooter()}
 
 </table>
@@ -386,53 +382,78 @@ function buildDivider() {
 </tr>`;
 }
 
-function buildOneTimeSection(oneTime) {
-  const cards = oneTime.length === 0
-    ? `<p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#777777;margin:0;">No one-time shows scheduled this week.</p>`
-    : oneTime.map((item) => buildEventCard(item.event, item.dateStr)).join('\n');
+const ISLANDS = [
+  { name: 'Oahu', filter: 'oahu', shopUrl: 'https://hawaiicardshows.com/shops/?island=oahu' },
+  { name: 'Maui', filter: 'maui', shopUrl: 'https://hawaiicardshows.com/shops/?island=maui' },
+  { name: 'Big Island', filter: 'big island', shopUrl: 'https://hawaiicardshows.com/shops/?island=big-island' },
+  { name: 'Kauai', filter: 'kauai', shopUrl: 'https://hawaiicardshows.com/shops/?island=kauai' },
+];
 
-  return `<tr>
-<td style="padding:32px 40px 8px 40px;">
+// Rotate through distinct colors for event cards
+const EVENT_COLORS = ['#d4582a', '#1a6b5a', '#7c3aed', '#0891b2', '#dc2626', '#b45309', '#0d9488', '#6366f1'];
+let colorIndex = 0;
+function nextColor() { return EVENT_COLORS[colorIndex++ % EVENT_COLORS.length]; }
+
+function buildIslandSections(oneTime, recurring) {
+  colorIndex = 0; // reset for each newsletter build
+  let html = '';
+
+  for (const island of ISLANDS) {
+    const islandOneTime = oneTime.filter(i => (i.event.island || '').toLowerCase() === island.filter);
+    const islandRecurring = recurring.filter(i => (i.event.island || '').toLowerCase() === island.filter);
+    const hasEvents = islandOneTime.length > 0 || islandRecurring.length > 0;
+
+    let eventsHtml = '';
+    if (hasEvents) {
+      eventsHtml = islandOneTime.map(item => buildEventCard(item.event, item.dateStr, nextColor())).join('\n');
+      eventsHtml += islandRecurring.map(item => buildRecurringRow(item.event, item.dates, nextColor())).join('\n');
+    } else {
+      eventsHtml = `
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#777777;margin:0 0 16px 0;">
+        No shows scheduled this week on ${esc(island.name)}, but stop by and say hi to one of your local shops!
+      </p>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-table;">
+      <tr>
+        <td align="center" style="background-color:#1a6b5a;border-radius:6px;mso-padding-alt:10px 18px;">
+          <a href="${esc(island.shopUrl)}" style="display:inline-block;padding:10px 18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:6px;">
+            ${esc(island.name)} Card Shops &rarr;
+          </a>
+        </td>
+      </tr>
+      </table>`;
+    }
+
+    html += `<tr>
+<td style="padding:32px 40px 16px 40px;">
   <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">
-    This Week
+    ${esc(island.name)}
   </div>
   <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700;color:#1a1a1a;margin:0 0 20px 0;line-height:1.3;">
-    Shows coming up
+    ${hasEvents ? esc(island.name) + ' Shows' : 'No Shows on ' + esc(island.name) + ' This Week'}
   </h2>
-  ${cards}
+  ${eventsHtml}
 </td>
 </tr>`;
+    html += buildDivider();
+  }
+
+  // Add shop CTA after all islands
+  html += buildShopCta();
+
+  return html;
 }
 
-function buildRecurringSection(recurring) {
-  const rows = recurring.length === 0
-    ? `<p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#777777;margin:0;">No recurring shows hitting this week.</p>`
-    : recurring.map((item) => buildRecurringRow(item.event, item.dates)).join('\n');
-
-  return `<tr>
-<td style="padding:32px 40px;">
-  <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">
-    Recurring This Week
-  </div>
-  <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700;color:#1a1a1a;margin:0 0 20px 0;line-height:1.3;">
-    Regulars hitting this week
-  </h2>
-  ${rows}
-</td>
-</tr>`;
-}
-
-function buildEventCard(e, dateStr) {
+function buildEventCard(e, dateStr, color) {
+  const cardColor = color || e.color || '#d4582a';
   const url = getShowUrl(e);
   const dayLabel = formatHawaiiDate(dateStr, { weekday: 'short', month: 'short', day: 'numeric' });
   const timeStr = fmtTimeRange(e);
   const metaParts = [];
   if (e.venue) metaParts.push(esc(e.venue));
-  if (e.island) metaParts.push(esc(e.island));
   const metaLine = metaParts.join(' &middot; ');
   const description = e.description ? esc(truncate(e.description, 180)) : '';
 
-  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 16px 0;border:1px solid #e8e0d0;border-left:4px solid #d4582a;border-radius:8px;background:#ffffff;">
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 16px 0;border:1px solid #e8e0d0;border-left:4px solid ${cardColor};border-radius:8px;background:#ffffff;">
 <tr>
 <td style="padding:18px 20px;">
   <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:800;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.2px;">
@@ -446,7 +467,7 @@ function buildEventCard(e, dateStr) {
 
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;">
   <tr>
-    <td align="center" style="background-color:#d4582a;border-radius:6px;mso-padding-alt:10px 18px;">
+    <td align="center" style="background-color:${cardColor};border-radius:6px;mso-padding-alt:10px 18px;">
       <a href="${esc(url)}" style="display:inline-block;padding:10px 18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:6px;">
         View Show &rarr;
       </a>
@@ -458,7 +479,8 @@ function buildEventCard(e, dateStr) {
 </table>`;
 }
 
-function buildRecurringRow(e, dates) {
+function buildRecurringRow(e, dates, color) {
+  const cardColor = color || e.color || '#1a6b5a';
   const url = getShowUrl(e);
   const datesLabel = dates
     .map((ds) => formatHawaiiDate(ds, { weekday: 'short', month: 'short', day: 'numeric' }))
@@ -466,10 +488,9 @@ function buildRecurringRow(e, dates) {
   const timeStr = e.start_time ? fmtTimeRange(e) : (e.recurrence || 'Check IG');
   const metaParts = [];
   if (e.venue) metaParts.push(esc(e.venue));
-  if (e.island) metaParts.push(esc(e.island));
   const metaLine = metaParts.join(' &middot; ');
 
-  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 12px 0;border:1px solid #e8e0d0;border-left:4px solid #1a6b5a;border-radius:8px;background:#ffffff;">
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 12px 0;border:1px solid #e8e0d0;border-left:4px solid ${cardColor};border-radius:8px;background:#ffffff;">
 <tr>
 <td style="padding:14px 18px;">
   <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:800;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.2px;">
