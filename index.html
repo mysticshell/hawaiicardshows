@@ -466,5 +466,205 @@ document.getElementById('partnerForm').onsubmit=async(e)=>{e.preventDefault();co
 document.querySelectorAll('.faq-q').forEach(q=>{q.onclick=()=>q.parentElement.classList.toggle('open');});
 loadEvents();
 </script>
+
+<!-- ═══════ NEWSLETTER POPUP (Desktop) + STICKY BAR (Mobile) ═══════ -->
+<style>
+/* Desktop popup */
+.nl-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);align-items:center;justify-content:center}
+.nl-overlay.show{display:flex}
+.nl-popup{background:var(--night);border-radius:20px;padding:48px 40px;text-align:center;max-width:460px;width:90%;position:relative;animation:nlSlideUp 0.35s ease-out}
+@keyframes nlSlideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.nl-popup h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;color:var(--white);margin-bottom:8px}
+.nl-popup p{color:rgba(255,255,255,0.6);font-size:15px;margin-bottom:24px}
+.nl-popup-form{display:flex;gap:8px}
+.nl-popup-input{flex:1;padding:14px 16px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;background:rgba(255,255,255,0.08);color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;outline:none}
+.nl-popup-input::placeholder{color:rgba(255,255,255,0.35)}
+.nl-popup-input:focus{border-color:var(--ocean-light);background:rgba(255,255,255,0.12)}
+.nl-popup-btn{background:var(--lava);color:var(--white);border:none;padding:14px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background 0.2s}
+.nl-popup-btn:hover{background:var(--lava-light)}
+.nl-popup-success{color:var(--ocean-light);font-size:14px;margin-top:12px;display:none}
+.nl-close{position:absolute;top:14px;right:14px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:24px;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:6px;transition:color 0.2s,background 0.2s}
+.nl-close:hover{color:var(--white);background:rgba(255,255,255,0.1)}
+.nl-popup-note{font-size:11px;color:rgba(255,255,255,0.3);margin-top:12px}
+
+/* Mobile sticky bar */
+.nl-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9998;background:var(--night);padding:14px 16px;box-shadow:0 -4px 20px rgba(0,0,0,0.15);animation:nlBarUp 0.35s ease-out}
+@keyframes nlBarUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.nl-bar.show{display:block}
+.nl-bar-row{display:flex;align-items:center;gap:12px}
+.nl-bar-text{flex:1;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:var(--white)}
+.nl-bar-cta{background:var(--lava);color:var(--white);border:none;padding:10px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background 0.2s}
+.nl-bar-cta:hover{background:var(--lava-light)}
+.nl-bar-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:20px;cursor:pointer;padding:4px;line-height:1}
+.nl-bar-close:hover{color:var(--white)}
+.nl-bar-form{display:none;margin-top:12px}
+.nl-bar-form.show{display:flex;gap:8px}
+.nl-bar-input{flex:1;padding:12px 14px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;background:rgba(255,255,255,0.08);color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;outline:none}
+.nl-bar-input::placeholder{color:rgba(255,255,255,0.35)}
+.nl-bar-input:focus{border-color:var(--ocean-light);background:rgba(255,255,255,0.12)}
+.nl-bar-submit{background:var(--lava);color:var(--white);border:none;padding:12px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.nl-bar-success{color:var(--ocean-light);font-size:13px;margin-top:10px;display:none}
+
+@media(min-width:769px){.nl-bar{display:none!important}}
+@media(max-width:768px){.nl-overlay{display:none!important}}
+</style>
+
+<!-- Desktop popup -->
+<div class="nl-overlay" id="nlOverlay">
+  <div class="nl-popup">
+    <button class="nl-close" id="nlClose" aria-label="Close">&times;</button>
+    <h2>Never Miss a Show</h2>
+    <p>Get show announcements and community updates delivered to your inbox.</p>
+    <form class="nl-popup-form" id="nlPopupForm">
+      <input class="nl-popup-input" type="email" placeholder="your@email.com" required id="nlPopupEmail">
+      <button type="submit" class="nl-popup-btn" id="nlPopupBtn">Subscribe</button>
+    </form>
+    <div class="nl-popup-success" id="nlPopupSuccess">You're in! Mahalo for subscribing.</div>
+    <p class="nl-popup-note">We'll never share your email. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<!-- Mobile sticky bar -->
+<div class="nl-bar" id="nlBar">
+  <div class="nl-bar-row">
+    <div class="nl-bar-text">Never miss a show</div>
+    <button class="nl-bar-cta" id="nlBarCta">Subscribe</button>
+    <button class="nl-bar-close" id="nlBarClose" aria-label="Close">&times;</button>
+  </div>
+  <form class="nl-bar-form" id="nlBarForm">
+    <input class="nl-bar-input" type="email" placeholder="your@email.com" required id="nlBarEmail">
+    <button type="submit" class="nl-bar-submit" id="nlBarBtn">Go</button>
+  </form>
+  <div class="nl-bar-success" id="nlBarSuccess">You're in! Mahalo for subscribing.</div>
+</div>
+
+<script>
+(function(){
+  const DISMISS_KEY='hcs_popup_dismissed';
+  const DISMISS_DAYS=30;
+  const DELAY_MS=15000;
+
+  // Check if dismissed within last 30 days
+  function isDismissed(){
+    const ts=localStorage.getItem(DISMISS_KEY);
+    if(!ts)return false;
+    return(Date.now()-parseInt(ts,10))<DISMISS_DAYS*86400000;
+  }
+  function setDismissed(){localStorage.setItem(DISMISS_KEY,Date.now().toString());}
+
+  // Check if already subscribed during this session
+  let subscribedThisSession=false;
+
+  // Subscribe helper (reuses /api/subscribe)
+  async function doSubscribe(email,btn,successEl,formEl,dupText){
+    btn.disabled=true;btn.textContent='...';
+    try{
+      const res=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
+      const data=await res.json();
+      btn.disabled=false;
+      if(data.success){
+        subscribedThisSession=true;
+        setDismissed();
+        if(formEl)formEl.style.display='none';
+        successEl.style.display='block';
+        if(data.duplicate)successEl.textContent=dupText||"You're already subscribed!";
+        // Also hide the inline form if it's still visible
+        const inlineForm=document.getElementById('newsletterForm');
+        const inlineSuccess=document.getElementById('newsletterSuccess');
+        if(inlineForm&&inlineSuccess){inlineForm.style.display='none';inlineSuccess.style.display='block';if(data.duplicate)inlineSuccess.textContent="You're already subscribed!";}
+      }else{alert('Something went wrong. Please try again.');btn.textContent='Subscribe';}
+    }catch(err){btn.disabled=false;btn.textContent='Subscribe';alert('Something went wrong. Please try again.');}
+  }
+
+  if(isDismissed())return;
+
+  const isMobile=window.innerWidth<=768;
+
+  if(!isMobile){
+    // ═══ DESKTOP: Exit-intent popup ═══
+    let ready=false, shown=false;
+    setTimeout(()=>{ready=true;},DELAY_MS);
+
+    document.addEventListener('mouseout',function(e){
+      if(!ready||shown||subscribedThisSession||isDismissed())return;
+      if(e.clientY>0)return; // only trigger when cursor leaves top
+      shown=true;
+      document.getElementById('nlOverlay').classList.add('show');
+    });
+
+    // Close handlers
+    document.getElementById('nlClose').onclick=function(){
+      document.getElementById('nlOverlay').classList.remove('show');
+      setDismissed();
+    };
+    document.getElementById('nlOverlay').onclick=function(e){
+      if(e.target===this){this.classList.remove('show');setDismissed();}
+    };
+
+    // Submit
+    document.getElementById('nlPopupForm').onsubmit=function(e){
+      e.preventDefault();
+      doSubscribe(
+        document.getElementById('nlPopupEmail').value,
+        document.getElementById('nlPopupBtn'),
+        document.getElementById('nlPopupSuccess'),
+        document.getElementById('nlPopupForm'),
+        "You're already subscribed!"
+      ).then(()=>{setTimeout(()=>{document.getElementById('nlOverlay').classList.remove('show');},2000);});
+    };
+  }else{
+    // ═══ MOBILE: Sticky bottom bar ═══
+    let barShown=false;
+    function showBar(){
+      if(barShown||subscribedThisSession||isDismissed())return;
+      barShown=true;
+      document.getElementById('nlBar').classList.add('show');
+    }
+
+    // Show after 20s or 50% scroll
+    setTimeout(showBar,20000);
+    window.addEventListener('scroll',function(){
+      const scrollPct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);
+      if(scrollPct>=0.5)showBar();
+    },{passive:true});
+
+    // Expand to show email input
+    document.getElementById('nlBarCta').onclick=function(){
+      document.getElementById('nlBarForm').classList.add('show');
+      this.style.display='none';
+      document.getElementById('nlBarEmail').focus();
+    };
+
+    // Close
+    document.getElementById('nlBarClose').onclick=function(){
+      document.getElementById('nlBar').classList.remove('show');
+      setDismissed();
+    };
+
+    // Submit
+    document.getElementById('nlBarForm').onsubmit=function(e){
+      e.preventDefault();
+      doSubscribe(
+        document.getElementById('nlBarEmail').value,
+        document.getElementById('nlBarBtn'),
+        document.getElementById('nlBarSuccess'),
+        document.getElementById('nlBarForm'),
+        "You're already subscribed!"
+      );
+    };
+  }
+
+  // If user subscribes via inline form, suppress popup/bar
+  const inlineForm=document.getElementById('newsletterForm');
+  if(inlineForm){
+    const origHandler=inlineForm.onsubmit;
+    inlineForm.onsubmit=function(e){
+      subscribedThisSession=true;
+      setDismissed();
+      if(origHandler)return origHandler.call(this,e);
+    };
+  }
+})();
+</script>
 </body>
 </html>
