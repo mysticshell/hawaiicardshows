@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="Hawaii Card Shows" href="/feed.xml">
 <title>Hawaii Card Shows — Your Guide to TCG Events Across the Islands</title>
 
 <!-- Google tag (gtag.js) -->
@@ -180,6 +181,10 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06)
     <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:12px;">We'll never share your email. Unsubscribe anytime.</p>
   </div>
 </div>
+<section class="section" id="featured" style="display:none;padding-bottom:0;">
+  <div class="section-header"><div class="section-tag" style="color:var(--lava);">⭐ Featured</div><div class="section-title">Don't Miss These</div><div class="section-sub">Shows and events we think you should know about.</div></div>
+  <div id="featuredGrid" style="display:block;"></div>
+</section>
 <section class="section" id="upcoming">
   <div class="section-header"><div class="section-tag">Rolling 7-Day Window</div><div class="section-title">This Week</div><div class="section-sub">Events happening across the islands this week!</div></div>
   <div id="upcomingGrid" style="display:block;"><div style="color:var(--text-lighter);font-size:14px;">Loading schedule...</div></div>
@@ -281,7 +286,36 @@ function esc(s){const d=document.createElement('div');d.textContent=s||'';return
 function fmtTime(t){if(!t)return'';if(t.match(/^\d{1,2}:\d{2}$/)){const[h,m]=t.split(':').map(Number);const ampm=h>=12?'PM':'AM';const h12=h>12?h-12:h===0?12:h;return m===0?h12+' '+ampm:h12+':'+String(m).padStart(2,'0')+' '+ampm;}return t;}
 function fmtTimeRange(e){if(!e.start_time)return'TBD';const s=fmtTime(e.start_time);const en=fmtTime(e.end_time);return en?s+' \u2013 '+en:s;}
 function getShowUrl(e){return e.custom_url||`/shows/show.html?id=${e.id}`;}
-async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true});if(error){console.error(error);return;}allEvents=data||[];renderUpcoming();renderRecurring();renderAnnual();renderCalendar();updateStats();renderAgenda();injectEventSchema();}
+async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true});if(error){console.error(error);return;}allEvents=data||[];renderFeatured();renderUpcoming();renderRecurring();renderAnnual();renderCalendar();updateStats();renderAgenda();injectEventSchema();}
+
+function renderFeatured(){
+  const todayStr=getHawaiiDateStr(0);
+  const featured=allEvents.filter(e=>{
+    if(!e.featured)return false;
+    if(e.event_type==='recurring')return true;
+    const endDate=e.end_date||e.start_date;
+    return endDate&&endDate>=todayStr;
+  });
+  const section=document.getElementById('featured');
+  const container=document.getElementById('featuredGrid');
+  if(featured.length===0){section.style.display='none';return;}
+  section.style.display='block';
+  container.innerHTML=featured.map(e=>{
+    const dateLabel=e.event_type==='recurring'?esc(e.recurrence||'Recurring'):formatHawaiiDate(e.start_date,{month:'long',day:'numeric',year:'numeric'});
+    const timeStr=e.start_time?fmtTimeRange(e):'';
+    const meta=[e.venue,e.island].filter(Boolean).map(esc).join(' <span style="opacity:0.4">&bull;</span> ');
+    const btn=`<a href="${getShowUrl(e)}" style="text-decoration:none;display:inline-block;background:var(--lava);color:var(--white);font-size:13px;font-weight:700;padding:12px 24px;border-radius:8px;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='var(--lava-light)'" onmouseout="this.style.background='var(--lava)'">View Show →</a>`;
+    return `<div style="background:var(--white);border-radius:16px;box-shadow:var(--shadow);padding:24px 28px;display:flex;align-items:center;gap:24px;border-left:4px solid ${e.color||'var(--lava)'};margin-bottom:16px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:240px;">
+        <div style="display:inline-block;font-size:10px;font-weight:800;color:var(--lava);text-transform:uppercase;letter-spacing:1.5px;background:rgba(212,88,42,0.1);padding:4px 10px;border-radius:6px;margin-bottom:10px;">⭐ Featured</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;color:var(--night);line-height:1.2;">${esc(e.name)}</div>
+        <div style="font-size:13px;color:var(--text-light);margin-top:6px;">${meta}</div>
+        <div style="font-size:13px;font-weight:600;color:var(--ocean);margin-top:8px;">${dateLabel}${timeStr?' <span style="opacity:0.4">&bull;</span> '+esc(timeStr):''}</div>
+      </div>
+      <div>${btn}</div>
+    </div>`;
+  }).join('');
+}
 
 function injectEventSchema(){
   // Remove any previously injected event schema

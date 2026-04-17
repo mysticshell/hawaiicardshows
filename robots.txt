@@ -36,5 +36,6 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
-# Sitemap
+# Sitemap & RSS
 Sitemap: https://hawaiicardshows.com/sitemap.xml
+RSS: https://hawaiicardshows.com/feed.xml
