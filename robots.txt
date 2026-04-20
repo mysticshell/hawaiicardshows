@@ -36,6 +36,63 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
+# AI crawlers — explicitly allow so we're discoverable in AI search
+User-agent: GPTBot
+Allow: /
+Disallow: /missingno.html
+Disallow: /missingno
+Disallow: /admin
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /missingno.html
+Disallow: /missingno
+Disallow: /admin
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /missingno.html
+Disallow: /missingno
+Disallow: /admin
+Disallow: /api/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /missingno.html
+Disallow: /missingno
+Disallow: /admin
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /missingno.html
+Disallow: /missingno
+Disallow: /admin
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /missingno.html
+Disallow: /missingno
+Disallow: /admin
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /missingno.html
+Disallow: /missingno
+Disallow: /admin
+Disallow: /api/
+
+User-agent: CCBot
+Allow: /
+Disallow: /missingno.html
+Disallow: /missingno
+Disallow: /admin
+Disallow: /api/
+
 # Sitemap & RSS
 Sitemap: https://hawaiicardshows.com/sitemap.xml
 RSS: https://hawaiicardshows.com/feed.xml

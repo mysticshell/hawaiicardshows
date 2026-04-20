@@ -1,0 +1,51 @@
+# Hawaii Card Shows
+
+The complete community-driven calendar of trading card game shows, trade nights, and collectible events across the Hawaiian Islands (Oahu, Maui, Big Island, Kauai).
+
+## About
+
+Hawaii Card Shows (hawaiicardshows.com) is the most comprehensive directory of trading card events, card shops, and TCG community happenings in Hawaii. We track Pokemon, sports cards, Magic: The Gathering, Yu-Gi-Oh, One Piece, Dragon Ball, and other TCG / collectible events across all four main Hawaiian islands.
+
+The site is built and maintained by local collectors for the Hawaii hobby community. Event organizers and shop owners submit listings directly; our team reviews and publishes them, typically within 24-48 hours. We also publish recaps, highlight new shops, and feature upcoming shows.
+
+Coverage includes:
+- One-time card shows and conventions (e.g. Aloha Card Show, Keep It Aloha Card Show, Collector Megalopolis, Paradise Card Show)
+- Recurring trade nights (e.g. ToyLynx Trade Night, Uncle Tony's Trade Night, TCG Tavern Trade Day, Bayview Night Market)
+- Annual events (Hawaii Pop Con, Aloha Card Show)
+- Card shops across Oahu, Maui, Big Island, and Kauai
+- Vendor and organizer information
+
+## Key Pages
+
+- [Home / Calendar](https://hawaiicardshows.com/): Rolling 7-day window of upcoming shows, recurring events, annual events, and full monthly calendar grid.
+- [All Shows](https://hawaiicardshows.com/shows/): Full list of shows with individual detail pages for each.
+- [Card Shops Directory](https://hawaiicardshows.com/shops/): Every known trading card shop in Hawaii, filterable by island.
+- [Show Recaps](https://hawaiicardshows.com/recaps/): Post-show writeups with photos from past events.
+- [Submit an Event](https://hawaiicardshows.com/#submit): Form for organizers to add their event to the calendar.
+- [Host a Show](https://hawaiicardshows.com/host-a-show): Guide for anyone wanting to organize a new card show in Hawaii.
+
+## Shops by Island
+
+### Oahu
+ToyLynx (Honolulu, featured), TCG Tavern (Honolulu, featured), Aloha Card Shop, 808 Showcase, Box Jellyz, Best of the Best, iWinGames, Space 62 (Ala Moana), Da Planet, Paula's Sports Cards, Other Realms, Evolving Realms, From the Heart, Dragon's Lair, Windward Collectibles, Armchair Adventurer
+
+### Big Island
+TCG Hawaii (Hilo), 4 Pillars, Gam3 Escape, Slow Your Roll, Big Island Breaks (Kona — Pokemon-focused)
+
+### Maui
+YoCards, Maui Sports Cards (Kahului)
+
+### Kauai
+Bubbah's Toy Box, Crow's Nest
+
+## Data Sources
+
+- [RSS feed](https://hawaiicardshows.com/feed.xml): Machine-readable feed of all upcoming approved events (RSS 2.0, cached 1 hour)
+- [XML Sitemap](https://hawaiicardshows.com/sitemap.xml): All canonical URLs on the site
+- Structured data: Every show page includes Event schema (schema.org). Every shop page includes Store/LocalBusiness schema. Homepage includes Organization, WebSite, and FAQPage schema.
+
+## Contact
+
+- Instagram: [@hawaiicardshows](https://www.instagram.com/hawaiicardshows)
+- Email: aloha@hawaiicardshows.com
+- Sponsorship / partnerships: see the homepage sponsor section

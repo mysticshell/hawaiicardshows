@@ -18,12 +18,14 @@
 
 ## Waiting on Others
 
+- [ ] **Keep It Aloha Card Show #2 (July 4-5)** — Waiting on flyer + venue from Kamaka. Event is live with TBA venue.
 - [ ] **West Side Card Show (June 6-7)** — Need details from Tyler
 - [ ] **2 June Maui shows** — Waiting on @juanguyscollection
 - [ ] **ToyLynx new events** — Waiting on Jack
 - [ ] **Pau Hana rescheduled event** — Waiting on Hamajang + Satoshi details
 - [ ] **Branding SVGs + new color scheme** — Waiting on designer
 - [ ] **Shop page reviews** — Ongoing feedback collection
+- [ ] **Maui Sports Cards trade night cadence** — Watch for pattern. If they start trade nights on a regular schedule, convert to recurring event instead of one-offs.
 
 ## Backlog — Ready to Build
 
