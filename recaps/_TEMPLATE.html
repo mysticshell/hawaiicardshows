@@ -1,0 +1,286 @@
+<!--
+═════════════════════════════════════════════════════════════════════
+  HAWAII CARD SHOWS — RECAP TEMPLATE
+═════════════════════════════════════════════════════════════════════
+
+  HOW TO USE:
+  1. Copy this file: recaps/_TEMPLATE.html → recaps/{{slug}}.html
+     (e.g. recaps/keep-it-aloha-july-2026.html)
+  2. Find/replace every {{TOKEN}} with the real value (see token list below)
+  3. Delete this comment block before publishing
+  4. Run through /recaps/CHECKLIST.md before pushing
+  5. Add the new URL to sitemap.xml and cross-link from related show/shop pages
+
+  TOKEN LIST (find-and-replace these):
+    {{SHOW_NAME}}          — e.g. "Keep It Aloha Card Show"
+    {{SHOW_SUBTITLE}}      — e.g. "2nd Edition at SALT Kaka'ako"
+    {{HEADLINE}}           — Short punchy sentence for the H1, e.g. "Keep It Aloha #2 — Community Comes Out for Independence Weekend"
+    {{SLUG}}               — URL slug, e.g. "keep-it-aloha-july-2026"
+    {{DATE_DISPLAY}}       — e.g. "Saturday, July 4, 2026" (or a range for multi-day)
+    {{DATE_ISO}}           — e.g. "2026-07-04" (single date) or start date for multi-day
+    {{END_DATE_ISO}}       — e.g. "2026-07-04" (for single-day, same as DATE_ISO)
+    {{PUBLISH_DATE_ISO}}   — date you're publishing the recap, e.g. "2026-07-06"
+    {{TIME_DISPLAY}}       — e.g. "10:00 AM — 6:00 PM"
+    {{VENUE_NAME}}         — e.g. "SALT at Our Kaka'ako"
+    {{VENUE_ADDRESS_LINE}} — e.g. "691 Auahi St, Honolulu"
+    {{ADMISSION}}          — e.g. "Free" or "$5 Admission"
+    {{VENDOR_COUNT}}       — e.g. "40"
+    {{ATTENDEE_COUNT}}     — e.g. "800+"
+    {{SHOW_NUMBER}}        — e.g. "#2" (the edition number of this show)
+    {{META_DESCRIPTION}}   — 160ish-char meta description
+    {{META_KEYWORDS}}      — comma-separated keywords
+    {{OG_DESCRIPTION}}     — slightly punchier version of meta description
+    {{ORGANIZER_NAME}}     — e.g. "Kamaka Dias & Hawaii Collectibles"
+    {{LEAD_PARAGRAPH}}     — Your opening 2-3 sentence setup
+    {{BODY_PARAGRAPH_1}}   — Continue the narrative; what happened, who was there
+    {{SECTION_2_HEADING}}  — Subhead for your second section (e.g. "Keiki First")
+    {{SECTION_2_PARAGRAPH}} — ...
+    {{SECTION_3_HEADING}}  — Subhead for your third section
+    {{SECTION_3_PARAGRAPH}} — ...
+    {{CLOSING_PARAGRAPH}}  — Wrap-up, what's next, when the next show is
+    {{RELATED_SHOW_SLUG}}  — e.g. "keep-it-aloha" (for the show detail page link)
+    {{NEXT_SHOW_NAME}}     — e.g. "the next Keep It Aloha show"
+    {{NEXT_SHOW_URL}}      — relative URL to next show's page
+    {{SPONSOR_1_*}}        — Customize the sponsor callouts (or delete if no sponsors)
+
+  PHOTO GALLERY:
+    Replace the photo URLs in the `photo-grid` section with real image URLs.
+    Use Supabase storage URLs under page-images/ or shows/images/ in repo.
+    Recommended: 4-8 photos, 4:3 aspect ratio, compressed.
+
+  SCHEMA MARKUP:
+    The Article + Event schema in <head> is pre-wired with token placeholders.
+    Don't delete it — just fill in the tokens.
+═════════════════════════════════════════════════════════════════════
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="Hawaii Card Shows" href="/feed.xml">
+<title>{{SHOW_NAME}} Recap — {{DATE_DISPLAY}} | {{HEADLINE}}</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-48ZSPW63VV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-48ZSPW63VV');
+</script>
+<meta name="description" content="{{META_DESCRIPTION}}">
+<meta name="keywords" content="{{META_KEYWORDS}}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hawaiicardshows.com/recaps/{{SLUG}}.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{SHOW_NAME}} Recap — {{DATE_DISPLAY}}">
+<meta property="og:description" content="{{OG_DESCRIPTION}}">
+<meta property="og:url" content="https://hawaiicardshows.com/recaps/{{SLUG}}.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hawaii Card Shows">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{SHOW_NAME}} Recap — {{DATE_DISPLAY}}">
+<meta name="twitter:description" content="{{OG_DESCRIPTION}}">
+
+<!-- Structured Data: Article + Event -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{SHOW_NAME}} Recap — {{DATE_DISPLAY}}",
+  "description": "{{META_DESCRIPTION}}",
+  "datePublished": "{{PUBLISH_DATE_ISO}}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hawaii Card Shows",
+    "url": "https://hawaiicardshows.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hawaiicardshows.com/favicon.svg"
+    }
+  },
+  "about": {
+    "@type": "Event",
+    "name": "{{SHOW_NAME}}",
+    "startDate": "{{DATE_ISO}}",
+    "endDate": "{{END_DATE_ISO}}",
+    "location": {
+      "@type": "Place",
+      "name": "{{VENUE_NAME}}",
+      "address": { "@type": "PostalAddress", "addressLocality": "Honolulu", "addressRegion": "HI" }
+    },
+    "organizer": { "@type": "Organization", "name": "{{ORGANIZER_NAME}}" }
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sand: #f5f0e8; --sand-dark: #e8e0d0; --ocean: #1a6b5a; --ocean-light: #2a8b72;
+  --ocean-pale: #e8f4f0; --lava: #d4582a; --lava-light: #f0714a; --night: #1a1a1a;
+  --text: #2c2c2c; --text-light: #6a6a6a; --text-lighter: #999; --white: #ffffff;
+  --radius: 12px; --shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--sand); }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(245,240,232,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 0 24px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 18px; color: var(--ocean); letter-spacing: -0.5px; text-decoration: none; }
+.nav-brand span { color: var(--lava); }
+
+.recap-hero { padding: 100px 24px 48px; max-width: 800px; margin: 0 auto; }
+.recap-tag { display: inline-block; background: var(--ocean); color: var(--white); padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+.recap-hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; color: var(--night); margin-bottom: 16px; }
+.recap-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; color: var(--text-light); padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+.recap-meta-item { display: flex; align-items: center; gap: 6px; }
+.recap-meta-item svg { width: 16px; height: 16px; stroke: var(--ocean); fill: none; }
+
+.stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 800px; margin: 32px auto; padding: 0 24px; }
+.stat-box { background: var(--white); border-radius: var(--radius); padding: 20px; text-align: center; box-shadow: var(--shadow); }
+.stat-num { font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 700; color: var(--ocean); }
+.stat-label { font-size: 13px; color: var(--text-light); margin-top: 4px; }
+
+.recap-content { max-width: 800px; margin: 0 auto; padding: 32px 24px 80px; font-size: 17px; line-height: 1.8; color: var(--text); }
+.recap-content p { margin-bottom: 20px; }
+.recap-content h2 { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; color: var(--night); margin: 40px 0 16px; letter-spacing: -0.5px; }
+.recap-content a { color: var(--ocean); font-weight: 600; text-decoration: none; }
+.recap-content a:hover { text-decoration: underline; }
+
+.highlight-box { background: var(--ocean-pale); border-radius: var(--radius); padding: 24px; margin: 24px 0; border-left: 4px solid var(--ocean); }
+.highlight-box strong { color: var(--ocean); }
+
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin: 32px 0; }
+.photo-grid img { width: 100%; border-radius: var(--radius); object-fit: cover; aspect-ratio: 4/3; cursor: pointer; transition: transform 0.2s; }
+.photo-grid img:hover { transform: scale(1.02); }
+
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; cursor: pointer; justify-content: center; align-items: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; object-fit: contain; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+.lightbox-close { position: absolute; top: 20px; right: 24px; color: white; font-size: 32px; font-weight: 300; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+.recap-cta { background: var(--night); border-radius: 16px; padding: 48px 32px; text-align: center; margin: 48px 0; }
+.recap-cta h3 { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.recap-cta p { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 20px; }
+.recap-cta a { display: inline-block; background: var(--ocean); color: var(--white); padding: 12px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 15px; transition: background 0.2s; }
+.recap-cta a:hover { background: var(--ocean-light); }
+
+footer { text-align: center; padding: 40px 24px; border-top: 1px solid rgba(0,0,0,0.06); color: var(--text-lighter); font-size: 13px; }
+footer a { color: var(--ocean); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .nav-links{display:none}.nav-mobile{display:block}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(245,240,232,0.98);backdrop-filter:blur(20px);padding:16px 24px;gap:16px;border-bottom:1px solid rgba(0,0,0,0.06)}
+  .stats-bar { grid-template-columns: 1fr; }
+  .recap-content { font-size: 16px; }
+}
+
+.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;color:var(--text-light);text-decoration:none;transition:color 0.2s}.nav-links a:hover{color:var(--ocean)}.nav-cta{background:var(--ocean)!important;color:var(--white)!important;padding:8px 18px!important;border-radius:8px;font-weight:600!important;font-size:13px!important;transition:background 0.2s}.nav-cta:hover{background:var(--ocean-light)!important}.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:4px}.nav-mobile svg{width:24px;height:24px;stroke:var(--text)}.nav-ig{display:flex;align-items:center;color:var(--text-light);transition:color 0.2s}.nav-ig:hover{color:var(--ocean)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="https://hawaiicardshows.com/#upcoming">Upcoming</a>
+    <a href="https://hawaiicardshows.com/shows/">Shows</a>
+    <a href="https://hawaiicardshows.com/shops/">Shops</a>
+    <a href="https://hawaiicardshows.com/recaps/">Recaps</a>
+    <a href="https://hawaiicardshows.com/#submit" class="nav-cta">Submit Your Event</a>
+    <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" class="nav-ig" aria-label="Follow us on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+  </div>
+  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</nav>
+
+<div class="recap-hero">
+  <div class="recap-tag">Show Recap</div>
+  <h1>{{HEADLINE}}</h1>
+  <div class="recap-meta">
+    <div class="recap-meta-item">
+      <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 10h18"/></svg>
+      {{DATE_DISPLAY}}
+    </div>
+    <div class="recap-meta-item">
+      <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg>
+      {{TIME_DISPLAY}}
+    </div>
+    <div class="recap-meta-item">
+      <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/></svg>
+      {{VENUE_NAME}}, {{VENUE_ADDRESS_LINE}}
+    </div>
+    <div class="recap-meta-item">
+      <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      {{ADMISSION}}
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-box"><div class="stat-num">{{VENDOR_COUNT}}</div><div class="stat-label">Vendors</div></div>
+  <div class="stat-box"><div class="stat-num">{{ATTENDEE_COUNT}}</div><div class="stat-label">Attendees</div></div>
+  <div class="stat-box"><div class="stat-num">{{SHOW_NUMBER}}</div><div class="stat-label">{{SHOW_NAME}}</div></div>
+</div>
+
+<div class="recap-content">
+
+  <p>{{LEAD_PARAGRAPH}}</p>
+
+  <p>{{BODY_PARAGRAPH_1}}</p>
+
+  <!-- PHOTO GALLERY — replace URLs with real photos -->
+  <div class="photo-grid">
+    <img src="https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/page-images/{{SLUG}}-photo-1.jpg" alt="{{SHOW_NAME}} — photo 1" loading="lazy" onclick="this.nextElementSibling.classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/page-images/{{SLUG}}-photo-2.jpg" alt="{{SHOW_NAME}} — photo 2" loading="lazy" onclick="this.nextElementSibling.classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/page-images/{{SLUG}}-photo-3.jpg" alt="{{SHOW_NAME}} — photo 3" loading="lazy" onclick="this.nextElementSibling.classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/page-images/{{SLUG}}-photo-4.jpg" alt="{{SHOW_NAME}} — photo 4" loading="lazy" onclick="this.nextElementSibling.classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+  </div>
+
+  <h2>{{SECTION_2_HEADING}}</h2>
+
+  <p>{{SECTION_2_PARAGRAPH}}</p>
+
+  <!-- OPTIONAL: Sponsor / highlight callout. Delete this block if no sponsors. -->
+  <div class="highlight-box">
+    <strong>{{SPONSOR_1_NAME}}</strong> — {{SPONSOR_1_DESCRIPTION}} <a href="{{SPONSOR_1_URL}}" style="font-size:13px;">Visit their page →</a>
+  </div>
+
+  <h2>{{SECTION_3_HEADING}}</h2>
+
+  <p>{{SECTION_3_PARAGRAPH}}</p>
+
+  <p>{{CLOSING_PARAGRAPH}}</p>
+
+</div>
+
+<!-- LIGHTBOX (don't remove — powers the photo gallery) -->
+<div class="lightbox" onclick="this.classList.remove('active');">
+  <span class="lightbox-close">×</span>
+  <img class="lightbox-img" src="" alt="">
+</div>
+
+<div class="recap-cta">
+  <h3>Catch the Next One</h3>
+  <p>Browse every upcoming show across the islands.</p>
+  <a href="/">View Calendar →</a>
+</div>
+
+<footer>
+  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="/">Back to Calendar</a> &bull; <a href="/recaps/">All Recaps</a> &bull; <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+</footer>
+
+</body>
+</html>
