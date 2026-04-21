@@ -4,6 +4,42 @@ Aim to publish within **3-5 days** after the show, while energy is still high an
 
 ---
 
+## 🧠 Content Brief — Answer These 5 Questions First
+
+Before you touch the template, answer these. Paste the answers to Claude (or a writer) and they'll draft the full recap copy for you.
+
+**1. What was the ONE thing that made this show noteworthy?**
+(The lede — one sentence. "Biggest turnout we've had" / "First time at this venue and it worked" / "A PSA 10 Charizard sold on the floor.")
+- [ ] Answered
+
+**2. The numbers:**
+- Vendor count: ___
+- Attendance (rough is fine: "~300", "sold out", "line around the block"): ___
+- Admission: ___
+- Edition number (1st, 2nd, #4): ___
+- Start/end times: ___
+
+**3. What are 2-3 standout moments or stories worth calling out?**
+(Becomes the body sections. A notable card pull, keiki moment, packed hour, vendor who did something cool, community moment, anything that felt different from the last one.)
+- Moment 1: ___
+- Moment 2: ___
+- Moment 3: ___
+
+**4. Who showed up as a sponsor or partner — and what did they contribute?**
+(For each: name, what they did, IG handle. "None" is a valid answer.)
+- Sponsor 1: ___
+- Sponsor 2: ___
+
+**5. What's the ONE thing you want readers to do next?**
+(The CTA. Options: come to the next show, follow an IG, subscribe to the newsletter, visit a shop page.)
+- [ ] Answered
+
+**Bonus (optional but strong):**
+- 4-8 photos, named `{{slug}}-photo-1.jpg` through `-N.jpg`
+- Any direct quotes from organizers, vendors, attendees
+
+---
+
 ## 📸 Before You Start — Gather the Materials
 
 - [ ] 6-10 good photos from the show (crowd shots, vendor tables, standout cards, keiki moments)
