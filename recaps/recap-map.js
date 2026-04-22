@@ -38,7 +38,7 @@
       slug: 'moiliili-card-show-march-2026',
       title: 'Moiliili Card Show — Inaugural Community Show',
       date: '2026-03-28',
-      event_id: null,
+      event_id: 'a5644e60-b298-4433-b12c-9fb51266a6bb',
       thumbnail: null,
       url: '/recaps/moiliili-card-show-march-2026.html',
       blurb: '1,000+ collectors, 25 vendors, all proceeds to the Hongwanji.'
