@@ -1,6 +1,6 @@
 # Hawaii Card Shows — Project Status
 
-*Last updated: 2026-04-15*
+*Last updated: 2026-04-22*
 
 ---
 
@@ -47,6 +47,9 @@ Holding until branding SVGs + new color scheme are delivered. Shipping the whole
 
 ## Recently Completed
 
+- [x] Fixed Moiliili recap broken images with "Photos coming soon" placeholder — 2026-04-22
+- [x] Recap architecture: recap-map.js registry, "Latest From Hawaii" homepage strip, auto-link recaps on show detail pages, kept Recaps out of main nav — 2026-04-22
+- [x] First recap published via new template workflow: GetNutz x Paradise Show (April 19, 2026) with 6 photos in repo — 2026-04-22
 - [x] AI-SEO content: /faq.html (14 Q&As), /hawaii-card-shows-guide.html (long-form anchor), /recaps/_TEMPLATE.html + CHECKLIST.md — 2026-04-21
 - [x] AI-SEO foundation: llms.txt, AI crawler allowlist, FAQ schema, enriched Organization schema — 2026-04-20
 - [x] Featured events section on homepage ("Don't Miss These") — 2026-04-16
