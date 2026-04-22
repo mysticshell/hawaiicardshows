@@ -52,9 +52,10 @@ Before you touch the template, answer these. Paste the answers to Claude (or a w
 ## 🖼️ Photo Prep
 
 - [ ] Resize photos to 1200px wide max (keeps page fast)
-- [ ] Compress to <200KB each (use tinypng.com or similar)
-- [ ] Upload to Supabase storage → `page-images/` bucket
-- [ ] Name them `{{slug}}-photo-1.jpg` through `-photo-N.jpg` so the template tokens work
+- [ ] Compress to <300KB each (use tinypng.com or similar)
+- [ ] Drop into `/recaps/images/` in the repo (same place where Paradise photos live)
+- [ ] Name them descriptively: `{{slug}}-show-floor.jpg`, `{{slug}}-crowd.jpg`, etc. OR `{{slug}}-photo-1.jpg` through `-N.jpg` — either works
+- [ ] Update the `<img src="">` tags in the recap HTML to point to `/recaps/images/{filename}` with descriptive `alt` text
 
 ## 📝 Writing the Recap
 
