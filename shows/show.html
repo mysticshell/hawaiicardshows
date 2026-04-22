@@ -90,6 +90,7 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06)
   .main-col, .info-card { padding: 24px; }
 }
 </style>
+<script src="/recaps/recap-map.js"></script>
 </head>
 <body>
 <nav>
@@ -481,13 +482,15 @@ async function loadData() {
     }
   }
 
-  // RECAPS Module
-  const { data: recaps, error: rErr } = await sb.from('recaps').select('*').eq('event_id', id);
-  if (!rErr && recaps && recaps.length > 0) {
+  // RECAPS Module — reads from /recaps/recap-map.js (window.HCS_RECAPS_FOR_EVENT)
+  const recaps = (typeof window.HCS_RECAPS_FOR_EVENT === 'function')
+    ? window.HCS_RECAPS_FOR_EVENT(id)
+    : [];
+  if (recaps.length > 0) {
     document.getElementById('recapsModule').style.display = 'block';
     document.getElementById('recapList').innerHTML = recaps.map(r => `
-      <a href="${esc(r.url)}" class="recap-card" target="_blank">
-        ${r.thumbnail_url ? `<img src="${esc(r.thumbnail_url)}" class="recap-card-img">` : `<div class="recap-card-img" style="display:flex;align-items:center;justify-content:center;color:#999;font-size:12px;">No Image</div>`}
+      <a href="${esc(r.url)}" class="recap-card">
+        ${r.thumbnail ? `<img src="${esc(r.thumbnail)}" class="recap-card-img" alt="${esc(r.title)}">` : `<div class="recap-card-img" style="display:flex;align-items:center;justify-content:center;color:#999;font-size:12px;">No Image</div>`}
         <div class="recap-card-body">${esc(r.title)}</div>
       </a>
     `).join('');

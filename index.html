@@ -40,6 +40,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="/recaps/recap-map.js"></script>
 <style>
 :root{--sand:#f5f0e8;--sand-dark:#e8e0d0;--ocean:#1a6b5a;--ocean-light:#2a8b72;--ocean-pale:#e8f4f0;--lava:#d4582a;--lava-light:#f0714a;--night:#1a1a1a;--night-soft:#2a2a2a;--text:#2c2c2c;--text-light:#6a6a6a;--text-lighter:#999;--white:#ffffff;--radius:12px;--shadow:0 2px 20px rgba(0,0,0,0.06);--shadow-lg:0 8px 40px rgba(0,0,0,0.1)}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--sand)}
@@ -219,6 +220,13 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06)
     </div>
   </div>
 </section>
+<section class="section" id="recent-recaps" style="display:none;padding-top:0;">
+  <div class="section-header"><div class="section-tag">Latest From Hawaii</div><div class="section-title">Recent Show Recaps</div><div class="section-sub">Photos and stories from recent shows across the islands.</div></div>
+  <div id="recentRecapsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1100px;margin:0 auto;padding:0 24px;"></div>
+  <div style="text-align:center;margin-top:32px;">
+    <a href="/recaps/" style="display:inline-block;color:var(--ocean);font-weight:600;font-size:14px;text-decoration:none;border-bottom:2px solid var(--ocean);padding-bottom:2px;">View All Recaps &rarr;</a>
+  </div>
+</section>
 <section class="section" id="submit" style="background:var(--ocean-pale);margin:0 auto;max-width:100%;padding:80px 24px;">
   <div style="max-width:1100px;margin:0 auto;">
     <div class="section-header"><div class="section-tag">Community Powered</div><div class="section-title">Submit Your Event</div><div class="section-sub">Running a card show, trade night, or TCG event in Hawaii? Get it on the calendar.</div></div>
@@ -286,7 +294,31 @@ function esc(s){const d=document.createElement('div');d.textContent=s||'';return
 function fmtTime(t){if(!t)return'';if(t.match(/^\d{1,2}:\d{2}$/)){const[h,m]=t.split(':').map(Number);const ampm=h>=12?'PM':'AM';const h12=h>12?h-12:h===0?12:h;return m===0?h12+' '+ampm:h12+':'+String(m).padStart(2,'0')+' '+ampm;}return t;}
 function fmtTimeRange(e){if(!e.start_time)return'TBD';const s=fmtTime(e.start_time);const en=fmtTime(e.end_time);return en?s+' \u2013 '+en:s;}
 function getShowUrl(e){return e.custom_url||`/shows/show.html?id=${e.id}`;}
-async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true});if(error){console.error(error);return;}allEvents=data||[];renderFeatured();renderUpcoming();renderRecurring();renderAnnual();renderCalendar();updateStats();renderAgenda();injectEventSchema();}
+async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true});if(error){console.error(error);return;}allEvents=data||[];renderFeatured();renderUpcoming();renderRecurring();renderAnnual();renderCalendar();updateStats();renderAgenda();injectEventSchema();renderRecentRecaps();}
+
+function renderRecentRecaps(){
+  if(typeof window.HCS_RECENT_RECAPS!=='function')return;
+  const recaps=window.HCS_RECENT_RECAPS(3);
+  if(!recaps||recaps.length===0)return;
+  const section=document.getElementById('recent-recaps');
+  const grid=document.getElementById('recentRecapsGrid');
+  if(!section||!grid)return;
+  section.style.display='block';
+  grid.innerHTML=recaps.map(r=>{
+    const thumb=r.thumbnail
+      ?`<img src="${esc(r.thumbnail)}" alt="${esc(r.title)}" style="width:100%;height:180px;object-fit:cover;display:block;">`
+      :`<div style="width:100%;height:180px;background:linear-gradient(135deg,var(--ocean) 0%,var(--ocean-light) 100%);display:flex;align-items:center;justify-content:center;color:white;font-family:'Outfit',sans-serif;font-weight:700;font-size:18px;text-align:center;padding:16px;">${esc(r.title.split('—')[0].trim())}</div>`;
+    const dateLabel=r.date?formatHawaiiDate(r.date,{month:'long',year:'numeric'}):'';
+    return `<a href="${esc(r.url)}" style="background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);text-decoration:none;color:inherit;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='none';this.style.boxShadow='var(--shadow)'">
+      ${thumb}
+      <div style="padding:20px;">
+        <div style="font-size:11px;font-weight:700;color:var(--lava);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;">Recap &middot; ${esc(dateLabel)}</div>
+        <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;color:var(--night);line-height:1.3;margin-bottom:8px;">${esc(r.title)}</div>
+        ${r.blurb?`<div style="font-size:13px;color:var(--text-light);line-height:1.5;">${esc(r.blurb)}</div>`:''}
+      </div>
+    </a>`;
+  }).join('');
+}
 
 function renderFeatured(){
   const todayStr=getHawaiiDateStr(0);
