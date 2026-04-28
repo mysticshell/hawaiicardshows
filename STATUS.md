@@ -47,6 +47,7 @@ Holding until branding SVGs + new color scheme are delivered. Shipping the whole
 
 ## Recently Completed
 
+- [x] Newsletter timing incident fixed — 2026-04-27. The Apr 27 send was scheduled for May 4 (a week late) due to two bugs: (1) `getNextMonday9amHst` returning NEXT Monday when run on a Monday, and (2) GitHub Actions cron drift pushing the run from Sunday evening into Monday morning HST. Fix: rewrote date logic to target the soonest Monday 9 AM HST (today if before 9 AM Mon, else next Mon), shifted event window to start from the send date instead of generation date, and moved the cron from `0 4 * * 1` (Mon 4 UTC) to `0 22 * * 0` (Sun 22 UTC) for ~21 hours of drift buffer. Existing scheduled email on Buttondown was converted to draft so it won't auto-send.
 - [x] Fixed Moiliili recap broken images with "Photos coming soon" placeholder — 2026-04-22
 - [x] Recap architecture: recap-map.js registry, "Latest From Hawaii" homepage strip, auto-link recaps on show detail pages, kept Recaps out of main nav — 2026-04-22
 - [x] First recap published via new template workflow: GetNutz x Paradise Show (April 19, 2026) with 6 photos in repo — 2026-04-22

@@ -1,14 +1,20 @@
 name: Weekly Newsletter
 
-# Triggers the generate-newsletter Cloudflare Function every Sunday to create
-# a Buttondown email scheduled to send Monday morning at 9 AM HST.
+# Triggers the generate-newsletter Cloudflare Function every Sunday afternoon
+# HST to create a Buttondown email scheduled to send Monday morning at 9 AM HST.
 #
-# Schedule: Sunday 6:00 PM HST = Monday 04:00 UTC
+# Schedule: Sunday 12:00 PM HST = Sunday 22:00 UTC
 # (Hawaii is UTC-10 year-round — no DST.)
+#
+# Why noon Sunday HST instead of evening: GitHub Actions cron is best-effort
+# and can drift several hours during peak load. Running at noon HST gives
+# ~21 hours of buffer before the Monday 9 AM HST send slot. If we ran later
+# and GitHub delayed past midnight HST, "today" inside the function would
+# flip to Monday and the date math (and event window) would be wrong.
 #
 # The endpoint handles:
 #   - Fetching upcoming events from Supabase
-#   - Building the HTML newsletter
+#   - Building an event window starting on the SEND date (upcoming Monday)
 #   - Creating the post as "confirmed" with scheduled_at = next Monday 9 AM HST
 #   - Falling back to draft if there are zero events (safety net)
 #
@@ -17,8 +23,8 @@ name: Weekly Newsletter
 
 on:
   schedule:
-    # Sunday 18:00 HST == Monday 04:00 UTC
-    - cron: '0 4 * * 1'
+    # Sunday 12:00 PM HST == Sunday 22:00 UTC
+    - cron: '0 22 * * 0'
   workflow_dispatch:
     inputs:
       confirm:

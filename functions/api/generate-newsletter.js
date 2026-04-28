@@ -43,11 +43,17 @@ export async function onRequestGet({ request, env }) {
     const events = await fetchEvents(env);
 
     // --- Expand window ---
-    const { oneTime, recurring } = expandWindow(events, days);
+    // The window starts on the SEND date (the upcoming Monday), not "today",
+    // so the newsletter content always matches what subscribers see when the
+    // email lands in their inbox. If we generated the window from "today" and
+    // sent on Monday, recipients would open Monday's email and see Sunday's
+    // events as "upcoming" — already passed.
+    const startOffset = getDaysUntilSendDate();
+    const { oneTime, recurring } = expandWindow(events, days, startOffset);
 
     // --- Build subject + week label ---
-    const startStr = getHawaiiDateStr(0);
-    const endStr = getHawaiiDateStr(days - 1);
+    const startStr = getHawaiiDateStr(startOffset);
+    const endStr = getHawaiiDateStr(startOffset + days - 1);
     const weekLabel = `${formatHawaiiDate(startStr, { month: 'short', day: 'numeric' })} – ${formatHawaiiDate(endStr, { month: 'short', day: 'numeric' })}`;
     const totalCount = oneTime.length + recurring.length;
     const subject = url.searchParams.get('title') || `Hawaii Card Shows — ${weekLabel}`;
@@ -116,23 +122,34 @@ export async function onRequestGet({ request, env }) {
   }
 }
 
-// Compute next Monday 9:00 AM HST as a UTC ISO 8601 string.
+// Returns the offset in days from "now in HST" to the next send date.
+// Send date = the soonest upcoming Monday 9 AM HST.
+// If we're currently on Monday before 9 AM HST, target today (offset 0).
+// Otherwise target the next Monday.
+function getDaysUntilSendDate() {
+  const nowHst = new Date(new Date().toLocaleString('en-US', { timeZone: 'Pacific/Honolulu' }));
+  const day = nowHst.getDay(); // 0=Sun..6=Sat
+  const hour = nowHst.getHours();
+  if (day === 1) {
+    // Monday: target today if before 9 AM HST, otherwise next Monday.
+    return hour < 9 ? 0 : 7;
+  }
+  // Other days: target the upcoming Monday.
+  return (8 - day) % 7;
+}
+
+// Compute the next send date (Monday 9:00 AM HST) as a UTC ISO 8601 string.
 // Hawaii doesn't observe DST, so UTC-10 is always correct.
 // 9 AM HST = 19:00 UTC.
 function getNextMonday9amHst() {
   const nowHst = new Date(new Date().toLocaleString('en-US', { timeZone: 'Pacific/Honolulu' }));
-  const day = nowHst.getDay(); // 0=Sun..6=Sat
-  // Days until next Monday (if today is Monday, target next Monday, not today)
-  const daysUntilMonday = day === 1 ? 7 : (8 - day) % 7 || 7;
   const target = new Date(nowHst);
-  target.setDate(nowHst.getDate() + daysUntilMonday);
+  target.setDate(nowHst.getDate() + getDaysUntilSendDate());
   target.setHours(9, 0, 0, 0);
-  // Convert to UTC: HST is UTC-10, so add 10 hours
-  const utcHour = 19; // 9 AM HST = 19:00 UTC
   const y = target.getFullYear();
   const m = String(target.getMonth() + 1).padStart(2, '0');
   const d = String(target.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}T${utcHour}:00:00Z`;
+  return `${y}-${m}-${d}T19:00:00Z`;
 }
 
 export async function onRequestOptions() {
@@ -275,12 +292,12 @@ function getEventsForDate(ds, allEvents) {
   return results;
 }
 
-function expandWindow(allEvents, days) {
+function expandWindow(allEvents, days, startOffset = 0) {
   const oneTimeMap = new Map();
   const recurringMap = new Map();
 
   for (let i = 0; i < days; i++) {
-    const ds = getHawaiiDateStr(i);
+    const ds = getHawaiiDateStr(i + startOffset);
     const evs = getEventsForDate(ds, allEvents);
     for (const e of evs) {
       if (e.event_type === 'recurring') {
