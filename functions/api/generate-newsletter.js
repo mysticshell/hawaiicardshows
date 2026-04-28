@@ -431,9 +431,9 @@ function buildIslandSections(oneTime, recurring) {
       </p>
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-table;">
       <tr>
-        <td align="center" style="background-color:#1a6b5a;border-radius:6px;mso-padding-alt:10px 18px;">
-          <a href="${esc(island.shopUrl)}" style="display:inline-block;padding:10px 18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:6px;">
-            <span style="color:#ffffff;">${esc(island.name)} Card Shops &rarr;</span>
+        <td align="center" style="background-color:#d4582a;border-radius:6px;mso-padding-alt:10px 18px;">
+          <a href="${esc(island.shopUrl)}" style="display:inline-block;padding:10px 18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:6px;">
+            ${esc(island.name)} Card Shops &rarr;
           </a>
         </td>
       </tr>
@@ -484,9 +484,9 @@ function buildEventCard(e, dateStr, color) {
 
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;">
   <tr>
-    <td align="center" style="background-color:${cardColor};border-radius:6px;mso-padding-alt:10px 18px;">
-      <a href="${esc(url)}" style="display:inline-block;padding:10px 18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:6px;">
-        <span style="color:#ffffff;">View Show &rarr;</span>
+    <td align="center" style="background-color:#d4582a;border-radius:6px;mso-padding-alt:10px 18px;">
+      <a href="${esc(url)}" style="display:inline-block;padding:10px 18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:6px;">
+        View Show &rarr;
       </a>
     </td>
   </tr>
@@ -537,8 +537,8 @@ function buildShopCta() {
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-table;">
   <tr>
     <td align="center" style="background-color:#d4582a;border-radius:8px;mso-padding-alt:14px 32px;">
-      <a href="https://hawaiicardshows.com/shops/" style="display:inline-block;padding:14px 32px;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:8px;letter-spacing:0.3px;">
-        <span style="color:#ffffff;">Find Card Shops &rarr;</span>
+      <a href="https://hawaiicardshows.com/shops/" style="display:inline-block;padding:14px 32px;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:8px;letter-spacing:0.3px;">
+        Find Card Shops &rarr;
       </a>
     </td>
   </tr>
