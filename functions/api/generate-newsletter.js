@@ -564,7 +564,7 @@ function buildFooter() {
       </div>
       <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:rgba(255,255,255,0.3);margin-top:16px;line-height:1.6;">
         You&rsquo;re receiving this because you subscribed at hawaiicardshows.com.<br>
-        <a href="{unsubscribe_url}" style="color:rgba(255,255,255,0.4);text-decoration:underline;">Unsubscribe</a>
+        <a href="{{ unsubscribe_url }}" style="color:rgba(255,255,255,0.4);text-decoration:underline;">Unsubscribe</a>
       </div>
     </td>
   </tr>
