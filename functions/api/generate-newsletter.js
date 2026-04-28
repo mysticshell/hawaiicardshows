@@ -433,7 +433,7 @@ function buildIslandSections(oneTime, recurring) {
       <tr>
         <td align="center" style="background-color:#1a6b5a;border-radius:6px;mso-padding-alt:10px 18px;">
           <a href="${esc(island.shopUrl)}" style="display:inline-block;padding:10px 18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:6px;">
-            ${esc(island.name)} Card Shops &rarr;
+            <span style="color:#ffffff;">${esc(island.name)} Card Shops &rarr;</span>
           </a>
         </td>
       </tr>
@@ -486,7 +486,7 @@ function buildEventCard(e, dateStr, color) {
   <tr>
     <td align="center" style="background-color:${cardColor};border-radius:6px;mso-padding-alt:10px 18px;">
       <a href="${esc(url)}" style="display:inline-block;padding:10px 18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:6px;">
-        View Show &rarr;
+        <span style="color:#ffffff;">View Show &rarr;</span>
       </a>
     </td>
   </tr>
@@ -538,7 +538,7 @@ function buildShopCta() {
   <tr>
     <td align="center" style="background-color:#d4582a;border-radius:8px;mso-padding-alt:14px 32px;">
       <a href="https://hawaiicardshows.com/shops/" style="display:inline-block;padding:14px 32px;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:8px;letter-spacing:0.3px;">
-        Find Card Shops &rarr;
+        <span style="color:#ffffff;">Find Card Shops &rarr;</span>
       </a>
     </td>
   </tr>
