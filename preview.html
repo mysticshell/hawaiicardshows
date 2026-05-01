@@ -47,7 +47,7 @@
 :root{--sand:#f5f0e8;--sand-dark:#e8e0d0;--ocean:#1a6b5a;--ocean-light:#2a8b72;--ocean-pale:#e8f4f0;--lava:#d4582a;--lava-light:#f0714a;--night:#1a1a1a;--night-soft:#2a2a2a;--text:#2c2c2c;--text-light:#6a6a6a;--text-lighter:#999;--white:#ffffff;--radius:12px;--shadow:0 2px 20px rgba(0,0,0,0.06);--shadow-lg:0 8px 40px rgba(0,0,0,0.1);--amber:#ffc625;--teal:#2cdfb6;--cloud:#eaeaea;--charcoal:#000000}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Helvetica',Arial,sans-serif;color:var(--text);background:linear-gradient(115deg,#f6c89e 0%,#f9e4cc 22%,#f5f0e8 50%,#d6f0e0 78%,#aee5cc 100%);background-attachment:fixed;min-height:100vh}
 nav{position:fixed;top:16px;left:24px;right:24px;z-index:100;background:rgba(255,255,255,0.85);backdrop-filter:blur(24px);border:1px solid rgba(0,0,0,0.04);box-shadow:0 4px 20px rgba(0,0,0,0.06);padding:8px 14px 8px 18px;height:60px;border-radius:999px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.nav-brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;line-height:1;flex-shrink:0}.nav-brand .icon{height:34px;width:auto;display:block}.nav-brand .wordmark{font-family:'Phudu',sans-serif;font-weight:800;font-size:13px;line-height:1.05;letter-spacing:-0.2px;color:var(--ocean);text-transform:uppercase}.nav-brand .wordmark span{display:block}
+.nav-brand{display:inline-flex;align-items:center;text-decoration:none;line-height:0;flex-shrink:0}.nav-brand img{height:36px;width:auto;display:block}
 .nav-links{display:flex;gap:6px;align-items:center;background:rgba(26,107,90,0.08);border-radius:999px;padding:4px;margin:0 auto}.nav-links a{text-decoration:none;color:var(--ocean);font-size:14px;font-weight:600;padding:8px 16px;border-radius:999px;transition:background 0.2s,color 0.2s}.nav-links a:hover{background:rgba(255,255,255,0.6)}
 .nav-cta{background:var(--ocean);color:var(--white)!important;padding:10px 18px;border-radius:999px;font-size:13px;font-weight:700;text-decoration:none;transition:background 0.2s;display:inline-flex;align-items:center;gap:6px;flex-shrink:0}.nav-cta:hover{background:var(--ocean-light);color:var(--white)!important}.nav-cta::after{content:"↗";font-size:11px}
 .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}.nav-mobile svg{width:24px;height:24px;stroke:var(--text)}
@@ -161,8 +161,7 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06)
 <script>document.body.classList.add('preview');</script>
 <nav>
   <a href="/preview.html" class="nav-brand" aria-label="Hawaii Card Shows">
-    <img class="icon" src="/branding/logo-icon.svg" alt="">
-    <span class="wordmark"><span>Hawaii</span><span>Cardshows</span></span>
+    <img src="/branding/logo-horizontal.svg" alt="Hawaii Card Shows">
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#upcoming">Upcoming</a>
@@ -182,11 +181,6 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06)
   <h1>Every <em>card show</em> in Hawaii, in one place.</h1>
   <p>Trading cards, collectibles, and community — find your next show, trade night, or convention across the islands.</p>
   <a href="#upcoming" class="nav-cta" style="font-size:16px;padding:14px 32px;border-radius:10px;">Browse Upcoming Shows</a>
-  <div class="hero-stats">
-    <div class="hero-stat"><div class="hero-stat-num" id="statEvents">—</div><div class="hero-stat-label">Upcoming Events</div></div>
-    <div class="hero-stat"><div class="hero-stat-num" id="statRecurring">—</div><div class="hero-stat-label">Recurring Shows</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Islands Covered</div></div>
-  </div>
 </section>
 <div style="padding:0 24px;">
   <div class="newsletter" style="margin-top:-20px;">
