@@ -1,0 +1,15 @@
+# Private credentials
+.agents/.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Brand source files (large AI/PDF originals — only the optimized
+# /branding/ assets get checked in for the live site)
+HCS-branding/
