@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Bayview Night Market — Pokemon &amp; TCG Trade Night in Kaneohe | Hawaii Card Shows</title>
+<meta name="description" content="PKMN Collective's recurring trade night every 1st &amp; 3rd Tuesday at Bayview Golf Course in Kaneohe. Pokemon, One Piece, sports — sealed, singles, slabs, ono food &amp; drinks on the East Side.">
+<meta name="keywords" content="Bayview Night Market, PKMN Collective, Kaneohe card show, East Side trade night Hawaii, Pokemon trade night Oahu, Bayview Golf Course, TCG Kaneohe">
+
+<meta property="og:title" content="Bayview Night Market — East Side Trade Night">
+<meta property="og:description" content="Every 1st &amp; 3rd Tuesday at Bayview Golf Course in Kaneohe. Buy, sell, trade Pokemon, One Piece, sports — drinks, ono food, East Side vibes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hawaiicardshows.com/shows/bayview-night-market">
+<meta property="og:image" content="https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/event-logos/pkmn%20logo.jpg">
+<meta property="og:site_name" content="Hawaii Card Shows">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bayview Night Market — Hawaii Card Shows">
+<meta name="twitter:description" content="PKMN Collective's recurring trade night at Bayview Golf Course in Kaneohe. 1st &amp; 3rd Tuesdays.">
+<meta name="twitter:image" content="https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/event-logos/pkmn%20logo.jpg">
+
+<link rel="canonical" href="https://hawaiicardshows.com/shows/bayview-night-market">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-48ZSPW63VV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-48ZSPW63VV');</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/recaps/recap-map.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Schema.org EventSeries — recurring -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EventSeries",
+  "name": "Bayview Night Market — Trade Night",
+  "description": "Recurring trade night every 1st and 3rd Tuesday at Bayview Golf Course in Kaneohe. Hosted by PKMN Collective alongside the Bayview Night Market. Pokemon, One Piece, sports — sealed, singles, slabs, drinks, and ono food on the East Side.",
+  "url": "https://hawaiicardshows.com/shows/bayview-night-market",
+  "image": "https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/event-logos/pkmn%20logo.jpg",
+  "location": {
+    "@type": "Place",
+    "name": "Bayview Golf Course",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "45-285 Kaneohe Bay Dr",
+      "addressLocality": "Kaneohe",
+      "addressRegion": "HI",
+      "postalCode": "96744",
+      "addressCountry": "US"
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "PKMN Collective",
+    "url": "https://www.instagram.com/pkmn.collective"
+  },
+  "eventSchedule": {
+    "@type": "Schedule",
+    "repeatFrequency": "P2W",
+    "byDay": "https://schema.org/Tuesday"
+  }
+}
+</script>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --sand:#f5f0e8;--sand-dark:#e8e0d0;--ocean:#1a6b5a;--ocean-light:#2a8b72;--ocean-pale:#e8f4f0;
+  --lava:#d4582a;--lava-light:#f0714a;--night:#1a1a1a;--night-soft:#2a2a2a;
+  --text:#2c2c2c;--text-light:#6a6a6a;--text-lighter:#999;--white:#ffffff;
+  --radius:12px;--shadow:0 2px 20px rgba(0,0,0,0.06);--shadow-lg:0 8px 40px rgba(0,0,0,0.1);
+  /* Bayview / PKMN Collective accent — purple */
+  --bv-primary:#7d3cd9;--bv-primary-dark:#5e2aa6;--bv-primary-light:#a84ae8;
+  --bv-warm:#fff3cf;--bv-pale:#f1e7fb;--bv-deep:#1a0f2e;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--sand);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,240,232,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:var(--ocean);letter-spacing:-0.5px;text-decoration:none}
+.nav-brand span{color:var(--lava)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--text-light);font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--ocean)}
+.nav-cta{background:var(--ocean);color:var(--white)!important;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.2s;display:inline-block}
+.nav-cta:hover{background:var(--ocean-light);color:var(--white)!important}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-mobile svg{width:24px;height:24px;stroke:var(--text)}
+
+/* HERO — purple gradient (no event photo yet) */
+.hero{position:relative;margin-top:64px;padding:80px 24px 110px;background:linear-gradient(135deg,var(--bv-deep) 0%,var(--bv-primary-dark) 50%,var(--bv-primary) 100%);overflow:hidden;color:var(--white);text-align:center}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(168,74,232,0.4) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(125,60,217,0.3) 0%,transparent 60%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.hero-logo{width:120px;height:120px;border-radius:50%;background:var(--white);padding:6px;box-shadow:0 8px 28px rgba(0,0,0,0.3);margin-bottom:24px;object-fit:cover}
+.hero-tag{display:inline-block;background:rgba(255,255,255,0.15);color:var(--white);padding:6px 16px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hero h1{font-family:'Outfit',sans-serif;font-size:clamp(34px,5.5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;text-shadow:0 2px 12px rgba(0,0,0,0.3)}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,0.88);font-weight:500;max-width:540px;margin:0 auto}
+
+/* NEXT DATE callout — appears just below hero */
+.next-date-wrap{max-width:900px;margin:-50px auto 0;padding:0 24px;position:relative;z-index:10}
+.next-date{background:var(--white);border:2px solid var(--bv-primary);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.next-date-badge{background:var(--bv-primary);color:var(--white);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:6px 14px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.next-date-content{flex:1;min-width:200px}
+.next-date-day{font-family:'Outfit',sans-serif;font-weight:700;font-size:20px;color:var(--night);margin-bottom:2px}
+.next-date-meta{font-size:14px;color:var(--text-light)}
+.next-date-cta{background:var(--bv-primary);color:var(--white);padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;transition:background 0.2s}
+.next-date-cta:hover{background:var(--bv-primary-dark)}
+.next-date-empty{text-align:center;color:var(--text-light);font-style:italic;font-size:14px;padding:8px 0;flex:1}
+
+/* CONTENT */
+.content-wrap{max-width:900px;margin:48px auto 80px;padding:0 24px}
+section.module{background:var(--white);border-radius:var(--radius);padding:36px;box-shadow:var(--shadow);margin-bottom:24px}
+section.module h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;color:var(--night);margin-bottom:16px;letter-spacing:-0.5px}
+section.module h3{font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:var(--night);margin:24px 0 8px}
+section.module p{margin-bottom:14px;color:var(--text);font-size:16px;line-height:1.7}
+section.module a{color:var(--bv-primary);font-weight:600;text-decoration:none}
+section.module a:hover{text-decoration:underline}
+section.module ul{margin:0 0 14px 22px}
+section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
+
+/* UPCOMING DATE GRID */
+.date-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-top:8px}
+.date-card{background:var(--bv-pale);border:1px solid rgba(125,60,217,0.18);border-radius:10px;padding:18px 16px;text-align:center;transition:transform 0.15s}
+.date-card:hover{transform:translateY(-2px)}
+.date-card-month{font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;color:var(--bv-primary);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.date-card-day{font-family:'Outfit',sans-serif;font-weight:800;font-size:32px;color:var(--night);line-height:1}
+.date-card-weekday{font-size:13px;color:var(--text-light);margin-top:6px;font-weight:600}
+.date-card-time{font-size:12px;color:var(--text-lighter);margin-top:4px}
+
+/* CARD-MIX BLOCK */
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag-pill{background:var(--bv-pale);color:var(--bv-primary-dark);font-size:13px;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid rgba(125,60,217,0.18)}
+
+/* PHOTO BLOCK */
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.photo-block figure{margin:0;background:var(--bv-pale);border-radius:10px;overflow:hidden;border:1px solid rgba(125,60,217,0.18)}
+.photo-block img{display:block;width:100%;height:380px;object-fit:cover;cursor:pointer;transition:transform 0.2s}
+.photo-block img:hover{transform:scale(1.02)}
+.photo-block figcaption{font-size:12px;color:var(--text-light);padding:8px 12px;font-weight:500;text-align:center}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:2000;display:none;align-items:center;justify-content:center;padding:24px;cursor:pointer}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}
+.lightbox-close{position:absolute;top:20px;right:24px;color:#fff;font-size:32px;cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.1)}
+.lightbox-close:hover{background:rgba(255,255,255,0.25)}
+@media(max-width:600px){.photo-block{grid-template-columns:1fr}.photo-block img{height:auto;max-height:520px}}
+
+/* INFO STRIP */
+.info-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:8px}
+.info-cell{background:var(--bv-pale);padding:18px 20px;border-radius:10px}
+.info-cell-label{font-size:11px;font-weight:700;color:var(--bv-primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.info-cell-value{font-family:'Outfit',sans-serif;font-weight:600;color:var(--night);font-size:15px;line-height:1.35}
+.info-cell-value a{color:var(--bv-primary);text-decoration:none}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--sand-dark);padding:16px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:'Outfit',sans-serif;font-weight:700;color:var(--night);margin-bottom:6px;font-size:16px}
+.faq-a{color:var(--text-light);font-size:15px;line-height:1.6}
+
+.loading{text-align:center;color:var(--text-lighter);font-size:14px;padding:14px;font-style:italic}
+
+footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06);color:var(--text-lighter);font-size:13px}
+footer a{color:var(--ocean);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-mobile{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--sand);padding:16px 24px;gap:16px;border-bottom:1px solid rgba(0,0,0,0.06)}
+  .hero{padding:60px 24px 90px}
+  .hero-logo{width:96px;height:96px}
+  section.module{padding:24px}
+  .next-date{padding:18px 20px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="/#upcoming">Upcoming</a>
+    <a href="/shows/">Shows</a>
+    <a href="/shops/">Shops</a>
+    <a href="/#submit">Submit</a>
+    <a href="/#sponsors">Partner</a>
+    <a href="/#submit" class="nav-cta">Submit Your Event</a>
+  </div>
+  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+</nav>
+
+<!-- ─────────── HERO (gradient — swap in event photo when available) ─────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <img src="https://bcdgqqncycsdwnmrmuan.supabase.co/storage/v1/object/public/event-logos/pkmn%20logo.jpg" alt="PKMN Collective logo" class="hero-logo">
+    <div class="hero-tag">Recurring · East Side · Kaneohe</div>
+    <h1>Bayview Night Market</h1>
+    <p class="hero-sub">PKMN Collective's recurring trade night at Bayview Golf Course — every 1st &amp; 3rd Tuesday on the East Side.</p>
+  </div>
+</section>
+
+<!-- ─────────── NEXT DATE (DYNAMIC) ─────────── -->
+<div class="next-date-wrap">
+  <div class="next-date" id="nextDate">
+    <div class="loading" style="margin:0;flex:1">Calculating next Tuesday…</div>
+  </div>
+</div>
+
+<!-- ─────────── CONTENT ─────────── -->
+<div class="content-wrap">
+
+  <!-- ABOUT (STATIC) -->
+  <section class="module">
+    <h2>About Bayview Night Market</h2>
+    <p>The Bayview Night Market trade night is a recurring TCG meet hosted by <a href="https://www.instagram.com/pkmn.collective" target="_blank" rel="noopener">@pkmn.collective</a>, happening alongside the regular <a href="https://www.instagram.com/bayviewnightmarket" target="_blank" rel="noopener">@bayviewnightmarket</a> at Bayview Golf Course in Kaneohe. <strong>Every 1st and 3rd Tuesday of the month</strong> — buy, sell, trade, and vibe on the East Side.</p>
+    <p>It's the rare Hawaii card show that doesn't make Windward and East Side collectors drive into town. Co-located with a working night market means food trucks, drinks, and a built-in foot-traffic crowd that isn't only there for the cards.</p>
+    <h3>What you'll find on the floor</h3>
+    <div class="tag-row">
+      <span class="tag-pill">Pokémon</span>
+      <span class="tag-pill">One Piece</span>
+      <span class="tag-pill">Sports</span>
+      <span class="tag-pill">Other TCG</span>
+      <span class="tag-pill">Sealed</span>
+      <span class="tag-pill">Singles</span>
+      <span class="tag-pill">Slabs</span>
+      <span class="tag-pill">Crafts</span>
+      <span class="tag-pill">Drinks</span>
+      <span class="tag-pill">Ono food</span>
+    </div>
+  </section>
+
+  <!-- FROM THE FLOOR (STATIC) -->
+  <section class="module">
+    <h2>From the Floor</h2>
+    <p style="color:var(--text-light);margin-bottom:0;font-size:15px">A look at the show and its current promo flyer.</p>
+    <div class="photo-block">
+      <figure>
+        <img src="/recaps/images/Bayview%20Crowd.jpeg" alt="Bayview Night Market — collectors gathered at PKMN Collective's trade night at Bayview Golf Course" loading="lazy" onclick="openLightbox(this.src)">
+        <figcaption>Trade night crowd at Bayview Golf Course</figcaption>
+      </figure>
+      <figure>
+        <img src="/recaps/images/Bayview%20Card%20Show%20Flyer.PNG" alt="Bayview Night Market promotional flyer by PKMN Collective" loading="lazy" onclick="openLightbox(this.src)" style="object-position:top">
+        <figcaption>Current PKMN Collective flyer</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- UPCOMING DATES (DYNAMIC — computed from recurrence) -->
+  <section class="module">
+    <h2>Upcoming Dates</h2>
+    <p style="color:var(--text-light);margin-bottom:18px;font-size:15px">Next six 1st &amp; 3rd Tuesdays — auto-calculated from the show's schedule. Times reflect the current event in our database.</p>
+    <div id="dateList" class="date-list">
+      <div class="loading">Loading upcoming dates…</div>
+    </div>
+  </section>
+
+  <!-- VENUE / ORGANIZER (STATIC + DYNAMIC TIME) -->
+  <section class="module">
+    <h2>Venue, Time &amp; Organizer</h2>
+    <div class="info-strip">
+      <div class="info-cell">
+        <div class="info-cell-label">Venue</div>
+        <div class="info-cell-value">Bayview Golf Course<br><span style="font-weight:400;color:var(--text-light);font-size:13px">45-285 Kaneohe Bay Dr, Kaneohe, HI 96744</span></div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Time</div>
+        <div class="info-cell-value" id="infoTime">3 PM – 8 PM</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Organizer</div>
+        <div class="info-cell-value">PKMN Collective<br><a href="https://www.instagram.com/pkmn.collective" target="_blank" rel="noopener">@pkmn.collective</a></div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Co-Located With</div>
+        <div class="info-cell-value">Bayview Night Market<br><a href="https://www.instagram.com/bayviewnightmarket" target="_blank" rel="noopener">@bayviewnightmarket</a></div>
+      </div>
+    </div>
+    <p style="margin-top:18px;color:var(--text-light);font-size:14px">Schedule changes? Follow <a href="https://www.instagram.com/pkmn.collective" target="_blank" rel="noopener">@pkmn.collective</a> for the latest.</p>
+  </section>
+
+  <!-- FAQ (STATIC, SEO) -->
+  <section class="module">
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-q">When is the next Bayview Night Market trade night?</div>
+      <div class="faq-a">It runs every 1st and 3rd Tuesday of the month. The next confirmed date is shown above — all upcoming dates are listed in the Upcoming Dates section.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Where exactly is the venue?</div>
+      <div class="faq-a">Bayview Golf Course, 45-285 Kaneohe Bay Dr, Kaneohe, HI 96744 — on the Windward / East Side of Oahu, about 30 minutes from Honolulu.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What can I buy, sell, or trade?</div>
+      <div class="faq-a">Pokémon, One Piece, sports, and other TCG — sealed product, singles, slabs, and crafts. The night market itself adds food trucks, drinks, and other vendors.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is it free to attend?</div>
+      <div class="faq-a">Yes — attending the trade night and the broader night market is free.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I become a vendor?</div>
+      <div class="faq-a">Reach out to <a href="https://www.instagram.com/pkmn.collective" target="_blank" rel="noopener">@pkmn.collective</a> on Instagram. They handle vendor coordination for the trade-night portion.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is parking available?</div>
+      <div class="faq-a">Yes — Bayview Golf Course has its own parking lot and the night market crowd shares the space.</div>
+    </div>
+  </section>
+
+</div>
+
+<footer><p>&copy; 2026 Hawaii Card Shows &bull; Built for the community &bull; <a href="/#submit">Submit an Event</a></p></footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+function openLightbox(src){const lb=document.getElementById('lightbox');document.getElementById('lightboxImg').src=src;lb.classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+</script>
+
+<script>
+const SUPABASE_URL='https://bcdgqqncycsdwnmrmuan.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjZGdxcW5jeWNzZHdubXJtdWFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NTU4MzgsImV4cCI6MjA5MDEzMTgzOH0.UXTTv99cBYcll_uw-g50tA4yG9jpbVIdt3xrDc_rTKs';
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+// Series identifier — match the event row by name (case-insensitive)
+const SERIES_NAME_PATTERN='Bayview Night Market%';
+// How many upcoming dates to show
+const UPCOMING_COUNT=6;
+
+function esc(s){const d=document.createElement('div');d.textContent=s||'';return d.innerHTML;}
+
+function fmtTime(t){
+  if(!t)return'';
+  const m=String(t).match(/^(\d{1,2}):(\d{2})/);
+  if(!m)return t;
+  const h=+m[1],mn=+m[2];
+  const ampm=h>=12?'PM':'AM';
+  const h12=h>12?h-12:h===0?12:h;
+  return mn===0?`${h12} ${ampm}`:`${h12}:${String(mn).padStart(2,'0')} ${ampm}`;
+}
+
+function fmtTimeRange(start, end){
+  if(!start)return '';
+  const s=fmtTime(start);
+  const e=fmtTime(end);
+  return e?`${s} – ${e}`:s;
+}
+
+// Hawaii "today" — UTC-10, no DST
+function hawaiiNow(){
+  const now=new Date();
+  return new Date(now.getTime()-10*3600*1000);
+}
+
+// Compute the next N occurrences of "1st and 3rd Tuesday" starting from a date
+function nextFirstAndThirdTuesdays(from, count){
+  const result=[];
+  // Walk months forward; for each month, compute its 1st & 3rd Tuesday and keep ones >= from
+  const fromYear=from.getUTCFullYear();
+  const fromMonth=from.getUTCMonth();
+  // Look ahead up to 8 months — enough to cover 6 dates even if we're past mid-month
+  for(let i=0;i<8 && result.length<count;i++){
+    const y=fromYear, m=fromMonth+i;
+    const tuesdaysInMonth=[];
+    // Find all Tuesdays in this month
+    const lastDay=new Date(Date.UTC(y, m+1, 0)).getUTCDate();
+    for(let d=1;d<=lastDay;d++){
+      const date=new Date(Date.UTC(y, m, d));
+      if(date.getUTCDay()===2)tuesdaysInMonth.push(date); // 2 = Tuesday
+    }
+    // Take 1st and 3rd
+    [tuesdaysInMonth[0], tuesdaysInMonth[2]].forEach(t=>{
+      if(t && t >= from && result.length<count) result.push(t);
+    });
+  }
+  return result;
+}
+
+function renderUpcoming(dates, event){
+  const wrap=document.getElementById('dateList');
+  if(!dates.length){
+    wrap.innerHTML='<div style="color:var(--text-lighter);font-style:italic;text-align:center;padding:24px 0;font-size:15px">No upcoming dates calculated.</div>';
+    return;
+  }
+  const time=fmtTimeRange(event.start_time, event.end_time);
+  wrap.innerHTML=dates.map(d=>{
+    const month=d.toLocaleDateString('en-US',{month:'short',timeZone:'UTC'}).toUpperCase();
+    const day=d.getUTCDate();
+    const weekday=d.toLocaleDateString('en-US',{weekday:'long',timeZone:'UTC'});
+    return `<div class="date-card">
+      <div class="date-card-month">${month}</div>
+      <div class="date-card-day">${day}</div>
+      <div class="date-card-weekday">${weekday}</div>
+      ${time?`<div class="date-card-time">${esc(time)}</div>`:''}
+    </div>`;
+  }).join('');
+}
+
+function renderNextDate(dates, event){
+  const wrap=document.getElementById('nextDate');
+  if(!dates.length){
+    wrap.innerHTML=`<div class="next-date-empty">No upcoming dates calculated. Follow <a href="https://www.instagram.com/pkmn.collective" target="_blank" rel="noopener" style="color:var(--bv-primary);font-weight:600">@pkmn.collective</a> for updates.</div>`;
+    return;
+  }
+  const next=dates[0];
+  const dateStr=next.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
+  const time=fmtTimeRange(event.start_time, event.end_time);
+  wrap.innerHTML=`
+    <div class="next-date-badge">Next Trade Night</div>
+    <div class="next-date-content">
+      <div class="next-date-day">${esc(dateStr)}</div>
+      <div class="next-date-meta">${esc(event.venue||'Bayview Golf Course')}${time?` · ${esc(time)}`:''}</div>
+    </div>
+    <a class="next-date-cta" href="/shows/show.html?id=${esc(event.id)}">View Show Details →</a>
+  `;
+}
+
+async function loadSeries(){
+  const {data, error}=await sb.from('events')
+    .select('*')
+    .eq('status','approved')
+    .ilike('name', SERIES_NAME_PATTERN)
+    .limit(1)
+    .single();
+
+  if(error || !data){
+    console.error('[bayview-night-market] load failed', error);
+    document.getElementById('nextDate').innerHTML='<div class="next-date-empty">Could not load show data.</div>';
+    document.getElementById('dateList').innerHTML='<div style="color:var(--text-lighter);font-style:italic;text-align:center;padding:24px 0;font-size:15px">Could not load upcoming dates.</div>';
+    return;
+  }
+
+  const event=data;
+
+  // Update dynamic time in info strip if event has different times than the static fallback
+  const time=fmtTimeRange(event.start_time, event.end_time);
+  if(time) document.getElementById('infoTime').textContent=time;
+
+  // Compute upcoming Tuesdays
+  const today=hawaiiNow();
+  // Normalize to UTC-midnight so date comparisons line up with our UTC iteration
+  const todayUTC=new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()));
+  const dates=nextFirstAndThirdTuesdays(todayUTC, UPCOMING_COUNT);
+
+  renderNextDate(dates, event);
+  renderUpcoming(dates, event);
+}
+
+loadSeries();
+</script>
+</body>
+</html>

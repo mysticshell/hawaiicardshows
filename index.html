@@ -293,7 +293,15 @@ let calMonth=new Date().getMonth();let calYear=new Date().getFullYear();let allE
 function esc(s){const d=document.createElement('div');d.textContent=s||'';return d.innerHTML;}
 function fmtTime(t){if(!t)return'';if(t.match(/^\d{1,2}:\d{2}$/)){const[h,m]=t.split(':').map(Number);const ampm=h>=12?'PM':'AM';const h12=h>12?h-12:h===0?12:h;return m===0?h12+' '+ampm:h12+':'+String(m).padStart(2,'0')+' '+ampm;}return t;}
 function fmtTimeRange(e){if(!e.start_time)return'TBD';const s=fmtTime(e.start_time);const en=fmtTime(e.end_time);return en?s+' \u2013 '+en:s;}
-function getShowUrl(e){return e.custom_url||`/shows/show.html?id=${e.id}`;}
+// Series-override map — events whose `name` matches a key here route to a static series page
+// instead of the dynamic /shows/show.html?id=... view. Add new series here as we build them.
+const HCS_SERIES_URLS={
+  'keep it aloha card show':'/shows/keep-it-aloha',
+  'keep it aloha card show — 2nd edition':'/shows/keep-it-aloha',
+  'bayview night market':'/shows/bayview-night-market'
+};
+function hcsSeriesUrlFor(e){if(!e||!e.name)return null;return HCS_SERIES_URLS[e.name.toLowerCase().trim()]||null;}
+function getShowUrl(e){return e.custom_url||hcsSeriesUrlFor(e)||`/shows/show.html?id=${e.id}`;}
 async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true});if(error){console.error(error);return;}allEvents=data||[];renderFeatured();renderUpcoming();renderRecurring();renderAnnual();renderCalendar();updateStats();renderAgenda();injectEventSchema();renderRecentRecaps();}
 
 function renderRecentRecaps(){

@@ -377,6 +377,19 @@ function injectSEO(event) {
   document.head.appendChild(script);
 }
 
+// Series-override map — keep in sync with HCS_SERIES_URLS in /index.html.
+// When a fetched event's name matches a key, redirect to the series page so SEO + UX
+// consolidate on a single canonical URL per series.
+const HCS_SERIES_URLS = {
+  'keep it aloha card show': '/shows/keep-it-aloha',
+  'keep it aloha card show — 2nd edition': '/shows/keep-it-aloha',
+  'bayview night market': '/shows/bayview-night-market'
+};
+function hcsSeriesUrlFor(event){
+  if(!event || !event.name) return null;
+  return HCS_SERIES_URLS[event.name.toLowerCase().trim()] || null;
+}
+
 async function loadData() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
@@ -387,9 +400,16 @@ async function loadData() {
 
   // Fetch from DB
   const { data: event, error } = await sb.from('events').select('*').eq('id', id).single();
-  
+
   if (error || !event) {
     document.getElementById('loader').textContent = "Event Not Found.";
+    return;
+  }
+
+  // If this event belongs to a series with a static page, send the user there.
+  const seriesUrl = hcsSeriesUrlFor(event);
+  if (seriesUrl && window.location.pathname !== seriesUrl) {
+    window.location.replace(seriesUrl);
     return;
   }
 

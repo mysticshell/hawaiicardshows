@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Keep It Aloha Card Show — Free Pokemon &amp; TCG Show in Honolulu | Hawaii Card Shows</title>
+<meta name="description" content="Keep It Aloha is Kamaka Dias &amp; Hawaii Collectibles' free, festival-style card show at SALT at Our Kaka'ako. Free for vendors, free for the public — sponsored by @getcollectr. Upcoming dates, past recaps, and details.">
+<meta name="keywords" content="Keep It Aloha Card Show, Kamaka Dias, Hawaii Collectibles, SALT Kakaako, free card show Hawaii, Pokemon card show Honolulu, Oahu TCG event">
+
+<meta property="og:title" content="Keep It Aloha Card Show — Free TCG Show at SALT Kaka'ako">
+<meta property="og:description" content="Free for vendors, free for the public. 70+ vendors, 5,000+ attendees at the inaugural show. Sponsored by @getcollectr.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hawaiicardshows.com/shows/keep-it-aloha">
+<meta property="og:image" content="https://hawaiicardshows.com/recaps/images/keep-it-aloha-may-2026-show-floor.JPG">
+<meta property="og:site_name" content="Hawaii Card Shows">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Keep It Aloha Card Show — Hawaii Card Shows">
+<meta name="twitter:description" content="Free, festival-style TCG show at SALT at Our Kaka'ako. Hosted by Kamaka Dias &amp; Hawaii Collectibles.">
+<meta name="twitter:image" content="https://hawaiicardshows.com/recaps/images/keep-it-aloha-may-2026-show-floor.JPG">
+
+<link rel="canonical" href="https://hawaiicardshows.com/shows/keep-it-aloha">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-48ZSPW63VV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-48ZSPW63VV');</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/recaps/recap-map.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Schema.org EventSeries -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EventSeries",
+  "name": "Keep It Aloha Card Show",
+  "description": "Free, festival-style trading card show at SALT at Our Kaka'ako. Hosted by Kamaka Dias and Hawaii Collectibles. Free for vendors, free for the public.",
+  "url": "https://hawaiicardshows.com/shows/keep-it-aloha",
+  "image": "https://hawaiicardshows.com/recaps/images/keep-it-aloha-may-2026-show-floor.JPG",
+  "location": {
+    "@type": "Place",
+    "name": "SALT at Our Kaka'ako",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "691 Auahi St",
+      "addressLocality": "Honolulu",
+      "addressRegion": "HI",
+      "postalCode": "96813",
+      "addressCountry": "US"
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Kamaka Dias & Hawaii Collectibles",
+    "url": "https://www.instagram.com/kamakarips"
+  }
+}
+</script>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --sand:#f5f0e8;--sand-dark:#e8e0d0;--ocean:#1a6b5a;--ocean-light:#2a8b72;--ocean-pale:#e8f4f0;
+  --lava:#d4582a;--lava-light:#f0714a;--night:#1a1a1a;--night-soft:#2a2a2a;
+  --text:#2c2c2c;--text-light:#6a6a6a;--text-lighter:#999;--white:#ffffff;
+  --radius:12px;--shadow:0 2px 20px rgba(0,0,0,0.06);--shadow-lg:0 8px 40px rgba(0,0,0,0.1);
+  /* Keep It Aloha series accent */
+  --kia-primary:#d4582a;--kia-primary-dark:#b04621;--kia-warm:#f5d7a3;--kia-cream:#fdf6ec;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--sand);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,240,232,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:var(--ocean);letter-spacing:-0.5px;text-decoration:none}
+.nav-brand span{color:var(--lava)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--text-light);font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--ocean)}
+.nav-cta{background:var(--ocean);color:var(--white)!important;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.2s;display:inline-block}
+.nav-cta:hover{background:var(--ocean-light);color:var(--white)!important}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-mobile svg{width:24px;height:24px;stroke:var(--text)}
+
+/* HERO — full-bleed photo banner, KIA series identity */
+.hero-banner{width:100%;height:60vh;min-height:380px;max-height:600px;position:relative;overflow:hidden;margin-top:64px;background:var(--sand-dark)}
+.hero-banner img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,0.55) 100%)}
+.hero-overlay{position:absolute;left:0;right:0;bottom:0;padding:32px 24px 96px;color:var(--white);z-index:2}
+.hero-overlay-inner{max-width:900px;margin:0 auto}
+.hero-tag{display:inline-block;background:var(--kia-primary);color:var(--white);padding:6px 16px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.hero-overlay h1{font-family:'Outfit',sans-serif;font-size:clamp(32px,5.5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,0.4)}
+.hero-overlay .hero-sub{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,0.9);font-weight:500;text-shadow:0 2px 8px rgba(0,0,0,0.4)}
+
+/* NEXT SHOW callout — appears just below hero */
+.next-show-wrap{max-width:900px;margin:-44px auto 0;padding:0 24px;position:relative;z-index:10}
+.next-show{background:var(--white);border:2px solid var(--kia-primary);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.next-show-badge{background:var(--kia-primary);color:var(--white);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:6px 14px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.next-show-content{flex:1;min-width:200px}
+.next-show-date{font-family:'Outfit',sans-serif;font-weight:700;font-size:18px;color:var(--night);margin-bottom:2px}
+.next-show-meta{font-size:14px;color:var(--text-light)}
+.next-show-cta{background:var(--kia-primary);color:var(--white);padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;transition:background 0.2s}
+.next-show-cta:hover{background:var(--kia-primary-dark)}
+.next-show-empty{text-align:center;color:var(--text-light);font-style:italic;font-size:14px;padding:8px 0}
+
+/* CONTENT */
+.content-wrap{max-width:900px;margin:48px auto 80px;padding:0 24px}
+section.module{background:var(--white);border-radius:var(--radius);padding:36px;box-shadow:var(--shadow);margin-bottom:24px}
+section.module h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;color:var(--night);margin-bottom:16px;letter-spacing:-0.5px}
+section.module h3{font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:var(--night);margin:24px 0 8px}
+section.module p{margin-bottom:14px;color:var(--text);font-size:16px;line-height:1.7}
+section.module a{color:var(--ocean);font-weight:600;text-decoration:none}
+section.module a:hover{text-decoration:underline}
+section.module ul{margin:0 0 14px 22px}
+section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
+
+/* SHOW LIST CARDS — used for upcoming + past dynamic slots */
+.show-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:8px}
+.show-card{background:var(--kia-cream);border:1px solid var(--kia-warm);border-radius:10px;padding:20px;text-decoration:none;display:block;transition:transform 0.15s,box-shadow 0.15s;color:inherit}
+.show-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,88,42,0.12);text-decoration:none}
+.show-card-date{font-family:'Outfit',sans-serif;font-weight:700;color:var(--kia-primary);font-size:13px;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px}
+.show-card-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:18px;color:var(--night);line-height:1.25;margin-bottom:8px}
+.show-card-meta{font-size:13px;color:var(--text-light);line-height:1.4}
+.show-card-cta{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--kia-primary)}
+.recap-pill{display:inline-block;background:var(--ocean-pale);color:var(--ocean);font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;text-transform:uppercase;letter-spacing:0.5px;margin-top:8px;margin-right:6px}
+
+.empty-state{color:var(--text-lighter);font-style:italic;text-align:center;padding:24px 0;font-size:15px}
+
+/* INFO STRIP — venue / organizer / sponsor */
+.info-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:8px}
+.info-cell{background:var(--ocean-pale);padding:18px 20px;border-radius:10px}
+.info-cell-label{font-size:11px;font-weight:700;color:var(--ocean);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.info-cell-value{font-family:'Outfit',sans-serif;font-weight:600;color:var(--night);font-size:15px;line-height:1.35}
+.info-cell-value a{color:var(--ocean);text-decoration:none}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--sand-dark);padding:16px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:'Outfit',sans-serif;font-weight:700;color:var(--night);margin-bottom:6px;font-size:16px}
+.faq-a{color:var(--text-light);font-size:15px;line-height:1.6}
+
+/* LOADING */
+.loading{text-align:center;color:var(--text-lighter);font-size:14px;padding:14px;font-style:italic}
+
+footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06);color:var(--text-lighter);font-size:13px}
+footer a{color:var(--ocean);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-mobile{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--sand);padding:16px 24px;gap:16px;border-bottom:1px solid rgba(0,0,0,0.06)}
+  .hero-banner{height:50vh;min-height:300px}
+  section.module{padding:24px}
+  .next-show{padding:18px 20px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="/#upcoming">Upcoming</a>
+    <a href="/shows/">Shows</a>
+    <a href="/shops/">Shops</a>
+    <a href="/#submit">Submit</a>
+    <a href="/#sponsors">Partner</a>
+    <a href="/#submit" class="nav-cta">Submit Your Event</a>
+  </div>
+  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+</nav>
+
+<!-- ─────────── STATIC HERO ─────────── -->
+<div class="hero-banner">
+  <img src="/recaps/images/keep-it-aloha-may-2026-show-floor.JPG" alt="Keep It Aloha Card Show — packed show floor at SALT at Our Kaka'ako" loading="eager">
+  <div class="hero-overlay">
+    <div class="hero-overlay-inner">
+      <div class="hero-tag">Recurring Series · Honolulu</div>
+      <h1>Keep It Aloha Card Show</h1>
+      <p class="hero-sub">Free, festival-style TCG show at SALT at Our Kaka'ako — by Kamaka Dias &amp; Hawaii Collectibles.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── NEXT SHOW (DYNAMIC) ─────────── -->
+<div class="next-show-wrap">
+  <div class="next-show" id="nextShow">
+    <div class="loading" style="margin:0;flex:1">Loading next show…</div>
+  </div>
+</div>
+
+<!-- ─────────── CONTENT ─────────── -->
+<div class="content-wrap">
+
+  <!-- ABOUT (STATIC) -->
+  <section class="module">
+    <h2>About Keep It Aloha</h2>
+    <p>Keep It Aloha is a recurring trading card show in Honolulu hosted by <a href="https://www.instagram.com/kamakarips" target="_blank" rel="noopener">Kamaka Dias</a> and <a href="https://www.instagram.com/hicollectibles" target="_blank" rel="noopener">Hawaii Collectibles</a>. The series debuted May 2–3, 2026 at <a href="https://www.instagram.com/saltourkakaako" target="_blank" rel="noopener">SALT at Our Kaka'ako</a> with 70+ vendors and more than 5,000 attendees across two days.</p>
+    <p>What makes Keep It Aloha different: it's <strong>free for vendors and free for the public</strong>. No table fees, no door charge. The free-for-everyone model is made possible by headline sponsor <a href="https://www.instagram.com/getcollectr" target="_blank" rel="noopener">@getcollectr</a>, with support from <a href="https://www.instagram.com/waiakea" target="_blank" rel="noopener">@waiakea</a>, <a href="/shops/aloha-card-shop.html">Aloha Card Shop</a>, and <a href="https://www.instagram.com/merchlabs" target="_blank" rel="noopener">@merchlabs</a>.</p>
+    <p>The vibe leans festival, not transactional — live music, families, first-time collectors, longtime vendors, all under the SALT awnings. As Kamaka puts it: <em>"It's truly a kākou thing."</em></p>
+  </section>
+
+  <!-- UPCOMING SHOWS (DYNAMIC) -->
+  <section class="module">
+    <h2>Upcoming Shows</h2>
+    <div id="upcomingList" class="show-list">
+      <div class="loading">Loading upcoming dates…</div>
+    </div>
+  </section>
+
+  <!-- PAST SHOWS + RECAPS (DYNAMIC) -->
+  <section class="module">
+    <h2>Past Shows &amp; Recaps</h2>
+    <div id="pastList" class="show-list">
+      <div class="loading">Loading past shows…</div>
+    </div>
+  </section>
+
+  <!-- VENUE / ORGANIZER / SPONSOR (STATIC) -->
+  <section class="module">
+    <h2>Venue, Organizer &amp; Sponsors</h2>
+    <div class="info-strip">
+      <div class="info-cell">
+        <div class="info-cell-label">Default Venue</div>
+        <div class="info-cell-value">SALT at Our Kaka'ako<br><span style="font-weight:400;color:var(--text-light);font-size:13px">691 Auahi St, Honolulu</span></div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Organizer</div>
+        <div class="info-cell-value">Kamaka Dias<br><a href="https://www.instagram.com/kamakarips" target="_blank" rel="noopener">@kamakarips</a></div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">Headline Sponsor</div>
+        <div class="info-cell-value"><a href="https://www.instagram.com/getcollectr" target="_blank" rel="noopener">@getcollectr</a></div>
+      </div>
+    </div>
+    <p style="margin-top:18px;color:var(--text-light);font-size:14px">Note: venue may vary by event — check the upcoming-show details above for the most current location.</p>
+  </section>
+
+  <!-- FAQ (STATIC, SEO) -->
+  <section class="module">
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-q">Is Keep It Aloha really free?</div>
+      <div class="faq-a">Yes — free for vendors (no table fee) and free for the public (no admission). The model is sponsored, not gatekept.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Where is the show held?</div>
+      <div class="faq-a">The inaugural show was at SALT at Our Kaka'ako (691 Auahi St, Honolulu). Future dates may use the same venue or a different Honolulu location — check the upcoming-show details above for confirmed venue per date.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What kinds of cards are at the show?</div>
+      <div class="faq-a">Mixed TCG and sports — Pokemon, One Piece, Dragon Ball, Yu-Gi-Oh, Japanese imports, and modern + vintage sports. The vendor mix is intentionally broad.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I become a vendor?</div>
+      <div class="faq-a">Tables are free but limited. DM <a href="https://www.instagram.com/kamakarips" target="_blank" rel="noopener">@kamakarips</a> on Instagram to apply for an upcoming date.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are kids welcome?</div>
+      <div class="faq-a">Absolutely — Keep It Aloha is family-friendly. The first show was full of keiki, strollers, and first-time collectors.</div>
+    </div>
+  </section>
+
+</div>
+
+<footer><p>&copy; 2026 Hawaii Card Shows &bull; Built for the community &bull; <a href="/#submit">Submit an Event</a></p></footer>
+
+<script>
+const SUPABASE_URL='https://bcdgqqncycsdwnmrmuan.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjZGdxcW5jeWNzZHdubXJtdWFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NTU4MzgsImV4cCI6MjA5MDEzMTgzOH0.UXTTv99cBYcll_uw-g50tA4yG9jpbVIdt3xrDc_rTKs';
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+// Series identifier — events with a name matching this pattern belong to this series.
+// `ilike` makes it case-insensitive and tolerant of suffixes like "— 2nd Edition".
+const SERIES_NAME_PATTERN='Keep It Aloha%';
+
+function esc(s){const d=document.createElement('div');d.textContent=s||'';return d.innerHTML;}
+
+function fmtDateRange(startDate, endDate){
+  if(!startDate)return 'Date TBD';
+  const d1=new Date(startDate+'T12:00:00');
+  const m1=d1.toLocaleDateString('en-US',{month:'long'});
+  const ds1=d1.getDate();
+  const y1=d1.getFullYear();
+  if(endDate && endDate !== startDate){
+    const d2=new Date(endDate+'T12:00:00');
+    const m2=d2.toLocaleDateString('en-US',{month:'long'});
+    const ds2=d2.getDate();
+    const y2=d2.getFullYear();
+    if(m1===m2 && y1===y2) return `${m1} ${ds1}–${ds2}, ${y1}`;
+    if(y1===y2) return `${m1} ${ds1} – ${m2} ${ds2}, ${y1}`;
+    return `${m1} ${ds1}, ${y1} – ${m2} ${ds2}, ${y2}`;
+  }
+  return `${m1} ${ds1}, ${y1}`;
+}
+
+function fmtTime(t){
+  if(!t)return'';
+  const m=String(t).match(/^(\d{1,2}):(\d{2})/);
+  if(!m)return t;
+  const h=+m[1],mn=+m[2];
+  const ampm=h>=12?'PM':'AM';
+  const h12=h>12?h-12:h===0?12:h;
+  return mn===0?`${h12} ${ampm}`:`${h12}:${String(mn).padStart(2,'0')} ${ampm}`;
+}
+
+function fmtTimeRange(e){
+  if(!e.start_time)return '';
+  const s=fmtTime(e.start_time);
+  const en=fmtTime(e.end_time);
+  return en?`${s} – ${en}`:s;
+}
+
+function todayHawaiiISO(){
+  // Approx Hawaii date — UTC offset is fixed -10:00, no DST
+  const now=new Date();
+  const hi=new Date(now.getTime()-10*3600*1000);
+  return hi.toISOString().slice(0,10);
+}
+
+function recapForEvent(eventId){
+  if(typeof window.HCS_RECAPS_FOR_EVENT!=='function')return null;
+  const list=window.HCS_RECAPS_FOR_EVENT(eventId);
+  return list && list.length ? list[0] : null;
+}
+
+function renderUpcoming(events){
+  const wrap=document.getElementById('upcomingList');
+  if(!events.length){
+    wrap.innerHTML='<div class="empty-state">No upcoming dates announced yet — follow <a href="https://www.instagram.com/kamakarips" target="_blank" rel="noopener">@kamakarips</a> for the next drop.</div>';
+    return;
+  }
+  wrap.innerHTML=events.map(e=>{
+    const dateStr=fmtDateRange(e.start_date, e.end_date);
+    const timeStr=fmtTimeRange(e);
+    const venue=e.venue||'Venue TBA';
+    return `<a class="show-card" href="/shows/show.html?id=${esc(e.id)}">
+      <div class="show-card-date">${esc(dateStr)}</div>
+      <div class="show-card-name">${esc(e.name)}</div>
+      <div class="show-card-meta">${esc(venue)}${timeStr?`<br>${esc(timeStr)}`:''}</div>
+      <div class="show-card-cta">View show details →</div>
+    </a>`;
+  }).join('');
+}
+
+function renderPast(events){
+  const wrap=document.getElementById('pastList');
+  if(!events.length){
+    wrap.innerHTML='<div class="empty-state">No past shows yet.</div>';
+    return;
+  }
+  wrap.innerHTML=events.map(e=>{
+    const dateStr=fmtDateRange(e.start_date, e.end_date);
+    const venue=e.venue||'';
+    const recap=recapForEvent(e.id);
+    const recapHtml=recap?`<span class="recap-pill">📖 Recap available</span>`:'';
+    const href=recap?recap.url:`/shows/show.html?id=${e.id}`;
+    return `<a class="show-card" href="${esc(href)}">
+      <div class="show-card-date">${esc(dateStr)}</div>
+      <div class="show-card-name">${esc(e.name)}</div>
+      <div class="show-card-meta">${esc(venue)}</div>
+      ${recapHtml}
+      <div class="show-card-cta">${recap?'Read the recap →':'View details →'}</div>
+    </a>`;
+  }).join('');
+}
+
+function renderNextShow(events){
+  const wrap=document.getElementById('nextShow');
+  if(!events.length){
+    wrap.innerHTML=`<div class="next-show-empty">No upcoming dates announced yet.</div>`;
+    return;
+  }
+  const e=events[0];
+  const dateStr=fmtDateRange(e.start_date, e.end_date);
+  const timeStr=fmtTimeRange(e);
+  const venue=e.venue||'Venue TBA';
+  wrap.innerHTML=`
+    <div class="next-show-badge">Next Show</div>
+    <div class="next-show-content">
+      <div class="next-show-date">${esc(dateStr)}${timeStr?` · ${esc(timeStr)}`:''}</div>
+      <div class="next-show-meta">${esc(venue)}</div>
+    </div>
+    <a class="next-show-cta" href="/shows/show.html?id=${esc(e.id)}">View Details →</a>
+  `;
+}
+
+async function loadSeries(){
+  const today=todayHawaiiISO();
+  const {data, error}=await sb.from('events')
+    .select('*')
+    .eq('status','approved')
+    .ilike('name', SERIES_NAME_PATTERN)
+    .order('start_date', {ascending:true});
+
+  if(error){
+    console.error('[keep-it-aloha] load failed', error);
+    document.getElementById('nextShow').innerHTML='<div class="next-show-empty">Could not load show data.</div>';
+    document.getElementById('upcomingList').innerHTML='<div class="empty-state">Could not load upcoming shows.</div>';
+    document.getElementById('pastList').innerHTML='<div class="empty-state">Could not load past shows.</div>';
+    return;
+  }
+
+  const events=data||[];
+  const upcoming=events.filter(e=>!e.start_date || e.start_date >= today);
+  // Past shows shown newest-first
+  const past=events.filter(e=>e.start_date && e.start_date < today).reverse();
+
+  renderNextShow(upcoming);
+  renderUpcoming(upcoming);
+  renderPast(past);
+}
+
+loadSeries();
+</script>
+</body>
+</html>
