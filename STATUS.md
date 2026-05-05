@@ -60,10 +60,6 @@ Move `:root` tokens, base body, nav, footer, button patterns to `/branding/site.
 - [ ] functions/api/generate-newsletter.js (newsletter HTML)
 - [ ] Once email rebrand done: upload welcome-email.html to Buttondown as autoresponder + test newsletter generator end-to-end
 
-## Pending Reviews
-
-- [ ] **Keep It Aloha #1 recap** — drafted at `/recaps/keep-it-aloha-may-2026.html` (noindex, not yet linked from site). Waiting on Kamaka's review of copy + photo selection before flipping to published. Once approved: remove draft banner, set `<meta name="robots" content="index, follow">`, add entry to `recaps/recap-map.js`, add to `sitemap.xml`.
-
 ## Other items still on hold for branding
 
 - [ ] **Set up Sunday 10 PM calendar reminder** — needs NEWSLETTER_SECRET for the URL (we have the secret now in .env)
@@ -90,6 +86,7 @@ Move `:root` tokens, base body, nav, footer, button patterns to `/branding/site.
 
 ## Recently Completed
 
+- [x] Keep It Aloha #1 recap published — Kamaka approved 2026-05-04. Live with hero banner (Option B: show-floor.JPG full-bleed), 70+ vendors / 5,000+ attendees stat split, full gallery, and links to the next two shows (June 5 placeholder + July 4-5).
 - [x] Newsletter timing incident fixed — 2026-04-27. The Apr 27 send was scheduled for May 4 (a week late) due to two bugs: (1) `getNextMonday9amHst` returning NEXT Monday when run on a Monday, and (2) GitHub Actions cron drift pushing the run from Sunday evening into Monday morning HST. Fix: rewrote date logic to target the soonest Monday 9 AM HST (today if before 9 AM Mon, else next Mon), shifted event window to start from the send date instead of generation date, and moved the cron from `0 4 * * 1` (Mon 4 UTC) to `0 22 * * 0` (Sun 22 UTC) for ~21 hours of drift buffer. Existing scheduled email on Buttondown was converted to draft so it won't auto-send.
 - [x] Fixed Moiliili recap broken images with "Photos coming soon" placeholder — 2026-04-22
 - [x] Recap architecture: recap-map.js registry, "Latest From Hawaii" homepage strip, auto-link recaps on show detail pages, kept Recaps out of main nav — 2026-04-22

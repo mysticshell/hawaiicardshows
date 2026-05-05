@@ -73,6 +73,12 @@
 
   <!-- Recap pages -->
   <url>
+    <loc>https://hawaiicardshows.com/recaps/keep-it-aloha-may-2026</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://hawaiicardshows.com/recaps/paradise-card-show-march-2026</loc>
     <lastmod>2026-04-06</lastmod>
     <changefreq>monthly</changefreq>

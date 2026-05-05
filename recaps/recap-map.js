@@ -17,6 +17,15 @@
 (function () {
   const RECAPS = [
     {
+      slug: 'keep-it-aloha-may-2026',
+      title: 'Keep It Aloha #1 — Festival Energy at SALT Kaka’ako',
+      date: '2026-05-02',
+      event_id: '0e6db727-72f5-4d11-ac83-58d764ecf414',
+      thumbnail: '/recaps/images/keep-it-aloha-may-2026-show-floor.JPG',
+      url: '/recaps/keep-it-aloha-may-2026.html',
+      blurb: '70+ vendors, 5,000+ attendees, free for everyone — and a vibe that felt more like a festival than a grind.'
+    },
+    {
       slug: 'getnutz-x-paradise-april-2026',
       title: 'GetNutz Brings the Culture to the Card Scene',
       date: '2026-04-19',
