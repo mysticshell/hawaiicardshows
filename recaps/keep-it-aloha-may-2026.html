@@ -27,10 +27,12 @@
 <meta property="og:url" content="https://hawaiicardshows.com/recaps/keep-it-aloha-may-2026.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Hawaii Card Shows">
+<meta property="og:image" content="https://hawaiicardshows.com/recaps/images/keep-it-aloha-may-2026-salt-entrance.JPG">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Keep It Aloha Card Show Recap — May 2-3, 2026">
 <meta name="twitter:description" content="The kind of show you could spend all day at.">
+<meta name="twitter:image" content="https://hawaiicardshows.com/recaps/images/keep-it-aloha-may-2026-salt-entrance.JPG">
 
 <script type="application/ld+json">
 {
@@ -115,15 +117,13 @@ body.has-banner { padding-top: 38px; }
 .highlight-box { background: var(--ocean-pale); border-radius: var(--radius); padding: 24px; margin: 24px 0; border-left: 4px solid var(--ocean); }
 .highlight-box strong { color: var(--ocean); }
 
-.photo-placeholder {
-  background: linear-gradient(135deg, var(--ocean-pale) 0%, var(--sand) 100%);
-  border: 2px dashed rgba(26,107,90,0.25);
-  border-radius: var(--radius);
-  padding: 56px 28px; text-align: center; margin: 32px 0 8px;
-}
-.photo-placeholder .icon { font-size: 40px; margin-bottom: 14px; }
-.photo-placeholder h3 { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: var(--ocean); margin-bottom: 6px; }
-.photo-placeholder p { font-size: 14px; color: var(--text-light); max-width: 460px; margin: 0 auto; line-height: 1.5; }
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin: 32px 0; }
+.photo-grid img { width: 100%; border-radius: var(--radius); object-fit: cover; aspect-ratio: 4/3; cursor: pointer; transition: transform 0.2s; display: block; }
+.photo-grid img:hover { transform: scale(1.02); }
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; cursor: pointer; justify-content: center; align-items: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; object-fit: contain; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+.lightbox-close { position: absolute; top: 20px; right: 24px; color: white; font-size: 32px; font-weight: 300; cursor: pointer; font-family: 'DM Sans', sans-serif; }
 
 .recap-cta { background: var(--night); border-radius: 16px; padding: 48px 32px; text-align: center; margin: 48px 0; }
 .recap-cta h3 { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
@@ -235,12 +235,20 @@ footer a { color: var(--ocean); text-decoration: none; }
 
   <h2>Photos from the Show</h2>
 
-  <div class="photo-placeholder">
-    <div class="icon">📸</div>
-    <h3>Photos coming soon</h3>
-    <p>Tyler is working on getting the photo set from the weekend. Once they&rsquo;re in, this section will fill with a gallery from both days &mdash; floor shots, vendors, the Tasi First drop, the music corner, and the standout pulls.</p>
+  <div class="photo-grid">
+    <img src="/recaps/images/keep-it-aloha-may-2026-salt-entrance.JPG" alt="Keep It Aloha Card Show — attendee in OHANA FIRST tee holding up a Pokemon card pull at the SALT Kakaako entrance" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/keep-it-aloha-may-2026-show-floor.JPG" alt="Keep It Aloha Card Show — wide view of the packed show floor under colorful awnings at SALT at Our Kakaako" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/keep-it-aloha-may-2026-floor.JPG" alt="Keep It Aloha Card Show — main floor activity at SALT Kakaako" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/keep-it-aloha-may-2026-vibes.JPG" alt="Keep It Aloha Card Show — group at the Tasi First Pokemon merch booth" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/keep-it-aloha-may-2026-tasi-first.JPG" alt="Keep It Aloha Card Show — Kamaka and crew throwing shakas at the SALT entrance" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/keep-it-aloha-may-2026-keiki.JPG" alt="Keep It Aloha Card Show — young attendee with a balloon flower at a vendor table" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
   </div>
 
+</div>
+
+<div class="lightbox" onclick="this.classList.remove('active');">
+  <span class="lightbox-close">×</span>
+  <img class="lightbox-img" src="" alt="">
 </div>
 
 <div class="recap-cta">
