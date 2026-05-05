@@ -137,6 +137,21 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
 .info-cell-value{font-family:'Outfit',sans-serif;font-weight:600;color:var(--night);font-size:15px;line-height:1.35}
 .info-cell-value a{color:var(--ocean);text-decoration:none}
 
+/* PROMO FLYER block — featured visual for the next confirmed show */
+.flyer-block{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:28px;align-items:center;margin-top:8px}
+.flyer-block img{width:100%;height:auto;display:block;border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,0.12);cursor:pointer;transition:transform 0.2s}
+.flyer-block img:hover{transform:translateY(-2px)}
+.flyer-block .flyer-meta h3{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;color:var(--night);margin-bottom:10px;letter-spacing:-0.3px}
+.flyer-block .flyer-meta p{font-size:15px;color:var(--text);line-height:1.6}
+.flyer-block .flyer-meta .flyer-cta{display:inline-block;margin-top:12px;background:var(--kia-primary);color:var(--white);padding:10px 22px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;transition:background 0.2s}
+.flyer-block .flyer-meta .flyer-cta:hover{background:var(--kia-primary-dark);text-decoration:none}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:2000;display:none;align-items:center;justify-content:center;padding:24px;cursor:pointer}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}
+.lightbox-close{position:absolute;top:20px;right:24px;color:#fff;font-size:32px;cursor:pointer;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.1)}
+.lightbox-close:hover{background:rgba(255,255,255,0.25)}
+@media(max-width:600px){.flyer-block{grid-template-columns:1fr;text-align:center}.flyer-block .flyer-meta{text-align:left}}
+
 /* FAQ */
 .faq-item{border-bottom:1px solid var(--sand-dark);padding:16px 0}
 .faq-item:last-child{border-bottom:none}
@@ -197,6 +212,20 @@ footer a:hover{text-decoration:underline}
 
 <!-- ─────────── CONTENT ─────────── -->
 <div class="content-wrap">
+
+  <!-- NEXT SHOW PROMO FLYER (STATIC) -->
+  <section class="module">
+    <h2>The Next Show Flyer</h2>
+    <div class="flyer-block">
+      <img src="/shows/flyers/keep-it-aloha-flyer-june.JPG" alt="Keep It Aloha Card Show — June 5, 2026 promotional flyer featuring Squirtle in sunglasses surfing, with full schedule of upcoming shows" loading="lazy" onclick="openLightbox(this.src)">
+      <div class="flyer-meta">
+        <h3>Friday, June 5 · SALT at Our Kaka'ako</h3>
+        <p>The June 5 show is locked in at SALT — 2 PM to 9 PM. Free for vendors and the public. Vendor signup at <a href="https://hawaiicollectibles.com" target="_blank" rel="noopener">hawaiicollectibles.com</a>.</p>
+        <p style="font-size:13px;color:var(--text-light);margin-bottom:0">Hosted by <a href="https://www.instagram.com/hicollectibles" target="_blank" rel="noopener">@hicollectibles</a>, <a href="https://www.instagram.com/hnlcollectibles" target="_blank" rel="noopener">@hnlcollectibles</a>, and <a href="https://www.instagram.com/kamakarips" target="_blank" rel="noopener">@kamakarips</a>.</p>
+        <a class="flyer-cta" href="https://hawaiicollectibles.com" target="_blank" rel="noopener">Sign Up to Vend →</a>
+      </div>
+    </div>
+  </section>
 
   <!-- ABOUT (STATIC) -->
   <section class="module">
@@ -275,6 +304,17 @@ footer a:hover{text-decoration:underline}
 </div>
 
 <footer><p>&copy; 2026 Hawaii Card Shows &bull; Built for the community &bull; <a href="/#submit">Submit an Event</a></p></footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+function openLightbox(src){const lb=document.getElementById('lightbox');document.getElementById('lightboxImg').src=src;lb.classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+</script>
 
 <script>
 const SUPABASE_URL='https://bcdgqqncycsdwnmrmuan.supabase.co';
