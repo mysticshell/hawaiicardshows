@@ -119,6 +119,16 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06)
 
   <div class="content-wrap">
     <div class="main-col">
+      <!-- RECAP CALLOUT — appears at the top when this event has a recap -->
+      <a id="recapCallout" href="#" style="display:none;text-decoration:none;background:linear-gradient(135deg,var(--ocean) 0%,var(--ocean-light) 100%);color:#fff;padding:20px 24px;border-radius:var(--radius);margin-bottom:28px;align-items:center;gap:18px;box-shadow:var(--shadow-lg,0 8px 30px rgba(0,0,0,0.12));transition:transform 0.2s,box-shadow 0.2s;">
+        <div style="font-size:28px;line-height:1;flex-shrink:0;">📖</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.75);margin-bottom:4px;">This show happened</div>
+          <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;line-height:1.3;color:#fff;" id="recapCalloutTitle">Read the full recap</div>
+        </div>
+        <div style="font-size:22px;color:#fff;flex-shrink:0;">→</div>
+      </a>
+
       <div class="richtext" id="hDesc"></div>
       
       <!-- PHOTO GALLERY -->
@@ -487,6 +497,17 @@ async function loadData() {
     ? window.HCS_RECAPS_FOR_EVENT(id)
     : [];
   if (recaps.length > 0) {
+    // Top-of-page callout — surfaces the most recent recap prominently
+    const topRecap = recaps[0];
+    const callout = document.getElementById('recapCallout');
+    if (callout) {
+      callout.href = topRecap.url;
+      callout.style.display = 'flex';
+      const titleEl = document.getElementById('recapCalloutTitle');
+      if (titleEl) titleEl.textContent = topRecap.title;
+    }
+
+    // Detailed recap module further down — shows all recaps for this event
     document.getElementById('recapsModule').style.display = 'block';
     document.getElementById('recapList').innerHTML = recaps.map(r => `
       <a href="${esc(r.url)}" class="recap-card">
