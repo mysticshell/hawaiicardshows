@@ -94,12 +94,16 @@ body.has-banner { padding-top: 38px; }
 .nav-brand { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 18px; color: var(--ocean); letter-spacing: -0.5px; text-decoration: none; }
 .nav-brand span { color: var(--lava); }
 
-.recap-hero { padding: 100px 24px 48px; max-width: 800px; margin: 0 auto; }
+/* Hero banner — full-bleed photo then text block (Option B) */
+.recap-hero-banner { width: 100%; height: 60vh; min-height: 400px; max-height: 640px; position: relative; overflow: hidden; margin-top: 64px; background: var(--sand-dark); }
+.recap-hero-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.recap-hero { padding: 48px 24px 32px; max-width: 800px; margin: 0 auto; }
 .recap-tag { display: inline-block; background: var(--ocean); color: var(--white); padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
 .recap-hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; color: var(--night); margin-bottom: 16px; }
 .recap-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; color: var(--text-light); padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.08); }
 .recap-meta-item { display: flex; align-items: center; gap: 6px; }
 .recap-meta-item svg { width: 16px; height: 16px; stroke: var(--ocean); fill: none; }
+@media (max-width: 768px) { .recap-hero-banner { height: 45vh; min-height: 280px; } }
 
 .stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 800px; margin: 32px auto; padding: 0 24px; }
 .stat-box { background: var(--white); border-radius: var(--radius); padding: 20px; text-align: center; box-shadow: var(--shadow); }
@@ -160,6 +164,10 @@ footer a { color: var(--ocean); text-decoration: none; }
     <a href="https://hawaiicardshows.com/#submit" class="nav-cta">Submit Your Event</a>
   </div>
 </nav>
+
+<div class="recap-hero-banner">
+  <img src="/recaps/images/keep-it-aloha-may-2026-salt-entrance.JPG" alt="Keep It Aloha Card Show — attendee in OHANA FIRST tee holding up a Pokemon card pull at the SALT Kakaako entrance" loading="eager">
+</div>
 
 <div class="recap-hero">
   <div class="recap-tag">Show Recap</div>
@@ -229,14 +237,15 @@ footer a { color: var(--ocean); text-decoration: none; }
 
   <p>The Hawaii card scene is at its best when shows like this exist alongside the regular weekly trade nights and quarterly conventions. Keep It Aloha didn&rsquo;t replace anything &mdash; it added something the calendar didn&rsquo;t have yet.</p>
 
-  <h2>Save the Date for #2</h2>
+  <h2>The Next Two Are Already Set</h2>
 
-  <p>The second edition is already on the calendar: <a href="/shows/show.html?id=65909966-7540-4772-862d-4b7060e0aee9">Keep It Aloha Card Show #2</a>, July 4&ndash;5, 2026 (Independence Day weekend). If round one was the warm welcome, round two is the chance to settle in. Mark the calendar.</p>
+  <p>The next Keep It Aloha is locked in for <a href="/shows/show.html?id=13961a95-543a-4930-8de2-98ecf08322f9"><strong>Friday, June 5, 2026</strong></a>. Venue and time are still being finalized &mdash; follow <a href="https://www.instagram.com/kamakarips" target="_blank" rel="noopener">@kamakarips</a> for the announcement.</p>
+
+  <p>After that, mark <a href="/shows/show.html?id=65909966-7540-4772-862d-4b7060e0aee9"><strong>July 4&ndash;5, 2026</strong></a> &mdash; Independence Day weekend, two-day return to SALT.</p>
 
   <h2>Photos from the Show</h2>
 
   <div class="photo-grid">
-    <img src="/recaps/images/keep-it-aloha-may-2026-salt-entrance.JPG" alt="Keep It Aloha Card Show — attendee in OHANA FIRST tee holding up a Pokemon card pull at the SALT Kakaako entrance" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
     <img src="/recaps/images/keep-it-aloha-may-2026-show-floor.JPG" alt="Keep It Aloha Card Show — wide view of the packed show floor under colorful awnings at SALT at Our Kakaako" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
     <img src="/recaps/images/keep-it-aloha-may-2026-floor.JPG" alt="Keep It Aloha Card Show — main floor activity at SALT Kakaako" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
     <img src="/recaps/images/keep-it-aloha-may-2026-big-wheel-spin.JPG" alt="Keep It Aloha Card Show — vendor running a Pokemon-themed prize wheel with mystery pulls and prizes at their booth" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
@@ -254,8 +263,8 @@ footer a { color: var(--ocean); text-decoration: none; }
 
 <div class="recap-cta">
   <h3>Catch the Next Keep It Aloha</h3>
-  <p>Edition #2 hits SALT Kaka&rsquo;ako July 4&ndash;5, 2026. See it on the calendar.</p>
-  <a href="/shows/show.html?id=65909966-7540-4772-862d-4b7060e0aee9">View Show &rarr;</a>
+  <p>The next show is Friday, June 5, 2026. Follow @kamakarips for venue + time.</p>
+  <a href="/shows/show.html?id=13961a95-543a-4930-8de2-98ecf08322f9">View Show &rarr;</a>
 </div>
 
 <footer>
