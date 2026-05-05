@@ -16,14 +16,52 @@
 - [ ] **Big Island Breaks outreach** — Page is built. Send to them for review + get address/hours.
 - [ ] **Add Big Island Breaks to shop directory** — Once they approve their page.
 
-## On Hold — Waiting for Branding
+## Brand Rollout Plan (~10-15 hrs once design is locked)
 
-Holding until branding SVGs + new color scheme are delivered. Shipping the whole newsletter launch with unified new branding for a polished rollout.
+Currently waiting on final design sign-off from Tyler + designer. Demo lives at `/preview.html`. Rollout strategy: **Hybrid — Phase 1+2 with review, then sprint Phases 3-6.**
 
-- [ ] **Upload welcome email to Buttondown as autoresponder** — file ready at welcome-email.html, needs new branding applied first
-- [ ] **Test newsletter generator end-to-end** — generate draft, review in Buttondown
-- [ ] **Set up Sunday 10 PM calendar reminder** — needs NEWSLETTER_SECRET for the URL
-- [ ] **Apply new branding across site** — swap color scheme, add new logo/SVGs to all pages, update email templates
+### Phase 0 — Lock the design (in progress)
+- [x] Initial brand assets in `/branding/` (logos, fonts loaded)
+- [x] preview.html demo with floating pill nav, gradient bg, green About block, orange footer
+- [x] V2 colored logos with gradient pattern in icon
+- [ ] **Final design pass + sign-off** — designer expected to deliver one more iteration before rollout begins
+
+### Phase 1 — Extract shared CSS (~1-2 hrs, do once design locks)
+Move `:root` tokens, base body, nav, footer, button patterns to `/branding/site.css`. Single source of truth for future brand updates. Each page links the shared file plus keeps its page-specific styles inline.
+
+### Phase 2 — Replace homepage (~1-2 hrs, REVIEW BEFORE PROCEEDING)
+- [ ] Copy locked preview.html → index.html (preserve calendar JS, Supabase wiring, newsletter popup)
+- [ ] Test calendar/agenda/grid views, newsletter form, popup
+- [ ] Tyler review on live URL before kicking off Phase 3+
+
+### Phase 3 — Content pages (sprint, ~1-2 hrs total)
+- [ ] faq.html
+- [ ] hawaii-card-shows-guide.html
+- [ ] card-shows-oahu.html
+- [ ] pokemon-card-shops-hawaii.html
+- [ ] host-a-show.html
+- [ ] 404.html
+
+### Phase 4 — Functional pages (sprint, ~2-3 hrs)
+- [ ] shows/index.html
+- [ ] shops/index.html
+- [ ] recaps/index.html
+
+### Phase 5 — Detail pages (sprint, ~4-6 hrs)
+- [ ] shows/show.html (dynamic — covers every event in DB)
+- [ ] shows/paradise-card-show.html (static permalink)
+- [ ] shows/toylynx-trade-night.html (static permalink)
+- [ ] 24 shop pages: shops/{aloha-card-shop, 808-showcase, big-island-breaks, box-jellyz, best-of-the-best, iwingames, space-62, da-planet, paulas-sports-cards, other-realms, evolving-realms, from-the-heart, dragons-lair, windward-collectibles, armchair-adventurer, toylynx, tcg-tavern, tcg-hawaii, 4-pillars, gam3-escape, slow-your-roll, maui-sports-cards, yocards, bubbahs-toy-box, crows-nest, hi-collector}.html
+- [ ] 4 recap pages + recaps/_TEMPLATE.html
+
+### Phase 6 — Email templates (~1-2 hrs)
+- [ ] welcome-email.html (Buttondown autoresponder)
+- [ ] functions/api/generate-newsletter.js (newsletter HTML)
+- [ ] Once email rebrand done: upload welcome-email.html to Buttondown as autoresponder + test newsletter generator end-to-end
+
+## Other items still on hold for branding
+
+- [ ] **Set up Sunday 10 PM calendar reminder** — needs NEWSLETTER_SECRET for the URL (we have the secret now in .env)
 
 ## Waiting on Others
 
