@@ -1,6 +1,6 @@
 # Hawaii Card Shows — Project Status
 
-*Last updated: 2026-04-22*
+*Last updated: 2026-05-04*
 
 ---
 
@@ -15,6 +15,7 @@
 - [ ] **ToyLynx recurrence update** — Was scheduled automatically in old session. Verify it went through.
 - [ ] **Big Island Breaks outreach** — Page is built. Send to them for review + get address/hours.
 - [ ] **Add Big Island Breaks to shop directory** — Once they approve their page.
+- [ ] **Bayview landscape hero photo** — Page shipped with portrait crowd photo + flyer in a "From the Floor" block (both currently at `/recaps/images/`). Hero is a purple gradient + PKMN logo. Tyler to grab a wide landscape shot at the next Tuesday meet (May 5 or May 19) so we can swap the gradient hero to a full-bleed banner like Keep It Aloha. Per [image conventions](.claude/...) the two photos arguably belong in `/shows/flyers/` — leave for now, move only if doing a broader cleanup.
 
 ## Brand Rollout Plan (~10-15 hrs once design is locked)
 
@@ -86,6 +87,13 @@ Move `:root` tokens, base body, nav, footer, button patterns to `/branding/site.
 
 ## Recently Completed
 
+- [x] **Show-series static pages — pattern established** (2026-05-04). New routing model: events whose `name` matches a key in `HCS_SERIES_URLS` (in [index.html](index.html) and [shows/show.html](shows/show.html)) route to a hand-built static page; the page hydrates upcoming/past slots from Supabase via name match. Homepage carousel/calendar/agenda link the right destination automatically. Dynamic `/shows/show.html?id=...` redirects to the series page when an event matches. SEO consolidates on the static URL via canonical. Two pages shipped today:
+  - [shows/keep-it-aloha.html](shows/keep-it-aloha.html) — full-bleed hero photo, dynamic next-show + upcoming + past-with-recap-pill
+  - [shows/bayview-night-market.html](shows/bayview-night-market.html) — purple PKMN gradient hero (no landscape photo yet), dynamic 1st & 3rd Tuesday calculator, "From the Floor" portrait photo block
+- [x] **Next series candidates** (in priority order, drawn from GA traffic): TCG Tavern Trade Day (51 IG clicks/30d), Sports Cards & Collectibles Show (Lance), Hilo Collectible Show, Space 62 Trade Night, Paradise Card Show (currently a static page but no dynamic upcoming/past — would benefit from the new pattern). Each one is ~30-45 min once the photo + copy are gathered.
+- [x] **GA4 monthly analytics report — May 2026** (2026-05-04). 4,116 sessions / 2,144 active users in the past 30 days, vs 217 in prior 30. Real growth: ~85 → ~250 daily sessions. 72% organic search, 79% Hawaii audience, 80% mobile. Show detail pages drove 2,216 views and 379 outbound clicks (mostly organizer Instagrams — we're a real vendor discovery engine). Top series by traffic: Keep It Aloha, TCG Tavern Trade Day, Sports Cards & Collectibles, Bayview Night Market, Hilo Collectible Show.
+- [x] **Open follow-up: newsletter funnel measurement gap** — `form_start` is tracked (67/30d) but no `form_submit` event fires from the popup/sticky-bar handler. Without it we can't measure newsletter completion rate. ~15-min fix when ready.
+- [x] **Open follow-up: noindex `/preview.html`** — currently getting indexed (10 views, 1 search-driven landing in past 30d). Add `<meta name="robots" content="noindex">` until brand rollout Phase 2 ships.
 - [x] Keep It Aloha #1 recap published — Kamaka approved 2026-05-04. Live with hero banner (Option B: show-floor.JPG full-bleed), 70+ vendors / 5,000+ attendees stat split, full gallery, and links to the next two shows (June 5 placeholder + July 4-5).
 - [x] Newsletter timing incident fixed — 2026-04-27. The Apr 27 send was scheduled for May 4 (a week late) due to two bugs: (1) `getNextMonday9amHst` returning NEXT Monday when run on a Monday, and (2) GitHub Actions cron drift pushing the run from Sunday evening into Monday morning HST. Fix: rewrote date logic to target the soonest Monday 9 AM HST (today if before 9 AM Mon, else next Mon), shifted event window to start from the send date instead of generation date, and moved the cron from `0 4 * * 1` (Mon 4 UTC) to `0 22 * * 0` (Sun 22 UTC) for ~21 hours of drift buffer. Existing scheduled email on Buttondown was converted to draft so it won't auto-send.
 - [x] Fixed Moiliili recap broken images with "Photos coming soon" placeholder — 2026-04-22
