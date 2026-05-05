@@ -53,11 +53,16 @@ Move `:root` tokens, base body, nav, footer, button patterns to `/branding/site.
 - [ ] shows/toylynx-trade-night.html (static permalink)
 - [ ] 24 shop pages: shops/{aloha-card-shop, 808-showcase, big-island-breaks, box-jellyz, best-of-the-best, iwingames, space-62, da-planet, paulas-sports-cards, other-realms, evolving-realms, from-the-heart, dragons-lair, windward-collectibles, armchair-adventurer, toylynx, tcg-tavern, tcg-hawaii, 4-pillars, gam3-escape, slow-your-roll, maui-sports-cards, yocards, bubbahs-toy-box, crows-nest, hi-collector}.html
 - [ ] 4 recap pages + recaps/_TEMPLATE.html
+  - **Apply Option B hero pattern across all recaps** — full-bleed photo banner at top, headline + meta below, 2-stat side-by-side bar. Pattern is dialed in on `recaps/keep-it-aloha-may-2026.html` (currently draft/noindex). Use that as the reference when porting to Paradise, Moiliili, GetNutz, and the template.
 
 ### Phase 6 — Email templates (~1-2 hrs)
 - [ ] welcome-email.html (Buttondown autoresponder)
 - [ ] functions/api/generate-newsletter.js (newsletter HTML)
 - [ ] Once email rebrand done: upload welcome-email.html to Buttondown as autoresponder + test newsletter generator end-to-end
+
+## Pending Reviews
+
+- [ ] **Keep It Aloha #1 recap** — drafted at `/recaps/keep-it-aloha-may-2026.html` (noindex, not yet linked from site). Waiting on Kamaka's review of copy + photo selection before flipping to published. Once approved: remove draft banner, set `<meta name="robots" content="index, follow">`, add entry to `recaps/recap-map.js`, add to `sitemap.xml`.
 
 ## Other items still on hold for branding
 
