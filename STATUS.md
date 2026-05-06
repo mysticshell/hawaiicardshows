@@ -19,21 +19,25 @@
 
 ## Brand Rollout Plan (~10-15 hrs once design is locked)
 
-Currently waiting on final design sign-off from Tyler + designer. Demo lives at `/preview.html`. Rollout strategy: **Hybrid — Phase 1+2 with review, then sprint Phases 3-6.**
+Designer signed off 2026-05-05. Phase 1 + Phase 2 shipped 2026-05-05/06. Demo still lives at `/preview.html`. Rollout strategy: **Hybrid — Phase 1+2 with review (done), now sprinting Phases 3-6.**
 
-### Phase 0 — Lock the design (in progress)
+### Phase 0 — Lock the design ✅
 - [x] Initial brand assets in `/branding/` (logos, fonts loaded)
 - [x] preview.html demo with floating pill nav, gradient bg, green About block, orange footer
 - [x] V2 colored logos with gradient pattern in icon
-- [ ] **Final design pass + sign-off** — designer expected to deliver one more iteration before rollout begins
+- [x] Final design pass + sign-off — Tyler 2026-05-05 ("Designer has approved let's run it")
 
-### Phase 1 — Extract shared CSS (~1-2 hrs, do once design locks)
-Move `:root` tokens, base body, nav, footer, button patterns to `/branding/site.css`. Single source of truth for future brand updates. Each page links the shared file plus keeps its page-specific styles inline.
+### Phase 1 — Extract shared CSS ✅ (commit be2d732, 2026-05-05)
+Tokens, base body, 3-circle gradient bg, floating-pill nav, section/form/FAQ patterns, and orange footer all live in `/branding/site.css`. Each page links the shared file and keeps its page-specific styles inline.
 
-### Phase 2 — Replace homepage (~1-2 hrs, REVIEW BEFORE PROCEEDING)
-- [ ] Copy locked preview.html → index.html (preserve calendar JS, Supabase wiring, newsletter popup)
-- [ ] Test calendar/agenda/grid views, newsletter form, popup
-- [ ] Tyler review on live URL before kicking off Phase 3+
+### Phase 2 — Replace homepage ✅ (commits 6cddbad → a5a871f, 2026-05-05/06)
+- [x] index.html migrated to shared CSS + new visual structure (preserves calendar JS, Supabase wiring, newsletter popup, recaps strip)
+- [x] Phudu (headings) + Archivo (body), colored horizontal logo SVG in nav, orange-block footer, green About block with GetNutz crowd photo
+- [x] Calendar grid + agenda views, featured events, newsletter inline form, exit-intent popup, mobile sticky bar — all verified working
+- [x] Favicon updated to new branded H mark across all 48 pages (svg + png-32 + png-180 apple-touch-icon)
+- [x] Newsletter popup timing tightened: desktop 8s, mobile 12s OR 40% scroll
+- [x] GA4 form_submit event wired on inline + popup + bar (form_id, form_destination, duplicate)
+- [x] Tyler review on live URL — approved 2026-05-06
 
 ### Phase 3 — Content pages (sprint, ~1-2 hrs total)
 - [ ] faq.html
@@ -92,8 +96,8 @@ Move `:root` tokens, base body, nav, footer, button patterns to `/branding/site.
   - [shows/bayview-night-market.html](shows/bayview-night-market.html) — purple PKMN gradient hero (no landscape photo yet), dynamic 1st & 3rd Tuesday calculator, "From the Floor" portrait photo block
 - [x] **Next series candidates** (in priority order, drawn from GA traffic): TCG Tavern Trade Day (51 IG clicks/30d), Sports Cards & Collectibles Show (Lance), Hilo Collectible Show, Space 62 Trade Night, Paradise Card Show (currently a static page but no dynamic upcoming/past — would benefit from the new pattern). Each one is ~30-45 min once the photo + copy are gathered.
 - [x] **GA4 monthly analytics report — May 2026** (2026-05-04). 4,116 sessions / 2,144 active users in the past 30 days, vs 217 in prior 30. Real growth: ~85 → ~250 daily sessions. 72% organic search, 79% Hawaii audience, 80% mobile. Show detail pages drove 2,216 views and 379 outbound clicks (mostly organizer Instagrams — we're a real vendor discovery engine). Top series by traffic: Keep It Aloha, TCG Tavern Trade Day, Sports Cards & Collectibles, Bayview Night Market, Hilo Collectible Show.
-- [x] **Open follow-up: newsletter funnel measurement gap** — `form_start` is tracked (67/30d) but no `form_submit` event fires from the popup/sticky-bar handler. Without it we can't measure newsletter completion rate. ~15-min fix when ready.
-- [x] **Open follow-up: noindex `/preview.html`** — currently getting indexed (10 views, 1 search-driven landing in past 30d). Add `<meta name="robots" content="noindex">` until brand rollout Phase 2 ships.
+- [x] **Newsletter funnel measurement** (2026-05-06) — `form_submit` event now fires from all three subscribe entry points with custom params `form_id` (newsletter-inline / newsletter-popup / newsletter-bar), `form_destination`, and `duplicate`. Build a GA4 explore by `form_id` after ~7 days of data to compare conversion by surface.
+- [x] **noindex `/preview.html`** (2026-05-06) — was carrying both noindex AND index meta tags from a head-block copy. Removed the conflicting `index, follow` so the noindex is unambiguous. Search Console should drop the page on next crawl.
 - [x] Keep It Aloha #1 recap published — Kamaka approved 2026-05-04. Live with hero banner (Option B: show-floor.JPG full-bleed), 70+ vendors / 5,000+ attendees stat split, full gallery, and links to the next two shows (June 5 placeholder + July 4-5).
 - [x] Newsletter timing incident fixed — 2026-04-27. The Apr 27 send was scheduled for May 4 (a week late) due to two bugs: (1) `getNextMonday9amHst` returning NEXT Monday when run on a Monday, and (2) GitHub Actions cron drift pushing the run from Sunday evening into Monday morning HST. Fix: rewrote date logic to target the soonest Monday 9 AM HST (today if before 9 AM Mon, else next Mon), shifted event window to start from the send date instead of generation date, and moved the cron from `0 4 * * 1` (Mon 4 UTC) to `0 22 * * 0` (Sun 22 UTC) for ~21 hours of drift buffer. Existing scheduled email on Buttondown was converted to draft so it won't auto-send.
 - [x] Fixed Moiliili recap broken images with "Photos coming soon" placeholder — 2026-04-22
