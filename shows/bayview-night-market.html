@@ -32,7 +32,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Phudu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/branding/site.css?v=20260506">
 
 <!-- Schema.org EventSeries — recurring -->
 <script type="application/ld+json">
@@ -79,28 +81,14 @@
   --bv-primary:#7d3cd9;--bv-primary-dark:#5e2aa6;--bv-primary-light:#a84ae8;
   --bv-warm:#fff3cf;--bv-pale:#f1e7fb;--bv-deep:#1a0f2e;
 }
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--sand);line-height:1.6;-webkit-font-smoothing:antialiased}
-
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,240,232,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
-.nav-brand{font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:var(--ocean);letter-spacing:-0.5px;text-decoration:none}
-.nav-brand span{color:var(--lava)}
-.nav-links{display:flex;gap:32px;align-items:center}
-.nav-links a{text-decoration:none;color:var(--text-light);font-size:14px;font-weight:500;transition:color 0.2s}
-.nav-links a:hover{color:var(--ocean)}
-.nav-cta{background:var(--ocean);color:var(--white)!important;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.2s;display:inline-block}
-.nav-cta:hover{background:var(--ocean-light);color:var(--white)!important}
-.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
-.nav-mobile svg{width:24px;height:24px;stroke:var(--text)}
-
 /* HERO — purple gradient (no event photo yet) */
 .hero{position:relative;margin-top:64px;padding:80px 24px 110px;background:linear-gradient(135deg,var(--bv-deep) 0%,var(--bv-primary-dark) 50%,var(--bv-primary) 100%);overflow:hidden;color:var(--white);text-align:center}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(168,74,232,0.4) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(125,60,217,0.3) 0%,transparent 60%);pointer-events:none}
 .hero-inner{position:relative;z-index:2;max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
 .hero-logo{width:120px;height:120px;border-radius:50%;background:var(--white);padding:6px;box-shadow:0 8px 28px rgba(0,0,0,0.3);margin-bottom:24px;object-fit:cover}
 .hero-tag{display:inline-block;background:rgba(255,255,255,0.15);color:var(--white);padding:6px 16px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.hero h1{font-family:'Outfit',sans-serif;font-size:clamp(34px,5.5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;text-shadow:0 2px 12px rgba(0,0,0,0.3)}
+.hero h1{font-family:'Phudu',sans-serif;font-size:clamp(34px,5.5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;text-shadow:0 2px 12px rgba(0,0,0,0.3)}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,0.88);font-weight:500;max-width:540px;margin:0 auto}
 
 /* NEXT DATE callout — appears just below hero */
@@ -108,7 +96,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,240,232,
 .next-date{background:var(--white);border:2px solid var(--bv-primary);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .next-date-badge{background:var(--bv-primary);color:var(--white);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:6px 14px;border-radius:20px;white-space:nowrap;flex-shrink:0}
 .next-date-content{flex:1;min-width:200px}
-.next-date-day{font-family:'Outfit',sans-serif;font-weight:700;font-size:20px;color:var(--night);margin-bottom:2px}
+.next-date-day{font-family:'Phudu',sans-serif;font-weight:700;font-size:20px;color:var(--night);margin-bottom:2px}
 .next-date-meta{font-size:14px;color:var(--text-light)}
 .next-date-cta{background:var(--bv-primary);color:var(--white);padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;transition:background 0.2s}
 .next-date-cta:hover{background:var(--bv-primary-dark)}
@@ -117,8 +105,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,240,232,
 /* CONTENT */
 .content-wrap{max-width:900px;margin:48px auto 80px;padding:0 24px}
 section.module{background:var(--white);border-radius:var(--radius);padding:36px;box-shadow:var(--shadow);margin-bottom:24px}
-section.module h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;color:var(--night);margin-bottom:16px;letter-spacing:-0.5px}
-section.module h3{font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:var(--night);margin:24px 0 8px}
+section.module h2{font-family:'Phudu',sans-serif;font-size:28px;font-weight:700;color:var(--night);margin-bottom:16px;letter-spacing:-0.5px}
+section.module h3{font-family:'Phudu',sans-serif;font-size:18px;font-weight:700;color:var(--night);margin:24px 0 8px}
 section.module p{margin-bottom:14px;color:var(--text);font-size:16px;line-height:1.7}
 section.module a{color:var(--bv-primary);font-weight:600;text-decoration:none}
 section.module a:hover{text-decoration:underline}
@@ -129,8 +117,8 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
 .date-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-top:8px}
 .date-card{background:var(--bv-pale);border:1px solid rgba(125,60,217,0.18);border-radius:10px;padding:18px 16px;text-align:center;transition:transform 0.15s}
 .date-card:hover{transform:translateY(-2px)}
-.date-card-month{font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;color:var(--bv-primary);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
-.date-card-day{font-family:'Outfit',sans-serif;font-weight:800;font-size:32px;color:var(--night);line-height:1}
+.date-card-month{font-family:'Phudu',sans-serif;font-size:11px;font-weight:700;color:var(--bv-primary);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.date-card-day{font-family:'Phudu',sans-serif;font-weight:800;font-size:32px;color:var(--night);line-height:1}
 .date-card-weekday{font-size:13px;color:var(--text-light);margin-top:6px;font-weight:600}
 .date-card-time{font-size:12px;color:var(--text-lighter);margin-top:4px}
 
@@ -155,20 +143,16 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
 .info-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:8px}
 .info-cell{background:var(--bv-pale);padding:18px 20px;border-radius:10px}
 .info-cell-label{font-size:11px;font-weight:700;color:var(--bv-primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.info-cell-value{font-family:'Outfit',sans-serif;font-weight:600;color:var(--night);font-size:15px;line-height:1.35}
+.info-cell-value{font-family:'Phudu',sans-serif;font-weight:600;color:var(--night);font-size:15px;line-height:1.35}
 .info-cell-value a{color:var(--bv-primary);text-decoration:none}
 
 /* FAQ */
 .faq-item{border-bottom:1px solid var(--sand-dark);padding:16px 0}
 .faq-item:last-child{border-bottom:none}
-.faq-q{font-family:'Outfit',sans-serif;font-weight:700;color:var(--night);margin-bottom:6px;font-size:16px}
+.faq-q{font-family:'Phudu',sans-serif;font-weight:700;color:var(--night);margin-bottom:6px;font-size:16px}
 .faq-a{color:var(--text-light);font-size:15px;line-height:1.6}
 
 .loading{text-align:center;color:var(--text-lighter);font-size:14px;padding:14px;font-style:italic}
-
-footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06);color:var(--text-lighter);font-size:13px}
-footer a{color:var(--ocean);text-decoration:none}
-footer a:hover{text-decoration:underline}
 
 @media(max-width:768px){
   .nav-links{display:none}
@@ -183,7 +167,9 @@ footer a:hover{text-decoration:underline}
 </head>
 <body>
 <nav>
-  <a href="/" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <a href="/" class="nav-brand" aria-label="Hawaii Card Shows">
+    <img src="/branding/logo-horizontal.svg" alt="Hawaii Card Shows">
+  </a>
   <div class="nav-links" id="navLinks">
     <a href="/#upcoming">Upcoming</a>
     <a href="/shows/">Shows</a>
@@ -191,8 +177,9 @@ footer a:hover{text-decoration:underline}
     <a href="/#submit">Submit</a>
     <a href="/#sponsors">Partner</a>
     <a href="/#submit" class="nav-cta">Submit Your Event</a>
+    <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" class="nav-ig" aria-label="Follow us on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
   </div>
-  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')">
+  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
     <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
   </button>
 </nav>
@@ -317,7 +304,30 @@ footer a:hover{text-decoration:underline}
 
 </div>
 
-<footer><p>&copy; 2026 Hawaii Card Shows &bull; Built for the community &bull; <a href="/#submit">Submit an Event</a></p></footer>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/branding/logo-horizontal-white.svg" alt="Hawaii Card Shows">
+      <p class="footer-tagline">Keeping Hawaii&rsquo;s card shows connected.</p>
+    </div>
+    <div class="footer-touch">
+      <div class="footer-touch-label">Get In Touch</div>
+      <p><a href="mailto:aloha@hawaiicardshows.com">aloha@hawaiicardshows.com</a></p>
+      <p><a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+      <p>Serving all Hawaiian Islands</p>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <div class="footer-meta-links">
+      <a href="/#upcoming">Upcoming</a>
+      <a href="/shows/">Shows</a>
+      <a href="/shops/">Shops</a>
+      <a href="/#submit">Submit</a>
+      <a href="/#sponsors">Partner</a>
+    </div>
+    <div class="footer-meta-copy">&copy; 2026 Hawaii Card Shows &middot; <a href="/faq.html">FAQ</a> &middot; <a href="/hawaii-card-shows-guide.html">TCG Guide</a> &middot; <a href="/card-shows-oahu.html">Card Shows Oahu</a> &middot; <a href="/pokemon-card-shops-hawaii.html">Pokemon Card Shops</a></div>
+  </div>
+</footer>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">

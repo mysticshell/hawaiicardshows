@@ -44,7 +44,7 @@
   const CSS = `
     .shop-photos-section { padding: 64px 0; border-top: 1px solid var(--sand-dark); }
     .shop-photos-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--shop-primary); margin-bottom: 12px; }
-    .shop-photos-title { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(26px, 4vw, 36px); color: var(--night); line-height: 1.15; margin-bottom: 24px; }
+    .shop-photos-title { font-family: 'Phudu', sans-serif; font-weight: 800; font-size: clamp(26px, 4vw, 36px); color: var(--night); line-height: 1.15; margin-bottom: 24px; }
     .shop-photos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
     .shop-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 2px 12px rgba(0,0,0,0.08); display: block; }
     .shop-photo:hover { transform: scale(1.03); box-shadow: 0 6px 24px rgba(0,0,0,0.15); }
