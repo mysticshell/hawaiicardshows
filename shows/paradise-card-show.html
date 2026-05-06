@@ -26,6 +26,7 @@
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-48ZSPW63VV"></script>
+<script src="/recaps/recap-map.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -700,6 +701,16 @@
   </div>
 </div>
 
+<!-- ═══════ UPCOMING SHOWS LIST (DYNAMIC) ═══════ -->
+<div class="content-wrap" id="upcomingShowsWrap" style="display:none;">
+  <section id="upcoming-shows">
+    <div class="section-label">Confirmed Dates</div>
+    <h2 class="section-title">Upcoming Paradise Card Shows</h2>
+    <p class="section-text">All confirmed Paradise Card Show dates. Follow <a href="https://www.instagram.com/paradisecards_/" target="_blank" rel="noopener" style="color:var(--show-primary);font-weight:600">@paradisecards_</a> for the latest.</p>
+    <div id="upcomingList"></div>
+  </section>
+</div>
+
 <!-- ═══════ ABOUT ═══════ -->
 <div class="content-wrap">
 
@@ -790,20 +801,12 @@
     </div>
   </section>
 
-  <!-- ═══════ PAST RECAPS ═══════ -->
+  <!-- ═══════ PAST RECAPS (DYNAMIC) ═══════ -->
   <section id="recaps">
     <div class="section-label">Past Events</div>
     <h2 class="section-title">Show Recaps</h2>
     <p class="section-text">Relive the action from past Paradise Card Show events.</p>
-
-    <a href="https://hawaiicardshows.com/recaps/paradise-card-show-march-2026.html" class="recap-card">
-      <div class="recap-card-date">Mar 22, 2026</div>
-      <div>
-        <div class="recap-card-title">Paradise Card Show — March 2026</div>
-        <div class="recap-card-meta">50+ vendors · 1,300+ attendees · The Republik</div>
-      </div>
-      <div class="recap-card-arrow">→</div>
-    </a>
+    <div id="pastList"></div>
   </section>
 
   <!-- ═══════ ORGANIZER ═══════ -->
@@ -933,32 +936,152 @@
 </script>
 
 <script>
-// ═══ Fetch next upcoming Paradise Card Show from Supabase ═══
+// ═══ Hydrate Paradise series page from Supabase + recap-map.js ═══
+// - Pulls all events whose name matches "Paradise Card Show%"
+// - Splits into upcoming/past by Hawaii date
+// - Populates: top "Next Show" callout, "Upcoming Shows" list, "Past Recaps" list
 (async function() {
   const SUPABASE_URL = 'https://bcdgqqncycsdwnmrmuan.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjZGdxcW5jeWNzZHdubXJtdWFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NTU4MzgsImV4cCI6MjA5MDEzMTgzOH0.UXTTv99cBYcll_uw-g50tA4yG9jpbVIdt3xrDc_rTKs';
 
+  function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+  function fmtDateRange(start, end) {
+    if (!start) return 'Date TBD';
+    const d1 = new Date(start + 'T12:00:00');
+    const m1 = d1.toLocaleDateString('en-US', { month: 'long' });
+    const ds1 = d1.getDate();
+    const y1 = d1.getFullYear();
+    if (end && end !== start) {
+      const d2 = new Date(end + 'T12:00:00');
+      const m2 = d2.toLocaleDateString('en-US', { month: 'long' });
+      const ds2 = d2.getDate();
+      const y2 = d2.getFullYear();
+      if (m1 === m2 && y1 === y2) return `${m1} ${ds1}–${ds2}, ${y1}`;
+      if (y1 === y2) return `${m1} ${ds1} – ${m2} ${ds2}, ${y1}`;
+      return `${m1} ${ds1}, ${y1} – ${m2} ${ds2}, ${y2}`;
+    }
+    return `${m1} ${ds1}, ${y1}`;
+  }
+
+  function fmtShortDate(start, end) {
+    if (!start) return 'TBD';
+    const d1 = new Date(start + 'T12:00:00');
+    const m1 = d1.toLocaleDateString('en-US', { month: 'short' });
+    const ds1 = d1.getDate();
+    const y1 = d1.getFullYear();
+    if (end && end !== start) {
+      const d2 = new Date(end + 'T12:00:00');
+      const m2 = d2.toLocaleDateString('en-US', { month: 'short' });
+      const ds2 = d2.getDate();
+      if (m1 === m2) return `${m1} ${ds1}–${ds2}, ${y1}`;
+      return `${m1} ${ds1} – ${m2} ${ds2}, ${y1}`;
+    }
+    return `${m1} ${ds1}, ${y1}`;
+  }
+
+  function fmtTime(t) {
+    if (!t) return '';
+    const m = String(t).match(/^(\d{1,2}):(\d{2})/);
+    if (!m) return t;
+    const h = +m[1], mn = +m[2];
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const h12 = h > 12 ? h - 12 : (h === 0 ? 12 : h);
+    return mn === 0 ? `${h12} ${ampm}` : `${h12}:${String(mn).padStart(2,'0')} ${ampm}`;
+  }
+
+  function fmtTimeRange(e) {
+    if (!e.start_time) return '';
+    const s = fmtTime(e.start_time);
+    const en = fmtTime(e.end_time);
+    return en ? `${s} – ${en}` : s;
+  }
+
+  function todayHawaiiISO() {
+    const now = new Date();
+    const hi = new Date(now.getTime() - 10 * 3600 * 1000);
+    return hi.toISOString().slice(0, 10);
+  }
+
+  function recapForEvent(eventId) {
+    if (typeof window.HCS_RECAPS_FOR_EVENT !== 'function') return null;
+    const list = window.HCS_RECAPS_FOR_EVENT(eventId);
+    return list && list.length ? list[0] : null;
+  }
+
   try {
-    const today = new Date().toISOString().split('T')[0];
+    // Pull all approved Paradise Card Show events
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/events?select=*&or=(instagram.eq.%40paradisecards_,instagram.eq.paradisecards_)&start_date=gte.${today}&approved=eq.true&order=start_date.asc&limit=1`,
+      `${SUPABASE_URL}/rest/v1/events?select=*&name=ilike.Paradise%20Card%20Show%25&status=eq.approved&order=start_date.asc.nullsfirst`,
       { headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY } }
     );
-    if (!res.ok) return;
+    if (!res.ok) {
+      console.log('[paradise] fetch failed', res.status);
+      return;
+    }
     const events = await res.json();
     if (!events || events.length === 0) return;
 
-    const e = events[0];
-    const d = new Date(e.start_date + 'T12:00:00');
-    const dateStr = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
-    const timeStr = e.start_time ? ` · ${e.start_time}${e.end_time ? ' — ' + e.end_time : ''}` : '';
+    const today = todayHawaiiISO();
+    const upcoming = events.filter(e => !e.start_date || e.start_date >= today);
+    const past = events.filter(e => e.start_date && e.start_date < today).reverse(); // newest first
 
-    document.getElementById('nextShowDate').textContent = dateStr;
-    document.getElementById('nextShowDetails').textContent = (e.venue || 'The Republik') + timeStr;
-    document.getElementById('nextShowCallout').style.display = 'flex';
+    // ─── Next Show callout ───
+    if (upcoming.length > 0) {
+      const next = upcoming[0];
+      const dateStr = fmtDateRange(next.start_date, next.end_date);
+      const timeStr = fmtTimeRange(next);
+      document.getElementById('nextShowDate').textContent = dateStr;
+      document.getElementById('nextShowDetails').textContent = (next.venue || 'The Republik') + (timeStr ? ` · ${timeStr}` : '');
+      document.getElementById('nextShowCallout').style.display = 'flex';
+    }
+
+    // ─── Upcoming Shows list ───
+    const upcomingWrap = document.getElementById('upcomingShowsWrap');
+    const upcomingList = document.getElementById('upcomingList');
+    if (upcoming.length > 0 && upcomingWrap && upcomingList) {
+      upcomingWrap.style.display = 'block';
+      upcomingList.innerHTML = upcoming.map(e => {
+        const dateStr = fmtShortDate(e.start_date, e.end_date);
+        const timeStr = fmtTimeRange(e);
+        const venue = e.venue || 'The Republik';
+        const meta = `${venue}${timeStr ? ' · ' + timeStr : ''}`;
+        return `<a href="/shows/show.html?id=${esc(e.id)}" class="recap-card">
+          <div class="recap-card-date">${esc(dateStr)}</div>
+          <div>
+            <div class="recap-card-title">${esc(e.name)}</div>
+            <div class="recap-card-meta">${esc(meta)}</div>
+          </div>
+          <div class="recap-card-arrow">→</div>
+        </a>`;
+      }).join('');
+    }
+
+    // ─── Past Shows + Recaps ───
+    const pastList = document.getElementById('pastList');
+    if (pastList) {
+      if (past.length === 0) {
+        pastList.innerHTML = '<p style="color:var(--text-lighter);font-style:italic;font-size:15px;margin-top:16px;">No recapped past Paradise shows yet.</p>';
+      } else {
+        pastList.innerHTML = past.map(e => {
+          const dateStr = fmtShortDate(e.start_date, e.end_date);
+          const recap = recapForEvent(e.id);
+          const href = recap ? recap.url : `/shows/show.html?id=${e.id}`;
+          const title = recap ? recap.title : e.name;
+          const meta = recap && recap.blurb ? recap.blurb : ((e.venue || 'The Republik'));
+          return `<a href="${esc(href)}" class="recap-card">
+            <div class="recap-card-date">${esc(dateStr)}</div>
+            <div>
+              <div class="recap-card-title">${esc(title)}</div>
+              <div class="recap-card-meta">${esc(meta)}</div>
+            </div>
+            <div class="recap-card-arrow">→</div>
+          </a>`;
+        }).join('');
+      }
+    }
   } catch (err) {
-    // Silently fail — callout just stays hidden
-    console.log('Could not load next show:', err);
+    console.log('[paradise] hydrate error:', err);
   }
 })();
 </script>
