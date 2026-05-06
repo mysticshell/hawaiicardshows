@@ -64,62 +64,11 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Phudu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/branding/site.css">
 <style>
-:root {
-  --sand: #f5f0e8; --sand-dark: #e8e0d0; --ocean: #1a6b5a; --ocean-light: #2a8b72;
-  --ocean-pale: #e8f4f0; --lava: #d4582a; --lava-light: #f0714a; --night: #1a1a1a;
-  --text: #2c2c2c; --text-light: #6a6a6a; --text-lighter: #999; --white: #ffffff;
-  --radius: 12px; --shadow: 0 2px 20px rgba(0,0,0,0.06);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--sand); }
-
-.draft-banner {
-  background: #fef3c7; border-bottom: 1px solid #fcd34d;
-  padding: 9px 16px; text-align: center;
-  font-family: 'DM Sans', sans-serif; font-size: 13px; color: #78350f; font-weight: 600;
-  position: sticky; top: 0; z-index: 200;
-}
-.draft-banner a { color: #78350f; font-weight: 700; }
-
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(245,240,232,0.92); backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  padding: 0 24px; height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-body.has-banner nav { top: 38px; }
-body.has-banner { padding-top: 38px; }
-.nav-brand { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 18px; color: var(--ocean); letter-spacing: -0.5px; text-decoration: none; }
-.nav-brand span { color: var(--lava); }
-
-/* Hero banner — full-bleed photo then text block (Option B) */
-.recap-hero-banner { width: 100%; height: 60vh; min-height: 400px; max-height: 640px; position: relative; overflow: hidden; margin-top: 64px; background: var(--sand-dark); }
-.recap-hero-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-.recap-hero { padding: 48px 24px 32px; max-width: 800px; margin: 0 auto; }
-.recap-tag { display: inline-block; background: var(--ocean); color: var(--white); padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
-.recap-hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; color: var(--night); margin-bottom: 16px; }
-.recap-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; color: var(--text-light); padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.08); }
-.recap-meta-item { display: flex; align-items: center; gap: 6px; }
-.recap-meta-item svg { width: 16px; height: 16px; stroke: var(--ocean); fill: none; }
-@media (max-width: 768px) { .recap-hero-banner { height: 45vh; min-height: 280px; } }
-
-.stats-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 800px; margin: 32px auto; padding: 0 24px; }
-.stat-box { background: var(--white); border-radius: var(--radius); padding: 32px 24px; text-align: center; box-shadow: var(--shadow); }
-.stat-num { font-family: 'Outfit', sans-serif; font-size: 56px; font-weight: 800; color: var(--ocean); line-height: 1; letter-spacing: -2px; }
-.stat-label { font-size: 13px; color: var(--text-light); margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
-@media (max-width: 600px) { .stats-bar { grid-template-columns: 1fr 1fr; gap: 12px; } .stat-num { font-size: 40px; } }
-
-.recap-content { max-width: 800px; margin: 0 auto; padding: 32px 24px 80px; font-size: 17px; line-height: 1.8; color: var(--text); }
-.recap-content p { margin-bottom: 20px; }
-.recap-content h2 { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; color: var(--night); margin: 40px 0 16px; letter-spacing: -0.5px; }
-.recap-content a { color: var(--ocean); font-weight: 600; text-decoration: none; }
-.recap-content a:hover { text-decoration: underline; }
-.recap-content ul { margin: 0 0 20px 24px; }
-.recap-content li { margin-bottom: 8px; }
-
+/* Tokens, base body, nav, footer, gradient bg, recap-hero-banner pattern, stats-bar live in site.css. Page-specific only below. */
 .highlight-box { background: var(--ocean-pale); border-radius: var(--radius); padding: 24px; margin: 24px 0; border-left: 4px solid var(--ocean); }
 .highlight-box strong { color: var(--ocean); }
 
@@ -129,22 +78,15 @@ body.has-banner { padding-top: 38px; }
 .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; cursor: pointer; justify-content: center; align-items: center; }
 .lightbox.active { display: flex; }
 .lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; object-fit: contain; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
-.lightbox-close { position: absolute; top: 20px; right: 24px; color: white; font-size: 32px; font-weight: 300; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+.lightbox-close { position: absolute; top: 20px; right: 24px; color: white; font-size: 32px; font-weight: 300; cursor: pointer; font-family: 'Archivo', sans-serif; }
 
 .recap-cta { background: var(--night); border-radius: 16px; padding: 48px 32px; text-align: center; margin: 48px 0; }
-.recap-cta h3 { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.recap-cta h3 { font-family: 'Phudu', sans-serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
 .recap-cta p { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 20px; }
 .recap-cta a { display: inline-block; background: var(--ocean); color: var(--white); padding: 12px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 15px; transition: background 0.2s; }
 .recap-cta a:hover { background: var(--ocean-light); }
 
-footer { text-align: center; padding: 40px 24px; border-top: 1px solid rgba(0,0,0,0.06); color: var(--text-lighter); font-size: 13px; }
-footer a { color: var(--ocean); text-decoration: none; }
-
-.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;color:var(--text-light);text-decoration:none;transition:color 0.2s}.nav-links a:hover{color:var(--ocean)}.nav-cta{background:var(--ocean)!important;color:var(--white)!important;padding:8px 18px!important;border-radius:8px;font-weight:600!important;font-size:13px!important;transition:background 0.2s}.nav-cta:hover{background:var(--ocean-light)!important}.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:4px}.nav-mobile svg{width:24px;height:24px;stroke:var(--text)}.nav-ig{display:flex;align-items:center;color:var(--text-light);transition:color 0.2s}.nav-ig:hover{color:var(--ocean)}
-
 @media (max-width: 768px) {
-  .nav-links{display:none}.nav-mobile{display:block}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(245,240,232,0.98);backdrop-filter:blur(20px);padding:16px 24px;gap:16px;border-bottom:1px solid rgba(0,0,0,0.06)}
-  .stats-bar { grid-template-columns: 1fr; }
   .recap-content { font-size: 16px; }
 }
 </style>
@@ -152,14 +94,20 @@ footer a { color: var(--ocean); text-decoration: none; }
 <body>
 
 <nav>
-  <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <a href="/" class="nav-brand" aria-label="Hawaii Card Shows">
+    <img src="/branding/logo-horizontal.svg" alt="Hawaii Card Shows">
+  </a>
   <div class="nav-links" id="navLinks">
-    <a href="https://hawaiicardshows.com/#upcoming">Upcoming</a>
-    <a href="https://hawaiicardshows.com/shows/">Shows</a>
-    <a href="https://hawaiicardshows.com/shops/">Shops</a>
-    <a href="https://hawaiicardshows.com/recaps/">Recaps</a>
-    <a href="https://hawaiicardshows.com/#submit" class="nav-cta">Submit Your Event</a>
+    <a href="/#upcoming">Upcoming</a>
+    <a href="/shows/">Shows</a>
+    <a href="/shops/">Shops</a>
+    <a href="/recaps/">Recaps</a>
+    <a href="/#submit" class="nav-cta">Submit Your Event</a>
+    <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" class="nav-ig" aria-label="Follow us on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
   </div>
+  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
 </nav>
 
 <div class="recap-hero-banner">
@@ -264,7 +212,28 @@ footer a { color: var(--ocean); text-decoration: none; }
 </div>
 
 <footer>
-  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="https://hawaiicardshows.com">Back to Calendar</a> &bull; <a href="https://hawaiicardshows.com/recaps/">All Recaps</a> &bull; <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/branding/logo-horizontal-white.svg" alt="Hawaii Card Shows">
+      <p class="footer-tagline">Keeping Hawaii&rsquo;s card shows connected.</p>
+    </div>
+    <div class="footer-touch">
+      <div class="footer-touch-label">Get In Touch</div>
+      <p><a href="mailto:aloha@hawaiicardshows.com">aloha@hawaiicardshows.com</a></p>
+      <p><a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+      <p>Serving all Hawaiian Islands</p>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <div class="footer-meta-links">
+      <a href="/#upcoming">Upcoming</a>
+      <a href="/shows/">Shows</a>
+      <a href="/shops/">Shops</a>
+      <a href="/#submit">Submit</a>
+      <a href="/#sponsors">Partner</a>
+    </div>
+    <div class="footer-meta-copy">&copy; 2026 Hawaii Card Shows &middot; <a href="/faq.html">FAQ</a> &middot; <a href="/hawaii-card-shows-guide.html">TCG Guide</a> &middot; <a href="/card-shows-oahu.html">Card Shows Oahu</a> &middot; <a href="/pokemon-card-shops-hawaii.html">Pokemon Card Shops</a></div>
+  </div>
 </footer>
 
 </body>

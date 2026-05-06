@@ -95,34 +95,10 @@
 .nav-back { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; transition: color 0.2s; }
 .nav-back:hover { color: var(--ocean); }
 
-/* ── Hero ── */
-.recap-hero {
-  padding: 100px 24px 48px;
-  background: linear-gradient(180deg, var(--sand) 0%, var(--ocean-pale) 100%);
-  text-align: center;
-}
-.recap-tag {
-  display: inline-block; background: var(--lava); color: var(--white);
-  padding: 6px 16px; border-radius: 20px; font-size: 11px; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
-}
-.recap-hero h1 {
-  font-family: 'Phudu', sans-serif; font-size: clamp(30px, 5vw, 48px);
-  font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;
-  color: var(--night); max-width: 700px; margin: 0 auto 16px;
-}
+/* recap-hero / stats-bar pattern lives in site.css. Page-specific only below. */
+.recap-hero { text-align: center; }
 .recap-hero h1 em { font-style: normal; color: var(--ocean); }
-.recap-date {
-  font-size: 16px; color: var(--text-light); margin-bottom: 32px;
-}
-.recap-stats {
-  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
-  padding-top: 28px; border-top: 1px solid rgba(0,0,0,0.08);
-  max-width: 600px; margin: 0 auto;
-}
-.recap-stat { text-align: center; }
-.recap-stat-num { font-family: 'Phudu', sans-serif; font-size: 36px; font-weight: 700; color: var(--ocean); }
-.recap-stat-label { font-size: 13px; color: var(--text-lighter); margin-top: 2px; }
+.recap-date { font-size: 16px; color: var(--text-light); margin-bottom: 8px; }
 
 /* ── Content ── */
 .recap-content {
@@ -255,12 +231,12 @@
   <div class="recap-tag">Show Recap</div>
   <h1>The <em>Moiliili Card Show</em> Came Out Swinging</h1>
   <div class="recap-date">Saturday, March 28, 2026 &bull; Moiliili Hongwanji Mission &bull; Honolulu, HI</div>
-  <div class="recap-stats">
-    <div class="recap-stat"><div class="recap-stat-num">1,000+</div><div class="recap-stat-label">Collectors</div></div>
-    <div class="recap-stat"><div class="recap-stat-num">25</div><div class="recap-stat-label">Vendors</div></div>
-    <div class="recap-stat"><div class="recap-stat-num">1st</div><div class="recap-stat-label">Show at This Venue</div></div>
-  </div>
 </section>
+
+<div class="stats-bar">
+  <div class="stat-box"><div class="stat-num">1,000+</div><div class="stat-label">Collectors</div></div>
+  <div class="stat-box"><div class="stat-num">25</div><div class="stat-label">Vendors</div></div>
+</div>
 
 <!-- ════════ CONTENT ════════ -->
 <div class="recap-content">

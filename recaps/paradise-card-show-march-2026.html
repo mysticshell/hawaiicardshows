@@ -75,23 +75,7 @@
 .nav-back { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
 .nav-back:hover { color: var(--ocean); }
 
-.recap-hero { padding: 100px 24px 48px; max-width: 800px; margin: 0 auto; }
-.recap-tag { display: inline-block; background: var(--ocean); color: var(--white); padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
-.recap-hero h1 { font-family: 'Phudu', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; color: var(--night); margin-bottom: 16px; }
-.recap-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; color: var(--text-light); padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.08); }
-.recap-meta-item { display: flex; align-items: center; gap: 6px; }
-.recap-meta-item svg { width: 16px; height: 16px; stroke: var(--ocean); fill: none; }
-
-.stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 800px; margin: 32px auto; padding: 0 24px; }
-.stat-box { background: var(--white); border-radius: var(--radius); padding: 20px; text-align: center; box-shadow: var(--shadow); }
-.stat-num { font-family: 'Phudu', sans-serif; font-size: 32px; font-weight: 700; color: var(--ocean); }
-.stat-label { font-size: 13px; color: var(--text-light); margin-top: 4px; }
-
-.recap-content { max-width: 800px; margin: 0 auto; padding: 32px 24px 80px; font-size: 17px; line-height: 1.8; color: var(--text); }
-.recap-content p { margin-bottom: 20px; }
-.recap-content h2 { font-family: 'Phudu', sans-serif; font-size: 24px; font-weight: 700; color: var(--night); margin: 40px 0 16px; letter-spacing: -0.5px; }
-.recap-content a { color: var(--ocean); font-weight: 600; text-decoration: none; }
-.recap-content a:hover { text-decoration: underline; }
+/* recap-hero/banner/stats-bar pattern lives in site.css. Page-specific only below. */
 
 .highlight-box { background: var(--ocean-pale); border-radius: var(--radius); padding: 24px; margin: 24px 0; border-left: 4px solid var(--ocean); }
 .highlight-box strong { color: var(--ocean); }
@@ -143,6 +127,10 @@
   </button>
 </nav>
 
+<div class="recap-hero-banner">
+  <img src="/recaps/images/paradise-2026-show-floor.jpeg" alt="Paradise Card Show #3 — packed vendor floor at The Republik in Honolulu, March 22, 2026" loading="eager">
+</div>
+
 <div class="recap-hero">
   <div class="recap-tag">Show Recap</div>
   <h1>Paradise Card Show #3 — Lines Around the Block at The Republik</h1>
@@ -169,7 +157,6 @@
 <div class="stats-bar">
   <div class="stat-box"><div class="stat-num">64</div><div class="stat-label">Vendors</div></div>
   <div class="stat-box"><div class="stat-num">1,400+</div><div class="stat-label">Adults & Keiki</div></div>
-  <div class="stat-box"><div class="stat-num">#3</div><div class="stat-label">Paradise Card Show</div></div>
 </div>
 
 <div class="recap-content">
@@ -202,7 +189,6 @@
 
   <h2>Photos from the Show</h2>
   <div class="photo-grid">
-    <img src="https://hawaiicardshows.com/recaps/images/paradise-2026-show-floor.jpeg" alt="The vendor floor at Paradise Card Show #3 at The Republik">
     <img src="https://hawaiicardshows.com/recaps/images/paradise-2026-giveaways.jpeg" alt="Giveaways and goodie bags at Paradise Card Show">
     <img src="https://hawaiicardshows.com/recaps/images/paradise-2026-view-from-stage.jpeg" alt="View from the stage at Paradise Card Show at The Republik">
   </div>

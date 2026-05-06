@@ -272,6 +272,128 @@ select.form-input { cursor: pointer; }
 }
 .faq-item.open .faq-a { max-height: 600px; padding-bottom: 20px; }
 
+/* ─── RECAP HERO PATTERN (Option B) ───
+   Used on /recaps/*.html. Full-bleed photo banner + headline below +
+   2-stat side-by-side bar. body.has-banner pushes the floating-pill nav
+   down 38px to make room for the optional yellow draft banner above it.
+   Pages without the draft banner just use .recap-hero-banner directly. */
+.recap-hero-banner {
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  max-height: 640px;
+  position: relative;
+  overflow: hidden;
+  background: var(--sand-dark);
+  /* sits flush below floating nav: body padding-top:92px already clears it,
+     so no margin-top needed here — but the body padding-top means a sand
+     strip would show above the banner. We negate it for recap pages: */
+  margin-top: -92px;
+}
+.recap-hero-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.recap-hero {
+  padding: 48px 24px 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.recap-tag {
+  display: inline-block;
+  background: var(--ocean);
+  color: var(--white);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.recap-hero h1 {
+  font-family: 'Phudu', sans-serif;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  color: var(--night);
+  margin-bottom: 16px;
+}
+.recap-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--text-light);
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.recap-meta-item { display: flex; align-items: center; gap: 6px; }
+.recap-meta-item svg { width: 16px; height: 16px; stroke: var(--ocean); fill: none; }
+
+.stats-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 0 24px;
+}
+.stat-box {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.stat-num {
+  font-family: 'Phudu', sans-serif;
+  font-size: 56px;
+  font-weight: 800;
+  color: var(--ocean);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.recap-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text);
+}
+.recap-content p { margin-bottom: 20px; }
+.recap-content h2 {
+  font-family: 'Phudu', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--night);
+  margin: 40px 0 16px;
+  letter-spacing: -0.5px;
+}
+.recap-content a { color: var(--ocean); font-weight: 600; text-decoration: none; }
+.recap-content a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .recap-hero-banner { height: 45vh; min-height: 280px; }
+}
+@media (max-width: 600px) {
+  .stat-num { font-size: 40px; }
+}
+
 /* ─── FOOTER (ORANGE BLOCK) ─── */
 footer {
   background: var(--lava);

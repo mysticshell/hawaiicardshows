@@ -72,29 +72,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Phudu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/branding/site.css">
 <style>
-:root {
-  --sand: #f5f0e8; --sand-dark: #e8e0d0; --ocean: #1a6b5a; --ocean-light: #2a8b72;
-  --ocean-pale: #e8f4f0; --lava: #d4582a; --lava-light: #f0714a; --night: #1a1a1a;
-  --text: #2c2c2c; --text-light: #6a6a6a; --text-lighter: #999; --white: #ffffff;
-  --radius: 12px; --shadow: 0 2px 20px rgba(0,0,0,0.06);
-}
-.recap-hero { padding: 100px 24px 48px; max-width: 800px; margin: 0 auto; }
-.recap-tag { display: inline-block; background: var(--ocean); color: var(--white); padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
-.recap-hero h1 { font-family: 'Phudu', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; color: var(--night); margin-bottom: 16px; }
-.recap-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; color: var(--text-light); padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.08); }
-.recap-meta-item { display: flex; align-items: center; gap: 6px; }
-.recap-meta-item svg { width: 16px; height: 16px; stroke: var(--ocean); fill: none; }
-
-.stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 800px; margin: 32px auto; padding: 0 24px; }
-.stat-box { background: var(--white); border-radius: var(--radius); padding: 20px; text-align: center; box-shadow: var(--shadow); }
-.stat-num { font-family: 'Phudu', sans-serif; font-size: 32px; font-weight: 700; color: var(--ocean); }
-.stat-label { font-size: 13px; color: var(--text-light); margin-top: 4px; }
-
-.recap-content { max-width: 800px; margin: 0 auto; padding: 32px 24px 80px; font-size: 17px; line-height: 1.8; color: var(--text); }
-.recap-content p { margin-bottom: 20px; }
-.recap-content h2 { font-family: 'Phudu', sans-serif; font-size: 24px; font-weight: 700; color: var(--night); margin: 40px 0 16px; letter-spacing: -0.5px; }
-.recap-content a { color: var(--ocean); font-weight: 600; text-decoration: none; }
-.recap-content a:hover { text-decoration: underline; }
+/* Tokens, base body, nav, footer, gradient bg, recap-hero/banner/stats-bar pattern live in site.css. Page-specific only below. */
 
 .highlight-box { background: var(--ocean-pale); border-radius: var(--radius); padding: 24px; margin: 24px 0; border-left: 4px solid var(--ocean); }
 .highlight-box strong { color: var(--ocean); }
@@ -149,6 +127,10 @@
   </button>
 </nav>
 
+<div class="recap-hero-banner">
+  <img src="/recaps/images/getnutz-2026-security-cam-packed.jpg" alt="GetNutz x Paradise Show — security camera overhead view of the packed vendor floor on April 19, 2026" loading="eager">
+</div>
+
 <div class="recap-hero">
   <div class="recap-tag">Show Recap</div>
   <h1>GetNutz Brings the Culture to the Card Scene — and Teases a Bigger Show in August</h1>
@@ -175,7 +157,6 @@
 <div class="stats-bar">
   <div class="stat-box"><div class="stat-num">30</div><div class="stat-label">Vendors</div></div>
   <div class="stat-box"><div class="stat-num">~800</div><div class="stat-label">Attendees</div></div>
-  <div class="stat-box"><div class="stat-num">1st</div><div class="stat-label">GetNutz Show</div></div>
 </div>
 
 <div class="recap-content">
@@ -186,7 +167,6 @@
 
   <!-- PHOTO GALLERY -->
   <div class="photo-grid">
-    <img src="/recaps/images/getnutz-2026-security-cam-packed.jpg" alt="GetNutz x Paradise Show — security camera overhead view of packed vendor floor at 4:18 PM on April 19, 2026" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
     <img src="/recaps/images/getnutz-2026-line-outside.jpg" alt="GetNutz x Paradise Show — line of attendees walking up to the venue entrance" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
     <img src="/recaps/images/getnutz-2026-wide-entrance.jpg" alt="GetNutz x Paradise Show — wide view from the entrance looking into the packed main room" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
     <img src="/recaps/images/getnutz-2026-show-floor.jpg" alt="GetNutz x Paradise Show — show floor during setup with GetNutz-branded booth" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
