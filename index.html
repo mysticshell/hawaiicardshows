@@ -131,7 +131,9 @@
 @media(max-width:768px){
   .hero h1{font-size:36px;letter-spacing:-1px}
   .hero-stats{flex-direction:column;gap:16px}
-  .about-grid{grid-template-columns:1fr}
+  #about > div{grid-template-columns:1fr!important;gap:32px!important}
+  #about h2{font-size:32px!important}
+  #about img{max-width:100%!important}
   .upcoming-grid{grid-template-columns:1fr}
   #sponsors .section-header+div{grid-template-columns:1fr!important}
   .cal-day{min-height:50px}
@@ -279,11 +281,19 @@
     <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>What kinds of cards and collectibles are at these shows?</span><span class="faq-arrow">+</span></div><div class="faq-a">Hawaii card shows feature a wide range of collectibles including Pokemon, sports cards (baseball, basketball, football), Yu-Gi-Oh, One Piece, Dragon Ball, Japanese imports, vintage cards, sealed product, graded slabs, and accessories. Some shows also include comics, Funko Pops, and other pop culture collectibles.</div></div>
   </div>
 </section>
-<section class="section" id="about">
-  <div class="section-header"><div class="section-tag">About Us</div><div class="section-title">Built for the Community</div></div>
-  <div class="about-grid">
-    <div class="about-text"><p>Hawaii Card Shows is a community resource built by collectors, for collectors. Our goal is simple: make it easy for anyone in Hawaii to find their next card show, trade night, or collectible event — no matter which island you're on.</p><p>Whether you're a seasoned vendor, a weekend collector, or someone who just pulled their first pack, there's a seat at the table for you. We track shows across all islands so you never miss an event.</p><p>New here? Start with <a href="/hawaii-card-shows-guide.html" style="color:var(--ocean);font-weight:600;">our complete guide to Hawaii card shows</a> — every island, every show, every shop in one place.</p><p>Running a show? <a href="#submit" style="color:var(--ocean);font-weight:600;">Submit it to the calendar</a> and get it in front of the Hawaii TCG community.</p></div>
-    <div class="about-contact"><h3>Get in Touch</h3><div class="about-contact-item"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><span><a href="mailto:aloha@hawaiicardshows.com">aloha@hawaiicardshows.com</a></span></div><div class="about-contact-item"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg><span><a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" style="color:var(--ocean);font-weight:500;">@hawaiicardshows</a></span></div><div class="about-contact-item"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>Serving all Hawaiian Islands</span></div><div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--sand-dark);"><p style="font-size:13px;color:var(--text-lighter);">For sponsorship inquiries, event partnerships, or general questions — drop us a line. We'd love to hear from you.</p></div></div>
+<section id="about" style="background:var(--ocean);color:#fff;margin:80px -24px 0;padding:80px 32px;border-radius:32px 32px 0 0;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center;">
+    <div>
+      <div style="font-size:11px;font-weight:700;color:var(--lava);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;">About Us</div>
+      <h2 style="font-family:'Phudu',sans-serif;font-size:42px;font-weight:800;line-height:1.1;letter-spacing:-1px;color:#fff;margin-bottom:24px;text-transform:uppercase;">Built for the Community</h2>
+      <p style="font-size:16px;line-height:1.7;color:rgba(255,255,255,0.85);margin-bottom:14px;">Hawaii Card Shows is a community resource built by collectors, for collectors. Our goal is simple: make it easy for anyone in Hawaii to find their next card show, trade night, or collectible event &mdash; no matter which island you&rsquo;re on.</p>
+      <p style="font-size:16px;line-height:1.7;color:rgba(255,255,255,0.85);margin-bottom:14px;">Whether you&rsquo;re a seasoned vendor, a weekend collector, or someone who just pulled their first pack, there&rsquo;s a seat at the table for you.</p>
+      <p style="font-size:16px;line-height:1.7;color:rgba(255,255,255,0.85);margin-bottom:14px;">New here? Start with <a href="/hawaii-card-shows-guide.html" style="color:#fff;font-weight:600;text-decoration:underline;">our complete guide to Hawaii card shows</a>. Running a show? <a href="#submit" style="color:#fff;font-weight:600;text-decoration:underline;">Submit it to the calendar</a>.</p>
+      <p style="font-family:'Phudu',sans-serif;font-size:18px;font-weight:700;color:#fff;margin-top:32px;text-transform:uppercase;letter-spacing:0.5px;">Built by collectors, for collectors.</p>
+    </div>
+    <div style="text-align:right;">
+      <img src="/recaps/images/getnutz-2026-security-cam-packed.jpg" alt="Hawaii card show community" style="width:100%;max-width:380px;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.3);">
+    </div>
   </div>
 </section>
 <footer>
