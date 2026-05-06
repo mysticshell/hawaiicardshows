@@ -20,40 +20,35 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-48ZSPW63VV');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Phudu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/branding/site.css">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--sand:#f5f0e8;--sand-dark:#e8e0d0;--ocean:#1a6b5a;--ocean-light:#2a8b72;--ocean-pale:#e8f4f0;--lava:#d4582a;--night:#1a1a1a;--text:#2c2c2c;--text-light:#6a6a6a;--text-lighter:#999;--white:#ffffff;--radius:12px;--shadow:0 2px 20px rgba(0,0,0,0.06);--shadow-lg:0 8px 40px rgba(0,0,0,0.1)}
-html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text);-webkit-font-smoothing:antialiased}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;background:rgba(245,240,232,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 24px}
-.nav-brand{font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.5px;text-decoration:none;color:var(--ocean)}.nav-brand span{color:var(--lava)}
-.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;color:var(--text-light);text-decoration:none;transition:color 0.2s}.nav-links a:hover{color:var(--ocean)}.nav-links a.active{color:var(--ocean);font-weight:600}
-.nav-cta{background:var(--ocean)!important;color:var(--white)!important;padding:8px 18px!important;border-radius:8px;font-weight:600!important;font-size:13px!important}
-.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:4px}.nav-mobile svg{width:24px;height:24px;stroke:var(--text)}
-.nav-ig{display:flex;align-items:center;color:var(--text-light);transition:color 0.2s}.nav-ig:hover{color:var(--ocean)}
-.hero{padding:120px 24px 48px;text-align:center}
+/* Tokens, base body, nav, footer, gradient bg live in site.css. Page-specific only below. */
+.nav-links a.active{color:var(--ocean);font-weight:600}
+.hero{padding:60px 24px 48px;text-align:center}
 .hero-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--ocean);margin-bottom:12px}
-.hero h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(32px,6vw,48px);color:var(--night);line-height:1.1;margin-bottom:16px}.hero h1 em{font-style:normal;color:var(--ocean)}
+.hero h1{font-family:'Phudu',sans-serif;font-weight:800;font-size:clamp(32px,6vw,48px);color:var(--night);line-height:1.1;margin-bottom:16px}.hero h1 em{font-style:normal;color:var(--ocean)}
 .hero-sub{font-size:17px;color:var(--text-light);max-width:550px;margin:0 auto;line-height:1.6}
 /* Island stats */
 .island-stats{display:flex;justify-content:center;gap:12px;max-width:600px;margin:-20px auto 32px;padding:0 24px;flex-wrap:wrap}
 .island-stat{text-align:center;cursor:pointer;padding:16px 24px;border-radius:var(--radius);background:var(--white);box-shadow:var(--shadow);transition:transform 0.2s,box-shadow 0.2s}
 .island-stat:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-.island-stat-num{font-family:'Outfit',sans-serif;font-weight:800;font-size:28px;color:var(--ocean);line-height:1}
+.island-stat-num{font-family:'Phudu',sans-serif;font-weight:800;font-size:28px;color:var(--ocean);line-height:1}
 .island-stat-label{font-size:12px;font-weight:600;color:var(--text-lighter);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}
 /* Clickable shop card */
 a.shop-card{text-decoration:none;color:inherit;display:block}
 a.shop-card:hover .shop-card-name{color:var(--ocean)}
 /* Coming soon overlay */
 .shop-card-soon{position:relative;cursor:default}
-.shop-card-soon::after{content:'Page Coming Soon';position:absolute;inset:0;background:rgba(245,240,232,0.88);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:var(--ocean);border-radius:var(--radius);opacity:0;transition:opacity 0.25s;pointer-events:none}
+.shop-card-soon::after{content:'Page Coming Soon';position:absolute;inset:0;background:rgba(245,240,232,0.88);display:flex;align-items:center;justify-content:center;font-family:'Phudu',sans-serif;font-size:14px;font-weight:700;color:var(--ocean);border-radius:var(--radius);opacity:0;transition:opacity 0.25s;pointer-events:none}
 .shop-card-soon:hover::after{opacity:1}
 .shop-card-soon:hover{transform:none;box-shadow:var(--shadow)}
 .filters-wrap{max-width:960px;margin:0 auto;padding:0 24px 8px}
 .filter-group{margin-bottom:16px}
 .filter-group-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-lighter);margin-bottom:8px}
 .filter-row{display:flex;gap:8px;flex-wrap:wrap}
-.filter-btn{padding:7px 16px;border-radius:20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;border:1.5px solid var(--sand-dark);background:var(--white);color:var(--text-light);cursor:pointer;transition:all 0.2s}
+.filter-btn{padding:7px 16px;border-radius:20px;font-family:'Archivo',sans-serif;font-size:13px;font-weight:600;border:1.5px solid var(--sand-dark);background:var(--white);color:var(--text-light);cursor:pointer;transition:all 0.2s}
 .filter-btn:hover{border-color:var(--ocean);color:var(--ocean)}
 .filter-btn.active{background:var(--ocean);color:var(--white);border-color:var(--ocean)}
 .filter-count{display:inline-block;background:var(--ocean-pale);color:var(--ocean);font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:24px}
@@ -67,7 +62,7 @@ a.shop-card:hover .shop-card-name{color:var(--ocean)}
 .shop-card-logo{width:100px;min-height:100%;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:16px}
 .shop-card-body{padding:20px 24px;flex:1}
 .shop-card.has-logo .shop-card-island,.shop-card.has-logo .shop-card-name,.shop-card.has-logo .shop-card-address,.shop-card.has-logo .shop-card-tags{margin-bottom:4px}
-.shop-card-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:18px;color:var(--night);margin-bottom:4px}
+.shop-card-name{font-family:'Phudu',sans-serif;font-weight:700;font-size:18px;color:var(--night);margin-bottom:4px}
 .shop-card-island{font-size:12px;font-weight:600;color:var(--ocean);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
 .shop-card-address{font-size:13px;color:var(--text-light);margin-bottom:12px;line-height:1.4}
 .shop-card-tags{display:flex;gap:6px;flex-wrap:wrap}
@@ -84,26 +79,28 @@ a.shop-card:hover .shop-card-name{color:var(--ocean)}
 .shop-card.is-closed{opacity:0.75}
 .shop-card.is-closed:hover{opacity:1}
 .footer-cta{background:var(--night);padding:64px 24px;text-align:center}
-.footer-cta h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:28px;color:var(--white);margin-bottom:12px}
+.footer-cta h2{font-family:'Phudu',sans-serif;font-weight:800;font-size:28px;color:var(--white);margin-bottom:12px}
 .footer-cta p{color:rgba(255,255,255,0.6);font-size:16px;margin-bottom:28px;max-width:450px;margin-left:auto;margin-right:auto}
-.btn-cta{display:inline-flex;align-items:center;gap:8px;background:var(--ocean);color:var(--white);padding:14px 32px;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:16px;text-decoration:none;transition:background 0.2s}.btn-cta:hover{background:var(--ocean-light)}
-footer{background:var(--sand);padding:24px;text-align:center;font-size:13px;color:var(--text-light);border-top:1px solid var(--sand-dark)}footer a{color:var(--ocean);text-decoration:none}
-@media(max-width:768px){.nav-links{display:none}.nav-mobile{display:block}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(245,240,232,0.98);backdrop-filter:blur(20px);padding:16px 24px;gap:16px;border-bottom:1px solid rgba(0,0,0,0.06)}.shops-grid{grid-template-columns:1fr}.shop-card.has-logo .shop-card-logo{width:80px}}
+.btn-cta{display:inline-flex;align-items:center;gap:8px;background:var(--ocean);color:var(--white);padding:14px 32px;border-radius:10px;font-family:'Archivo',sans-serif;font-weight:600;font-size:16px;text-decoration:none;transition:background 0.2s}.btn-cta:hover{background:var(--ocean-light)}
+/* footer + nav mobile rules live in site.css */
+@media(max-width:768px){.shops-grid{grid-template-columns:1fr}.shop-card.has-logo .shop-card-logo{width:80px}}
 </style>
 </head>
 <body>
 <nav>
-  <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <a href="/" class="nav-brand" aria-label="Hawaii Card Shows">
+    <img src="/branding/logo-horizontal.svg" alt="Hawaii Card Shows">
+  </a>
   <div class="nav-links" id="navLinks">
-    <a href="https://hawaiicardshows.com/#upcoming">Upcoming</a>
-    <a href="https://hawaiicardshows.com/shows/">Shows</a>
-    <a href="https://hawaiicardshows.com/shops/" class="active">Shops</a>
-    <a href="https://hawaiicardshows.com/#submit">Submit</a>
-    <a href="https://hawaiicardshows.com/#sponsors">Partner</a>
-    <a href="https://hawaiicardshows.com/#submit" class="nav-cta">Submit Your Event</a>
+    <a href="/#upcoming">Upcoming</a>
+    <a href="/shows/">Shows</a>
+    <a href="/shops/" class="active">Shops</a>
+    <a href="/#submit">Submit</a>
+    <a href="/#sponsors">Partner</a>
+    <a href="/#submit" class="nav-cta">Submit Your Event</a>
     <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
   </div>
-  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
 </nav>
 
 <header class="hero">
@@ -331,7 +328,28 @@ footer{background:var(--sand);padding:24px;text-align:center;font-size:13px;colo
 </section>
 
 <footer>
-  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="https://hawaiicardshows.com">Back to Calendar</a> &bull; <a href="https://hawaiicardshows.com/#submit">Submit an Event</a> &bull; <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/branding/logo-horizontal-white.svg" alt="Hawaii Card Shows">
+      <p class="footer-tagline">Keeping Hawaii&rsquo;s card shows connected.</p>
+    </div>
+    <div class="footer-touch">
+      <div class="footer-touch-label">Get In Touch</div>
+      <p><a href="mailto:aloha@hawaiicardshows.com">aloha@hawaiicardshows.com</a></p>
+      <p><a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+      <p>Serving all Hawaiian Islands</p>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <div class="footer-meta-links">
+      <a href="/#upcoming">Upcoming</a>
+      <a href="/shows/">Shows</a>
+      <a href="/shops/">Shops</a>
+      <a href="/#submit">Submit</a>
+      <a href="/#sponsors">Partner</a>
+    </div>
+    <div class="footer-meta-copy">&copy; 2026 Hawaii Card Shows &middot; <a href="/faq.html">FAQ</a> &middot; <a href="/hawaii-card-shows-guide.html">TCG Guide</a> &middot; <a href="/card-shows-oahu.html">Card Shows Oahu</a> &middot; <a href="/pokemon-card-shops-hawaii.html">Pokemon Card Shops</a></div>
+  </div>
 </footer>
 
 <script>
