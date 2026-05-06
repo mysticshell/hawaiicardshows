@@ -356,13 +356,27 @@ document.getElementById('venueForm').onsubmit = async (e) => {
   const btn = document.getElementById('venueBtn');
   btn.disabled = true; btn.textContent = 'Submitting...';
   const fd = new FormData(e.target);
-  const payload = Object.fromEntries(fd.entries());
-  payload.interest = 'venue';
+  const raw = Object.fromEntries(fd.entries());
+  // partner_inquiries only has name/business/email/interest/message columns —
+  // fold phone/location/capacity into the message body so we don't lose them.
+  const extras = [];
+  if (raw.phone) extras.push('Phone: ' + raw.phone);
+  if (raw.location) extras.push('Location: ' + raw.location);
+  if (raw.capacity) extras.push('Capacity: ' + raw.capacity);
+  const message = [extras.join('\n'), raw.message].filter(Boolean).join('\n\n');
+  const payload = {
+    name: raw.name,
+    business: raw.business,
+    email: raw.email,
+    interest: 'venue',
+    message: message
+  };
   const { error } = await sb.from('partner_inquiries').insert([payload]);
   btn.disabled = false; btn.textContent = 'Submit Your Venue';
   if (error) { alert('Something went wrong. Please try again.'); console.error(error); return; }
   e.target.style.display = 'none';
   document.getElementById('venueSuccess').style.display = 'block';
+  if (typeof gtag === 'function') gtag('event', 'form_submit', {form_id: 'host-a-show-venue', form_destination: 'supabase'});
 };
 </script>
 
