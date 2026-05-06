@@ -39,31 +39,38 @@ Tokens, base body, 3-circle gradient bg, floating-pill nav, section/form/FAQ pat
 - [x] GA4 form_submit event wired on inline + popup + bar (form_id, form_destination, duplicate)
 - [x] Tyler review on live URL — approved 2026-05-06
 
-### Phase 3 — Content pages (sprint, ~1-2 hrs total)
-- [ ] faq.html
-- [ ] hawaii-card-shows-guide.html
-- [ ] card-shows-oahu.html
-- [ ] pokemon-card-shops-hawaii.html
-- [ ] host-a-show.html
-- [ ] 404.html
+### Phase 3 — Content pages ✅ (commits 5773150 → 671f993, 2026-05-06)
+6 pages migrated: faq, hawaii-card-shows-guide, card-shows-oahu,
+pokemon-card-shops-hawaii, host-a-show, 404. Also caught + fixed a
+pre-existing host-a-show form bug (was hitting PGRST204 on every submit
+because phone/location/capacity weren't columns on partner_inquiries —
+now bundled into the message field).
 
-### Phase 4 — Functional pages (sprint, ~2-3 hrs)
-- [ ] shows/index.html
-- [ ] shops/index.html
-- [ ] recaps/index.html
+### Phase 4 — Functional pages ✅ (commit 0473ba6, 2026-05-06)
+shows/index, shops/index, recaps/index. Also refactored recaps/index.html
+to render dynamically from recap-map.js (was a stale static list missing
+2 of 4 published recaps). Future recaps now appear automatically the
+moment they're added to the registry.
 
-### Phase 5 — Detail pages (sprint, ~4-6 hrs)
-- [ ] shows/show.html (dynamic — covers every event in DB)
-- [ ] shows/paradise-card-show.html (static permalink)
-- [ ] shows/toylynx-trade-night.html (static permalink)
-- [ ] 24 shop pages: shops/{aloha-card-shop, 808-showcase, big-island-breaks, box-jellyz, best-of-the-best, iwingames, space-62, da-planet, paulas-sports-cards, other-realms, evolving-realms, from-the-heart, dragons-lair, windward-collectibles, armchair-adventurer, toylynx, tcg-tavern, tcg-hawaii, 4-pillars, gam3-escape, slow-your-roll, maui-sports-cards, yocards, bubbahs-toy-box, crows-nest, hi-collector}.html
-- [ ] 4 recap pages + recaps/_TEMPLATE.html
-  - **Apply Option B hero pattern across all recaps** — full-bleed photo banner at top, headline + meta below, 2-stat side-by-side bar. Pattern is dialed in on `recaps/keep-it-aloha-may-2026.html` (currently draft/noindex). Use that as the reference when porting to Paradise, Moiliili, GetNutz, and the template.
+### Phase 5 — Detail pages ✅ (commits 9d38ce5 → f8ef1ff, 2026-05-06)
+33 pages: shows/show.html (dynamic), shows/paradise-card-show.html,
+shows/toylynx-trade-night.html, 26 shop pages, 4 recap pages +
+recaps/_TEMPLATE.html. Per-shop accent palettes preserved (TCG Tavern's
+purple, etc). Option B hero pattern (.recap-hero-banner, .stats-bar)
+promoted to /branding/site.css so future recaps inherit it without
+inline CSS. Applied to Keep It Aloha, GetNutz, Paradise, Moiliili
+(Moiliili has no banner since no photos uploaded yet).
 
-### Phase 6 — Email templates (~1-2 hrs)
-- [ ] welcome-email.html (Buttondown autoresponder)
-- [ ] functions/api/generate-newsletter.js (newsletter HTML)
-- [ ] Once email rebrand done: upload welcome-email.html to Buttondown as autoresponder + test newsletter generator end-to-end
+### Phase 6 — Email templates ✅ (commit 09f2e9a, 2026-05-06)
+welcome-email.html (Buttondown autoresponder) and
+functions/api/generate-newsletter.js (weekly newsletter HTML) both on
+the new brand. Logo PNG (logo-horizontal-white.png) added at /branding/
+since email clients can't render SVG. Phudu/Archivo with Arial fallback
+via @import + inline stacks. Bonus fix: welcome-email.html had a broken
+`{unsubscribe_url}` (single braces) — corrected to Buttondown's Liquid
+`{{ unsubscribe_url }}` syntax.
+
+- [ ] **Tyler:** upload welcome-email.html to Buttondown as autoresponder + send a `?preview=1` test newsletter to verify Gmail / Apple Mail / Outlook all render correctly before the next Mon 9 AM HST send
 
 ## Other items still on hold for branding
 
