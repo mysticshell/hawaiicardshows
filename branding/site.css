@@ -1,0 +1,358 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Hawaii Card Shows — Shared Brand Stylesheet
+   ───────────────────────────────────────────────────────────────────
+   Single source of truth for tokens, base typography, nav, footer,
+   common section / form / FAQ patterns. Every page links this file
+   (<link rel="stylesheet" href="/branding/site.css">) and keeps its
+   own page-specific styles inline (hero, calendar, event cards, etc).
+
+   Brand book reference:
+     - Phudu (Google Fonts) — headings
+     - Archivo (Google Fonts) — body
+     - Tropical Green #1a6b5a, Sunrise Orange #d4582a, Amber Yellow
+       #ffc625, Island Teal #2cdfb6
+     - Background: 3 colored radial gradients heavily blurred to
+       create a watercolor wash effect (per designer)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── DESIGN TOKENS ─── */
+:root {
+  /* Brand palette */
+  --ocean: #1a6b5a;          /* Tropical Green */
+  --ocean-light: #2a8b72;
+  --ocean-pale: #e8f4f0;
+  --lava: #d4582a;           /* Sunrise Orange */
+  --lava-light: #f0714a;
+  --amber: #ffc625;          /* Amber Yellow accent */
+  --teal: #2cdfb6;           /* Island Teal accent */
+  --charcoal: #000000;
+  --cloud: #eaeaea;
+
+  /* Neutrals */
+  --sand: #f5f0e8;
+  --sand-dark: #e8e0d0;
+  --night: #1a1a1a;
+  --night-soft: #2a2a2a;
+  --text: #2c2c2c;
+  --text-light: #6a6a6a;
+  --text-lighter: #999;
+  --white: #ffffff;
+
+  /* Surface */
+  --radius: 12px;
+  --radius-pill: 999px;
+  --shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ─── RESET + BASE ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Archivo', 'Helvetica', Arial, sans-serif;
+  color: var(--text);
+  background: var(--sand);
+  min-height: 100vh;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* ─── BACKGROUND GRADIENT ─── */
+/* Designer's "3 circles, blurred" technique. Sits behind everything
+   as a fixed full-viewport accent. Pages can override by setting
+   body background or hiding ::before with a class. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle 540px at 12% 18%, rgba(255, 198, 37, 0.55) 0%, rgba(255, 198, 37, 0) 60%),
+    radial-gradient(circle 600px at 50% 65%, rgba(212, 88, 42, 0.42) 0%, rgba(212, 88, 42, 0) 60%),
+    radial-gradient(circle 620px at 88% 82%, rgba(44, 223, 182, 0.50) 0%, rgba(44, 223, 182, 0) 62%);
+  filter: blur(80px);
+  opacity: 0.95;
+}
+body.no-gradient::before { display: none; }
+
+/* ─── NAV (FLOATING PILL) ─── */
+nav {
+  position: fixed;
+  top: 16px;
+  left: 24px;
+  right: 24px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  padding: 8px 14px 8px 18px;
+  height: 60px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  line-height: 0;
+  flex-shrink: 0;
+}
+.nav-brand img { height: 36px; width: auto; display: block; }
+.nav-links {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  background: rgba(26, 107, 90, 0.08);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  margin: 0 auto;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--ocean);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  transition: background 0.2s, color 0.2s;
+}
+.nav-links a:hover { background: rgba(255, 255, 255, 0.6); }
+.nav-cta {
+  background: var(--ocean);
+  color: var(--white) !important;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.nav-cta:hover { background: var(--ocean-light); color: var(--white) !important; }
+.nav-cta::after { content: "\2197"; font-size: 11px; }
+.nav-mobile {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-mobile svg { width: 24px; height: 24px; stroke: var(--text); }
+.nav-ig {
+  display: flex;
+  align-items: center;
+  color: var(--text-light);
+  transition: color 0.2s;
+}
+.nav-ig:hover { color: var(--ocean); }
+
+/* Top spacing — pages should add this to the first content element
+   to clear the floating-pill nav (which is position:fixed, top:16px, height:60px). */
+body { padding-top: 92px; }
+
+/* ─── SECTION HEADERS ─── */
+.section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+.section-header { margin-bottom: 40px; }
+.section-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lava);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Phudu', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--night);
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--text-light);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* ─── FORMS ─── */
+.form-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+  max-width: 700px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-group { margin-bottom: 16px; }
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--sand-dark);
+  border-radius: 8px;
+  font-family: 'Archivo', 'Helvetica', Arial, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--sand);
+  transition: border-color 0.2s;
+  outline: none;
+}
+.form-input:focus { border-color: var(--ocean); background: var(--white); }
+textarea.form-input { resize: vertical; min-height: 100px; }
+select.form-input { cursor: pointer; }
+.form-btn {
+  background: var(--ocean);
+  color: var(--white);
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-family: 'Archivo', 'Helvetica', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.form-btn:hover { background: var(--ocean-light); }
+.form-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.form-success {
+  background: var(--ocean-pale);
+  color: var(--ocean);
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  display: none;
+}
+
+/* ─── FAQ ACCORDION ─── */
+.faq-item { border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--night);
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--ocean); }
+.faq-arrow {
+  font-size: 22px;
+  color: var(--text-lighter);
+  transition: transform 0.2s;
+  font-weight: 300;
+}
+.faq-item.open .faq-arrow { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.7;
+  padding: 0;
+}
+.faq-item.open .faq-a { max-height: 600px; padding-bottom: 20px; }
+
+/* ─── FOOTER (ORANGE BLOCK) ─── */
+footer {
+  background: var(--lava);
+  color: #fff;
+  padding: 64px 24px 32px;
+  border-top: none;
+  margin-top: 80px;
+}
+footer a { color: #fff; text-decoration: underline; }
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.footer-brand img { height: 64px; width: auto; display: block; margin: 0 0 24px; }
+.footer-tagline {
+  font-family: 'Phudu', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+.footer-touch-label {
+  font-family: 'Phudu', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.footer-touch p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 8px;
+}
+.footer-meta {
+  max-width: 1100px;
+  margin: 48px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+.footer-meta-links { display: flex; gap: 24px; flex-wrap: wrap; font-weight: 600; }
+.footer-meta-links a { color: #fff; text-decoration: none; }
+.footer-meta-copy { font-size: 12px; color: rgba(255, 255, 255, 0.7); }
+.footer-meta-copy a { color: rgba(255, 255, 255, 0.85); }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  nav { left: 12px; right: 12px; padding: 8px 12px; height: 56px; }
+  .nav-links { display: none; }
+  .nav-mobile { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(20px);
+    padding: 16px 24px;
+    gap: 16px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+  }
+  body { padding-top: 80px; }
+  .section { padding: 60px 16px; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-card { padding: 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-meta { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
