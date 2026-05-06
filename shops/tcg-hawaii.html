@@ -31,7 +31,9 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Phudu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/branding/site.css">
 
 <!-- Schema.org -->
 <script type="application/ld+json">
@@ -57,8 +59,6 @@
 </script>
 
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
     /* HCS base tokens */
     --sand: #f5f0e8;
@@ -88,42 +88,9 @@
     --shop-hero-bg: #1a0a0a;
   }
 
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--shop-bg);
-    color: var(--text);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
   /* ═══════ NAV ═══════ */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    height: 64px;
-    background: rgba(245,240,232,0.92);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 24px;
-  }
-  .nav-brand { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -0.5px; text-decoration: none; color: var(--ocean); }
-  .nav-brand span { color: var(--lava); }
-  .nav-links { display: flex; gap: 24px; align-items: center; }
-  .nav-links a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--text-light); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--ocean); }
-  .nav-cta { background: var(--ocean) !important; color: var(--white) !important; padding: 8px 18px !important; border-radius: 8px; font-weight: 600 !important; font-size: 13px !important; transition: background 0.2s; }
-  .nav-cta:hover { background: var(--ocean-light) !important; }
-  .nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-  .nav-mobile svg { width: 24px; height: 24px; stroke: var(--text); }
-  .nav-ig { display: flex; align-items: center; color: var(--text-light); transition: color 0.2s; }
-  .nav-ig:hover { color: var(--ocean); }
-
   @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .nav-mobile { display: block; }
-    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(245,240,232,0.98); backdrop-filter: blur(20px); padding: 16px 24px; gap: 16px; border-bottom: 1px solid rgba(0,0,0,0.06); }
-  }
+    }
 
   /* ═══════ BACK LINK ═══════ */
   .back-link {
@@ -175,7 +142,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
   .hero h1 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Phudu', sans-serif;
     font-weight: 800; font-size: clamp(36px, 6vw, 56px);
     color: var(--white);
     line-height: 1.05;
@@ -214,7 +181,7 @@
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--shop-primary); color: var(--white);
     padding: 14px 32px; border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-weight: 600; font-size: 16px;
     text-decoration: none;
     transition: background 0.2s, transform 0.2s;
@@ -224,7 +191,7 @@
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(255,255,255,0.08); color: var(--white);
     padding: 14px 32px; border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-weight: 600; font-size: 16px;
     text-decoration: none;
     border: 1px solid rgba(255,255,255,0.15);
@@ -243,7 +210,7 @@
     margin-bottom: 12px;
   }
   .section-title {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Phudu', sans-serif;
     font-weight: 800; font-size: clamp(26px, 4vw, 36px);
     color: var(--night); line-height: 1.15;
     margin-bottom: 24px;
@@ -275,7 +242,7 @@
   }
   .detail-card-icon svg { width: 20px; height: 20px; stroke: var(--shop-primary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .detail-card-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-lighter); margin-bottom: 6px; }
-  .detail-card-value { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 18px; color: var(--night); line-height: 1.3; }
+  .detail-card-value { font-family: 'Phudu', sans-serif; font-weight: 700; font-size: 18px; color: var(--night); line-height: 1.3; }
   .detail-card-note { font-size: 13px; color: var(--text-light); margin-top: 6px; }
 
   /* ═══════ WHAT THEY CARRY ═══════ */
@@ -319,7 +286,7 @@
   }
   .highlight-card .emoji { font-size: 28px; margin-bottom: 10px; }
   .highlight-card .label {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Phudu', sans-serif;
     font-size: 14px; font-weight: 700;
     color: var(--night);
     margin-bottom: 4px;
@@ -346,7 +313,7 @@
     text-align: center;
   }
   .footer-cta h2 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Phudu', sans-serif;
     font-weight: 800; font-size: 28px;
     color: var(--white);
     margin-bottom: 12px;
@@ -358,15 +325,6 @@
   }
 
   /* ═══════ FOOTER ═══════ */
-  footer {
-    background: var(--sand);
-    padding: 24px; text-align: center;
-    font-size: 13px; color: var(--text-light);
-    border-top: 1px solid var(--sand-dark);
-  }
-  footer a { color: var(--ocean); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-
   /* ═══════ RESPONSIVE ═══════ */
   @media (max-width: 600px) {
     .hero { padding: 100px 20px 60px; }
@@ -380,18 +338,20 @@
 
 <!-- ═══════ NAV ═══════ -->
 <nav>
-  <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <a href="/" class="nav-brand" aria-label="Hawaii Card Shows">
+    <img src="/branding/logo-horizontal.svg" alt="Hawaii Card Shows">
+  </a>
   <div class="nav-links" id="navLinks">
-    <a href="https://hawaiicardshows.com/#upcoming">Upcoming</a>
-    <a href="https://hawaiicardshows.com/shows/">Shows</a>
-    <a href="https://hawaiicardshows.com/shops/">Shops</a>
-    <a href="https://hawaiicardshows.com/#submit">Submit</a>
-    <a href="https://hawaiicardshows.com/#sponsors">Partner</a>
-    <a href="https://hawaiicardshows.com/#submit" class="nav-cta">Submit Your Event</a>
+    <a href="/#upcoming">Upcoming</a>
+    <a href="/shows/">Shows</a>
+    <a href="/shops/">Shops</a>
+    <a href="/#submit">Submit</a>
+    <a href="/#sponsors">Partner</a>
+    <a href="/#submit" class="nav-cta">Submit Your Event</a>
     <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" class="nav-ig" aria-label="Follow us on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
   </div>
   <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
   </button>
 </nav>
 
@@ -545,7 +505,7 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--shop-primary)" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
       </div>
       <div style="flex:1;">
-        <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:16px;color:var(--night);">Browse All Card Shows</div>
+        <div style="font-family:'Phudu',sans-serif;font-weight:700;font-size:16px;color:var(--night);">Browse All Card Shows</div>
         <div style="font-size:13px;color:var(--text-light);margin-top:2px;">See upcoming shows, trade nights, and events across Hawaii</div>
       </div>
       <div style="color:var(--text-lighter);font-size:18px;flex-shrink:0;">&rarr;</div>
@@ -563,7 +523,28 @@
 
 <!-- ═══════ FOOTER ═══════ -->
 <footer>
-  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="https://hawaiicardshows.com">Back to Calendar</a> &bull; <a href="https://hawaiicardshows.com/#submit">Submit an Event</a> &bull; <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/branding/logo-horizontal-white.svg" alt="Hawaii Card Shows">
+      <p class="footer-tagline">Keeping Hawaii&rsquo;s card shows connected.</p>
+    </div>
+    <div class="footer-touch">
+      <div class="footer-touch-label">Get In Touch</div>
+      <p><a href="mailto:aloha@hawaiicardshows.com">aloha@hawaiicardshows.com</a></p>
+      <p><a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+      <p>Serving all Hawaiian Islands</p>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <div class="footer-meta-links">
+      <a href="/#upcoming">Upcoming</a>
+      <a href="/shows/">Shows</a>
+      <a href="/shops/">Shops</a>
+      <a href="/#submit">Submit</a>
+      <a href="/#sponsors">Partner</a>
+    </div>
+    <div class="footer-meta-copy">&copy; 2026 Hawaii Card Shows &middot; <a href="/faq.html">FAQ</a> &middot; <a href="/hawaii-card-shows-guide.html">TCG Guide</a> &middot; <a href="/card-shows-oahu.html">Card Shows Oahu</a> &middot; <a href="/pokemon-card-shops-hawaii.html">Pokemon Card Shops</a></div>
+  </div>
 </footer>
 
 <script src="/shops/shop-photos.js"></script>

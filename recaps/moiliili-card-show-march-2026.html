@@ -87,41 +87,11 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Phudu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/branding/site.css">
 <style>
-:root {
-  --sand: #f5f0e8;
-  --sand-dark: #e8e0d0;
-  --ocean: #1a6b5a;
-  --ocean-light: #2a8b72;
-  --ocean-pale: #e8f4f0;
-  --lava: #d4582a;
-  --lava-light: #f0714a;
-  --night: #1a1a1a;
-  --night-soft: #2a2a2a;
-  --text: #2c2c2c;
-  --text-light: #6a6a6a;
-  --text-lighter: #999;
-  --white: #ffffff;
-  --radius: 12px;
-  --shadow: 0 2px 20px rgba(0,0,0,0.06);
-  --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--sand); }
-
 /* ── Nav ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(245,240,232,0.92); backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  padding: 0 24px; height: 64px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.nav-brand { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 18px; color: var(--ocean); letter-spacing: -0.5px; text-decoration: none; }
-.nav-brand span { color: var(--lava); }
 .nav-back { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 500; transition: color 0.2s; }
 .nav-back:hover { color: var(--ocean); }
 
@@ -137,7 +107,7 @@ nav {
   letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
 }
 .recap-hero h1 {
-  font-family: 'Outfit', sans-serif; font-size: clamp(30px, 5vw, 48px);
+  font-family: 'Phudu', sans-serif; font-size: clamp(30px, 5vw, 48px);
   font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;
   color: var(--night); max-width: 700px; margin: 0 auto 16px;
 }
@@ -151,7 +121,7 @@ nav {
   max-width: 600px; margin: 0 auto;
 }
 .recap-stat { text-align: center; }
-.recap-stat-num { font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 700; color: var(--ocean); }
+.recap-stat-num { font-family: 'Phudu', sans-serif; font-size: 36px; font-weight: 700; color: var(--ocean); }
 .recap-stat-label { font-size: 13px; color: var(--text-lighter); margin-top: 2px; }
 
 /* ── Content ── */
@@ -159,7 +129,7 @@ nav {
   max-width: 760px; margin: 0 auto; padding: 60px 24px 80px;
 }
 .recap-content h2 {
-  font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 700;
+  font-family: 'Phudu', sans-serif; font-size: 26px; font-weight: 700;
   color: var(--night); margin: 48px 0 16px; letter-spacing: -0.5px;
 }
 .recap-content h2:first-of-type { margin-top: 0; }
@@ -184,7 +154,7 @@ nav {
   box-shadow: var(--shadow); margin: 32px 0;
 }
 .info-card-title {
-  font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700;
+  font-family: 'Phudu', sans-serif; font-size: 16px; font-weight: 700;
   color: var(--night); margin-bottom: 16px; text-transform: uppercase;
   letter-spacing: 1px; font-size: 12px;
 }
@@ -216,7 +186,7 @@ nav {
   background: var(--ocean-pale);
 }
 .recap-cta h2 {
-  font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 700;
+  font-family: 'Phudu', sans-serif; font-size: 28px; font-weight: 700;
   color: var(--night); margin-bottom: 12px;
 }
 .recap-cta p {
@@ -225,7 +195,7 @@ nav {
 .cta-btn {
   display: inline-block; background: var(--ocean); color: var(--white);
   padding: 14px 32px; border-radius: 10px; text-decoration: none;
-  font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600;
+  font-family: 'Archivo', sans-serif; font-size: 16px; font-weight: 600;
   transition: background 0.2s;
 }
 .cta-btn:hover { background: var(--ocean-light); }
@@ -243,20 +213,12 @@ nav {
 }
 .lightbox-close {
   position: absolute; top: 20px; right: 24px; color: white; font-size: 32px;
-  font-weight: 300; cursor: pointer; font-family: 'DM Sans', sans-serif;
+  font-weight: 300; cursor: pointer; font-family: 'Archivo', sans-serif;
 }
 
 /* ── Footer ── */
-footer {
-  text-align: center; padding: 40px 24px;
-  border-top: 1px solid rgba(0,0,0,0.06); color: var(--text-lighter); font-size: 13px;
-}
-footer a { color: var(--ocean); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-
 /* ── Mobile ── */
-@media (max-width: 768px) {.nav-links{display:none}.nav-mobile{display:block}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(245,240,232,0.98);backdrop-filter:blur(20px);padding:16px 24px;gap:16px;border-bottom:1px solid rgba(0,0,0,0.06)}
-  .recap-hero h1 { font-size: 30px; letter-spacing: -1px; }
+@media (max-width: 768px) {.recap-hero h1 { font-size: 30px; letter-spacing: -1px; }
   .recap-stats { gap: 24px; }
   .recap-stat-num { font-size: 28px; }
   .recap-content { padding: 40px 16px 60px; }
@@ -265,25 +227,26 @@ footer a:hover { text-decoration: underline; }
 }
 
 /* Shared nav */
-.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;color:var(--text-light);text-decoration:none;transition:color 0.2s}.nav-links a:hover{color:var(--ocean)}.nav-cta{background:var(--ocean)!important;color:var(--white)!important;padding:8px 18px!important;border-radius:8px;font-weight:600!important;font-size:13px!important;transition:background 0.2s}.nav-cta:hover{background:var(--ocean-light)!important}.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:4px}.nav-mobile svg{width:24px;height:24px;stroke:var(--text)}.nav-ig{display:flex;align-items:center;color:var(--text-light);transition:color 0.2s}.nav-ig:hover{color:var(--ocean)}
 </style>
 </head>
 <body>
 
 <!-- ════════ NAV ════════ -->
 <nav>
-  <a href="https://hawaiicardshows.com" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
+  <a href="/" class="nav-brand" aria-label="Hawaii Card Shows">
+    <img src="/branding/logo-horizontal.svg" alt="Hawaii Card Shows">
+  </a>
   <div class="nav-links" id="navLinks">
-    <a href="https://hawaiicardshows.com/#upcoming">Upcoming</a>
-    <a href="https://hawaiicardshows.com/shows/">Shows</a>
-    <a href="https://hawaiicardshows.com/shops/">Shops</a>
-    <a href="https://hawaiicardshows.com/#submit">Submit</a>
-    <a href="https://hawaiicardshows.com/#sponsors">Partner</a>
-    <a href="https://hawaiicardshows.com/#submit" class="nav-cta">Submit Your Event</a>
+    <a href="/#upcoming">Upcoming</a>
+    <a href="/shows/">Shows</a>
+    <a href="/shops/">Shops</a>
+    <a href="/#submit">Submit</a>
+    <a href="/#sponsors">Partner</a>
+    <a href="/#submit" class="nav-cta">Submit Your Event</a>
     <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" class="nav-ig" aria-label="Follow us on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
   </div>
   <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
   </button>
 </nav>
 
@@ -325,7 +288,7 @@ footer a:hover { text-decoration: underline; }
   <h2>Photos from the Show</h2>
   <div style="background:var(--ocean-pale);border:2px dashed rgba(26,107,90,0.25);border-radius:var(--radius);padding:48px 24px;text-align:center;margin:16px 0 8px;">
     <div style="font-size:40px;margin-bottom:12px;">📸</div>
-    <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:var(--ocean);margin-bottom:6px;">Photos coming soon</div>
+    <div style="font-family:'Phudu',sans-serif;font-size:18px;font-weight:700;color:var(--ocean);margin-bottom:6px;">Photos coming soon</div>
     <div style="font-size:14px;color:var(--text-light);max-width:480px;margin:0 auto;line-height:1.5;">We&rsquo;re working with the Moiliili Card Show team to get photos from the day posted here. Check back soon.</div>
   </div>
 
@@ -353,7 +316,28 @@ footer a:hover { text-decoration: underline; }
 
 <!-- ════════ FOOTER ════════ -->
 <footer>
-  <p>&copy; 2026 Hawaii Card Shows &bull; <a href="https://hawaiicardshows.com">Back to Calendar</a> &bull; <a href="https://hawaiicardshows.com/#submit">Submit an Event</a></p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/branding/logo-horizontal-white.svg" alt="Hawaii Card Shows">
+      <p class="footer-tagline">Keeping Hawaii&rsquo;s card shows connected.</p>
+    </div>
+    <div class="footer-touch">
+      <div class="footer-touch-label">Get In Touch</div>
+      <p><a href="mailto:aloha@hawaiicardshows.com">aloha@hawaiicardshows.com</a></p>
+      <p><a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+      <p>Serving all Hawaiian Islands</p>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <div class="footer-meta-links">
+      <a href="/#upcoming">Upcoming</a>
+      <a href="/shows/">Shows</a>
+      <a href="/shops/">Shops</a>
+      <a href="/#submit">Submit</a>
+      <a href="/#sponsors">Partner</a>
+    </div>
+    <div class="footer-meta-copy">&copy; 2026 Hawaii Card Shows &middot; <a href="/faq.html">FAQ</a> &middot; <a href="/hawaii-card-shows-guide.html">TCG Guide</a> &middot; <a href="/card-shows-oahu.html">Card Shows Oahu</a> &middot; <a href="/pokemon-card-shops-hawaii.html">Pokemon Card Shops</a></div>
+  </div>
 </footer>
 
 <!-- ════════ LIGHTBOX ════════ -->
