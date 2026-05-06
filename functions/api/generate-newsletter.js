@@ -329,8 +329,11 @@ function buildEmail({ subject, previewText, weekLabel, totalCount, oneTime, recu
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="x-apple-disable-message-reformatting">
 <title>${esc(subject)}</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Phudu:wght@400;500;600;700;800&display=swap');
+</style>
 </head>
-<body style="margin:0;padding:0;background-color:#f5f0e8;font-family:Arial,Helvetica,sans-serif;">
+<body style="margin:0;padding:0;background-color:#f5f0e8;font-family:'Archivo',Arial,Helvetica,sans-serif;">
 
 <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">
   ${esc(previewText)}
@@ -361,11 +364,11 @@ ${buildFooter()}
 function buildHeader() {
   return `<tr>
 <td align="center" style="background-color:#1a6b5a;padding:40px 40px 36px 40px;">
-  <div style="font-family:Arial,Helvetica,sans-serif;font-size:28px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;line-height:1.2;">
-    Hawaii Card Shows
-  </div>
-  <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;letter-spacing:0.5px;">
-    THIS WEEK IN HAWAII CARDS
+  <a href="https://hawaiicardshows.com" target="_blank" style="text-decoration:none;">
+    <img src="https://hawaiicardshows.com/branding/logo-horizontal-white.png" width="220" alt="Hawaii Card Shows" style="display:block;width:220px;max-width:220px;height:auto;border:0;margin:0 auto;">
+  </a>
+  <div style="font-family:'Phudu',Arial,Helvetica,sans-serif;font-size:12px;color:rgba(255,255,255,0.75);margin-top:14px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;">
+    This Week in Hawaii Cards
   </div>
 </td>
 </tr>`;
@@ -379,10 +382,10 @@ function buildIntro(weekLabel, totalCount) {
 
   return `<tr>
 <td style="padding:40px 40px 24px 40px;">
-  <h1 style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:700;color:#1a1a1a;margin:0 0 16px 0;line-height:1.3;">
+  <h1 style="font-family:'Phudu',Arial,Helvetica,sans-serif;font-size:28px;font-weight:800;color:#1a1a1a;margin:0 0 16px 0;line-height:1.3;">
     ${headline}
   </h1>
-  <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444444;line-height:1.7;margin:0;">
+  <p style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:15px;color:#444444;line-height:1.7;margin:0;">
     ${blurb}
   </p>
 </td>
@@ -426,13 +429,13 @@ function buildIslandSections(oneTime, recurring) {
       eventsHtml += islandRecurring.map(item => buildRecurringRow(item.event, item.dates, nextColor())).join('\n');
     } else {
       eventsHtml = `
-      <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#777777;margin:0 0 16px 0;">
+      <p style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:14px;color:#777777;margin:0 0 16px 0;">
         No shows scheduled this week on ${esc(island.name)}, but stop by and say hi to one of your local shops!
       </p>
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-table;">
       <tr>
         <td align="center" style="background-color:#d4582a;border-radius:6px;mso-padding-alt:10px 18px;">
-          <a href="${esc(island.shopUrl)}" style="display:inline-block;padding:10px 18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:6px;">
+          <a href="${esc(island.shopUrl)}" style="display:inline-block;padding:10px 18px;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:6px;">
             ${esc(island.name)} Card Shops &rarr;
           </a>
         </td>
@@ -442,10 +445,10 @@ function buildIslandSections(oneTime, recurring) {
 
     html += `<tr>
 <td style="padding:32px 40px 16px 40px;">
-  <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">
+  <div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">
     ${esc(island.name)}
   </div>
-  <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700;color:#1a1a1a;margin:0 0 20px 0;line-height:1.3;">
+  <h2 style="font-family:'Phudu',Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;color:#1a1a1a;margin:0 0 20px 0;line-height:1.3;">
     ${hasEvents ? esc(island.name) + ' Shows' : 'No Shows on ' + esc(island.name) + ' This Week'}
   </h2>
   ${eventsHtml}
@@ -473,19 +476,19 @@ function buildEventCard(e, dateStr, color) {
   return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 16px 0;border:1px solid #e8e0d0;border-left:4px solid ${cardColor};border-radius:8px;background:#ffffff;">
 <tr>
 <td style="padding:18px 20px;">
-  <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:800;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.2px;">
+  <div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:11px;font-weight:800;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.2px;">
     ${esc(dayLabel)} &middot; ${esc(timeStr)}
   </div>
-  <div style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;color:#1a1a1a;margin-top:6px;line-height:1.3;">
+  <div style="font-family:'Phudu',Arial,Helvetica,sans-serif;font-size:18px;font-weight:800;color:#1a1a1a;margin-top:6px;line-height:1.3;">
     ${esc(e.name)}
   </div>
-  ${metaLine ? `<div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#666666;margin-top:4px;">${metaLine}</div>` : ''}
-  ${description ? `<div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#555555;margin-top:10px;line-height:1.6;">${description}</div>` : ''}
+  ${metaLine ? `<div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:13px;color:#666666;margin-top:4px;">${metaLine}</div>` : ''}
+  ${description ? `<div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:13px;color:#555555;margin-top:10px;line-height:1.6;">${description}</div>` : ''}
 
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;">
   <tr>
     <td align="center" style="background-color:#d4582a;border-radius:6px;mso-padding-alt:10px 18px;">
-      <a href="${esc(url)}" style="display:inline-block;padding:10px 18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:6px;">
+      <a href="${esc(url)}" style="display:inline-block;padding:10px 18px;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:6px;">
         View Show &rarr;
       </a>
     </td>
@@ -510,13 +513,13 @@ function buildRecurringRow(e, dates, color) {
   return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 12px 0;border:1px solid #e8e0d0;border-left:4px solid ${cardColor};border-radius:8px;background:#ffffff;">
 <tr>
 <td style="padding:14px 18px;">
-  <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:800;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.2px;">
+  <div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:11px;font-weight:800;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.2px;">
     ${datesLabel} &middot; ${esc(timeStr)}
   </div>
-  <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;color:#1a1a1a;margin-top:4px;line-height:1.3;">
+  <div style="font-family:'Phudu',Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;color:#1a1a1a;margin-top:4px;line-height:1.3;">
     <a href="${esc(url)}" style="color:#1a1a1a;text-decoration:none;">${esc(e.name)}</a>
   </div>
-  ${metaLine ? `<div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#666666;margin-top:2px;">${metaLine}</div>` : ''}
+  ${metaLine ? `<div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:13px;color:#666666;margin-top:2px;">${metaLine}</div>` : ''}
 </td>
 </tr>
 </table>`;
@@ -525,19 +528,19 @@ function buildRecurringRow(e, dates, color) {
 function buildShopCta() {
   return `<tr>
 <td style="padding:32px 40px;">
-  <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">
+  <div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">
     Between Shows
   </div>
-  <h2 style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700;color:#1a1a1a;margin:0 0 12px 0;line-height:1.3;">
+  <h2 style="font-family:'Phudu',Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;color:#1a1a1a;margin:0 0 12px 0;line-height:1.3;">
     Find a card shop near you
   </h2>
-  <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444444;line-height:1.7;margin:0 0 24px 0;">
+  <p style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:15px;color:#444444;line-height:1.7;margin:0 0 24px 0;">
     Whether you&rsquo;re looking for packs, singles, or just want to talk cards, we&rsquo;ve got a running list of shops across the islands.
   </p>
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-table;">
   <tr>
     <td align="center" style="background-color:#d4582a;border-radius:8px;mso-padding-alt:14px 32px;">
-      <a href="https://hawaiicardshows.com/shops/" style="display:inline-block;padding:14px 32px;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:8px;letter-spacing:0.3px;">
+      <a href="https://hawaiicardshows.com/shops/" style="display:inline-block;padding:14px 32px;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:8px;letter-spacing:0.3px;">
         Find Card Shops &rarr;
       </a>
     </td>
@@ -553,16 +556,16 @@ function buildFooter() {
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
   <tr>
     <td align="center">
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:600;color:#ffffff;margin-bottom:6px;">
+      <div style="font-family:'Phudu',Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#ffffff;margin-bottom:6px;letter-spacing:0.5px;">
         Hawaii Card Shows
       </div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6;">
+      <div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6;">
         Built by collectors, for collectors.
       </div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;margin-top:10px;">
+      <div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;margin-top:10px;">
         <a href="https://www.instagram.com/hawaiicardshows" style="color:#e8f4f0;text-decoration:none;font-weight:600;">@hawaiicardshows</a>
       </div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:rgba(255,255,255,0.3);margin-top:16px;line-height:1.6;">
+      <div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:11px;color:rgba(255,255,255,0.3);margin-top:16px;line-height:1.6;">
         You&rsquo;re receiving this because you subscribed at hawaiicardshows.com.<br>
         <a href="{{ unsubscribe_url }}" style="color:rgba(255,255,255,0.4);text-decoration:underline;">Unsubscribe</a>
       </div>
