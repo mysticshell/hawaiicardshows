@@ -504,8 +504,18 @@ async function loadData() {
   }
   document.getElementById('tDate').textContent = dateText;
 
-  let timeText = event.start_time || '';
-  if(event.end_time) timeText += ` — ${event.end_time}`;
+  // Format raw 24-hour times ("13:00") into friendly 12-hour ("1 PM")
+  function fmtClock(t){
+    if(!t) return '';
+    const m = String(t).match(/^(\d{1,2}):(\d{2})/);
+    if(!m) return t;
+    const h = +m[1], mn = +m[2];
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const h12 = h > 12 ? h - 12 : (h === 0 ? 12 : h);
+    return mn === 0 ? `${h12} ${ampm}` : `${h12}:${String(mn).padStart(2,'0')} ${ampm}`;
+  }
+  let timeText = fmtClock(event.start_time);
+  if(event.end_time) timeText += ` – ${fmtClock(event.end_time)}`;
   if(!timeText) document.getElementById('infoRowTime').style.display='none';
   else document.getElementById('tTime').textContent = timeText;
 

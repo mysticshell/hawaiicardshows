@@ -1,6 +1,6 @@
 # Hawaii Card Shows — Project Status
 
-*Last updated: 2026-05-04*
+*Last updated: 2026-05-06*
 
 ---
 
@@ -95,6 +95,8 @@ via @import + inline stacks. Bonus fix: welcome-email.html had a broken
 - [ ] **"Add to Calendar" buttons** on show pages (iCal / Google Calendar export)
 - [ ] **Deep analytics dashboard** in admin panel
 - [ ] **Newsletter popup** enhancements — A/B test copy, track conversion rate
+- [ ] **Welcome email sequence — add tips & tricks email** (Tyler 2026-05-06). The 3-email sequence is shipped (Day 0 / 7 / 21). A great place to inject a "how to get the most out of a Hawaii card show" email — possibly between #2 and #3 (Day 14). Content idea: arrive early, what cash to bring, how to negotiate, what to bring to a trade night, etiquette, kid-friendly tips. Tyler's POV adds authenticity here.
+- [ ] **"Guide to going to a card show" guide** (Tyler 2026-05-06). Create a long-form guide page (likely `/how-to-attend-a-card-show.html` or extend `/hawaii-card-shows-guide.html`) covering: what to expect, what to bring, how to vendor for the first time, how trade nights differ from card shows, kid-friendly considerations, vendor etiquette. Pure SEO play targeting "how to attend a card show" / "first time card show tips" / "card show vendor guide" queries. Reusable in the welcome email sequence (above) once written.
 
 ## Recently Completed
 

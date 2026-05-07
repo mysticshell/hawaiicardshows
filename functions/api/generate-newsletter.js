@@ -62,6 +62,10 @@ export async function onRequestGet({ request, env }) {
       : `${totalCount} show${totalCount === 1 ? '' : 's'} this week in Hawaii.`;
 
     // --- Build HTML ---
+    // Set UTM campaign slug from the send-week start date so we can attribute return
+    // traffic per weekly edition in GA4 (e.g. utm_campaign=weekly-2026-05-11).
+    CAMPAIGN_SLUG = `weekly-${startStr}`;
+
     const html = buildEmail({ subject, previewText, weekLabel, totalCount, oneTime, recurring });
 
     // --- Preview mode ---
@@ -246,6 +250,15 @@ function getShowUrl(e) {
   return 'https://hawaiicardshows.com' + (path.startsWith('/') ? path : '/' + path);
 }
 
+// UTM tagging for newsletter links so we can attribute return traffic in GA4.
+// Module-scoped CAMPAIGN_SLUG is set per-build by the orchestrator (e.g. "weekly-2026-05-11").
+let CAMPAIGN_SLUG = '';
+function withUtm(url, content) {
+  if (!url || !url.includes('hawaiicardshows.com') || !CAMPAIGN_SLUG) return url;
+  const sep = url.includes('?') ? '&' : '?';
+  return `${url}${sep}utm_source=newsletter&utm_medium=email&utm_campaign=${CAMPAIGN_SLUG}&utm_content=${encodeURIComponent(content)}`;
+}
+
 // ═══════════════════════════════════════════════════════════════
 // RECURRENCE LOGIC (direct port from index.html line 433)
 // ═══════════════════════════════════════════════════════════════
@@ -364,7 +377,7 @@ ${buildFooter()}
 function buildHeader() {
   return `<tr>
 <td align="center" style="background-color:#1a6b5a;padding:40px 40px 36px 40px;">
-  <a href="https://hawaiicardshows.com" target="_blank" style="text-decoration:none;">
+  <a href="${withUtm('https://hawaiicardshows.com', 'header-logo')}" target="_blank" style="text-decoration:none;">
     <img src="https://hawaiicardshows.com/branding/logo-horizontal-white.png" width="220" alt="Hawaii Card Shows" style="display:block;width:220px;max-width:220px;height:auto;border:0;margin:0 auto;">
   </a>
   <div style="font-family:'Phudu',Arial,Helvetica,sans-serif;font-size:12px;color:rgba(255,255,255,0.75);margin-top:14px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;">
@@ -377,7 +390,7 @@ function buildHeader() {
 function buildIntro(weekLabel, totalCount) {
   const headline = totalCount === 0 ? 'Aloha!' : 'Aloha — here\u2019s your week';
   const blurb = totalCount === 0
-    ? `Quiet week coming up. Check back at <a href="https://hawaiicardshows.com" style="color:#1a6b5a;text-decoration:none;font-weight:600;">hawaiicardshows.com</a> for updates.`
+    ? `Quiet week coming up. Check back at <a href="${withUtm('https://hawaiicardshows.com', 'empty-week-fallback')}" style="color:#1a6b5a;text-decoration:none;font-weight:600;">hawaiicardshows.com</a> for updates.`
     : `${totalCount} show${totalCount === 1 ? '' : 's'} coming up ${esc(weekLabel)}. Mark your calendar.`;
 
   return `<tr>
@@ -435,7 +448,7 @@ function buildIslandSections(oneTime, recurring) {
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-table;">
       <tr>
         <td align="center" style="background-color:#d4582a;border-radius:6px;mso-padding-alt:10px 18px;">
-          <a href="${esc(island.shopUrl)}" style="display:inline-block;padding:10px 18px;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:6px;">
+          <a href="${esc(withUtm(island.shopUrl, `island-shops-${island.filter.replace(/\s+/g,'-')}`))}" style="display:inline-block;padding:10px 18px;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:6px;">
             ${esc(island.name)} Card Shops &rarr;
           </a>
         </td>
@@ -465,7 +478,7 @@ function buildIslandSections(oneTime, recurring) {
 
 function buildEventCard(e, dateStr, color) {
   const cardColor = color || e.color || '#d4582a';
-  const url = getShowUrl(e);
+  const url = withUtm(getShowUrl(e), 'show-card');
   const dayLabel = formatHawaiiDate(dateStr, { weekday: 'short', month: 'short', day: 'numeric' });
   const timeStr = fmtTimeRange(e);
   const metaParts = [];
@@ -501,7 +514,7 @@ function buildEventCard(e, dateStr, color) {
 
 function buildRecurringRow(e, dates, color) {
   const cardColor = color || e.color || '#1a6b5a';
-  const url = getShowUrl(e);
+  const url = withUtm(getShowUrl(e), 'recurring-row');
   const datesLabel = dates
     .map((ds) => formatHawaiiDate(ds, { weekday: 'short', month: 'short', day: 'numeric' }))
     .join(' &middot; ');
@@ -540,7 +553,7 @@ function buildShopCta() {
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-table;">
   <tr>
     <td align="center" style="background-color:#d4582a;border-radius:8px;mso-padding-alt:14px 32px;">
-      <a href="https://hawaiicardshows.com/shops/" style="display:inline-block;padding:14px 32px;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:8px;letter-spacing:0.3px;">
+      <a href="${withUtm('https://hawaiicardshows.com/shops/', 'shops-cta')}" style="display:inline-block;padding:14px 32px;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;text-decoration:none;border-radius:8px;letter-spacing:0.3px;">
         Find Card Shops &rarr;
       </a>
     </td>
