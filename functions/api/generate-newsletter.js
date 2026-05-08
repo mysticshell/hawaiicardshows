@@ -376,7 +376,7 @@ ${buildFooter()}
 
 function buildHeader() {
   return `<tr>
-<td align="center" style="background-color:#1a6b5a;padding:40px 40px 36px 40px;">
+<td align="center" style="background-color:#1a6b5a;padding:40px 28px 36px 28px;">
   <a href="${withUtm('https://hawaiicardshows.com', 'header-logo')}" target="_blank" style="text-decoration:none;">
     <img src="https://hawaiicardshows.com/branding/logo-horizontal-white.png" width="220" alt="Hawaii Card Shows" style="display:block;width:220px;max-width:220px;height:auto;border:0;margin:0 auto;">
   </a>
@@ -394,7 +394,7 @@ function buildIntro(weekLabel, totalCount) {
     : `${totalCount} show${totalCount === 1 ? '' : 's'} coming up ${esc(weekLabel)}. Mark your calendar.`;
 
   return `<tr>
-<td style="padding:40px 40px 24px 40px;">
+<td style="padding:40px 28px 24px 28px;">
   <h1 style="font-family:'Phudu',Arial,Helvetica,sans-serif;font-size:28px;font-weight:800;color:#1a1a1a;margin:0 0 16px 0;line-height:1.3;">
     ${headline}
   </h1>
@@ -407,7 +407,7 @@ function buildIntro(weekLabel, totalCount) {
 
 function buildDivider() {
   return `<tr>
-<td style="padding:0 40px;">
+<td style="padding:0 28px;">
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
   <tr><td style="border-top:1px solid #e8e0d0;font-size:1px;line-height:1px;">&nbsp;</td></tr>
   </table>
@@ -457,7 +457,7 @@ function buildIslandSections(oneTime, recurring) {
     }
 
     html += `<tr>
-<td style="padding:32px 40px 16px 40px;">
+<td style="padding:32px 28px 16px 28px;">
   <div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">
     ${esc(island.name)}
   </div>
@@ -540,7 +540,7 @@ function buildRecurringRow(e, dates, color) {
 
 function buildShopCta() {
   return `<tr>
-<td style="padding:32px 40px;">
+<td style="padding:32px 28px;">
   <div style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">
     Between Shows
   </div>
@@ -565,7 +565,7 @@ function buildShopCta() {
 
 function buildFooter() {
   return `<tr>
-<td style="background-color:#1a1a1a;padding:32px 40px;border-radius:0 0 12px 12px;">
+<td style="background-color:#1a1a1a;padding:32px 28px;border-radius:0 0 12px 12px;">
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
   <tr>
     <td align="center">
