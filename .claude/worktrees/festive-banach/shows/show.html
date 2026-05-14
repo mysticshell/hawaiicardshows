@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 <title>Hawaii Card Shows — Event Details</title>
 <meta name="description" content="Event details for Hawaii card shows, trade nights, and trading card events across the islands.">
 <meta property="og:title" content="Hawaii Card Shows — Event Details">
@@ -21,14 +19,20 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-48ZSPW63VV');</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Phudu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/branding/site.css?v=20260506">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+:root{--sand:#f5f0e8;--sand-dark:#e8e0d0;--ocean:#1a6b5a;--ocean-light:#2a8b72;--ocean-pale:#e8f4f0;--lava:#d4582a;--lava-light:#f0714a;--night:#1a1a1a;--night-soft:#2a2a2a;--text:#2c2c2c;--text-light:#6a6a6a;--text-lighter:#999;--white:#ffffff;--radius:12px;--shadow:0 2px 20px rgba(0,0,0,0.06);--shadow-lg:0 8px 40px rgba(0,0,0,0.1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--sand)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,240,232,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:var(--ocean);letter-spacing:-0.5px;text-decoration:none}.nav-brand span{color:var(--lava)}
+.nav-links{display:flex;gap:32px;align-items:center}.nav-links a{text-decoration:none;color:var(--text-light);font-size:14px;font-weight:500;transition:color 0.2s}.nav-links a:hover{color:var(--ocean)}
+.nav-cta{background:var(--ocean);color:var(--white)!important;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.2s;display:inline-block}.nav-cta:hover{background:var(--ocean-light);color:var(--white)!important}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}.nav-mobile svg{width:24px;height:24px;stroke:var(--text)}
+
 /* Layout */
 .hero { padding: 120px 24px 60px; text-align: center; background: linear-gradient(180deg,var(--sand) 0%,var(--ocean-pale) 100%); min-height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .hero-tag { display: inline-block; background: var(--ocean); color: var(--white); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
-.hero h1 { font-family: 'Phudu', sans-serif; font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -2px; color: var(--night); max-width: 800px; margin: 0 auto 16px; }
+.hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -2px; color: var(--night); max-width: 800px; margin: 0 auto 16px; }
 .hero-logo { max-width: 100%; max-height: 200px; object-fit: contain; margin: 0 auto 24px; border-radius: var(--radius); }
 
 .content-wrap { max-width: 900px; margin: -40px auto 80px; padding: 0 24px; position: relative; z-index: 10; display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
@@ -40,11 +44,11 @@
 .info-row:last-child { margin-bottom: 0; }
 .info-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--ocean-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .info-icon svg { width: 20px; height: 20px; stroke: var(--ocean); }
-.info-text h4 { font-family: 'Phudu', sans-serif; font-size: 14px; font-weight: 700; color: var(--text-lighter); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
+.info-text h4 { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: var(--text-lighter); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
 .info-text p { font-size: 16px; font-weight: 600; color: var(--night); line-height: 1.4; }
 
 .richtext { font-size: 16px; color: var(--text-light); line-height: 1.7; }
-.richtext h2, .richtext h3 { font-family: 'Phudu', sans-serif; color: var(--night); margin: 32px 0 16px; }
+.richtext h2, .richtext h3 { font-family: 'Outfit', sans-serif; color: var(--night); margin: 32px 0 16px; }
 .richtext p { margin-bottom: 16px; }
 .richtext a { color: var(--ocean); font-weight: 600; text-decoration: none; }
 .richtext a:hover { text-decoration: underline; }
@@ -52,7 +56,7 @@
 .richtext li { margin-bottom: 8px; }
 
 .recaps-module { background: var(--ocean-pale); border-radius: var(--radius); padding: 32px; margin-top: 40px; }
-.recaps-title { font-family: 'Phudu', sans-serif; font-size: 24px; font-weight: 700; color: var(--ocean); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.recaps-title { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; color: var(--ocean); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
 .recap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
 .recap-card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: transform 0.2s; text-decoration: none; display: flex; flex-direction: column; }
 .recap-card:hover { transform: translateY(-3px); }
@@ -63,7 +67,7 @@
 
 /* Photo Gallery */
 .gallery-module { margin-top: 40px; }
-.gallery-title { font-family: 'Phudu', sans-serif; font-size: 24px; font-weight: 700; color: var(--night); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.gallery-title { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; color: var(--night); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
 .gallery-title svg { stroke: var(--ocean); }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
 .gallery-thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
@@ -78,19 +82,18 @@
 .lightbox-prev { left: 20px; }
 .lightbox-next { right: 20px; }
 .lightbox-counter { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500; }
+footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(0,0,0,0.06);color:var(--text-lighter);font-size:13px}footer a{color:var(--ocean);text-decoration:none}footer a:hover{text-decoration:underline}
+
 @media(max-width: 900px) {
   .content-wrap { grid-template-columns: 1fr; margin-top: -20px; padding: 0 16px; gap: 24px; }
   .nav-links{display:none}.nav-mobile{display:block}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--sand);padding:16px 24px;gap:16px;border-bottom:1px solid rgba(0,0,0,0.06)}
   .main-col, .info-card { padding: 24px; }
 }
 </style>
-<script src="/recaps/recap-map.js"></script>
 </head>
 <body>
 <nav>
-  <a href="/" class="nav-brand" aria-label="Hawaii Card Shows">
-    <img src="/branding/logo-horizontal.svg" alt="Hawaii Card Shows">
-  </a>
+  <a href="/" class="nav-brand">HAWAII CARD<span>SHOWS</span></a>
   <div class="nav-links" id="navLinks">
     <a href="/#upcoming">Upcoming</a>
     <a href="/shows/">Shows</a>
@@ -98,9 +101,8 @@
     <a href="/#submit">Submit</a>
     <a href="/#sponsors">Partner</a>
     <a href="/#submit" class="nav-cta">Submit Your Event</a>
-    <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" class="nav-ig" aria-label="Follow us on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
   </div>
-  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')">
     <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
   </button>
 </nav>
@@ -116,16 +118,6 @@
 
   <div class="content-wrap">
     <div class="main-col">
-      <!-- RECAP CALLOUT — appears at the top when this event has a recap -->
-      <a id="recapCallout" href="#" style="display:none;text-decoration:none;background:linear-gradient(135deg,var(--ocean) 0%,var(--ocean-light) 100%);color:#fff;padding:20px 24px;border-radius:var(--radius);margin-bottom:28px;align-items:center;gap:18px;box-shadow:var(--shadow-lg,0 8px 30px rgba(0,0,0,0.12));transition:transform 0.2s,box-shadow 0.2s;">
-        <div style="font-size:28px;line-height:1;flex-shrink:0;">📖</div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-family:'Phudu',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.75);margin-bottom:4px;">This show happened</div>
-          <div style="font-family:'Phudu',sans-serif;font-size:18px;font-weight:700;line-height:1.3;color:#fff;" id="recapCalloutTitle">Read the full recap</div>
-        </div>
-        <div style="font-size:22px;color:#fff;flex-shrink:0;">→</div>
-      </a>
-
       <div class="richtext" id="hDesc"></div>
       
       <!-- PHOTO GALLERY -->
@@ -182,30 +174,7 @@
   </div>
 </div>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <img src="/branding/logo-horizontal-white.svg" alt="Hawaii Card Shows">
-      <p class="footer-tagline">Keeping Hawaii&rsquo;s card shows connected.</p>
-    </div>
-    <div class="footer-touch">
-      <div class="footer-touch-label">Get In Touch</div>
-      <p><a href="mailto:aloha@hawaiicardshows.com">aloha@hawaiicardshows.com</a></p>
-      <p><a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
-      <p>Serving all Hawaiian Islands</p>
-    </div>
-  </div>
-  <div class="footer-meta">
-    <div class="footer-meta-links">
-      <a href="/#upcoming">Upcoming</a>
-      <a href="/shows/">Shows</a>
-      <a href="/shops/">Shops</a>
-      <a href="/#submit">Submit</a>
-      <a href="/#sponsors">Partner</a>
-    </div>
-    <div class="footer-meta-copy">&copy; 2026 Hawaii Card Shows &middot; <a href="/faq.html">FAQ</a> &middot; <a href="/hawaii-card-shows-guide.html">TCG Guide</a> &middot; <a href="/card-shows-oahu.html">Card Shows Oahu</a> &middot; <a href="/pokemon-card-shops-hawaii.html">Pokemon Card Shops</a></div>
-  </div>
-</footer>
+<footer><p>&copy; 2026 Hawaii Card Shows &bull; Built for the community &bull; <a href="/#submit">Submit an Event</a></p></footer>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -397,23 +366,6 @@ function injectSEO(event) {
   document.head.appendChild(script);
 }
 
-// Series-override map — keep in sync with HCS_SERIES_URLS in /index.html.
-// When a fetched event's name matches a key, redirect to the series page so SEO + UX
-// consolidate on a single canonical URL per series.
-const HCS_SERIES_URLS = {
-  'keep it aloha card show': '/shows/keep-it-aloha',
-  'keep it aloha card show — 2nd edition': '/shows/keep-it-aloha',
-  'bayview night market': '/shows/bayview-night-market',
-  'paradise card show': '/shows/paradise-card-show',
-  'west side show': '/shows/west-side-show',
-  'west side show iii': '/shows/west-side-show',
-  'west side show iv': '/shows/west-side-show'
-};
-function hcsSeriesUrlFor(event){
-  if(!event || !event.name) return null;
-  return HCS_SERIES_URLS[event.name.toLowerCase().trim()] || null;
-}
-
 async function loadData() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
@@ -424,16 +376,9 @@ async function loadData() {
 
   // Fetch from DB
   const { data: event, error } = await sb.from('events').select('*').eq('id', id).single();
-
+  
   if (error || !event) {
     document.getElementById('loader').textContent = "Event Not Found.";
-    return;
-  }
-
-  // If this event belongs to a series with a static page, send the user there.
-  const seriesUrl = hcsSeriesUrlFor(event);
-  if (seriesUrl && window.location.pathname !== seriesUrl) {
-    window.location.replace(seriesUrl);
     return;
   }
 
@@ -507,18 +452,8 @@ async function loadData() {
   }
   document.getElementById('tDate').textContent = dateText;
 
-  // Format raw 24-hour times ("13:00") into friendly 12-hour ("1 PM")
-  function fmtClock(t){
-    if(!t) return '';
-    const m = String(t).match(/^(\d{1,2}):(\d{2})/);
-    if(!m) return t;
-    const h = +m[1], mn = +m[2];
-    const ampm = h >= 12 ? 'PM' : 'AM';
-    const h12 = h > 12 ? h - 12 : (h === 0 ? 12 : h);
-    return mn === 0 ? `${h12} ${ampm}` : `${h12}:${String(mn).padStart(2,'0')} ${ampm}`;
-  }
-  let timeText = fmtClock(event.start_time);
-  if(event.end_time) timeText += ` – ${fmtClock(event.end_time)}`;
+  let timeText = event.start_time || '';
+  if(event.end_time) timeText += ` — ${event.end_time}`;
   if(!timeText) document.getElementById('infoRowTime').style.display='none';
   else document.getElementById('tTime').textContent = timeText;
 
@@ -546,26 +481,13 @@ async function loadData() {
     }
   }
 
-  // RECAPS Module — reads from /recaps/recap-map.js (window.HCS_RECAPS_FOR_EVENT)
-  const recaps = (typeof window.HCS_RECAPS_FOR_EVENT === 'function')
-    ? window.HCS_RECAPS_FOR_EVENT(id)
-    : [];
-  if (recaps.length > 0) {
-    // Top-of-page callout — surfaces the most recent recap prominently
-    const topRecap = recaps[0];
-    const callout = document.getElementById('recapCallout');
-    if (callout) {
-      callout.href = topRecap.url;
-      callout.style.display = 'flex';
-      const titleEl = document.getElementById('recapCalloutTitle');
-      if (titleEl) titleEl.textContent = topRecap.title;
-    }
-
-    // Detailed recap module further down — shows all recaps for this event
+  // RECAPS Module
+  const { data: recaps, error: rErr } = await sb.from('recaps').select('*').eq('event_id', id);
+  if (!rErr && recaps && recaps.length > 0) {
     document.getElementById('recapsModule').style.display = 'block';
     document.getElementById('recapList').innerHTML = recaps.map(r => `
-      <a href="${esc(r.url)}" class="recap-card">
-        ${r.thumbnail ? `<img src="${esc(r.thumbnail)}" class="recap-card-img" alt="${esc(r.title)}">` : `<div class="recap-card-img" style="display:flex;align-items:center;justify-content:center;color:#999;font-size:12px;">No Image</div>`}
+      <a href="${esc(r.url)}" class="recap-card" target="_blank">
+        ${r.thumbnail_url ? `<img src="${esc(r.thumbnail_url)}" class="recap-card-img">` : `<div class="recap-card-img" style="display:flex;align-items:center;justify-content:center;color:#999;font-size:12px;">No Image</div>`}
         <div class="recap-card-body">${esc(r.title)}</div>
       </a>
     `).join('');

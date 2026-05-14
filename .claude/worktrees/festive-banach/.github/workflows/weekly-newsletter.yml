@@ -1,0 +1,87 @@
+name: Weekly Newsletter
+
+# Triggers the generate-newsletter Cloudflare Function every Sunday to create
+# a Beehiiv post scheduled to send Monday morning at 9 AM HST.
+#
+# Schedule: Sunday 6:00 PM HST = Monday 04:00 UTC
+# (Hawaii is UTC-10 year-round — no DST.)
+#
+# The endpoint handles:
+#   - Fetching upcoming events from Supabase
+#   - Building the HTML newsletter
+#   - Creating the post as "confirmed" with scheduled_at = next Monday 9 AM HST
+#   - Falling back to draft if there are zero events (safety net)
+#
+# You can also run this manually from the Actions tab ("Run workflow" button)
+# to trigger a send mid-week or to test.
+
+on:
+  schedule:
+    # Sunday 18:00 HST == Monday 04:00 UTC
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Auto-send (true) or create draft only (false)'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate and schedule weekly newsletter
+        env:
+          NEWSLETTER_SECRET: ${{ secrets.NEWSLETTER_SECRET }}
+          CONFIRM: ${{ github.event_name == 'schedule' && 'true' || github.event.inputs.confirm }}
+        run: |
+          if [ -z "$NEWSLETTER_SECRET" ]; then
+            echo "::error::NEWSLETTER_SECRET is not set. Add it in GitHub Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+
+          URL="https://hawaiicardshows.com/api/generate-newsletter?secret=${NEWSLETTER_SECRET}"
+          if [ "$CONFIRM" = "true" ]; then
+            URL="${URL}&confirm=1"
+            echo "Mode: CONFIRM (will schedule auto-send for next Monday 9 AM HST)"
+          else
+            echo "Mode: DRAFT ONLY (manual review required in Beehiiv)"
+          fi
+
+          echo "Calling newsletter endpoint..."
+          RESPONSE=$(curl -sS -w "\n__HTTP_STATUS__:%{http_code}" "$URL")
+          STATUS=$(echo "$RESPONSE" | grep -o '__HTTP_STATUS__:[0-9]*' | cut -d: -f2)
+          BODY=$(echo "$RESPONSE" | sed '/__HTTP_STATUS__/d')
+
+          echo "HTTP status: $STATUS"
+          echo "Response: $BODY"
+
+          if [ "$STATUS" != "200" ]; then
+            echo "::error::Newsletter endpoint returned $STATUS"
+            exit 1
+          fi
+
+          # Fail the job if endpoint returned ok:false
+          if echo "$BODY" | grep -q '"ok":false'; then
+            echo "::error::Endpoint returned ok:false"
+            exit 1
+          fi
+
+          # Surface useful info in the Action output
+          if command -v jq >/dev/null 2>&1; then
+            echo "### Newsletter generated" >> $GITHUB_STEP_SUMMARY
+            echo '```json' >> $GITHUB_STEP_SUMMARY
+            echo "$BODY" | jq . >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### Newsletter generated" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "$BODY" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "✓ Success"

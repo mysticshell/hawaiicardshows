@@ -1,0 +1,6 @@
+# Cloudflare Pages redirects
+# Format: <from> <to> <status>
+
+# Series page renamed 2026-05-13: "West Side Card Show" → "West Side Show"
+/shows/west-side-card-show       /shows/west-side-show         301
+/shows/west-side-card-show.html  /shows/west-side-show         301
