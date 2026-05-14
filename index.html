@@ -336,7 +336,10 @@ const HCS_SERIES_URLS={
   'keep it aloha card show':'/shows/keep-it-aloha',
   'keep it aloha card show — 2nd edition':'/shows/keep-it-aloha',
   'bayview night market':'/shows/bayview-night-market',
-  'paradise card show':'/shows/paradise-card-show'
+  'paradise card show':'/shows/paradise-card-show',
+  'west side card show':'/shows/west-side-card-show',
+  'west side card show iii':'/shows/west-side-card-show',
+  'west side card show iv':'/shows/west-side-card-show'
 };
 function hcsSeriesUrlFor(e){if(!e||!e.name)return null;return HCS_SERIES_URLS[e.name.toLowerCase().trim()]||null;}
 function getShowUrl(e){return e.custom_url||hcsSeriesUrlFor(e)||`/shows/show.html?id=${e.id}`;}
