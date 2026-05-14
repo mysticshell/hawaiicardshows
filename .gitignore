@@ -1,5 +1,7 @@
-# Private credentials
-.agents/.env
+# Private credentials + internal tooling (Claude Code session state,
+# helper scripts, strategy notes — local only, never deployed)
+.agents/
+.claude/
 
 # OS files
 .DS_Store
