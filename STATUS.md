@@ -1,8 +1,16 @@
 # Hawaii Card Shows — Project Status
 
-*Last updated: 2026-05-06*
+*Last updated: 2026-05-13*
 
 ---
+
+## 🗓️ Surface These on/after 2026-05-19 (Tyler back in Hawaii)
+
+Tyler is traveling this week (May 13). When the next session opens on or after May 19, surface these proactively — he asked to be reminded.
+
+- [ ] **Upload welcome email sequence to Buttondown.** Three drafts are in the repo: [welcome-email.html](welcome-email.html) (Day 0), [welcome-email-2.html](welcome-email-2.html) (Day 7), [welcome-email-3.html](welcome-email-3.html) (Day 21). [WELCOME-SEQUENCE.md](WELCOME-SEQUENCE.md) has the setup steps. Tyler approved the content May 6 but hasn't uploaded yet — every new subscriber since then has missed the Day 7 + Day 21 drips. Worth getting live ASAP.
+- [ ] **Photos for the pillar.** Asked Tyler May 13 to grab photos at upcoming shows. Specifically needed: (1) Maui or Big Island show photo — biggest credibility gap, zero neighbor-island photos in the pillar right now. (2) Two collectors trading at a trade table. (3) Vendor table close-up / hands flipping a binder. (4) Dollar bin shot — kid + budget collectors. Once supplied, drop them into `/recaps/images/` and swap in via [what-is-a-card-show.html](what-is-a-card-show.html) figure blocks.
+- [ ] **Social media content production from the SEO pillar.** [SOCIAL-MEDIA-PLAYBOOK.md](SOCIAL-MEDIA-PLAYBOOK.md) has the full 5-tier distribution plan including: YouTube long-form video outline (timestamped per etiquette rule), Shorts/Reels chop list with 10 hook lines, 4 reusable Instagram carousels, newsletter anchor sends, Twitter/X/Threads cadence. Tyler wants to dig into this — pick whichever entry point feels right (carousel design, B-roll capture plan for upcoming shows, or hook-line voice pass).
 
 ## Blocking — Needs Tyler
 
@@ -96,7 +104,16 @@ via @import + inline stacks. Bonus fix: welcome-email.html had a broken
 - [ ] **Deep analytics dashboard** in admin panel
 - [ ] **Newsletter popup** enhancements — A/B test copy, track conversion rate
 - [ ] **Welcome email sequence — add tips & tricks email** (Tyler 2026-05-06). The 3-email sequence is shipped (Day 0 / 7 / 21). A great place to inject a "how to get the most out of a Hawaii card show" email — possibly between #2 and #3 (Day 14). Content idea: arrive early, what cash to bring, how to negotiate, what to bring to a trade night, etiquette, kid-friendly tips. Tyler's POV adds authenticity here.
-- [ ] **"Guide to going to a card show" guide** (Tyler 2026-05-06). Create a long-form guide page (likely `/how-to-attend-a-card-show.html` or extend `/hawaii-card-shows-guide.html`) covering: what to expect, what to bring, how to vendor for the first time, how trade nights differ from card shows, kid-friendly considerations, vendor etiquette. Pure SEO play targeting "how to attend a card show" / "first time card show tips" / "card show vendor guide" queries. Reusable in the welcome email sequence (above) once written.
+- [ ] **"Guide to going to a card show" guide** (Tyler 2026-05-06). Create a long-form guide page (likely `/how-to-attend-a-card-show.html` or extend `/hawaii-card-shows-guide.html`) covering: what to expect, what to bring, how to vendor for the first time, how trade nights differ from card shows, kid-friendly considerations, vendor etiquette. Pure SEO play targeting "how to attend a card show" / "first time card show tips" / "card show vendor guide" queries. Reusable in the welcome email sequence (above) once written. **Note 2026-05-13:** the `/what-is-a-card-show.html` pillar and `/card-show-etiquette.html` companion now cover most of this. This backlog item can probably be closed or merged into the pillar; revisit when reviewing content gaps.
+
+- [ ] **External backlinking workflow** (Tyler 2026-05-13). The internal linking foundation is solid (May 13 — pillar + etiquette + series pages + recaps now cross-link properly). The bigger ranking lever from here is external backlinks pointing to hawaiicardshows.com. The [Press kit page](press.html) is the foundation. Workflow to build:
+  - **Tier 1 targets** (hobby press, immediate fit): Beckett, The Hobby News Daily, Cardboard Connection, Card Talk Podcast, Probably Magic, sports-card podcasts (Money Card Pod, Sports Card Investor)
+  - **Tier 2 targets** (community / niche): r/sportscards mod outreach, r/PokemonTCG mod outreach, Hawaii-specific Pokemon Discord servers and Facebook groups
+  - **Tier 3 targets** (Hawaii business / lifestyle press): Honolulu Magazine, Pacific Business News, Star-Advertiser business desk, Hawaii Public Radio (lifestyle segment angle), Frolic Hawaii (food/culture overlap with Bayview)
+  - **Outreach template**: short pitch email, includes 3 angles (hobby-growth story, Hawaii-local story, founder story), links to press kit + a recent recap. Save as `outreach-template.md` in the repo or as a draft in Buttondown.
+  - **Tracking**: simple sheet — outlet, contact, angle pitched, date sent, response, follow-up date. Even a Google Doc works for now.
+  - **Cadence**: 3-5 pitches/week is plenty. Quality + relevance > volume. Each landed backlink from a relevant outlet is worth more than 50 spammy ones.
+  - **Bonus play**: vendor and organizer relationships are *also* a backlink play. Ask Kamaka, Javin, PKMN Collective, Maui Sports Cards, Bubbah's Toy Box if they'd link to their series page from their Linktree / website. Free, high-relevance, easy ask.
 
 ## Recently Completed
 

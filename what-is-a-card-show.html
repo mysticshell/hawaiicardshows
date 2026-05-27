@@ -154,12 +154,14 @@
 .island-section ul li strong { font-family: 'Phudu', sans-serif; color: var(--night); display: block; margin-bottom: 2px; }
 .island-section ul li .meta { font-size: 13px; color: var(--text-light); }
 
-/* FAQ */
+/* FAQ — overrides the accordion styles from /branding/site.css.
+   On this page we want answers always visible (better for SEO + readability on a long-form pillar). */
 .faq-block { margin-top: 16px; }
 .faq-block .faq-item { padding: 22px 0; border-bottom: 1px solid var(--sand-dark); }
 .faq-block .faq-item:last-child { border-bottom: none; }
-.faq-block .faq-q { font-family: 'Phudu', sans-serif; font-weight: 700; color: var(--night); font-size: 17px; margin-bottom: 8px; }
-.faq-block .faq-a { color: var(--text); font-size: 15px; line-height: 1.7; }
+.faq-block .faq-q { font-family: 'Phudu', sans-serif; font-weight: 700; color: var(--night); font-size: 17px; margin-bottom: 8px; cursor: default; }
+.faq-block .faq-q:hover { color: var(--night); }
+.faq-block .faq-a { color: var(--text); font-size: 15px; line-height: 1.7; max-height: none !important; overflow: visible !important; padding-bottom: 0 !important; transition: none !important; }
 .faq-block .faq-a a { color: var(--ocean); font-weight: 600; }
 
 /* Author byline */
@@ -327,11 +329,13 @@
     <h3>A goal — or an open mind</h3>
     <p>If it's your first time, you don't need a plan. Walk in with an open mind, take in the floor, and let yourself be a beginner. There's no quiz at the door. But once you've got your legs under you, having a focus keeps you from getting overwhelmed and walking out with random stuff you didn't actually want. That focus can be a checklist of cards you're hunting, your master set binder open to the gaps, or a specific player or set you're building. Anything that gives the day a direction.</p>
 
-    <h3>A comps app on your phone</h3>
-    <p>This is the single biggest thing separating informed buyers from people who get worked — and it matters even more if you're bringing cards to sell or trade. Know what your stuff is worth and what you're willing to take for it. Walking up to every vendor asking "what's your offer?" without a number in your own head wastes your time and theirs.</p>
+    <h3>Comps</h3>
+    <p><strong>Comps</strong> — short for <em>comparables</em>, or <em>completed sales</em> depending on who you ask — is sales data (not listings) that buyers and sellers use to understand what a card is actually worth. Listings tell you what someone <em>wants</em> for a card. Comps tell you what someone <em>actually paid</em>. Big difference.</p>
+    <p>Having comps on your phone is the single biggest thing separating informed buyers from people who get worked. It matters even more if you're bringing cards to sell or trade — know what your stuff is worth and what you'd take for it. Walking up to every vendor asking "what's your offer?" without a number in your head wastes their time and yours.</p>
     <p>What to use depends on what you collect:</p>
     <ul>
-      <li><strong>Sports cards:</strong> eBay sold listings or <a href="https://130point.com" target="_blank" rel="noopener">130point.com</a>. For graded, <a href="https://www.alt.xyz" target="_blank" rel="noopener">Alt</a> or <a href="https://www.cardladder.com" target="_blank" rel="noopener">Card Ladder</a>.</li>
+      <li><strong>Sports cards:</strong> eBay sold listings or <a href="https://130point.com" target="_blank" rel="noopener">130point.com</a>.</li>
+      <li><strong>Graded cards:</strong> <a href="https://www.cardladder.com" target="_blank" rel="noopener">Card Ladder</a> and <a href="https://www.alt.xyz" target="_blank" rel="noopener">Alt</a> are the defaults. Both give you population data and clean comp history per grade.</li>
       <li><strong>Modern TCG:</strong> <a href="https://www.tcgplayer.com" target="_blank" rel="noopener">TCGplayer</a> is the default comp, full stop.</li>
       <li><strong>Vintage TCG / low-volume cards:</strong> a mix of TCGplayer (where there's enough sales data) and eBay sold for everything else. Condition matters a lot more here, so look at the actual scans on recent sales.</li>
       <li><strong>Overall:</strong> keeping a list on <a href="https://collectr.com" target="_blank" rel="noopener">Collectr</a> or TCGplayer makes it easy to check comps from a vendor's table or surface your wantlist while trading.</li>
@@ -360,10 +364,10 @@
     <ol class="rule-list">
       <li><strong>Ask before touching.</strong> Cards behind glass or in display cases — always ask the vendor to pull them. Even cards in binders, ask first. Some vendors are chill, some aren't, and the polite move is to check.</li>
       <li><strong>Don't lowball aggressively on a first offer.</strong> If a card is marked $100 and you offer $40, you're not negotiating — you're insulting them. A reasonable opening is usually 10–25% off the asking price.</li>
-      <li><strong>"What's your best?" is a real move.</strong> It's the standard way to ask for a vendor's bottom price without naming a number first. Use it.</li>
+      <li><strong>"What's your best?" is a real move — for the right cards.</strong> It's the standard way to ask for a vendor's bottom price without naming a number first. Just save it for <em>bigger</em> cards or when you're buying a stack of singles at once. Asking "what's your best?" on a $7 card is asking the vendor to eat margin that isn't really there — a $1 discount is already over 10% off, which is a lot on a low-dollar card. Use the move where the math makes sense.</li>
       <li><strong>Bundle for better prices — but be realistic.</strong> Pulling three or four cards from the same vendor and asking for a combined price almost always gets you a discount. Just know the math: you're not getting a deal on a $12 card. The "logical" $10 ask is an 83% offer, and the vendor probably took it in around 80% — that's basically asking them to give it to you for free. Where bundling actually works is in round numbers. Pick up $55 worth of cards and ask for a flat $50. Vendor moves volume, you save a few bucks, everyone wins.</li>
       <li><strong>Don't camp at one table.</strong> If you're not buying and someone's waiting behind you, step aside. Browse, come back, browse again. Vendors notice (in a good way).</li>
-      <li><strong>Ask about a card, don't talk it down.</strong> Calling out a soft corner or off-center print mid-negotiation is transparent, and vendors hear it constantly. A better move: ask the vendor how <em>they'd</em> condition the card, or "is that spot on the corner something you noticed?" That's a real question, not a tactic. If they hadn't seen it, you've given them a chance to revisit the price honestly. If they had, you'll learn how they think about condition — which is its own kind of information.</li>
+      <li><strong>Ask about a card, don't talk it down.</strong> Mid-negotiation, vendors know what you're doing when you suddenly notice a soft corner or off-center print — they hear it all day. Most will knock off a few percent in good faith for a real condition issue, but trying to chop a card in half over centering is bad form. A better move: ask the vendor how <em>they'd</em> condition the card, or "is the corner something you noticed?" That's a real question. If they hadn't seen it, you've given them a chance to revisit the price honestly. If they had, you'll learn how they think about condition — which is its own kind of information.</li>
       <li><strong>Cash deals get cash prices.</strong> Negotiate with the payment method in mind. If you drive a hard bargain and then pull out your phone to Venmo or a card reader, expect the vendor to walk the deal back. That's not them being shady — most are eating 3% in fees on digital, and the cash discount you just negotiated assumed cash. Decide how you're paying <em>before</em> you negotiate.</li>
       <li><strong>Tip the breakers and stream hosts.</strong> If you hit and you had fun, throw a few bucks. Small thing, builds the community.</li>
     </ol>
@@ -402,7 +406,9 @@
     <h3>Selling to dealers</h3>
     <p>Walk up, ask if they're buying, show them what you have organized and sleeved. What you can actually get varies a lot — it depends on the category, the price tier, and how liquid the card is.</p>
     <p>For <strong>TCG under $20–$50</strong>, expect around 70% in cash and 80% in trade. Less liquid cards (think low-grade modern slabs) often pull lower offers. For <strong>bigger cards — modern SIRs, anything over $100</strong> — you can usually fight for a higher percentage, especially walking just one or two cards around to get competing offers.</p>
+    <p>If you're selling <strong>raw</strong> bigger cards, expect condition and centering to come up. The same way a <em>buyer</em> might try to nudge a price down for a white dot or an off-center print, a <em>vendor</em> will use those same things to discount the percentage they'll pay you. That's just the other side of the table.</p>
     <p>If you're selling a <strong>lot</strong> (a stack or a binder dump), expect to take a lower percentage. The vendor is buying everything — liquid and illiquid — and pricing in the time it'll take them to actually sell through it. That's not a rip-off; that's the math of a wholesale buy.</p>
+    <p>One more thing worth saying: it's not always about squeezing every last drop out of every vendor. If you find a few vendors you actually like dealing with, selling to them at a fair percentage builds the relationship. When it comes time to move something harder — illiquid, weird condition, niche set — those are the vendors who'll help you out. The hobby's small. Repeat business with the people who treat you right pays off.</p>
     <p>Whichever direction you go: walk in knowing what you'd take. If you don't have a number in mind, you're wasting their time and yours.</p>
 
     <h3>Trading peer-to-peer</h3>
@@ -459,11 +465,13 @@
         <li><strong><a href="/shows/keep-it-aloha">Keep It Aloha Card Show</a></strong> <span class="meta">— Free, festival-style show at SALT at Our Kaka'ako. Hosted by Kamaka Dias and Hawaii Collectibles. Recurring monthly through 2026.</span></li>
         <li><strong><a href="/shows/bayview-night-market">Bayview Night Market Trade Night</a></strong> <span class="meta">— PKMN Collective's recurring trade night every 1st &amp; 3rd Tuesday at Bayview Golf Course in Kaneohe.</span></li>
         <li><strong>Aloha Card Show</strong> <span class="meta">— Annual large-format show at the Blaisdell, with a separate Windward Mall edition. Run by Aloha Card Shop.</span></li>
-        <li><strong>Saint Louis Collectors Expo</strong> <span class="meta">— Two-day expo at St. Louis High School Gym from HNL Card Fest. One of the larger gatherings on Oahu.</span></li>
         <li><strong>Sports Cards &amp; Collectibles Show</strong> <span class="meta">— Recurring 2nd weekend of the month, hosted by Lance.</span></li>
+        <li><strong>HNL Card Fest</strong> <span class="meta">— Two-day expo at St. Louis High School Gym. One of the larger gatherings on Oahu.</span></li>
         <li><strong>TCG Tavern Trade Day</strong> <span class="meta">— Weekly Saturday + Sunday meetup format, great for new players.</span></li>
         <li><strong>Uncle Tony's Trade Night</strong> <span class="meta">— Every 3rd Friday at 808 Showcase in Pearlridge.</span></li>
         <li><strong>ToyLynx Trade Night</strong> <span class="meta">— Every 2nd &amp; 4th Thursday at ToyLynx in Honolulu.</span></li>
+        <li><strong>West Side Card Show</strong> <span class="meta">— West-side Oahu show hosted by Rocket Relics, often at the Kroc Center.</span></li>
+        <li><strong>Mini Pokemon Market</strong> <span class="meta">— Pokemon-focused mini-market from Rocket Relics, smaller-scale and family-friendly.</span></li>
         <li><strong>Hawaii Pop Con</strong> <span class="meta">— Annual pop culture convention with a strong card and collectibles presence.</span></li>
         <li><strong>Hawaii Comic &amp; Toy Expo x The Card District</strong> <span class="meta">— Annual large multi-vendor event blending cards, comics, and pop culture.</span></li>
         <li><strong>6th Collector Megalopolis</strong> <span class="meta">— Recurring large-format show at Pearlridge Center hosted by Hi Collector.</span></li>

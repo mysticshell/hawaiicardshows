@@ -130,12 +130,13 @@
 .intro-callout { background: var(--white); border-left: 5px solid var(--lava); border-radius: 0 12px 12px 0; padding: 22px 26px; margin: 32px 0; box-shadow: var(--shadow); }
 .intro-callout p { margin: 0; font-size: 16px; color: var(--text); line-height: 1.7; }
 
-/* FAQ */
+/* FAQ — overrides accordion styles from /branding/site.css so answers stay always-visible. */
 .faq-block { margin-top: 16px; }
 .faq-block .faq-item { padding: 22px 0; border-bottom: 1px solid var(--sand-dark); }
 .faq-block .faq-item:last-child { border-bottom: none; }
-.faq-block .faq-q { font-family: 'Phudu', sans-serif; font-weight: 700; color: var(--night); font-size: 17px; margin-bottom: 8px; }
-.faq-block .faq-a { color: var(--text); font-size: 15px; line-height: 1.7; }
+.faq-block .faq-q { font-family: 'Phudu', sans-serif; font-weight: 700; color: var(--night); font-size: 17px; margin-bottom: 8px; cursor: default; }
+.faq-block .faq-q:hover { color: var(--night); }
+.faq-block .faq-a { color: var(--text); font-size: 15px; line-height: 1.7; max-height: none !important; overflow: visible !important; padding-bottom: 0 !important; transition: none !important; }
 .faq-block .faq-a a { color: var(--ocean); font-weight: 600; }
 
 /* Author byline */

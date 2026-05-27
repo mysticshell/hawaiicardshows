@@ -65,7 +65,8 @@ Before you touch the template, answer these. Paste the answers to Claude (or a w
 - [ ] Lead paragraph hooks the reader — what made this show notable?
 - [ ] Include at least 2 `<h2>` subheadings to break up the body
 - [ ] Use the `highlight-box` for sponsor callouts (or delete if none)
-- [ ] Link to the related show page (`/shows/show.html?id=...`)
+- [ ] **Link to the series page** if the show has one (`/shows/keep-it-aloha`, `/shows/paradise-card-show`, `/shows/bayview-night-market`). Use it in the lead paragraph AND in the bottom CTA — this is the highest-leverage internal link for SEO authority flow back to the recurring series.
+- [ ] If no series page exists, link to the dynamic event detail (`/shows/show.html?id=...`) or fall back to the beginner's guide (`/what-is-a-card-show.html`) for the CTA
 - [ ] Link to featured shop pages (`/shops/...`) for every shop mentioned
 - [ ] Link to the organizer's Instagram
 
