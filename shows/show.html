@@ -292,7 +292,10 @@ function injectSEO(event) {
   const description = cleanDesc
     ? cleanDesc.substring(0, 160) + (cleanDesc.length > 160 ? '...' : '')
     : `${event.name} — card show details, location, and dates in ${event.island || 'Hawaii'}. Find more Hawaii card shows at hawaiicardshows.com.`;
-  const canonicalUrl = 'https://hawaiicardshows.com' + (event.custom_url || '/shows/show.html?id=' + event.id);
+  // Prefer clean slug URL as canonical; falls back to series URL or ?id= form
+  const seriesUrl = hcsSeriesUrlFor(event);
+  const slugUrl = event.name ? '/shows/' + hcsSlugify(event.name) : null;
+  const canonicalUrl = 'https://hawaiicardshows.com' + (event.custom_url || seriesUrl || slugUrl || ('/shows/show.html?id=' + event.id));
   const imageUrl = event.logo_url || 'https://hawaiicardshows.com/favicon.svg';
 
   // Standard meta tags
@@ -420,7 +423,8 @@ function hcsSeriesUrlFor(event){
   return HCS_SERIES_URLS[event.name.toLowerCase().trim()] || null;
 }
 
-// Slugify event name for clean URLs (must match the helper in /index.html)
+// Slugify event name for clean URLs (must match the helper in /index.html).
+// Served on production by /functions/shows/[slug].js Cloudflare Pages Function.
 function hcsSlugify(s){
   return (s||'').normalize('NFD').replace(/[̀-ͯ]/g,'')
     .toLowerCase().replace(/[‘’'ʻ]/g,'').replace(/[&+]/g,' ')
@@ -430,7 +434,16 @@ function hcsSlugify(s){
 async function loadData() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
-  const slug = params.get('slug');
+  let slug = params.get('slug');
+
+  // When served via the /shows/<slug> Pages Function, the URL bar shows the
+  // pretty slug but there's no query param — extract it from the pathname.
+  if (!id && !slug) {
+    const pathMatch = window.location.pathname.match(/^\/shows\/([^/]+?)(?:\.html)?$/);
+    if (pathMatch && pathMatch[1] !== 'show' && pathMatch[1] !== 'index') {
+      slug = pathMatch[1];
+    }
+  }
 
   if (!id && !slug) {
     document.getElementById('loader').textContent = "Invalid setup. No Event ID or slug provided.";
