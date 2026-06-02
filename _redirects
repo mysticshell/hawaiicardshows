@@ -1,18 +1,6 @@
 # Cloudflare Pages redirects
 # Format: <from> <to> <status>
-#
-# Order matters. Specific 301 redirects (renamed pages) come FIRST.
-# Catch-all slug rewrites come LAST so they only fire when no real
-# file or dedicated static page matches the request.
 
-# ─── Renamed pages (permanent 301) ───
 # Series page renamed 2026-05-13: "West Side Card Show" → "West Side Show"
 /shows/west-side-card-show       /shows/west-side-show         301
 /shows/west-side-card-show.html  /shows/west-side-show         301
-
-# ─── Catch-all slug rewrites (status 200 = silent rewrite, URL stays clean) ───
-# /shows/<slug> → show.html?slug=<slug>. Only fires for paths that aren't
-# already a real file (Cloudflare Pages serves static files first).
-# Lets us have clean URLs like /shows/pokemon-rave for one-off events
-# that don't have a dedicated static page.
-/shows/:slug                     /shows/show.html?slug=:slug   200

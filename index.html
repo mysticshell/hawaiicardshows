@@ -342,9 +342,7 @@ const HCS_SERIES_URLS={
   'west side show iv':'/shows/west-side-show'
 };
 function hcsSeriesUrlFor(e){if(!e||!e.name)return null;return HCS_SERIES_URLS[e.name.toLowerCase().trim()]||null;}
-// Slugify event name for clean URLs (e.g. "Pokémon Rave" → "pokemon-rave")
-function hcsSlugify(s){return(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[‘’'ʻ]/g,'').replace(/[&+]/g,' ').replace(/[^a-z0-9]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');}
-function getShowUrl(e){if(e.custom_url)return e.custom_url;const series=hcsSeriesUrlFor(e);if(series)return series;const slug=hcsSlugify(e.name);return slug?`/shows/${slug}`:`/shows/show.html?id=${e.id}`;}
+function getShowUrl(e){return e.custom_url||hcsSeriesUrlFor(e)||`/shows/show.html?id=${e.id}`;}
 async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true});if(error){console.error(error);return;}allEvents=data||[];renderFeatured();renderUpcoming();renderRecurring();renderAnnual();renderCalendar();updateStats();renderAgenda();injectEventSchema();renderRecentRecaps();}
 
 function renderRecentRecaps(){

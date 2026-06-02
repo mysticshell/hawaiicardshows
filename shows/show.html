@@ -292,10 +292,7 @@ function injectSEO(event) {
   const description = cleanDesc
     ? cleanDesc.substring(0, 160) + (cleanDesc.length > 160 ? '...' : '')
     : `${event.name} — card show details, location, and dates in ${event.island || 'Hawaii'}. Find more Hawaii card shows at hawaiicardshows.com.`;
-  // Prefer the clean slug-based URL as canonical (or series-page URL, or custom_url override)
-  const seriesUrl = hcsSeriesUrlFor(event);
-  const slugUrl = event.name ? '/shows/' + hcsSlugify(event.name) : null;
-  const canonicalUrl = 'https://hawaiicardshows.com' + (event.custom_url || seriesUrl || slugUrl || ('/shows/show.html?id=' + event.id));
+  const canonicalUrl = 'https://hawaiicardshows.com' + (event.custom_url || '/shows/show.html?id=' + event.id);
   const imageUrl = event.logo_url || 'https://hawaiicardshows.com/favicon.svg';
 
   // Standard meta tags
