@@ -292,7 +292,10 @@ function injectSEO(event) {
   const description = cleanDesc
     ? cleanDesc.substring(0, 160) + (cleanDesc.length > 160 ? '...' : '')
     : `${event.name} — card show details, location, and dates in ${event.island || 'Hawaii'}. Find more Hawaii card shows at hawaiicardshows.com.`;
-  const canonicalUrl = 'https://hawaiicardshows.com' + (event.custom_url || '/shows/show.html?id=' + event.id);
+  // Prefer the clean slug-based URL as canonical (or series-page URL, or custom_url override)
+  const seriesUrl = hcsSeriesUrlFor(event);
+  const slugUrl = event.name ? '/shows/' + hcsSlugify(event.name) : null;
+  const canonicalUrl = 'https://hawaiicardshows.com' + (event.custom_url || seriesUrl || slugUrl || ('/shows/show.html?id=' + event.id));
   const imageUrl = event.logo_url || 'https://hawaiicardshows.com/favicon.svg';
 
   // Standard meta tags
@@ -420,20 +423,49 @@ function hcsSeriesUrlFor(event){
   return HCS_SERIES_URLS[event.name.toLowerCase().trim()] || null;
 }
 
+// Slugify event name for clean URLs (must match the helper in /index.html)
+function hcsSlugify(s){
+  return (s||'').normalize('NFD').replace(/[̀-ͯ]/g,'')
+    .toLowerCase().replace(/[‘’'ʻ]/g,'').replace(/[&+]/g,' ')
+    .replace(/[^a-z0-9]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+}
+
 async function loadData() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
-  if(!id) {
-    document.getElementById('loader').textContent = "Invalid setup. No Event ID provided.";
+  const slug = params.get('slug');
+
+  if (!id && !slug) {
+    document.getElementById('loader').textContent = "Invalid setup. No Event ID or slug provided.";
     return;
   }
 
-  // Fetch from DB
-  const { data: event, error } = await sb.from('events').select('*').eq('id', id).single();
+  let event = null;
+  let error = null;
 
-  if (error || !event) {
-    document.getElementById('loader').textContent = "Event Not Found.";
-    return;
+  if (id) {
+    // Direct lookup by UUID
+    const res = await sb.from('events').select('*').eq('id', id).single();
+    event = res.data; error = res.error;
+  } else {
+    // Slug lookup — find an approved event whose slugified name matches.
+    // If multiple match (recurring brand sharing a name), prefer the next upcoming.
+    const today = new Date().toISOString().slice(0,10);
+    const res = await sb.from('events').select('*').eq('status', 'approved');
+    if (res.error) { error = res.error; }
+    else {
+      const matches = (res.data || []).filter(e => hcsSlugify(e.name) === slug);
+      if (matches.length === 0) {
+        error = { message: 'No event matches slug: ' + slug };
+      } else {
+        // Prefer upcoming, then most recent past
+        const upcoming = matches.filter(e => !e.start_date || e.start_date >= today)
+          .sort((a,b) => (a.start_date || '9999').localeCompare(b.start_date || '9999'));
+        const past = matches.filter(e => e.start_date && e.start_date < today)
+          .sort((a,b) => (b.start_date || '').localeCompare(a.start_date || ''));
+        event = upcoming[0] || past[0];
+      }
+    }
   }
 
   // If this event belongs to a series with a static page, send the user there.
