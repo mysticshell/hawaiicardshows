@@ -66,23 +66,54 @@ function urlFor(e) {
   return slug ? `/shows/${slug}` : `/shows/show.html?id=${e.id}`;
 }
 
+// Build a Headers object with all the standard headers we want on every response.
+// Using `new Headers()` explicitly (rather than spreading into a plain object) so
+// Cloudflare Workers honors them and doesn't override Content-Type via inference.
+function buildHeaders({ json = true, cacheSeconds = 300 } = {}) {
+  const h = new Headers();
+  h.set('Access-Control-Allow-Origin', '*');
+  h.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  h.set('Access-Control-Allow-Headers', 'Content-Type');
+  h.set('Vary', 'Accept-Encoding');
+  if (json) h.set('Content-Type', 'application/json; charset=utf-8');
+  if (cacheSeconds > 0) h.set('Cache-Control', `public, max-age=${cacheSeconds}, s-maxage=${cacheSeconds}`);
+  return h;
+}
+
+function jsonResponse(body, status = 200, cacheSeconds = 300) {
+  return new Response(JSON.stringify(body, null, 2), {
+    status,
+    headers: buildHeaders({ json: true, cacheSeconds }),
+  });
+}
+
 export async function onRequest(context) {
   const { request } = context;
   const url = new URL(request.url);
 
-  // CORS — let any partner integrate from any origin
-  const cors = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
-  if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors });
-  if (request.method !== 'GET')     return new Response('Method Not Allowed', { status: 405, headers: cors });
+  // CORS preflight + method guard
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: buildHeaders({ json: false, cacheSeconds: 0 }) });
+  }
+  if (request.method !== 'GET') {
+    return jsonResponse({ error: 'Method not allowed', allowed: ['GET', 'OPTIONS'] }, 405, 0);
+  }
 
-  // Params
-  const days = Math.max(1, Math.min(365, parseInt(url.searchParams.get('days') || '90', 10)));
-  const islandFilter = url.searchParams.get('island');
-  const typeFilter = url.searchParams.get('type');
+  // Param parsing with defensive defaults
+  const daysRaw = parseInt(url.searchParams.get('days') || '90', 10);
+  const days = Number.isFinite(daysRaw) ? Math.max(1, Math.min(365, daysRaw)) : 90;
+  const islandFilter = url.searchParams.get('island') || null;
+  const typeFilter = url.searchParams.get('type') || null;
+
+  // Validate enum filters so we don't silently return everything when a typo is passed
+  const VALID_ISLANDS = ['Oahu', 'Maui', 'Big Island', 'Kauai', 'Molokai', 'Lanai'];
+  const VALID_TYPES = ['one-time', 'annual', 'recurring', 'music'];
+  if (islandFilter && !VALID_ISLANDS.includes(islandFilter)) {
+    return jsonResponse({ error: 'Invalid island filter', valid: VALID_ISLANDS }, 400, 0);
+  }
+  if (typeFilter && !VALID_TYPES.includes(typeFilter)) {
+    return jsonResponse({ error: 'Invalid type filter', valid: VALID_TYPES }, 400, 0);
+  }
 
   // Date math: today through today+days, in Hawaii time (UTC-10, no DST)
   const nowHst = new Date(Date.now() - 10 * 3600 * 1000);
@@ -97,12 +128,10 @@ export async function onRequest(context) {
       headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` },
     });
   } catch (err) {
-    return new Response(JSON.stringify({ error: 'Supabase fetch failed', detail: String(err) }),
-      { status: 502, headers: { ...cors, 'Content-Type': 'application/json' } });
+    return jsonResponse({ error: 'Upstream data source unavailable', detail: String(err) }, 502, 0);
   }
   if (!res.ok) {
-    return new Response(JSON.stringify({ error: 'Supabase returned non-2xx', status: res.status }),
-      { status: 502, headers: { ...cors, 'Content-Type': 'application/json' } });
+    return jsonResponse({ error: 'Upstream data source returned non-2xx', status: res.status }, 502, 0);
   }
   const raw = await res.json();
 
@@ -142,21 +171,14 @@ export async function onRequest(context) {
     url: `https://hawaiicardshows.com${urlFor(e)}`,
   }));
 
-  return new Response(JSON.stringify({
+  return jsonResponse({
     generated_at: new Date().toISOString(),
     window_days: days,
     count: events.length,
     filters: {
-      island: islandFilter || null,
-      event_type: typeFilter || null,
+      island: islandFilter,
+      event_type: typeFilter,
     },
     events,
-  }, null, 2), {
-    status: 200,
-    headers: {
-      ...cors,
-      'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'public, max-age=300, s-maxage=300',
-    },
   });
 }
