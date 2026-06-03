@@ -126,7 +126,10 @@ export async function onRequest(context) {
   // Fetch from Supabase. Use an explicit field list (not select=*) so that if
   // we ever add private columns to the events table (organizer_email, internal
   // notes, etc.), they don't auto-leak through this public endpoint.
-  const fields = 'id,name,organizer,event_type,recurrence,venue,island,description,start_date,end_date,start_time,end_time,instagram,logo_url,featured,custom_url';
+  // Explicit field list (not select=*) so future private columns can't auto-leak.
+  // NOTE: only list columns that actually exist in the events table — Supabase
+  // returns 400 if any field is unknown, which would cascade to a 502 for callers.
+  const fields = 'id,name,organizer,event_type,recurrence,venue,island,description,start_date,end_date,start_time,end_time,instagram,logo_url,featured';
   const sbUrl = `${SUPABASE_URL}/rest/v1/events?status=eq.approved&select=${fields}&order=start_date.asc.nullsfirst`;
   let res;
   try {
