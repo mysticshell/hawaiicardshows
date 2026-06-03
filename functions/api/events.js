@@ -80,8 +80,8 @@ function buildHeaders({ json = true, cacheSeconds = 300 } = {}) {
   return h;
 }
 
-function jsonResponse(body, status = 200, cacheSeconds = 300) {
-  return new Response(JSON.stringify(body, null, 2), {
+function jsonResponse(body, status = 200, cacheSeconds = 300, { headOnly = false } = {}) {
+  return new Response(headOnly ? null : JSON.stringify(body, null, 2), {
     status,
     headers: buildHeaders({ json: true, cacheSeconds }),
   });
@@ -95,9 +95,12 @@ export async function onRequest(context) {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: buildHeaders({ json: false, cacheSeconds: 0 }) });
   }
-  if (request.method !== 'GET') {
-    return jsonResponse({ error: 'Method not allowed', allowed: ['GET', 'OPTIONS'] }, 405, 0);
+  if (request.method !== 'GET' && request.method !== 'HEAD') {
+    return jsonResponse({ error: 'Method not allowed', allowed: ['GET', 'HEAD', 'OPTIONS'] }, 405, 0);
   }
+  // HEAD: per the HTTP spec, return identical headers to GET but with no body.
+  // Letting it flow through to GET handling, we'll drop the body at the end.
+  const isHead = request.method === 'HEAD';
 
   // Param parsing with defensive defaults
   const daysRaw = parseInt(url.searchParams.get('days') || '90', 10);
@@ -180,5 +183,5 @@ export async function onRequest(context) {
       event_type: typeFilter,
     },
     events,
-  });
+  }, 200, 300, { headOnly: isHead });
 }

@@ -1,16 +1,48 @@
 # Hawaii Card Shows — Project Status
 
-*Last updated: 2026-05-13*
+*Last updated: 2026-06-03*
 
 ---
 
-## 🗓️ Surface These on/after 2026-05-19 (Tyler back in Hawaii)
+## 🔥 Active Threads (next session — pick up here)
 
-Tyler is traveling this week (May 13). When the next session opens on or after May 19, surface these proactively — he asked to be reminded.
+### Collectr partnership — LIVE, awaiting Tyler reply
+Adam (Collectr CEO) responded asking for an API to poll shows. **We shipped the API + delivered an email draft same-day.** Tyler is sending the reply tomorrow morning Hawaii time.
 
-- [ ] **Upload welcome email sequence to Buttondown.** Three drafts are in the repo: [welcome-email.html](welcome-email.html) (Day 0), [welcome-email-2.html](welcome-email-2.html) (Day 7), [welcome-email-3.html](welcome-email-3.html) (Day 21). [WELCOME-SEQUENCE.md](WELCOME-SEQUENCE.md) has the setup steps. Tyler approved the content May 6 but hasn't uploaded yet — every new subscriber since then has missed the Day 7 + Day 21 drips. Worth getting live ASAP.
-- [ ] **Photos for the pillar.** Asked Tyler May 13 to grab photos at upcoming shows. Specifically needed: (1) Maui or Big Island show photo — biggest credibility gap, zero neighbor-island photos in the pillar right now. (2) Two collectors trading at a trade table. (3) Vendor table close-up / hands flipping a binder. (4) Dollar bin shot — kid + budget collectors. Once supplied, drop them into `/recaps/images/` and swap in via [what-is-a-card-show.html](what-is-a-card-show.html) figure blocks.
-- [ ] **Social media content production from the SEO pillar.** [SOCIAL-MEDIA-PLAYBOOK.md](SOCIAL-MEDIA-PLAYBOOK.md) has the full 5-tier distribution plan including: YouTube long-form video outline (timestamped per etiquette rule), Shorts/Reels chop list with 10 hook lines, 4 reusable Instagram carousels, newsletter anchor sends, Twitter/X/Threads cadence. Tyler wants to dig into this — pick whichever entry point feels right (carousel design, B-roll capture plan for upcoming shows, or hook-line voice pass).
+- **Endpoint:** `https://hawaiicardshows.com/api/events` (Cloudflare Pages Function at [functions/api/events.js](functions/api/events.js))
+- **Status:** Deployed via commit `f4a4a50`, content-type fixed to `application/json`, full validation + edge case handling in place
+- **Email draft is in the previous turn of this session** — Tyler is reviewing before sending
+- **Watch for:** Adam's reply with technical questions (auth? webhooks? specific fields?) or scheduling a call. He's a CEO; expect 24-72hr turnaround
+- **If he asks for more fields/webhooks/auth:** that's a buying signal — say yes and build it
+
+### Slug URLs — clean URLs are LIVE (2nd attempt)
+Tyler asked for cleaner `/shows/<slug>` URLs instead of `?id=<uuid>`. First attempt (`_redirects` with status 200) broke production with redirect loops — reverted in `b65c891`. **Second attempt using Cloudflare Pages Function works correctly** — commit `866b92f`. URLs like `/shows/pokemon-rave` now resolve via [functions/shows/[slug].js](functions/shows/[slug].js).
+
+### Emi (recent college grad) — social media collab idea
+Tyler had coffee with Emi May 31 — anime fan, wants to work in TV/marketing, has social media experience, no job this summer. I drafted three deal shapes for a win-win collab. **Tyler paused this to focus on Collectr — reminder to come back to it.** Concrete proposal queued: 2-week paid trial ($300, 5 IG posts + 1 Reel + 1 newsletter section), then $150/show per-show coverage if it works. Full thinking in TaskGet #1.
+
+## 📊 Where the site is right now (June 3 snapshot)
+
+- **6,616 sessions / 3,533 users** in last 30d (**+66% MoM**, second consecutive doubling month)
+- **2,464 unique Hawaii collectors** — discovery layer thesis is validated
+- **34 QR card scans** total (TCG Tavern at Evolving Realms is the runaway at 18 scans)
+- **46 newsletter signups in 30d** (was 25 prior — funnel doubled)
+- **May 30-31 weekend hit 662 sessions/day** — best day in site history, driven by Hawaii Shows event
+- **August 9 weekend (Get Nutz In Paradise + HNL x Fandom) is the next big spike target**
+
+## 🗓️ Personal email infrastructure (June 1 setup)
+
+Tyler now has `tyler@hawaiicardshows.com` for personal outreach (founder-to-founder), forwarding to his Gmail with Send-As configured via Google Workspace. Used for the Collectr conversation.
+
+Aliases set up: `tyler@`, `aloha@`, `press@`, `partnerships@` — all route to one Google Workspace seat.
+
+## 🟡 Pending Tyler Tasks
+
+- [ ] **Welcome email sequence to Buttondown.** Three drafts in repo: [welcome-email.html](welcome-email.html) (Day 0), [welcome-email-2.html](welcome-email-2.html) (Day 7), [welcome-email-3.html](welcome-email-3.html) (Day 21). [WELCOME-SEQUENCE.md](WELCOME-SEQUENCE.md) has setup steps. Approved May 6 but still not uploaded.
+- [ ] **Photos for the SEO pillar.** Need: (1) Maui or Big Island show photo (biggest credibility gap), (2) Two collectors trading, (3) Vendor table close-up, (4) Dollar bin shot.
+- [ ] **Big Island Breaks outreach.** Page is built. Send to them for review + get address/hours.
+- [ ] **Add Big Island Breaks to shop directory** once they approve their page.
+- [ ] **Bayview landscape hero photo.** Tyler to grab a wide landscape shot at the next Tuesday meet so we can swap the gradient hero to a full-bleed banner like Keep It Aloha.
 
 ## Blocking — Needs Tyler
 
