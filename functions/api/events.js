@@ -123,18 +123,24 @@ export async function onRequest(context) {
   const today = nowHst.toISOString().slice(0, 10);
   const cutoff = new Date(nowHst.getTime() + days * 86400 * 1000).toISOString().slice(0, 10);
 
-  // Fetch from Supabase
-  const sbUrl = `${SUPABASE_URL}/rest/v1/events?status=eq.approved&select=*&order=start_date.asc.nullsfirst`;
+  // Fetch from Supabase. Use an explicit field list (not select=*) so that if
+  // we ever add private columns to the events table (organizer_email, internal
+  // notes, etc.), they don't auto-leak through this public endpoint.
+  const fields = 'id,name,organizer,event_type,recurrence,venue,island,description,start_date,end_date,start_time,end_time,instagram,logo_url,featured,custom_url';
+  const sbUrl = `${SUPABASE_URL}/rest/v1/events?status=eq.approved&select=${fields}&order=start_date.asc.nullsfirst`;
   let res;
   try {
     res = await fetch(sbUrl, {
       headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` },
     });
   } catch (err) {
-    return jsonResponse({ error: 'Upstream data source unavailable', detail: String(err) }, 502, 0);
+    // Don't leak stack traces / upstream URLs in the response body.
+    console.error('events API upstream fetch failed:', err);
+    return jsonResponse({ error: 'Upstream data source unavailable' }, 502, 0);
   }
   if (!res.ok) {
-    return jsonResponse({ error: 'Upstream data source returned non-2xx', status: res.status }, 502, 0);
+    console.error('events API upstream non-2xx:', res.status);
+    return jsonResponse({ error: 'Upstream data source returned non-2xx' }, 502, 0);
   }
   const raw = await res.json();
 
