@@ -41,6 +41,15 @@ Tyler asked for cleaner `/shows/<slug>` URLs instead of `?id=<uuid>`. First atte
 ### Emi (recent college grad) — social media collab idea
 Tyler had coffee with Emi May 31 — anime fan, wants to work in TV/marketing, has social media experience, no job this summer. I drafted three deal shapes for a win-win collab. **Tyler paused this to focus on Collectr — reminder to come back to it.** Concrete proposal queued: 2-week paid trial ($300, 5 IG posts + 1 Reel + 1 newsletter section), then $150/show per-show coverage if it works. Full thinking in TaskGet #1.
 
+### ⏰ Tonight / tomorrow morning (Tyler set this 2026-06-03 evening)
+
+Tyler stepping away — flagged these to circle back on when he has bandwidth tonight or tomorrow morning. Surface these explicitly at the start of the next session.
+
+1. **Upload welcome email sequence to Buttondown** (~30 min). Drafts ready: [welcome-email.html](welcome-email.html) Day 0, [welcome-email-2.html](welcome-email-2.html) Day 7, [welcome-email-3.html](welcome-email-3.html) Day 21. Setup steps in [WELCOME-SEQUENCE.md](WELCOME-SEQUENCE.md). 48+ subscribers since May 6 have missed the Day 7 + Day 21 drips — every day this slips, more compound loss.
+2. **Execute Backlink Playbook Phase 1** (~1 hour). [BACKLINK-PLAYBOOK.md](BACKLINK-PLAYBOOK.md) has the copy-paste DM script. Send to Kamaka (@kamakarips), Javin (@paradisecards_), PKMN Collective, Maui Sports Cards, GetNutz, ToyLynx, Bubbah's Toy Box, Aloha Card Shop. Each ask: add their series-page URL to their Linktree. Expected 4-5 backlinks within 48 hours, all high-relevance.
+
+When session opens, lead with: "Tyler — circling back on the two items you flagged last night. Want to start with the welcome email upload or the backlink DMs?"
+
 ## 📊 Where the site is right now (June 3 snapshot)
 
 - **6,616 sessions / 3,533 users** in last 30d (**+66% MoM**, second consecutive doubling month)
