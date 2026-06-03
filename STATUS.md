@@ -10,10 +10,30 @@
 Adam (Collectr CEO) responded asking for an API to poll shows. **We shipped the API + delivered an email draft same-day.** Tyler is sending the reply tomorrow morning Hawaii time.
 
 - **Endpoint:** `https://hawaiicardshows.com/api/events` (Cloudflare Pages Function at [functions/api/events.js](functions/api/events.js))
-- **Status:** Deployed via commit `f4a4a50`, content-type fixed to `application/json`, full validation + edge case handling in place
+- **Status:** Deployed via commit `4eab8f6`, content-type returns `application/json`, validation + edge case handling in place. Docs at [functions/api/README.md](functions/api/README.md) including a stability contract.
 - **Email draft is in the previous turn of this session** — Tyler is reviewing before sending
 - **Watch for:** Adam's reply with technical questions (auth? webhooks? specific fields?) or scheduling a call. He's a CEO; expect 24-72hr turnaround
 - **If he asks for more fields/webhooks/auth:** that's a buying signal — say yes and build it
+
+### ⚠️ API stability rule — read before changing event data structure
+
+We have a live public API at `/api/events` that Collectr (and any future partner) will integrate against. The README spells out an **additive-only contract**: new fields and new enum values are safe to add, but renaming/removing existing fields breaks integrations.
+
+**Before doing any of these, check API impact:**
+- Renaming columns in the Supabase `events` table
+- Renaming `event_type` values (currently: `one-time`, `annual`, `recurring`, `music`)
+- Renaming `island` values (currently: `Oahu`, `Maui`, `Big Island`, `Kauai`, `Molokai`, `Lanai`)
+- Changing the `url` field format / canonical URL pattern for shows
+- Removing fields from the API response shape in `functions/api/events.js`
+
+**Safe to change freely (no API impact):**
+- Website design, layout, brand, colors, copy
+- Event content (descriptions, dates, venues, instagram handles, etc.)
+- Adding new pages, recap pages, shop pages, or static content
+- Adding NEW event_type or island values (e.g. `tournament`) — but the client code at the partner should handle unknowns
+- Cloudflare config, redirects, slug routing
+
+If a breaking change is genuinely needed: email Adam (and any future partners) **30+ days in advance** with the rationale + migration path. Add URL versioning (`/api/v1/`) before the change ships.
 
 ### Slug URLs — clean URLs are LIVE (2nd attempt)
 Tyler asked for cleaner `/shows/<slug>` URLs instead of `?id=<uuid>`. First attempt (`_redirects` with status 200) broke production with redirect loops — reverted in `b65c891`. **Second attempt using Cloudflare Pages Function works correctly** — commit `866b92f`. URLs like `/shows/pokemon-rave` now resolve via [functions/shows/[slug].js](functions/shows/[slug].js).

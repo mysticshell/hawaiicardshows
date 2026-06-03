@@ -129,6 +129,39 @@ curl "https://hawaiicardshows.com/api/events?island=Big%20Island"
 curl -I "https://hawaiicardshows.com/api/events"
 ```
 
+## Stability contract
+
+The endpoint URL, query parameters, and the names + types of existing
+response fields are stable. We commit to **additive-only changes**:
+
+- **New fields may be added** to the response (e.g. a future `price`
+  or `vendor_count` column). Existing field names and types will not
+  be renamed or removed.
+- **New `event_type` and `island` enum values may appear** over time.
+  We recently added `music` for Pokémon-Rave-style events; we might
+  add `tournament` or `convention` later. Clients should treat unknown
+  enum values gracefully (display the raw value, treat as a generic
+  event, don't crash).
+- **New query parameters may be added**; existing ones won't change
+  behavior.
+
+If we ever need to make a breaking change (rename a field, remove a
+column), we'll email integrating partners at least **30 days in advance**
+with the rationale and a migration path. We've intentionally not added
+URL versioning (`/api/v1/`) yet — at one partner it's premature, but
+we'll introduce versioning before any breaking change if we get there.
+
+### Practical guidance for client code
+
+- Treat the response as JSON and ignore unknown fields rather than
+  failing on them — protects you when we add new fields
+- Don't hard-code the full list of `event_type` or `island` values in
+  exhaustive switch statements — handle "unknown value" defensively
+- Recurring events have `start_date: null` and use the `recurrence`
+  text field (e.g. `"Every 1st & 3rd Tuesday"`) — make sure your
+  "events in the next N days" logic handles both dated and recurring
+  events, or you'll silently miss every weekly trade night
+
 ## Roadmap / open questions for partners
 
 Things we can add quickly if partners ask:
@@ -138,5 +171,6 @@ Things we can add quickly if partners ask:
 - **Per-event detail endpoint** — `GET /api/events/:id` if partners need full payload separately
 - **Past event archive** — events that have already happened (currently filtered out by the date window)
 - **Authentication** — currently open, could add API keys per partner if abuse becomes a problem
+- **Additional fields** — vendor count, attendee estimates, ticket pricing, parking notes — let us know what would actually be useful
 
 Contact `tyler@hawaiicardshows.com` to propose changes or coordinate integrations.
