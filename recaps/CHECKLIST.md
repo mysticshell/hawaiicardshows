@@ -86,6 +86,7 @@ Before you touch the template, answer these. Paste the answers to Claude (or a w
 - [ ] Cross-link from the related show detail page (if it has a permanent page)
 - [ ] Cross-link from featured shop pages that appeared at the show
 - [ ] Link from next week's newsletter
+- [ ] **Community walkthrough video**: if @sarukofamcollects (or any creator) sent you their video of this show, add an entry to [/community/walkthroughs.js](../community/walkthroughs.js) with `recap_slug` matching this recap's slug. The "From the Floor" block on the recap auto-populates from there — no template editing needed.
 
 ## ✅ Final Review (do these in preview before pushing)
 

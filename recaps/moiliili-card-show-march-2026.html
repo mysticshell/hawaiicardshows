@@ -284,6 +284,45 @@
 </div>
 
 <!-- ════════ CTA ════════ -->
+<!-- ═════ FROM THE FLOOR — community walkthrough auto-populated from /community/walkthroughs.js ═════ -->
+<section id="from-the-floor" class="from-the-floor" hidden style="max-width:760px;margin:48px auto;padding:32px 28px;background:#e8f4f0;border-radius:16px;border-left:4px solid #1a6b5a;box-sizing:border-box;">
+  <div style="font-family:'Phudu',sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">From the Floor</div>
+  <h3 style="font-family:'Phudu',sans-serif;font-size:24px;font-weight:700;color:#1a1a1a;margin:0 0 8px;line-height:1.25;">Watch the walkthrough</h3>
+  <p id="ftf-sub" style="font-family:'Archivo',sans-serif;font-size:14px;color:#6a6a6a;line-height:1.55;margin:0 0 18px;"></p>
+  <div id="ftf-embed-container" style="margin:0 0 14px;"></div>
+  <div style="font-family:'Archivo',sans-serif;font-size:13px;color:#6a6a6a;">
+    Video by <a id="ftf-credit-link" href="" target="_blank" rel="noopener" style="color:#1a6b5a;font-weight:600;text-decoration:none;"></a>
+  </div>
+</section>
+
+<script src="/community/walkthroughs.js"></script>
+<script async src="//www.instagram.com/embed.js"></script>
+<script>
+(function(){
+  const RECAP_SLUG = "moiliili-card-show-march-2026";
+  if (typeof window.HCS_WALKTHROUGHS_FOR_RECAP !== 'function') return;
+  const walkthroughs = window.HCS_WALKTHROUGHS_FOR_RECAP(RECAP_SLUG);
+  if (!walkthroughs.length) return;
+  const w = walkthroughs[0];
+  const section = document.getElementById('from-the-floor');
+  const embedContainer = document.getElementById('ftf-embed-container');
+  const sub = document.getElementById('ftf-sub');
+  const credit = document.getElementById('ftf-credit-link');
+  if (sub) sub.textContent = w.caption || '';
+  if (credit) {
+    credit.href = 'https://www.instagram.com/' + w.creator_handle;
+    credit.textContent = '@' + w.creator_handle;
+  }
+  if (embedContainer) {
+    embedContainer.innerHTML = '<blockquote class="instagram-media" data-instgrm-permalink="' + w.ig_post_url + '" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0 auto;max-width:540px;min-width:326px;padding:0;width:100%;"></blockquote>';
+  }
+  section.hidden = false;
+  if (window.instgrm && window.instgrm.Embeds) {
+    window.instgrm.Embeds.process();
+  }
+})();
+</script>
+
 <section class="recap-cta">
   <h2>New to Card Shows?</h2>
   <p>Read our beginner's guide for what to expect, what to bring, and how to navigate your first one. Then check the calendar for upcoming Hawaii shows.</p>
