@@ -233,6 +233,20 @@
   <p>{{BODY_PARAGRAPH_1}}</p>
 
   <!-- PHOTO GALLERY — drop photos in /recaps/images/ with descriptive filenames -->
+<!-- ═════ FROM THE FLOOR — community walkthrough auto-populated from /community/walkthroughs.js ═════ -->
+<section id="from-the-floor" class="from-the-floor" hidden style="max-width:760px;margin:48px auto;padding:32px 28px;background:#e8f4f0;border-radius:16px;border-left:4px solid #1a6b5a;box-sizing:border-box;">
+  <div style="font-family:'Phudu',sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">From the Floor</div>
+  <h3 style="font-family:'Phudu',sans-serif;font-size:24px;font-weight:700;color:#1a1a1a;margin:0 0 8px;line-height:1.25;">Watch the walkthrough</h3>
+  <p id="ftf-sub" style="font-family:'Archivo',sans-serif;font-size:14px;color:#6a6a6a;line-height:1.55;margin:0 0 18px;"></p>
+  <div id="ftf-embed-container" style="margin:0 0 14px;"></div>
+  <div style="font-family:'Archivo',sans-serif;font-size:13px;color:#6a6a6a;">
+    Video by <a id="ftf-credit-link" href="" target="_blank" rel="noopener" style="color:#1a6b5a;font-weight:600;text-decoration:none;"></a>
+  </div>
+</section>
+
+<script src="/community/walkthroughs.js"></script>
+
+
   <div class="photo-grid">
     <img src="/recaps/images/{{SLUG}}-photo-1.jpg" alt="{{SHOW_NAME}} — photo 1 description" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
     <img src="/recaps/images/{{SLUG}}-photo-2.jpg" alt="{{SHOW_NAME}} — photo 2 description" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
@@ -266,20 +280,7 @@
 <!-- CTA: link to the SERIES PAGE if this recap belongs to a recurring series
      (e.g. /shows/keep-it-aloha, /shows/paradise-card-show, /shows/bayview-night-market).
      For one-off shows with no series page, fall back to the beginner's guide
-     (/what-is-a-card-show.html) or the homepage calendar (/). -->
-<!-- ═════ FROM THE FLOOR — community walkthrough auto-populated from /community/walkthroughs.js ═════ -->
-<section id="from-the-floor" class="from-the-floor" hidden style="max-width:760px;margin:48px auto;padding:32px 28px;background:#e8f4f0;border-radius:16px;border-left:4px solid #1a6b5a;box-sizing:border-box;">
-  <div style="font-family:'Phudu',sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">From the Floor</div>
-  <h3 style="font-family:'Phudu',sans-serif;font-size:24px;font-weight:700;color:#1a1a1a;margin:0 0 8px;line-height:1.25;">Watch the walkthrough</h3>
-  <p id="ftf-sub" style="font-family:'Archivo',sans-serif;font-size:14px;color:#6a6a6a;line-height:1.55;margin:0 0 18px;"></p>
-  <div id="ftf-embed-container" style="margin:0 0 14px;"></div>
-  <div style="font-family:'Archivo',sans-serif;font-size:13px;color:#6a6a6a;">
-    Video by <a id="ftf-credit-link" href="" target="_blank" rel="noopener" style="color:#1a6b5a;font-weight:600;text-decoration:none;"></a>
-  </div>
-</section>
-
-<script src="/community/walkthroughs.js"></script>
-<script async src="//www.instagram.com/embed.js"></script>
+     (/what-is-a-card-show.html) or the homepage calendar (/). --><script async src="//www.instagram.com/embed.js"></script>
 <script>
 (function(){
   const RECAP_SLUG = "{{SLUG}}";
