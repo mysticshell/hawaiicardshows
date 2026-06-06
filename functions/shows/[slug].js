@@ -1,16 +1,26 @@
-// Cloudflare Pages Function: serve /shows/<slug> as the dynamic show.html page,
-// keeping the slug URL visible in the browser. Static files (like /shows/keep-it-aloha.html)
-// are matched BEFORE this function runs, so dedicated series pages still win.
+// Cloudflare Pages Function: serve /shows/<slug> as the right page.
 //
-// The shows/show.html JS reads window.location.pathname to extract the slug
-// when no ?id= or ?slug= query param is present.
+// Order of preference:
+//   1. If a dedicated static page exists at /shows/<slug>.html (e.g. our hand-built
+//      series pages: keep-it-aloha, paradise-card-show, bayview-night-market,
+//      west-side-show), serve it. The browser still sees the clean URL.
+//   2. Otherwise, serve the content of /shows/show.html (the dynamic event detail
+//      page). show.html's JS reads window.location.pathname to extract the slug
+//      and query Supabase for a matching event.
+//
+// Why we check step 1 explicitly: Cloudflare Pages doesn't auto-resolve
+// /shows/<slug> to /shows/<slug>.html when there's a function registered at
+// /shows/[slug]. The function intercepts EVERY /shows/<slug> request. Without
+// the explicit static lookup below, every series-page request gets routed to
+// the dynamic show.html instead of the hand-built series page — which then
+// fails its slug lookup ("keep-it-aloha" doesn't match the event-name slug
+// "keep-it-aloha-card-show") and gets stuck on "Loading Event...".
 
 export async function onRequest(context) {
   const { params, env, request, next } = context;
   const slug = params.slug || '';
 
-  // Defensive: if the slug looks like a real asset (.html, .json, .xml, etc),
-  // let the platform handle it normally.
+  // Defensive: if the slug already includes an extension, let the platform handle it.
   if (/\.(html|json|xml|css|js|png|jpe?g|gif|svg|webp|ico)$/i.test(slug)) {
     return next();
   }
@@ -20,27 +30,43 @@ export async function onRequest(context) {
     return next();
   }
 
-  // Serve the content of /shows/show.html. The browser keeps the /shows/<slug>
-  // URL in the address bar, and show.html's JS extracts the slug from
-  // window.location.pathname to query Supabase.
-  const url = new URL(request.url);
-  url.pathname = '/shows/show.html';
-  url.search = '';
+  const reqUrl = new URL(request.url);
 
-  const response = await env.ASSETS.fetch(new Request(url.toString(), {
+  // STEP 1: try a dedicated static page at /shows/<slug>.html.
+  // This is how hand-built series pages (KIA, Paradise, Bayview, West Side, etc.) win.
+  const staticUrl = new URL(reqUrl);
+  staticUrl.pathname = `/shows/${slug}.html`;
+  staticUrl.search = '';
+  const staticResponse = await env.ASSETS.fetch(new Request(staticUrl.toString(), {
     headers: request.headers,
-    method: 'GET'
+    method: 'GET',
+  }));
+  if (staticResponse.status === 200) {
+    // Found a dedicated static page. Serve it, keep the clean URL in the address bar.
+    const headers = new Headers(staticResponse.headers);
+    headers.set('Cache-Control', 'public, max-age=300, must-revalidate');
+    return new Response(staticResponse.body, {
+      status: 200,
+      statusText: staticResponse.statusText,
+      headers,
+    });
+  }
+
+  // STEP 2: no dedicated page — serve the dynamic show.html and let its JS
+  // figure out which event the slug refers to.
+  const dynamicUrl = new URL(reqUrl);
+  dynamicUrl.pathname = '/shows/show.html';
+  dynamicUrl.search = '';
+  const dynamicResponse = await env.ASSETS.fetch(new Request(dynamicUrl.toString(), {
+    headers: request.headers,
+    method: 'GET',
   }));
 
-  // Return the HTML content but keep the original URL visible to the browser.
-  // Strip caching headers that would tell the browser to cache under the
-  // wrong URL — we want each slug to fetch its own data fresh.
-  const headers = new Headers(response.headers);
+  const headers = new Headers(dynamicResponse.headers);
   headers.set('Cache-Control', 'public, max-age=300, must-revalidate');
-
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers
+  return new Response(dynamicResponse.body, {
+    status: dynamicResponse.status,
+    statusText: dynamicResponse.statusText,
+    headers,
   });
 }
