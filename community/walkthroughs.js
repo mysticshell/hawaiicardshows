@@ -25,19 +25,28 @@
 
 (function () {
   const WALKTHROUGHS = [
-    // ── Add entries below. Tyler can pull IG links from @sarukofamcollects's
-    // ── feed and add them here. Each one renders automatically on the matching
+    {
+      recap_slug: 'keep-it-aloha-may-2026',
+      ig_post_url: 'https://www.instagram.com/reel/DX3N5YViy08/',
+      creator_handle: 'sarukofamcollects',
+      creator_name: 'Saruko Fam Collects',
+      date: '2026-05-02',
+      type: 'walkthrough',
+      caption: 'Floor walkthrough of Keep It Aloha #1 at SALT Kaka\'ako.'
+    },
+    // ── Add entries above. Tyler pulls IG links from @sarukofamcollects's
+    // ── feed and adds them here. Each one renders automatically on the matching
     // ── recap page once the recap_slug matches.
 
     // Example template (commented out — uncomment + fill in to add):
     // {
-    //   recap_slug: 'keep-it-aloha-may-2026',
+    //   recap_slug: 'paradise-card-show-march-2026',
     //   ig_post_url: 'https://www.instagram.com/reel/XXXXXXXX/',
     //   creator_handle: 'sarukofamcollects',
     //   creator_name: 'Saruko Fam Collects',
-    //   date: '2026-05-02',
+    //   date: '2026-03-22',
     //   type: 'walkthrough',
-    //   caption: 'Floor walkthrough of Keep It Aloha #1 at SALT Kaka\'ako'
+    //   caption: 'Floor walkthrough of Paradise Card Show #3 at The Republik.'
     // },
   ];
 
