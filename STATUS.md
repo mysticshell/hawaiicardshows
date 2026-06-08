@@ -1,19 +1,20 @@
 # Hawaii Card Shows — Project Status
 
-*Last updated: 2026-06-06*
+*Last updated: 2026-06-06 (API/Collectr section refreshed after the events-API build + 502 fix)*
 
 ---
 
 ## 🔥 Active Threads (next session — pick up here)
 
 ### Collectr partnership — LIVE, awaiting Tyler reply
-Adam (Collectr CEO) responded asking for an API to poll shows. **We shipped the API + delivered an email draft same-day.** Tyler is sending the reply tomorrow morning Hawaii time.
+Adam (Collectr CEO) responded asking for an API to poll shows. **We shipped the API + finalized the email reply same-day.** Tyler is sending the reply (was reviewing the final copy-paste version).
 
 - **Endpoint:** `https://hawaiicardshows.com/api/events` (Cloudflare Pages Function at [functions/api/events.js](functions/api/events.js))
-- **Status:** Deployed via commit `4eab8f6`, content-type returns `application/json`, validation + edge case handling in place. Docs at [functions/api/README.md](functions/api/README.md) including a stability contract.
-- **Email draft is in the previous turn of this session** — Tyler is reviewing before sending
-- **Watch for:** Adam's reply with technical questions (auth? webhooks? specific fields?) or scheduling a call. He's a CEO; expect 24-72hr turnaround
-- **If he asks for more fields/webhooks/auth:** that's a buying signal — say yes and build it
+- **Latest good commit: `64016f3`** — API verified HEALTHY (returns proper JSON, `application/json` content-type, HEAD/GET/OPTIONS supported, filter validation, 502s genericized, no upstream leakage). Docs at [functions/api/README.md](functions/api/README.md) include the stability contract.
+- **⚠️ Incident this session (resolved):** commit `5d0fb26` added an explicit Supabase field list for defense-in-depth but included `custom_url`, a column that **does not exist** in the events table. Supabase rejected the query → API returned 502 (Tyler caught it in the browser). Fixed in `64016f3` by removing `custom_url` from the select list. **Lesson: the events table has NO `custom_url` column** — the `urlFor()` helper checks `e.custom_url` defensively but never select it from Supabase. If you ever want per-event URL overrides, add the column in Supabase first.
+- **Final email** was delivered as plain-text copy-paste (endpoint + filters + curl example + GitHub README link + a paragraph inviting Adam's feedback on the most-useful shape, since the site is still iterating). Sent from `tyler@hawaiicardshows.com`.
+- **Watch for:** Adam's reply with technical questions (auth? webhooks? specific fields?) or scheduling a call. He's a CEO; expect 24-72hr turnaround.
+- **If he asks for more fields/webhooks/auth:** that's a buying signal — say yes and build it. Roadmap options already documented in the README (webhook on new event, diff endpoint, per-event detail endpoint, past-event archive, API keys, extra fields like vendor_count/pricing).
 
 ### ⚠️ API stability rule — read before changing event data structure
 
