@@ -6,10 +6,30 @@
 
 ## 🔥 Active Threads (next session — pick up here)
 
-### ▶️ TOMORROW (Tyler, 2026-06-09): add personality to recaps, then refresh carousels
-1. **Recap personality pass** — the two June recap drafts ([recaps/west-side-show-iii-june-2026.html](recaps/west-side-show-iii-june-2026.html), [recaps/keep-it-aloha-june-2026.html](recaps/keep-it-aloha-june-2026.html)) are structurally complete but read a little straight. Tyler wants to inject more voice/personality. Work from his floor notes + the `[[ ]]` placeholders. THEN fill numbers/photos and publish (register in recap-map.js + sitemap.xml — paste-ready entries are in the June 8 "Recently Completed" entry below).
-2. **Refresh the carousel/story graphics** — current slides in [recaps/social/](recaps/social/) are intentionally plain ("bland") because they were built with no input from Tyler yet. After the personality pass, update them with his voice + the real moments. Same render flow: edit `src/*.html`, run `print/render-slides.sh <drop>/src <WxH> <drop>`.
-3. **Still pending decisions:** giveaway prize (CMO rec: vendor-sponsored) + deadline; "Send Us Your Moments" voice (team vs signed founder note).
+### ▶️ RECAPS — hidden drafts out for organizer review (2026-06-09)
+Both June recaps got a **personality pass** (Tyler's floor notes worked in: pulls, sponsors, the birds,
+Max's deals, Sir Darkrai, gimme-gimmes, "WEST SIDE BEST SIDE", Paul's quote, @jlxtcg/@shakasoles free
+entry, the @rocket_relics + @fromthehearthawaii/@shophavenmae/@ditzypulls credits, 2 community IG embeds).
+Now set as **hidden pages** (`noindex,nofollow`, NOT in recap-map.js/sitemap, "Draft for review" banner) so
+Tyler can send the direct links to Kamaka + Paul/Ken for feedback. **Live once pushed** (Cloudflare deploys
+the static files; noindex keeps them out of search).
+- [recaps/keep-it-aloha-june-2026.html](recaps/keep-it-aloha-june-2026.html) — KIA #2
+- [recaps/west-side-show-iii-june-2026.html](recaps/west-side-show-iii-june-2026.html) — West Side III (flagship)
+
+**To publish later:** flip `robots` to `index, follow`, fill the `TBC` stats + add photos, register in
+recap-map.js + sitemap.xml (paste-ready entries in the June 8 entry below), remove the review banner + the
+top DRAFT comment.
+
+**Still waiting on Tyler:** vendor/attendance counts (both shows, the `TBC` stat boxes); the MC's @handle
+(West Side shout-out); photos (filenames listed in each draft's top comment).
+DB note: West Side + The Card District rows updated to **@rocket_relics** (Paul also runs Card District w/
+Ken @fromthehearthawaii). KIA next show confirmed **July 4–5**.
+
+### ▶️ THEN: refresh carousels with Tyler's voice
+Current slides in [recaps/social/](recaps/social/) were intentionally plain (no Tyler input yet). After the
+recaps lock, pull the real moments/voice into the graphics. Render flow: edit `src/*.html`, run
+`print/render-slides.sh <drop>/src <WxH> <drop>`. Still-open: giveaway prize (CMO rec: vendor-sponsored) +
+deadline; "Send Us Your Moments" voice (team vs signed founder note).
 
 
 ### Collectr partnership — LIVE, awaiting Tyler reply
