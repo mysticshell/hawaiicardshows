@@ -203,10 +203,10 @@
   <div class="section-header"><div class="section-tag">Every Week & Month</div><div class="section-title">Recurring Shows</div><div class="section-sub">Regular trade nights, markets, and shows you can count on.</div></div>
   <div class="recurring-list" id="recurringList"><div style="color:var(--text-lighter);font-size:14px;">Loading...</div></div>
 </section>
-<section class="section" id="annual" style="padding-top:0;">
-  <div class="section-header"><div class="section-tag">Mark Your Calendar</div><div class="section-title">Annual Events</div><div class="section-sub">Established shows and conventions that return every year.</div></div>
-  <div class="upcoming-grid" id="annualGrid"><div style="color:var(--text-lighter);font-size:14px;">Loading...</div></div>
-</section>
+<!-- "Annual Events" section scrapped 2026-06-09: the `annual` event_type had become a junk
+     drawer (monthly/series shows tagged annual), so the section looked sloppy. These shows still
+     appear on the Full Calendar by date. Revisit as a tight "Flagship" section once data is
+     re-tagged (truly-annual only: Pop Con, Aloha Card Show). See `series` type rollout. -->
 <section class="section" id="calendar">
   <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
     <div>
@@ -351,7 +351,7 @@ function hcsSeriesUrlFor(e){if(!e||!e.name)return null;return HCS_SERIES_URLS[e.
 // /functions/shows/[slug].js Pages Function on production.
 function hcsSlugify(s){return(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[‘’'ʻ]/g,'').replace(/[&+]/g,' ').replace(/[^a-z0-9]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');}
 function getShowUrl(e){if(e.custom_url)return e.custom_url;const series=hcsSeriesUrlFor(e);if(series)return series;const slug=hcsSlugify(e.name);return slug?`/shows/${slug}`:`/shows/show.html?id=${e.id}`;}
-async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true});if(error){console.error(error);return;}allEvents=data||[];renderFeatured();renderUpcoming();renderRecurring();renderAnnual();renderCalendar();updateStats();renderAgenda();injectEventSchema();renderRecentRecaps();}
+async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true});if(error){console.error(error);return;}allEvents=data||[];renderFeatured();renderUpcoming();renderRecurring();renderCalendar();updateStats();renderAgenda();injectEventSchema();renderRecentRecaps();}
 
 function renderRecentRecaps(){
   if(typeof window.HCS_RECENT_RECAPS!=='function')return;
