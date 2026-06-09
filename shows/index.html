@@ -347,7 +347,8 @@
         <option value="All">All Show Types</option>
         <option value="one-time">New Events</option>
         <option value="recurring">Recurring (Weekly/Monthly)</option>
-        <option value="annual">Returning Events</option>
+        <option value="series">Series</option>
+        <option value="annual">Annual Shows</option>
       </select>
       <select id="fDate" class="filter-select" onchange="applyFilters()">
         <option value="Upcoming" selected>Upcoming Shows</option>
@@ -626,7 +627,8 @@ function buildCardHtml(e, isFeatured) {
   
   let tagHtml = '';
   if(e.event_type === 'recurring') tagHtml = `<span class="show-card-tag" style="background:#e8f0e9;color:#3d6643;">Recurring</span>`;
-  else if(e.event_type === 'annual') tagHtml = `<span class="show-card-tag" style="background:#e8ecf4;color:#2c4a7c;">Returning Event</span>`;
+  else if(e.event_type === 'series') tagHtml = `<span class="show-card-tag" style="background:#efe9fb;color:#6b3fa0;">Series</span>`;
+  else if(e.event_type === 'annual') tagHtml = `<span class="show-card-tag" style="background:#e8ecf4;color:#2c4a7c;">Annual</span>`;
   else tagHtml = `<span class="show-card-tag" style="background:#fce8e8;color:#b44545;">New Event</span>`;
   
   let descHtml = e.description ? `<div class="show-card-desc">${esc(e.description)}</div>` : '';
