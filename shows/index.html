@@ -192,6 +192,24 @@
     margin-top: 8px;
   }
 
+  /* Full Calendar CTA module */
+  .cal-cta { display:flex; align-items:center; gap:20px; background:linear-gradient(105deg, var(--ocean) 0%, var(--ocean-light) 100%); color:var(--white); border-radius:16px; padding:24px 28px; text-decoration:none; box-shadow:0 8px 30px rgba(26,107,90,0.22); margin-bottom:48px; transition:transform 0.2s, box-shadow 0.2s; }
+  .cal-cta:hover { transform:translateY(-3px); box-shadow:0 14px 44px rgba(26,107,90,0.3); }
+  .cal-cta-icon { flex-shrink:0; width:52px; height:52px; border-radius:12px; background:rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center; }
+  .cal-cta-icon svg { width:26px; height:26px; }
+  .cal-cta-text { flex:1; }
+  .cal-cta-title { font-family:'Phudu', sans-serif; font-size:22px; font-weight:700; line-height:1.15; }
+  .cal-cta-sub { font-size:14px; color:rgba(255,255,255,0.82); margin-top:4px; }
+  .cal-cta-arrow { flex-shrink:0; font-size:24px; font-weight:700; transition:transform 0.2s; }
+  .cal-cta:hover .cal-cta-arrow { transform:translateX(4px); }
+  @media (max-width:600px) {
+    .cal-cta { padding:20px; gap:16px; }
+    .cal-cta-icon { width:44px; height:44px; }
+    .cal-cta-title { font-size:18px; }
+    .cal-cta-sub { font-size:13px; }
+    .cal-cta-arrow { display:none; }
+  }
+
   /* Featured Card Enhancements */
   .shows-grid-header { font-family: 'Phudu', sans-serif; font-size: 20px; font-weight: 800; color: var(--ocean); margin-bottom: 20px; }
   .show-card.featured {
@@ -294,6 +312,7 @@
   </a>
   <div class="nav-links" id="navLinks">
     <a href="/#upcoming">Upcoming</a>
+    <a href="/calendar/">Calendar</a>
     <a href="/shows/" class="active">Shows</a>
     <a href="/shops/">Shops</a>
     <a href="/#submit">Submit</a>
@@ -341,6 +360,18 @@
 
   <div id="featuredHeader" style="display:none;" class="shows-grid-header">Featured Events</div>
   <div class="shows-grid" id="featuredGrid" style="margin-bottom: 48px; gap: 32px;"></div>
+
+  <!-- ═══════ FULL CALENDAR CTA ═══════ -->
+  <a href="/calendar/" class="cal-cta" aria-label="View the full card show calendar">
+    <div class="cal-cta-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+    </div>
+    <div class="cal-cta-text">
+      <div class="cal-cta-title">View the Full Calendar</div>
+      <div class="cal-cta-sub">See every show across the islands — as far out as we have dates.</div>
+    </div>
+    <div class="cal-cta-arrow" aria-hidden="true">→</div>
+  </a>
 
   <div id="standardHeader" style="display:none;" class="shows-grid-header">All Shows</div>
   <div class="shows-grid" id="showsGrid">
@@ -422,6 +453,7 @@
   <div class="footer-meta">
     <div class="footer-meta-links">
       <a href="/#upcoming">Upcoming</a>
+      <a href="/calendar/">Calendar</a>
       <a href="/shows/">Shows</a>
       <a href="/shops/">Shops</a>
       <a href="/#submit">Submit</a>
