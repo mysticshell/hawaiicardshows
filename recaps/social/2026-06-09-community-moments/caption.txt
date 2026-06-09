@@ -1,0 +1,33 @@
+FEED POST — single image (01-send-us-your-moments.png). Recommend PINNING to the profile grid.
+
+═══════════════════ CAPTION (copy/paste) ═══════════════════
+
+This whole thing started because we were tired of answering one question: when's the next card show? 🃏
+
+In a single month we've come across just about every kind of show you can imagine — six vendors in a boba shop, a hundred vendors and Max Holloway taking the scene by storm. The site keeps growing, and we'll keep making it better.
+
+But here's the thing: we can't be everywhere at once. You can.
+
+Got an epic coin flip? An insane pack rip? A wholesome deal or trade that made your day? Send it to us. We'll do our best to feature as many as we can in our show recaps — and build an archive of these moments on each show's page so they live on. 🌺
+
+📲 How to send it in:
+→ DM us @hawaiicardshows
+→ Tag us in your clip
+→ Or email aloha@hawaiicardshows.com
+
+And a huge shoutout to @sarukofamcollects for always showing up and posting walkthroughs of every show — you're the blueprint. 🎥🙏
+
+This is kākou — we build it together.
+
+🔗 Every Hawaii card show, one place: hawaiicardshows.com
+
+#hawaiicardshows #hawaiicards #pokemoncards #sportscards #tcg #cardcollecting #oahu #808 #hawaiipokemon #thehobby
+
+═══════════════════ RUN NOTES (not part of caption) ═══════════════════
+
+VOICE: drafted in HCS Team "we" voice per the brand guide. This origin story is one of the few
+places a signed founder note ("From Tyler") also reads authentic — say the word and I'll reshape it.
+
+WHY IT MATTERS: feeds the "From the Floor" system (community videos auto-render on recap pages via
+community/walkthroughs.js). Top of that funnel — turns followers into a content pipeline at zero cost.
+Future build: a permanent per-show "Moments" gallery (backlogged in STATUS.md).

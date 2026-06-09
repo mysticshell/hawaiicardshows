@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Story 2 — West Side Cardshow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    background: linear-gradient(135deg, #d4582a 0%, #b04621 100%);
+    color: #ffffff;
+    font-family: 'Archivo', sans-serif;
+    position: relative;
+    padding: 320px 90px;
+    display: flex;
+    flex-direction: column;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -250px;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+    pointer-events: none;
+  }
+  body::after {
+    content: '';
+    position: absolute;
+    bottom: -200px; left: -250px;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(0,0,0,0.25), transparent 70%);
+    pointer-events: none;
+  }
+  .inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+  .eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: 6px;
+    color: rgba(255,255,255,0.9);
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  h1 {
+    font-family: 'Phudu', sans-serif;
+    font-weight: 800;
+    font-size: 132px;
+    line-height: 0.95;
+    letter-spacing: -4px;
+    margin-bottom: 56px;
+  }
+  .lead {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.45;
+    color: #ffffff;
+    margin-bottom: 72px;
+  }
+  .lead strong {
+    font-weight: 800;
+    color: #fff3cf;
+  }
+  .details {
+    background: rgba(255,255,255,0.14);
+    border: 2px solid rgba(255,255,255,0.28);
+    border-radius: 26px;
+    padding: 44px 48px;
+  }
+  .details-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 38px;
+    margin-bottom: 22px;
+    color: #ffffff;
+  }
+  .details-row:last-child { margin-bottom: 0; }
+  .details-icon {
+    width: 56px; height: 56px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    flex-shrink: 0;
+  }
+  .brand {
+    position: absolute;
+    bottom: 320px;
+    left: 90px;
+    font-family: 'Phudu', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.75);
+    text-transform: uppercase;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div class="eyebrow">SAT–SUN · JUNE 6–7</div>
+    <h1>West Side<br>Cardshow III</h1>
+    <p class="lead">Come thru and try your luck against the best. <strong>Max Holloway</strong> makes his vendor debut — grails from his personal collection up for grabs.</p>
+    <div class="details">
+      <div class="details-row"><div class="details-icon">📍</div>Kroc Center, Ewa Beach</div>
+      <div class="details-row"><div class="details-icon">🕙</div>10 AM – 6 PM · both days</div>
+      <div class="details-row"><div class="details-icon">🎯</div>@rocketrelics</div>
+    </div>
+  </div>
+  <div class="brand">Hawaii Card Shows</div>
+</body>
+</html>

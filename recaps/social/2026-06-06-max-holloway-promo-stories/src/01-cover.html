@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Story 1 — Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    background: #1a1a1a;
+    color: #ffffff;
+    font-family: 'Archivo', sans-serif;
+    position: relative;
+    /* Safe zones: 280px top, 280px bottom */
+    padding: 320px 90px 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -250px;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(212,88,42,0.32), transparent 70%);
+    pointer-events: none;
+  }
+  body::after {
+    content: '';
+    position: absolute;
+    bottom: -200px; left: -250px;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(26,107,90,0.22), transparent 70%);
+    pointer-events: none;
+  }
+  .inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+  .eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: 7px;
+    color: #d4582a;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .eyebrow .bolt { font-size: 38px; vertical-align: -3px; margin-right: 12px; }
+  h1 {
+    font-family: 'Phudu', sans-serif;
+    font-weight: 800;
+    font-size: 168px;
+    line-height: 0.93;
+    letter-spacing: -5px;
+    margin-bottom: 36px;
+  }
+  h1 .max {
+    color: #d4582a;
+    display: block;
+    font-size: 196px;
+    line-height: 0.88;
+    margin-bottom: 10px;
+  }
+  .sub {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.72);
+    max-width: 900px;
+    margin-top: 56px;
+  }
+  .sub strong { color: #ffffff; font-weight: 800; }
+  .hooo {
+    position: absolute;
+    top: 360px;
+    right: 90px;
+    font-family: 'Phudu', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    color: #d4582a;
+    letter-spacing: 4px;
+    transform: rotate(8deg);
+    border: 5px solid #d4582a;
+    border-radius: 14px;
+    padding: 16px 28px;
+    z-index: 2;
+  }
+  .brand {
+    position: absolute;
+    bottom: 320px;
+    left: 90px;
+    font-family: 'Phudu', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+  <div class="hooo">HOOO!</div>
+  <div class="inner">
+    <div class="eyebrow"><span class="bolt">⚡</span>Just Announced</div>
+    <h1>
+      <span class="max">Max Holloway</span>
+      is vending<br>his first<br>card show.
+    </h1>
+    <p class="sub"><strong>This weekend in Hawaii.</strong></p>
+  </div>
+  <div class="brand">Hawaii Card Shows</div>
+</body>
+</html>

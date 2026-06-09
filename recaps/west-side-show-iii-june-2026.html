@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+═══════════════════════════════════════════════════════════════════════
+  ⚠️  DRAFT — FILL BEFORE PUBLISHING  (then delete this banner)
+═══════════════════════════════════════════════════════════════════════
+  Flagship piece: Hawaii Card Shows' first recap featuring a UFC champion
+  (Max Holloway) vending. Real backlink + press potential — make it sing.
+
+  Tyler, drop in these floor facts (search the file for [[ ]] brackets):
+    1. VENDOR COUNT          → stats bar + body
+    2. ATTENDANCE (rough)    → stats bar + body
+    3. ADMISSION price       → hero meta
+    4. HOURS each day        → hero meta
+    5. 2–3 standout moments  → "On the Floor" section (a pull, a line for
+                               Max's table, a keiki moment, a big trade…)
+    6. Any quote from Max, Rocket Relics, or a vendor
+
+  PHOTOS → /recaps/images/  named:
+    west-side-show-iii-june-2026-max-holloway.jpg   (the hero — Max at the table)
+    west-side-show-iii-june-2026-crowd.jpg
+    west-side-show-iii-june-2026-floor.jpg
+    west-side-show-iii-june-2026-line.jpg
+    west-side-show-iii-june-2026-vendor.jpg
+    west-side-show-iii-june-2026-pull.jpg
+  Once the Max hero photo exists, uncomment the .recap-hero-banner block
+  below and set og:image / twitter:image to it (1200×630 ideal for shares).
+═══════════════════════════════════════════════════════════════════════
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+<link rel="alternate" type="application/rss+xml" title="Hawaii Card Shows" href="/feed.xml">
+<title>West Side Show III Recap — June 6-7, 2026 | Max Holloway Works the West Side</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-48ZSPW63VV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-48ZSPW63VV');
+</script>
+
+<meta name="robots" content="index, follow">
+<meta name="description" content="Recap of West Side Show III at the Kroc Center in Ewa Beach, June 6-7, 2026 — the show where UFC champion and Waianae's own Max Holloway vended his first card show. Two days of cards on the leeward side, hosted by Rocket Relics.">
+<meta name="keywords" content="West Side Show, West Side Card Show III, Max Holloway card show, Kroc Center Ewa Beach, Hawaii card show recap, Rocket Relics, Pokemon sports card show Oahu, Waianae West Oahu card show June 2026">
+<link rel="canonical" href="https://hawaiicardshows.com/recaps/west-side-show-iii-june-2026.html">
+
+<meta property="og:title" content="West Side Show III Recap — Max Holloway Works the West Side">
+<meta property="og:description" content="UFC champion and Waianae's own Max Holloway vended his first card show at West Side III. Two days at the Kroc Center in Ewa Beach.">
+<meta property="og:url" content="https://hawaiicardshows.com/recaps/west-side-show-iii-june-2026.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hawaii Card Shows">
+<meta property="og:image" content="https://hawaiicardshows.com/shows/images/westside-card-show-logo.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="West Side Show III Recap — Max Holloway Works the West Side">
+<meta name="twitter:description" content="The show where a UFC champion vended his first card show. West Side III, Kroc Center, Ewa Beach.">
+<meta name="twitter:image" content="https://hawaiicardshows.com/shows/images/westside-card-show-logo.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "West Side Show III Recap — June 6-7, 2026",
+  "description": "Recap of West Side Show III at the Kroc Center in Ewa Beach, June 6-7, 2026, featuring UFC champion Max Holloway vending his first card show. Hosted by Rocket Relics.",
+  "datePublished": "2026-06-08",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hawaii Card Shows",
+    "url": "https://hawaiicardshows.com",
+    "logo": { "@type": "ImageObject", "url": "https://hawaiicardshows.com/favicon.svg" }
+  },
+  "about": {
+    "@type": "Event",
+    "name": "West Side Show III",
+    "startDate": "2026-06-06",
+    "endDate": "2026-06-07",
+    "location": {
+      "@type": "Place",
+      "name": "Kroc Center Hawaii",
+      "address": { "@type": "PostalAddress", "streetAddress": "91-3257 Kualakai Pkwy", "addressLocality": "Ewa Beach", "addressRegion": "HI" }
+    },
+    "organizer": { "@type": "Organization", "name": "Rocket Relics" }
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Phudu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/branding/site.css?v=20260506">
+<style>
+/* Tokens, base body, nav, footer, gradient bg, recap-hero-banner, stats-bar live in site.css. Page-specific only below. */
+.highlight-box { background: var(--ocean-pale); border-radius: var(--radius); padding: 24px; margin: 24px 0; border-left: 4px solid var(--lava); }
+.highlight-box strong { color: var(--lava); }
+
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin: 32px 0; }
+.photo-grid img { width: 100%; border-radius: var(--radius); object-fit: cover; aspect-ratio: 4/3; cursor: pointer; transition: transform 0.2s; display: block; }
+.photo-grid img:hover { transform: scale(1.02); }
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; cursor: pointer; justify-content: center; align-items: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; object-fit: contain; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+.lightbox-close { position: absolute; top: 20px; right: 24px; color: white; font-size: 32px; font-weight: 300; cursor: pointer; font-family: 'Archivo', sans-serif; }
+
+.recap-cta { background: var(--night); border-radius: 16px; padding: 48px 32px; text-align: center; margin: 48px 0; }
+.recap-cta h3 { font-family: 'Phudu', sans-serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.recap-cta p { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 20px; }
+.recap-cta a { display: inline-block; background: var(--lava); color: var(--white); padding: 12px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 15px; transition: background 0.2s; }
+.recap-cta a:hover { background: var(--lava-light); }
+
+@media (max-width: 768px) { .recap-content { font-size: 16px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand" aria-label="Hawaii Card Shows">
+    <img src="/branding/logo-horizontal.svg" alt="Hawaii Card Shows">
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="/#upcoming">Upcoming</a>
+    <a href="/shows/">Shows</a>
+    <a href="/shops/">Shops</a>
+    <a href="/recaps/">Recaps</a>
+    <a href="/#submit" class="nav-cta">Submit Your Event</a>
+    <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener" class="nav-ig" aria-label="Follow us on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+  </div>
+  <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+</nav>
+
+<!-- HERO BANNER — uncomment once the Max hero photo is in /recaps/images/
+<div class="recap-hero-banner">
+  <img src="/recaps/images/west-side-show-iii-june-2026-max-holloway.jpg" alt="Max Holloway behind a vendor table at West Side Show III, Kroc Center Ewa Beach" loading="eager">
+</div>
+-->
+
+<div class="recap-hero">
+  <div class="recap-tag">Show Recap</div>
+  <h1>A UFC Champ Behind the Table: Max Holloway Reps the West Side</h1>
+  <div class="recap-meta">
+    <div class="recap-meta-item">
+      <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Saturday June 6 &ndash; Sunday June 7, 2026
+    </div>
+    <div class="recap-meta-item">
+      <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg>
+      [[ HOURS — TBC ]]
+    </div>
+    <div class="recap-meta-item">
+      <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/></svg>
+      Kroc Center, Ewa Beach
+    </div>
+    <div class="recap-meta-item">
+      <svg viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      [[ ADMISSION — TBC ]]
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-box"><div class="stat-num">[[#]]</div><div class="stat-label">Vendors</div></div>
+  <div class="stat-box"><div class="stat-num">[[#]]</div><div class="stat-label">Attendees</div></div>
+  <div class="stat-box"><div class="stat-num">III</div><div class="stat-label">West Side Show</div></div>
+</div>
+
+<div class="recap-content">
+
+  <p>Most card-show vendor tables are run by shop owners, breakers, and weekend grinders. At <a href="/shows/west-side-show">West Side Show III</a>, one of them was run by a UFC champion. <strong>Max Holloway</strong> &mdash; Waianae&rsquo;s own, former UFC featherweight champion and BMF titleholder &mdash; set up behind a table and vended his <strong>first-ever card show</strong> on the leeward side, at the <a href="https://www.google.com/maps/search/?api=1&query=Kroc+Center+91-3257+Kualakai+Pkwy+Ewa+Beach+HI" target="_blank" rel="noopener">Kroc Center in Ewa Beach</a> on June 6&ndash;7.</p>
+
+  <p>It&rsquo;s hard to overstate how on-brand that is. The West Side raised Max, and the West Side Show is exactly the kind of grassroots, leeward-side event you don&rsquo;t usually see a world champion show up to &mdash; let alone work a table at. Hosted by <a href="https://www.instagram.com/rocketrelics" target="_blank" rel="noopener">Rocket Relics</a>, the third edition of West Side put the West Oahu card community on the map for a whole new audience.</p>
+
+  <h2>The Hometown Champ Effect</h2>
+
+  <p>A celebrity at a card show usually means a roped-off signing line. This was different &mdash; Max was <em>vending</em>, which means collectors got to do the most normal card-show thing in the world with one of Hawaii&rsquo;s most famous athletes: talk cards, dig through product, and make a deal. [[ TYLER: drop in what Max&rsquo;s table was like &mdash; what he was selling/breaking, how long the line ran, a moment between Max and a young fan. This is the heart of the piece. ]]</p>
+
+  <p>For a lot of keiki on the West Side, this wasn&rsquo;t just a card show &mdash; it was a chance to meet a hometown hero who took the same roads they take to school. That kind of moment is what turns a one-time attendee into a lifelong collector.</p>
+
+  <h2>On the Floor</h2>
+
+  <p>Beyond the headline, West Side III was a real two-day show with [[ # ]] vendors and an estimated [[ # ]] collectors through the doors across the weekend. [[ TYLER: 2&ndash;3 standout moments here &mdash; a notable pull, a big trade, which categories were moving (Pokemon / sports / One Piece / slabs), the energy on day 1 vs day 2. ]]</p>
+
+  <div class="highlight-box">
+    <strong>Why this one mattered:</strong> West Oahu doesn&rsquo;t get the volume of shows that town and the urban core do. Rocket Relics building a recurring show out in Ewa Beach &mdash; and landing a draw like Max Holloway for the third edition &mdash; means leeward-side collectors don&rsquo;t have to drive into town to be part of the scene. That&rsquo;s the whole point.
+  </div>
+
+  <h2>Built by Rocket Relics</h2>
+
+  <p>Credit where it&rsquo;s due: a show like this doesn&rsquo;t happen without an organizer willing to put in the reps. <a href="https://www.instagram.com/rocketrelics" target="_blank" rel="noopener">Rocket Relics</a> has now run West Side three times, and each edition has raised the bar. [[ TYLER: any sponsor / partner / vendor shoutouts for III &mdash; names + IG handles. ]] Big mahalo to every vendor who hauled their inventory out to Ewa Beach and to the families who came out to make it a weekend.</p>
+
+  <!-- ═════ FROM THE FLOOR — community walkthrough auto-populated from /community/walkthroughs.js ═════ -->
+<section id="from-the-floor" class="from-the-floor" hidden style="max-width:760px;margin:48px auto;padding:32px 28px;background:#e8f4f0;border-radius:16px;border-left:4px solid #1a6b5a;box-sizing:border-box;">
+  <div style="font-family:'Phudu',sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">From the Floor</div>
+  <h3 style="font-family:'Phudu',sans-serif;font-size:24px;font-weight:700;color:#1a1a1a;margin:0 0 8px;line-height:1.25;">Watch the walkthrough</h3>
+  <p id="ftf-sub" style="font-family:'Archivo',sans-serif;font-size:14px;color:#6a6a6a;line-height:1.55;margin:0 0 18px;"></p>
+  <div id="ftf-embed-container" style="margin:0 0 14px;"></div>
+  <div style="font-family:'Archivo',sans-serif;font-size:13px;color:#6a6a6a;">
+    Video by <a id="ftf-credit-link" href="" target="_blank" rel="noopener" style="color:#1a6b5a;font-weight:600;text-decoration:none;"></a>
+  </div>
+</section>
+
+<script src="/community/walkthroughs.js"></script>
+
+  <h2>Photos from the Show</h2>
+
+  <div class="photo-grid">
+    <img src="/recaps/images/west-side-show-iii-june-2026-max-holloway.jpg" alt="Max Holloway behind a vendor table at West Side Show III at the Kroc Center in Ewa Beach" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/west-side-show-iii-june-2026-crowd.jpg" alt="Collectors filling the floor at West Side Show III, Kroc Center Ewa Beach" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/west-side-show-iii-june-2026-floor.jpg" alt="Vendor tables and trading on the West Side Show III floor" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/west-side-show-iii-june-2026-line.jpg" alt="Line of attendees at West Side Show III in Ewa Beach" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/west-side-show-iii-june-2026-vendor.jpg" alt="Vendor table close-up at West Side Show III" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/west-side-show-iii-june-2026-pull.jpg" alt="A standout card pulled at West Side Show III" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+  </div>
+
+  <h2>The Next One</h2>
+
+  <p>West Side returns for its fourth edition on <strong>December 5&ndash;6, 2026</strong>, back at the Kroc Center in Ewa Beach. Follow <a href="https://www.instagram.com/rocketrelics" target="_blank" rel="noopener">@rocketrelics</a> for vendor sign-ups and announcements, or check the <a href="/shows/west-side-show">West Side Show series page</a> for every upcoming date. If III is any indication, IV is one to circle on the calendar.</p>
+
+</div>
+
+<div class="lightbox" onclick="this.classList.remove('active');">
+  <span class="lightbox-close">×</span>
+  <img class="lightbox-img" src="" alt="">
+</div>
+
+<script async src="//www.instagram.com/embed.js"></script>
+<script>
+(function(){
+  const RECAP_SLUG = "west-side-show-iii-june-2026";
+  if (typeof window.HCS_WALKTHROUGHS_FOR_RECAP !== 'function') return;
+  const walkthroughs = window.HCS_WALKTHROUGHS_FOR_RECAP(RECAP_SLUG);
+  if (!walkthroughs.length) return;
+  const w = walkthroughs[0];
+  const section = document.getElementById('from-the-floor');
+  const embedContainer = document.getElementById('ftf-embed-container');
+  const sub = document.getElementById('ftf-sub');
+  const credit = document.getElementById('ftf-credit-link');
+  if (sub) sub.textContent = w.caption || '';
+  if (credit) {
+    credit.href = 'https://www.instagram.com/' + w.creator_handle;
+    credit.textContent = '@' + w.creator_handle;
+  }
+  if (embedContainer) {
+    embedContainer.innerHTML = '<blockquote class="instagram-media" data-instgrm-permalink="' + w.ig_post_url + '" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0 auto;max-width:540px;min-width:326px;padding:0;width:100%;"></blockquote>';
+  }
+  section.hidden = false;
+  if (window.instgrm && window.instgrm.Embeds) {
+    window.instgrm.Embeds.process();
+  }
+})();
+</script>
+
+<div class="recap-cta">
+  <h3>Catch the Next West Side Show</h3>
+  <p>West Side IV is December 5&ndash;6, 2026 at the Kroc Center. Follow @rocketrelics for sign-ups.</p>
+  <a href="/shows/west-side-show">See Upcoming Dates &rarr;</a>
+</div>
+
+<!-- ============ NEWSLETTER SIGNUP — inline module (form_id: newsletter-recap-west-side-show-iii-june-2026) ============ -->
+<section class="nl-inline-cta" data-form-id="newsletter-recap-west-side-show-iii-june-2026" style="background:#1a1a1a;border-radius:16px;padding:40px 28px;text-align:center;margin:48px 24px;max-width:760px;box-sizing:border-box;">
+  <h2 style="font-family:'Phudu',Arial,Helvetica,sans-serif;font-size:24px;font-weight:700;color:#ffffff;margin:0 0 8px;letter-spacing:-0.3px;">Never miss a show</h2>
+  <p style="color:rgba(255,255,255,0.62);font-size:15px;line-height:1.6;margin:0 0 22px;">Weekly digest of every card show in Hawaii — plus the occasional recap email. Free.</p>
+  <form class="nl-inline-form" id="nlInlineForm" style="display:flex;gap:8px;max-width:440px;margin:0 auto;">
+    <input class="nl-inline-input" type="email" required placeholder="your@email.com" id="nlInlineEmail" style="flex:1;padding:14px 16px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;background:rgba(255,255,255,0.08);color:#ffffff;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:14px;outline:none;">
+    <button class="nl-inline-btn" type="submit" id="nlInlineBtn" style="background:#d4582a;color:#ffffff;border:none;padding:14px 24px;border-radius:8px;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background 0.2s;">Subscribe</button>
+  </form>
+  <div class="nl-inline-success" id="nlInlineSuccess" style="color:#74e0b6;font-size:14px;margin-top:14px;display:none;">You're in! Mahalo for subscribing.</div>
+  <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:14px;">We'll never share your email. Unsubscribe anytime.</p>
+</section>
+<style>@media(max-width:600px){.nl-inline-form{flex-direction:column!important;}}</style>
+<script>
+(function(){
+  const section = document.querySelector('.nl-inline-cta');
+  if (!section) return;
+  const formId = section.dataset.formId || 'newsletter-inline';
+  const form = section.querySelector('#nlInlineForm');
+  const btn = section.querySelector('#nlInlineBtn');
+  const email = section.querySelector('#nlInlineEmail');
+  const success = section.querySelector('#nlInlineSuccess');
+  if (!form) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true; btn.textContent = 'Subscribing...';
+    try {
+      const res = await fetch('/api/subscribe', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email.value})});
+      const data = await res.json();
+      btn.disabled = false; btn.textContent = 'Subscribe';
+      if (data.success) {
+        if (data.duplicate) success.textContent = "You're already subscribed!";
+        success.style.display = 'block';
+        form.style.display = 'none';
+        if (typeof gtag === 'function') gtag('event','form_submit',{form_id:formId,form_destination:'buttondown',duplicate:!!data.duplicate});
+      } else { alert('Something went wrong. Please try again.'); }
+    } catch (err) { btn.disabled = false; btn.textContent = 'Subscribe'; alert('Something went wrong. Please try again.'); console.error(err); }
+  });
+})();
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/branding/logo-horizontal-white.svg" alt="Hawaii Card Shows">
+      <p class="footer-tagline">Keeping Hawaii&rsquo;s card shows connected.</p>
+    </div>
+    <div class="footer-touch">
+      <div class="footer-touch-label">Get In Touch</div>
+      <p><a href="mailto:aloha@hawaiicardshows.com">aloha@hawaiicardshows.com</a></p>
+      <p><a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a></p>
+      <p>Serving all Hawaiian Islands</p>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <div class="footer-meta-links">
+      <a href="/#upcoming">Upcoming</a>
+      <a href="/shows/">Shows</a>
+      <a href="/shops/">Shops</a>
+      <a href="/#submit">Submit</a>
+      <a href="/#sponsors">Partner</a>
+    </div>
+    <div class="footer-meta-copy">&copy; 2026 Hawaii Card Shows &middot; <a href="/faq.html">FAQ</a> &middot; <a href="/hawaii-card-shows-guide.html">TCG Guide</a> &middot; <a href="/card-shows-oahu.html">Card Shows Oahu</a> &middot; <a href="/pokemon-card-shops-hawaii.html">Pokemon Card Shops</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

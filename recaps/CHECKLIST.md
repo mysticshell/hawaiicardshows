@@ -1,5 +1,9 @@
 # Recap Pre-Publish Checklist
 
+> 📦 **New here? Start with [RECAP-KIT.md](RECAP-KIT.md)** — the master playbook that turns one show into
+> all four channels (recap page → email blast → IG carousel → stories). This file is the page-level detail
+> checklist it points to.
+
 Aim to publish within **3-5 days** after the show, while energy is still high and social sharing is at peak. Save this file — open it every time you do a recap.
 
 ---

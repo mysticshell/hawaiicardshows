@@ -1,0 +1,9 @@
+STORY — single image (01-giveaway-story.png).
+
+⚠️ Fill [[ PRIZE ]] + [[ DATE ]] in the graphic before posting.
+
+Stories don't take a caption. In the IG story editor add:
+- A LINK sticker → hawaiicardshows.com
+- A "Subscribe to enter 🎉" text or poll sticker
+
+Full caption + giveaway mechanics live in the matching 2026-06-09-giveaway-feed/ folder.

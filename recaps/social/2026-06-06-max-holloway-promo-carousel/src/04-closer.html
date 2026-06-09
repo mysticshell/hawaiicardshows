@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Slide 4 — Closer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; }
+  body {
+    background: #f5f0e8;
+    color: #1a1a1a;
+    font-family: 'Archivo', sans-serif;
+    position: relative;
+    padding: 100px 90px;
+    display: flex;
+    flex-direction: column;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    top: -250px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(212,88,42,0.25), transparent 70%);
+    pointer-events: none;
+  }
+  body::after {
+    content: '';
+    position: absolute;
+    bottom: -250px; left: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(26,107,90,0.20), transparent 70%);
+    pointer-events: none;
+  }
+  .inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+  .eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: 5px;
+    color: #1a6b5a;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  h1 {
+    font-family: 'Phudu', sans-serif;
+    font-weight: 800;
+    font-size: 132px;
+    line-height: 0.96;
+    letter-spacing: -3px;
+    color: #1a1a1a;
+    margin-bottom: 48px;
+  }
+  h1 em {
+    font-style: normal;
+    color: #d4582a;
+  }
+  .lead {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.55;
+    color: #2c2c2c;
+    max-width: 880px;
+    margin-bottom: 56px;
+  }
+  .lead strong { font-weight: 700; color: #1a1a1a; }
+  .lead .hooo { color: #d4582a; font-weight: 800; font-family: 'Phudu', sans-serif; }
+  .cta {
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 36px 44px;
+    border-radius: 22px;
+    margin-top: auto;
+  }
+  .cta-eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 10px;
+  }
+  .cta-headline {
+    font-family: 'Phudu', sans-serif;
+    font-weight: 800;
+    font-size: 44px;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 14px;
+  }
+  .cta-url {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #d4582a;
+  }
+  .cta-handle {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+  .footer-row {
+    margin-top: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .brand {
+    font-family: 'Phudu', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    color: #1a6b5a;
+    text-transform: uppercase;
+  }
+  .made-by {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: rgba(0,0,0,0.45);
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div class="eyebrow">This Weekend in Hawaii Cards</div>
+    <h1>Three days.<br>Two shows.<br>One <em>champion's</em><br>debut.</h1>
+    <p class="lead">The Hawaii hobby has never had a weekend like this. <strong>Show up. Support the organizers.</strong> <span class="hooo">HOOO! 🤙</span></p>
+    <div class="cta">
+      <div class="cta-eyebrow">Full Calendar</div>
+      <div class="cta-headline">Every Hawaii<br>card show, in<br>one place.</div>
+      <div class="cta-url">hawaiicardshows.com</div>
+      <div class="cta-handle">@hawaiicardshows</div>
+    </div>
+    <div class="footer-row">
+      <div class="brand">Hawaii Card Shows</div>
+      <div class="made-by">Built by collectors, for collectors.</div>
+    </div>
+  </div>
+</body>
+</html>

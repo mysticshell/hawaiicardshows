@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Slide 4 — West Side III (Finale)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; }
+  body {
+    background: linear-gradient(135deg, #d4582a 0%, #b04621 100%);
+    color: #ffffff;
+    font-family: 'Archivo', sans-serif;
+    position: relative;
+    padding: 100px 90px;
+    display: flex;
+    flex-direction: column;
+  }
+  body::before { content: ''; position: absolute; top: -250px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%); pointer-events: none; }
+  body::after { content: ''; position: absolute; bottom: -250px; left: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,0,0,0.22), transparent 70%); pointer-events: none; }
+  .inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+  .tag {
+    display: inline-block; align-self: flex-start;
+    font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 22px;
+    letter-spacing: 2px; text-transform: uppercase; color: #d4582a;
+    background: #fff3cf; padding: 10px 20px; border-radius: 999px; margin-bottom: 30px;
+  }
+  .eyebrow { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 24px; letter-spacing: 5px; color: rgba(255,255,255,0.85); text-transform: uppercase; margin-bottom: 24px; }
+  h1 { font-family: 'Phudu', sans-serif; font-weight: 800; font-size: 110px; line-height: 0.95; letter-spacing: -3px; margin-bottom: 40px; }
+  .lead { font-family: 'Archivo', sans-serif; font-weight: 500; font-size: 31px; line-height: 1.5; color: #ffffff; max-width: 880px; margin-bottom: 48px; }
+  .lead strong { font-weight: 800; color: #fff3cf; }
+  .details { background: rgba(255,255,255,0.13); border: 2px solid rgba(255,255,255,0.25); border-radius: 22px; padding: 36px 40px; margin-top: auto; }
+  .details-row { display: flex; align-items: center; gap: 18px; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 31px; margin-bottom: 18px; color: #ffffff; }
+  .details-row:last-child { margin-bottom: 0; }
+  .details-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; }
+  .footer-row { margin-top: 36px; display: flex; justify-content: space-between; align-items: center; }
+  .brand { font-family: 'Phudu', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 1.5px; color: rgba(255,255,255,0.75); text-transform: uppercase; }
+  .swipe { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; color: rgba(255,255,255,0.7); letter-spacing: 1.5px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div class="tag">The Finale · Show 3 of 3</div>
+    <div class="eyebrow">Sat–Sun · June 6–7 · Ewa Beach</div>
+    <h1>West Side<br>Show III</h1>
+    <p class="lead">Then the week exploded. <strong>Max Holloway</strong> made his vendor debut, lines ran out the door to the street, and the vibes were immaculate. A UFC champ talking cards with the West Side &mdash; you couldn&rsquo;t script it better.</p>
+    <div class="details">
+      <div class="details-row"><div class="details-icon">📍</div>Kroc Center, Ewa Beach</div>
+      <div class="details-row"><div class="details-icon">🥊</div>Max Holloway&rsquo;s vendor debut</div>
+      <div class="details-row"><div class="details-icon">🎯</div>Host: @rocketrelics</div>
+    </div>
+    <div class="footer-row">
+      <div class="brand">Hawaii Card Shows</div>
+      <div class="swipe">Swipe →</div>
+    </div>
+  </div>
+</body>
+</html>

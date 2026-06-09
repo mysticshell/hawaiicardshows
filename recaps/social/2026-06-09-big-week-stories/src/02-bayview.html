@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Story 2 — Bayview (Kickoff)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); color: #ffffff; font-family: 'Archivo', sans-serif;
+    position: relative; padding: 300px 80px; display: flex; flex-direction: column; justify-content: center;
+  }
+  body::before { content: ''; position: absolute; top: -200px; right: -250px; width: 900px; height: 900px; background: radial-gradient(circle, rgba(255,255,255,0.16), transparent 70%); pointer-events: none; }
+  body::after { content: ''; position: absolute; bottom: -200px; left: -250px; width: 900px; height: 900px; background: radial-gradient(circle, rgba(0,0,0,0.25), transparent 70%); pointer-events: none; }
+  .inner { position: relative; z-index: 1; }
+  .tag { display: inline-block; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; color: #5b21b6; background: #e9d8fd; padding: 12px 24px; border-radius: 999px; margin-bottom: 32px; }
+  .eyebrow { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: 6px; color: #e9d8fd; text-transform: uppercase; margin-bottom: 32px; }
+  h1 { font-family: 'Phudu', sans-serif; font-weight: 800; font-size: 126px; line-height: 0.94; letter-spacing: -4px; margin-bottom: 48px; }
+  .lead { font-family: 'Archivo', sans-serif; font-weight: 500; font-size: 40px; line-height: 1.45; color: #ffffff; margin-bottom: 64px; }
+  .lead strong { font-weight: 800; color: #e9d8fd; }
+  .details { background: rgba(0,0,0,0.22); border-radius: 26px; padding: 44px 48px; }
+  .details-row { display: flex; align-items: center; gap: 22px; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 38px; margin-bottom: 24px; }
+  .details-row:last-child { margin-bottom: 0; }
+  .details-icon { font-size: 40px; flex-shrink: 0; }
+  .brand { position: absolute; bottom: 200px; left: 80px; font-family: 'Phudu', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 2px; color: rgba(255,255,255,0.75); text-transform: uppercase; z-index: 1; }
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div class="tag">The Kickoff · 1 of 3</div>
+    <div class="eyebrow">Tue · June 2 · Kaneohe</div>
+    <h1>Bayview<br>Night<br>Market</h1>
+    <p class="lead">The big week started on the East Side &mdash; PKMN Collective&rsquo;s Tuesday trade night set the tone with <strong>ono food</strong> under the lights.</p>
+    <div class="details">
+      <div class="details-row"><div class="details-icon">📍</div>Bayview Golf Course, Kaneohe</div>
+      <div class="details-row"><div class="details-icon">🗓️</div>Every 1st &amp; 3rd Tuesday</div>
+      <div class="details-row"><div class="details-icon">🎯</div>Host: @pkmn.collective</div>
+    </div>
+  </div>
+  <div class="brand">Hawaii Card Shows</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Community Moments — Feed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; }
+  body {
+    background: #1a1a1a; color: #ffffff; font-family: 'Archivo', sans-serif;
+    position: relative; padding: 100px 90px; display: flex; flex-direction: column;
+  }
+  body::before { content: ''; position: absolute; top: -300px; right: -200px; width: 820px; height: 820px; background: radial-gradient(circle, rgba(212,88,42,0.30), transparent 70%); pointer-events: none; }
+  body::after { content: ''; position: absolute; bottom: -220px; left: -220px; width: 760px; height: 760px; background: radial-gradient(circle, rgba(26,107,90,0.22), transparent 70%); pointer-events: none; }
+  .inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+  .eyebrow { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 6px; color: #d4582a; text-transform: uppercase; margin-bottom: 32px; }
+  h1 { font-family: 'Phudu', sans-serif; font-weight: 800; font-size: 122px; line-height: 0.94; letter-spacing: -4px; margin-bottom: 36px; }
+  h1 em { font-style: normal; color: #d4582a; }
+  .lead { font-family: 'Archivo', sans-serif; font-weight: 500; font-size: 32px; line-height: 1.5; color: rgba(255,255,255,0.72); max-width: 860px; margin-bottom: 44px; }
+  .lead strong { color: #ffffff; font-weight: 700; }
+  .chips { display: flex; flex-direction: column; gap: 18px; margin-bottom: auto; }
+  .chip {
+    display: flex; align-items: center; gap: 22px;
+    background: rgba(255,255,255,0.07); border: 2px solid rgba(255,255,255,0.14);
+    border-radius: 18px; padding: 26px 30px;
+    font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 36px; color: #ffffff;
+  }
+  .chip .ic { font-size: 44px; }
+  .submit {
+    background: rgba(212,88,42,0.14); border: 2px solid rgba(212,88,42,0.5);
+    border-radius: 20px; padding: 32px 36px; margin-top: 40px;
+  }
+  .submit-label { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; color: #f0714a; margin-bottom: 12px; }
+  .submit-line { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 32px; color: #ffffff; line-height: 1.4; }
+  .footer-row { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 36px; }
+  .brand { font-family: 'Phudu', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 1.5px; color: rgba(255,255,255,0.75); text-transform: uppercase; }
+  .credit { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 22px; color: rgba(255,255,255,0.5); }
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div class="eyebrow">Calling All Collectors</div>
+    <h1>Send us your<br><em>moments.</em></h1>
+    <p class="lead">We can&rsquo;t be everywhere at once &mdash; but you&rsquo;re already there. Got a clip from a show worth sharing?</p>
+    <div class="chips">
+      <div class="chip"><span class="ic">🪙</span>Epic coin flips</div>
+      <div class="chip"><span class="ic">📦</span>Insane pack rips</div>
+      <div class="chip"><span class="ic">🤝</span>Wholesome deals &amp; trades</div>
+    </div>
+    <div class="submit">
+      <div class="submit-label">How to send it in</div>
+      <div class="submit-line">DM <strong>@hawaiicardshows</strong> · tag us · or email aloha@hawaiicardshows.com</div>
+    </div>
+    <div class="footer-row">
+      <div class="brand">Hawaii Card Shows</div>
+      <div class="credit">🎥 Mahalo @sarukofamcollects</div>
+    </div>
+  </div>
+</body>
+</html>

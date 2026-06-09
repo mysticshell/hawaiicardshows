@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Slide 1 — Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; }
+  body {
+    background: #1a1a1a;
+    color: #ffffff;
+    font-family: 'Archivo', sans-serif;
+    position: relative;
+    padding: 100px 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  /* Subtle lava glow accent */
+  body::before {
+    content: '';
+    position: absolute;
+    top: -300px; right: -200px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,88,42,0.28), transparent 70%);
+    pointer-events: none;
+  }
+  body::after {
+    content: '';
+    position: absolute;
+    bottom: -200px; left: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(26,107,90,0.20), transparent 70%);
+    pointer-events: none;
+  }
+  .inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: 6px;
+    color: #d4582a;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .eyebrow .bolt {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 32px;
+    vertical-align: -2px;
+  }
+  h1 {
+    font-family: 'Phudu', sans-serif;
+    font-weight: 800;
+    font-size: 144px;
+    line-height: 0.96;
+    letter-spacing: -4px;
+    margin-bottom: 28px;
+  }
+  h1 .max {
+    color: #d4582a;
+    display: block;
+    font-size: 168px;
+    line-height: 0.9;
+    margin-bottom: 6px;
+  }
+  .sub {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.65);
+    max-width: 760px;
+    margin-top: 40px;
+  }
+  .sub strong { color: #ffffff; font-weight: 700; }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+  }
+  .brand {
+    font-family: 'Phudu', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.75);
+    text-transform: uppercase;
+  }
+  .swipe {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .hooo {
+    position: absolute;
+    top: 90px;
+    right: 90px;
+    font-family: 'Phudu', sans-serif;
+    font-weight: 800;
+    font-size: 38px;
+    color: #d4582a;
+    letter-spacing: 3px;
+    transform: rotate(8deg);
+    border: 4px solid #d4582a;
+    border-radius: 12px;
+    padding: 12px 22px;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+  <div class="hooo">HOOO!</div>
+  <div class="inner">
+    <div>
+      <div class="eyebrow"><span class="bolt">⚡</span>Just Announced</div>
+      <h1>
+        <span class="max">Max Holloway</span>
+        is vending<br>his first<br>card show.
+      </h1>
+      <p class="sub"><strong>This weekend in Hawaii.</strong> Plus Keep It Aloha #2 at SALT Kaka'ako.</p>
+    </div>
+    <div class="footer-row">
+      <div class="brand">Hawaii Card Shows</div>
+      <div class="swipe">Swipe →</div>
+    </div>
+  </div>
+</body>
+</html>

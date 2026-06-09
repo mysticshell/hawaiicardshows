@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Story 3 — Keep It Aloha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    background: linear-gradient(135deg, #1a6b5a 0%, #14524a 100%);
+    color: #ffffff;
+    font-family: 'Archivo', sans-serif;
+    position: relative;
+    padding: 320px 90px;
+    display: flex;
+    flex-direction: column;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: -250px;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+    pointer-events: none;
+  }
+  body::after {
+    content: '';
+    position: absolute;
+    bottom: -200px; right: -250px;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(0,0,0,0.22), transparent 70%);
+    pointer-events: none;
+  }
+  .inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+  .eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: 6px;
+    color: #f5d7a3;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  h1 {
+    font-family: 'Phudu', sans-serif;
+    font-weight: 800;
+    font-size: 130px;
+    line-height: 0.95;
+    letter-spacing: -4px;
+    margin-bottom: 56px;
+  }
+  h1 em {
+    font-style: normal;
+    color: #f5d7a3;
+  }
+  .lead {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.45;
+    color: #ffffff;
+    margin-bottom: 56px;
+  }
+  .lead strong { font-weight: 800; }
+  .stat-row {
+    display: flex;
+    gap: 22px;
+    margin-bottom: 72px;
+  }
+  .stat {
+    background: rgba(255,255,255,0.13);
+    border: 2px solid rgba(255,255,255,0.22);
+    border-radius: 22px;
+    padding: 32px 24px;
+    flex: 1;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Phudu', sans-serif;
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 1;
+    color: #f5d7a3;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+  }
+  .details {
+    background: rgba(0,0,0,0.22);
+    border-radius: 26px;
+    padding: 40px 44px;
+  }
+  .details-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  .details-row:last-child { margin-bottom: 0; }
+  .details-icon {
+    width: 56px; height: 56px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 34px;
+    flex-shrink: 0;
+  }
+  .hosts { font-size: 28px !important; }
+  .brand {
+    position: absolute;
+    bottom: 320px;
+    left: 90px;
+    font-family: 'Phudu', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.75);
+    text-transform: uppercase;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div class="eyebrow">FRIDAY · JUNE 5 · TOMORROW</div>
+    <h1>Keep It Aloha<br><em>Card Show #2</em></h1>
+    <p class="lead">Back at SALT Kaka'ako. <strong>Free for the public. All ages welcome.</strong></p>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">50</div>
+        <div class="stat-label">Vendors at #1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5,000+</div>
+        <div class="stat-label">Attendees</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">FREE</div>
+        <div class="stat-label">Everyone</div>
+      </div>
+    </div>
+    <div class="details">
+      <div class="details-row"><div class="details-icon">📍</div>SALT at Our Kaka'ako</div>
+      <div class="details-row"><div class="details-icon">🕒</div>2 PM – 9 PM</div>
+      <div class="details-row hosts"><div class="details-icon">🎯</div>@kamakarips · @hicollectibles · @hnlcollectibles</div>
+    </div>
+  </div>
+  <div class="brand">Hawaii Card Shows</div>
+</body>
+</html>

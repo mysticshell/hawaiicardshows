@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Story 5 — Closer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    background: #1a1a1a; color: #ffffff; font-family: 'Archivo', sans-serif;
+    position: relative; padding: 300px 80px; display: flex; flex-direction: column; justify-content: center;
+  }
+  body::before { content: ''; position: absolute; top: -200px; right: -250px; width: 900px; height: 900px; background: radial-gradient(circle, rgba(212,88,42,0.30), transparent 70%); pointer-events: none; }
+  body::after { content: ''; position: absolute; bottom: -200px; left: -250px; width: 900px; height: 900px; background: radial-gradient(circle, rgba(26,107,90,0.22), transparent 70%); pointer-events: none; }
+  .inner { position: relative; z-index: 1; }
+  .eyebrow { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: 6px; color: #d4582a; text-transform: uppercase; margin-bottom: 36px; }
+  h1 { font-family: 'Phudu', sans-serif; font-weight: 800; font-size: 150px; line-height: 0.95; letter-spacing: -5px; margin-bottom: 48px; }
+  h1 em { font-style: normal; color: #d4582a; }
+  .lead { font-family: 'Archivo', sans-serif; font-weight: 500; font-size: 40px; line-height: 1.45; color: rgba(255,255,255,0.75); margin-bottom: 72px; }
+  .lead strong { color: #ffffff; font-weight: 800; }
+  .lead .hooo { color: #d4582a; font-weight: 800; font-family: 'Phudu', sans-serif; }
+  .cta { background: rgba(255,255,255,0.07); border: 3px solid rgba(255,255,255,0.16); border-radius: 26px; padding: 48px 52px; }
+  .cta-eyebrow { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 14px; }
+  .cta-url { font-family: 'Phudu', sans-serif; font-weight: 800; font-size: 56px; color: #d4582a; line-height: 1.05; }
+  .cta-handle { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 30px; color: rgba(255,255,255,0.7); margin-top: 12px; }
+  .brand { position: absolute; bottom: 200px; left: 80px; font-family: 'Phudu', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 2px; color: rgba(255,255,255,0.7); text-transform: uppercase; z-index: 1; }
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div class="eyebrow">The Week in Hawaii Cards</div>
+    <h1>Three shows.<br>One <em>community.</em></h1>
+    <p class="lead">The Hawaii hobby is on fire. <strong>Show up. Support the organizers.</strong> <span class="hooo">HOOO! 🤙</span></p>
+    <div class="cta">
+      <div class="cta-eyebrow">Full Calendar + Recaps</div>
+      <div class="cta-url">hawaiicardshows.com</div>
+      <div class="cta-handle">@hawaiicardshows</div>
+    </div>
+  </div>
+  <div class="brand">Hawaii Card Shows</div>
+</body>
+</html>

@@ -6,6 +6,12 @@
 
 ## 🔥 Active Threads (next session — pick up here)
 
+### ▶️ TOMORROW (Tyler, 2026-06-09): add personality to recaps, then refresh carousels
+1. **Recap personality pass** — the two June recap drafts ([recaps/west-side-show-iii-june-2026.html](recaps/west-side-show-iii-june-2026.html), [recaps/keep-it-aloha-june-2026.html](recaps/keep-it-aloha-june-2026.html)) are structurally complete but read a little straight. Tyler wants to inject more voice/personality. Work from his floor notes + the `[[ ]]` placeholders. THEN fill numbers/photos and publish (register in recap-map.js + sitemap.xml — paste-ready entries are in the June 8 "Recently Completed" entry below).
+2. **Refresh the carousel/story graphics** — current slides in [recaps/social/](recaps/social/) are intentionally plain ("bland") because they were built with no input from Tyler yet. After the personality pass, update them with his voice + the real moments. Same render flow: edit `src/*.html`, run `print/render-slides.sh <drop>/src <WxH> <drop>`.
+3. **Still pending decisions:** giveaway prize (CMO rec: vendor-sponsored) + deadline; "Send Us Your Moments" voice (team vs signed founder note).
+
+
 ### Collectr partnership — LIVE, awaiting Tyler reply
 Adam (Collectr CEO) responded asking for an API to poll shows. **We shipped the API + finalized the email reply same-day.** Tyler is sending the reply (was reviewing the final copy-paste version).
 
@@ -54,13 +60,13 @@ Tyler attended both KIA #2 (Fri 6/5) AND West Side Cardshow III (Sat-Sun 6/6-6/7
 2. **West Side Cardshow III recap** — the bigger story given Max Holloway. **Frame as a flagship piece** (Hawaii Card Shows' first recap featuring a UFC champion vending). Real backlink + press potential. Same photo conventions: `/recaps/images/west-side-show-iii-june-2026-*.{jpg,JPG}`.
 3. **Saruko walkthroughs** for both shows — add entries to [`/community/walkthroughs.js`](community/walkthroughs.js) once Saruko sends links. ONE entry per recap_slug, no HTML editing needed (auto-renders).
 4. **Email blast** — combine both recaps + tease the August 9 Get Nutz In Paradise at Kroc Center + Aug 21-23 Collectors Hale (Maui). Subject angle: "What you missed (and what's next)."
-5. **IG carousel + Stories** — pattern from June 5 weekend blast (`print/carousel-2026-06-06/`, `print/stories-2026-06-06/`). Build new ones for the recaps. Use the carousel + stories slide-render pattern (headless Chrome via `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`, see commit history for the script approach).
+5. **IG carousel + Stories** — all IG assets now live in `recaps/social/` (one folder per post; see `recaps/social/README.md`). Render with `print/render-slides.sh <drop>/src <WxH> <drop>`.
 
 ### ⏰ STILL ON HOLD (carried over) — surface alongside the recap work
 
 These were June 3's "tonight/tomorrow" items and haven't been done yet. Surface them again Monday as the second priority block after the recaps.
 
-1. **Upload welcome email sequence to Buttondown** (~30 min). Drafts ready: [welcome-email.html](welcome-email.html) Day 0, [welcome-email-2.html](welcome-email-2.html) Day 7, [welcome-email-3.html](welcome-email-3.html) Day 21. Setup steps in [WELCOME-SEQUENCE.md](WELCOME-SEQUENCE.md). Days since approval are compounding into lost engagement.
+1. **Upload welcome email sequence to Buttondown** (~30 min). Drafts ready in [emails/welcome-sequence/](emails/welcome-sequence/): welcome-email.html (Day 0), -2 (Day 7), -3 (Day 21). Setup steps in [emails/welcome-sequence/WELCOME-SEQUENCE.md](emails/welcome-sequence/WELCOME-SEQUENCE.md). Days since approval are compounding into lost engagement.
 2. **Execute Backlink Playbook Phase 1** (~1 hour). [BACKLINK-PLAYBOOK.md](BACKLINK-PLAYBOOK.md) has the copy-paste DM script. Send to Kamaka (@kamakarips), Javin (@paradisecards_), PKMN Collective, Maui Sports Cards, GetNutz, ToyLynx, Bubbah's Toy Box, Aloha Card Shop. Each ask: add their series-page URL to their Linktree. Expected 4-5 backlinks within 48 hours.
 
 ## 📊 Where the site is right now (June 3 snapshot)
@@ -80,7 +86,7 @@ Aliases set up: `tyler@`, `aloha@`, `press@`, `partnerships@` — all route to o
 
 ## 🟡 Pending Tyler Tasks
 
-- [ ] **Welcome email sequence to Buttondown.** Three drafts in repo: [welcome-email.html](welcome-email.html) (Day 0), [welcome-email-2.html](welcome-email-2.html) (Day 7), [welcome-email-3.html](welcome-email-3.html) (Day 21). [WELCOME-SEQUENCE.md](WELCOME-SEQUENCE.md) has setup steps. Approved May 6 but still not uploaded.
+- [ ] **Welcome email sequence to Buttondown.** Three drafts in [emails/welcome-sequence/](emails/welcome-sequence/): welcome-email.html (Day 0), -2 (Day 7), -3 (Day 21). [WELCOME-SEQUENCE.md](emails/welcome-sequence/WELCOME-SEQUENCE.md) has setup steps. Approved May 6 but still not uploaded.
 - [ ] **Photos for the SEO pillar.** Need: (1) Maui or Big Island show photo (biggest credibility gap), (2) Two collectors trading, (3) Vendor table close-up, (4) Dollar bin shot.
 - [ ] **Big Island Breaks outreach.** Page is built. Send to them for review + get address/hours.
 - [ ] **Add Big Island Breaks to shop directory** once they approve their page.
@@ -171,6 +177,9 @@ via @import + inline stacks. Bonus fix: welcome-email.html had a broken
 
 ## Backlog — Ready to Build
 
+- [ ] **"West Side broke the internet" Max Holloway video** (Tyler 2026-06-08, PARKED). The scene was huge — lines out the door, vibes immaculate. Tyler's call: it'll feel more authentic from a **local-creator voice** than from him (doesn't follow UFC, isn't the "average local kid on Oahu" voice). **Play:** pitch it as a creator collab — @sarukofamcollects or another local creator narrates/stars, HCS produces/distributes. Hold until the right voice is lined up; don't force it from the brand account.
+- [ ] **Per-show "Moments" archive gallery** (Tyler 2026-06-08). Natural extension of the "Send Us Your Moments" campaign + the From the Floor system. Once community clips start flowing, build a permanent moments gallery on each show's page (mirrors `walkthroughs.js` registry pattern — likely a `moments.js` keyed by show/recap slug). Turns submissions into a lasting archive, not just one-time recap features.
+
 - [ ] **More themed landing pages** — /pokemon-card-shops-hawaii, /card-shows-oahu, /card-shows-maui as separate SEO landing pages (optional next tier)
 - [ ] **Consistent recap publishing habit** — template + checklist are done (recaps/_TEMPLATE.html, recaps/CHECKLIST.md). Publish within 3-5 days of each major show.
 - [ ] **Admin dashboard improvements** — Better event management in missingno.html
@@ -191,9 +200,33 @@ via @import + inline stacks. Bonus fix: welcome-email.html had a broken
 
 ## Recently Completed
 
+- [x] **June 8 session: recap workflow refined + full week content package built** (2026-06-08).
+  - **CMO analytics briefing** pulled live: **7,652 sessions / 4,045 users last 30d (+75% / +79% MoM)** — third straight doubling-class month. 72% organic search, 75% Hawaii, 83% mobile. West Side series page already #3 sitewide (1,126 views) off the Max Holloway promo. Newsletter **110 subscribers** (~4x in 6 weeks), opens holding **48–55%** while the list grows. New report script: [.agents/scripts/cmo_report.py](.agents/scripts/cmo_report.py) (30d-vs-prior + MoM).
+  - **Workflow refined:** committed [print/render-slides.sh](print/render-slides.sh) (one-command headless-Chrome slide→PNG render — no more reconstructing from git history) + [recaps/RECAP-KIT.md](recaps/RECAP-KIT.md) (master playbook tying recap page → blast → carousel → stories into one package from one input set).
+  - **Two recap pages drafted** (DRAFT banners list exactly what to fill): [recaps/west-side-show-iii-june-2026.html](recaps/west-side-show-iii-june-2026.html) (flagship — Max Holloway lede) + [recaps/keep-it-aloha-june-2026.html](recaps/keep-it-aloha-june-2026.html). Both wired for SEO/schema/links/walkthrough module; serve 200, all internal links resolve. **Gated on:** floor numbers (vendor/attendance/moments) + photos.
+  - **Week email blast drafted:** [emails/blasts/blast-recap-big-weekend-june-2026.html](emails/blasts/blast-recap-big-weekend-june-2026.html) — 3-show weekend recap + Bayview (Tue Jun 16) week-ahead kickoff. UTM'd, single-focus CTAs. **Send Tue–Wed** (weekly already auto-sent Mon Jun 8). Gated on recaps going live + HCS Team note from Tyler.
+  - **3-show carousel + stories rendered:** now in [recaps/social/2026-06-09-big-week-carousel/](recaps/social/2026-06-09-big-week-carousel/) (5 slides, 1080×1350) + [recaps/social/2026-06-09-big-week-stories/](recaps/social/2026-06-09-big-week-stories/) (5, 1080×1920). Cover → Bayview → KIA #2 → West Side/Max → CTA closer.
+
+  **⏳ OPEN — to publish the recaps (then register + push):**
+  1. Drop floor numbers + photos into both recaps (see DRAFT banners). Photo names listed there.
+  2. Add to `recaps/recap-map.js` (newest first):
+     - `{ slug:'west-side-show-iii-june-2026', title:'West Side Show III — Max Holloway Works the West Side', date:'2026-06-06', event_id:'b920cfb3-7168-46b6-b888-a7ec743f0a8e', thumbnail:'/recaps/images/west-side-show-iii-june-2026-max-holloway.jpg', url:'/recaps/west-side-show-iii-june-2026.html', blurb:'A UFC champ behind the table — Max Holloway vended his first card show.' }`
+     - `{ slug:'keep-it-aloha-june-2026', title:'Keep It Aloha #2 — Festival Returns for a Friday Night', date:'2026-06-05', event_id:'13961a95-543a-4930-8de2-98ecf08322f9', thumbnail:'/recaps/images/keep-it-aloha-june-2026-floor.jpg', url:'/recaps/keep-it-aloha-june-2026.html', blurb:'Free for the public, all ages — the festival came back for a Friday night.' }`
+  3. Add both URLs to `sitemap.xml` under `<!-- Recap pages -->`.
+  4. Confirm Bayview blast date (next 1st/3rd Tue = **Jun 16**; Jun 9 is the 2nd Tue, no Bayview).
+  5. When Saruko sends walkthroughs for these shows, add to `community/walkthroughs.js` with matching `recap_slug`.
+
+  **PART 2 — Tyler's ideas built same session:**
+  - **Chronology corrected:** Bayview ran the **first Tuesday (Jun 2)** and is the START of the big week that ended with West Side. Re-sequenced carousel + stories to **Bayview (kickoff) → KIA #2 (build) → West Side/Max (finale)**, and rewrote the blast to match (was wrongly forward-dating Bayview to Jun 16; June 16 is now framed as "what's next").
+  - **'Send Us Your Moments' community campaign** ([recaps/social/2026-06-09-community-moments/](recaps/social/2026-06-09-community-moments/)): feed graphic + caption.txt (team voice, Saruko shoutout, DM/email/tag submission). Feeds the existing "From the Floor" system; future build = a per-show moments archive gallery. **Ready to post** (offer Tyler a signed-founder-note alternate if he prefers).
+  - **100-subscriber giveaway** ([recaps/social/2026-06-09-giveaway-feed/](recaps/social/2026-06-09-giveaway-feed/) + [-giveaway-story/](recaps/social/2026-06-09-giveaway-story/)): feed + story graphics + mechanics/caption. **NEEDS Tyler:** pick the prize (CMO rec = vendor-sponsored for a partner activation/backlink) + set deadline. Then fill `[[ PRIZE ]]` / `[[ DATE ]]` in graphics + caption. Target: +25 net subs toward the 150 goal.
+  - **📲 Reorg:** all IG assets now live in **[recaps/social/](recaps/social/)** — one folder per post, PNGs numbered in post order, `caption.txt` alongside, HTML in `src/`. Convention doc: [recaps/social/README.md](recaps/social/README.md). Render now outputs to a separate dir: `print/render-slides.sh <drop>/src <WxH> <drop>`. Old `print/<carousel|stories|…>-…/` folders migrated + removed. `print/` keeps shop counter-cards only.
+  - **📧 Reorg:** email source files moved off the repo root into **[emails/](emails/)** (`emails/blasts/` + `emails/welcome-sequence/`, with a README). Doc links updated. **Root now holds only live, served pages** (path = URL on Cloudflare Pages, so content pages like `card-show-etiquette.html` / `faq.html` are NOT movable without a deliberate 301-redirect + sitemap + canonical migration — left as-is by design). Favicons stay at root per web convention.
+  - **PARKED — "West Side broke the internet" Max video:** Tyler's instinct (good one) is it lands better from a local-creator voice, not him (he doesn't follow UFC / isn't the "average local kid" voice). Hold for a creator collab — natural fit for @sarukofamcollects or a partner. See Backlog.
+
 - [x] **June 5-6 session: KIA #2 + West Side Max Holloway promo blitz** (2026-06-05/06). Shipped end-to-end coverage for the back-to-back weekend show:
-  - **Email blast** sent via Buttondown API (we now have `BUTTONDOWN_API_KEY` in `.agents/.env`) — "Max Holloway is vending his first card show this weekend" + KIA #2 reminder. File at [blast-max-holloway-westside-june-2026.html](blast-max-holloway-westside-june-2026.html). Buttondown email ID `em_3petp682gr88ysgvg4hjv5pb7c`. Sent live to all subscribers.
-  - **IG carousel + Stories** rendered via headless Chrome at `print/carousel-2026-06-06/` (4 slides, 1080×1350) and `print/stories-2026-06-06/` (4 stories, 1080×1920). Hot pattern for future cross-channel shipments. Pillar slide: Max Holloway "try your luck against the best" + KIA #2 "free for public, all ages welcome" (note: KIA #2 was paid for vendors, free for public).
+  - **Email blast** sent via Buttondown API (we now have `BUTTONDOWN_API_KEY` in `.agents/.env`) — "Max Holloway is vending his first card show this weekend" + KIA #2 reminder. File at [emails/blasts/blast-max-holloway-westside-june-2026.html](emails/blasts/blast-max-holloway-westside-june-2026.html). Buttondown email ID `em_3petp682gr88ysgvg4hjv5pb7c`. Sent live to all subscribers.
+  - **IG carousel + Stories** rendered via headless Chrome (now at `recaps/social/2026-06-06-max-holloway-promo-carousel/` + `-stories/` after the June 8 reorg; 4 slides each). Hot pattern for future cross-channel shipments. Pillar slide: Max Holloway "try your luck against the best" + KIA #2 "free for public, all ages welcome" (note: KIA #2 was paid for vendors, free for public).
   - **CRITICAL routing bug fixed** (commit `b1c494a`). The Cloudflare Pages Function at `functions/shows/[slug].js` was serving the dynamic `/shows/show.html` for EVERY `/shows/<slug>` URL — including ones with dedicated static series pages (KIA, Paradise, Bayview, West Side). Result: clicking a series link from the homepage stuck on "Loading Event..." forever. Fix: function now does explicit ASSETS.fetch for `/shows/<slug>.html` first; if 200, serve that. If 404, fall through to dynamic show.html. Verified working.
   - **West Side Show logo** added to hero + og:image + DB rows (commit `aab0ca6`, then centered in `0882d2e`). File: `shows/images/westside-card-show-logo.jpg`. Logo is only 150×150 — fine for hero, suboptimal for og:image (1200×630 ideal). Rocket Relics may have higher-res.
   - **"From the Floor" walkthrough module** (commits `c65aba5`, `be2c387`, `da361d6`) — community-contributed Instagram reels surface on recap pages via the [`community/walkthroughs.js`](community/walkthroughs.js) registry (mirrors `recap-map.js` pattern, Tyler's call: no DB table needed for one creator). First entry live: Saruko Fam Collects walkthrough of KIA #1. Section placed ABOVE the "Photos from the Show" heading on every recap. Auto-hidden when no entry matches.

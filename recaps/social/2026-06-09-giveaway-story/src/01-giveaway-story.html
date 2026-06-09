@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>100 Subscribers Giveaway — Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    background: linear-gradient(135deg, #1a6b5a 0%, #14524a 100%); color: #ffffff; font-family: 'Archivo', sans-serif;
+    position: relative; padding: 300px 80px; display: flex; flex-direction: column; justify-content: center;
+  }
+  body::before { content: ''; position: absolute; top: -200px; right: -250px; width: 900px; height: 900px; background: radial-gradient(circle, rgba(255,255,255,0.16), transparent 70%); pointer-events: none; }
+  body::after { content: ''; position: absolute; bottom: -200px; left: -250px; width: 900px; height: 900px; background: radial-gradient(circle, rgba(212,88,42,0.30), transparent 70%); pointer-events: none; }
+  .inner { position: relative; z-index: 1; }
+  .eyebrow { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: 6px; color: #f5d7a3; text-transform: uppercase; margin-bottom: 20px; }
+  .bignum { font-family: 'Phudu', sans-serif; font-weight: 800; font-size: 380px; line-height: 0.82; letter-spacing: -12px; margin-bottom: 12px; }
+  .bignum .plus { color: #f5d7a3; }
+  .subline { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 44px; color: rgba(255,255,255,0.92); margin-bottom: 56px; line-height: 1.3; }
+  .subline strong { color: #f5d7a3; }
+  .prize { background: rgba(0,0,0,0.24); border: 3px dashed rgba(245,215,163,0.6); border-radius: 26px; padding: 44px 48px; margin-bottom: 48px; }
+  .prize-label { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; color: #f5d7a3; margin-bottom: 14px; }
+  .prize-name { font-family: 'Phudu', sans-serif; font-weight: 800; font-size: 64px; line-height: 1.05; color: #ffffff; }
+  .how-row { display: flex; align-items: center; gap: 22px; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 40px; margin-bottom: 22px; }
+  .how-row:last-child { margin-bottom: 0; }
+  .how-ic { font-size: 44px; }
+  .brand { position: absolute; bottom: 200px; left: 80px; font-family: 'Phudu', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 2px; color: rgba(255,255,255,0.72); text-transform: uppercase; z-index: 1; }
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div class="eyebrow">Mahalo, Hawaii 🤙</div>
+    <div class="bignum">100<span class="plus">+</span></div>
+    <div class="subline">subscribers in a month &mdash;<br><strong>completely organic.</strong></div>
+    <div class="prize">
+      <div class="prize-label">We&rsquo;re Giving Away</div>
+      <div class="prize-name">[[ PRIZE ]]</div>
+    </div>
+    <div class="how-row"><span class="how-ic">①</span>Subscribe (free) to enter</div>
+    <div class="how-row"><span class="how-ic">②</span>Already in? You&rsquo;re entered 🎉</div>
+    <div class="how-row"><span class="how-ic">③</span>Winner drawn [[ DATE ]]</div>
+  </div>
+  <div class="brand">Hawaii Card Shows · hawaiicardshows.com</div>
+</body>
+</html>
