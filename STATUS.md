@@ -1,10 +1,19 @@
 # Hawaii Card Shows — Project Status
 
-*Last updated: 2026-06-06 (API/Collectr section refreshed after the events-API build + 502 fix)*
+*Last updated: 2026-06-09 (Full Calendar page + `series` taxonomy + clickable calendar grid shipped)*
 
 ---
 
 ## 🔥 Active Threads (next session — pick up here)
+
+### ✅ SHIPPED — Full Calendar page + `series` taxonomy + clickable calendar (2026-06-09)
+Done and pushed/deployed. Four related pieces:
+1. **Dedicated [/calendar/](calendar/index.html) page** — mobile auto-agenda, desktop grid+agenda toggle, pulls approved Supabase events, goes as far out as shows are booked. "Full Calendar" CTAs on home hero + shows page (under Featured, above All Shows) + a **Calendar nav/footer link added site-wide across all 54 public pages**.
+2. **Scrapped the misleading "Annual Events" home section** — `annual` had become a junk drawer. Shows still surface on the Full Calendar by date. Revisit later as a tight "Flagship" section if wanted.
+3. **New `series` event_type** for the irregular-cadence middle ground (Keep It Aloha, Paradise, Card District, Mini Pokemon Market, etc.). `event_type` is **free text — no migration needed**. Made `series` first-class in code (home schema/stats, shows-page filter + purple badge) BEFORE re-tagging so nothing regressed. **Re-tagged 43 rows** via service key → live distribution: series 40 / recurring 8 / one-time 15 / annual 2 (Pop Con + Aloha Card Show Blaisdell only) / music 1. Rollback snapshot: `.agents/retag-rollback-20260609.json` (gitignored). Submit form + both admin (`missingno.html`) dropdowns gained a Series option so new submissions round-trip. Full rationale in auto-memory `project_event_type_taxonomy.md`.
+4. **Clickable day popup on the calendar grid** — clicking any day with shows opens a modal listing every show that day (incl. ones hidden behind "+N more"), each linking to its show page. Closes on X/backdrop/Esc. Both /calendar/ and home inline calendar. Agenda rows were already links.
+
+**Small follow-up (low priority, self-resolving):** ~a few of the 15 `one-time` rows may actually be series we couldn't confirm (Moiliili, Spotlight, Kauai Collectors Con, Ya Maui). Bump to `series` when a 2nd date is booked. Related backlog item still open: "Add to Calendar" (iCal/Google) buttons on show pages.
 
 ### ▶️ RECAPS — hidden drafts out for organizer review (2026-06-09)
 Both June recaps got a **personality pass** (Tyler's floor notes worked in: pulls, sponsors, the birds,
@@ -48,7 +57,7 @@ We have a live public API at `/api/events` that Collectr (and any future partner
 
 **Before doing any of these, check API impact:**
 - Renaming columns in the Supabase `events` table
-- Renaming `event_type` values (currently: `one-time`, `annual`, `recurring`, `music`)
+- Renaming `event_type` values (currently: `one-time`, `series`, `annual`, `recurring`, `music`). `series` added 2026-06-09 — additive, API-safe per the contract below.
 - Renaming `island` values (currently: `Oahu`, `Maui`, `Big Island`, `Kauai`, `Molokai`, `Lanai`)
 - Changing the `url` field format / canonical URL pattern for shows
 - Removing fields from the API response shape in `functions/api/events.js`
