@@ -43,6 +43,23 @@ curl -s "$SUPABASE_URL/rest/v1/events?name=ilike.*YOUR_SHOW*&select=id,name,star
 
 The canonical, SEO-permanent asset. Everything else links back to it.
 
+### 🖼️ Hero image — REQUIRED (it's what makes a recap stand out)
+Every recap leads with a full-bleed `.recap-hero-banner` at the top, and that same image is the
+`og:image` / `twitter:image` (so the link shares as a real card, not a blank box). The template wires all
+three to `/recaps/images/{slug}-hero.jpg` — keep them in sync.
+- **Best:** a real wide show photo (1600×840 ideal; `sips -Z 1600` + JPEG quality ~78, keep <300KB).
+- **No photos yet?** Render a **branded fallback** so the page still looks intentional (gradient + title +
+  the show's hook), then swap to a real photo when it lands:
+  1. Copy a prior hero source (e.g. `recaps/_hero-src/west-side-show-iii-june-2026.html`) → `recaps/_hero-src/{slug}.html`, edit the title/kicker.
+  2. Render + convert to JPG:
+     ```bash
+     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --hide-scrollbars \
+       --force-device-scale-factor=1 --window-size=1600,840 --default-background-color=00000000 \
+       --virtual-time-budget=15000 --screenshot=/tmp/hero.png "file://$(pwd)/recaps/_hero-src/{slug}.html"
+     sips -s format jpeg -s formatOptions 78 /tmp/hero.png --out recaps/images/{slug}-hero.jpg
+     ```
+- If a recap has NO real photos at all, comment out the "Photos from the Show" gallery (don't ship broken images) — the hero + any "Caught on the Floor" embeds carry it.
+
 1. `cp recaps/_TEMPLATE.html recaps/{slug}.html` — fill the `{{TOKENS}}`, delete the comment block.
 2. Run the **SEO & Schema** + **Final Review** sections of `CHECKLIST.md`.
 3. **Register it** (this is what makes it appear sitewide — easy to forget):

@@ -1,6 +1,6 @@
 # Hawaii Card Shows — Project Status
 
-*Last updated: 2026-06-09 (Full Calendar page + `series` taxonomy + clickable calendar grid shipped)*
+*Last updated: 2026-06-09 pm (KIA #2 recap photos + "West Side Card Show" rename shipped; recaps live as hidden review drafts)*
 
 ---
 
@@ -15,24 +15,33 @@ Done and pushed/deployed. Four related pieces:
 
 **Small follow-up (low priority, self-resolving):** ~a few of the 15 `one-time` rows may actually be series we couldn't confirm (Moiliili, Spotlight, Kauai Collectors Con, Ya Maui). Bump to `series` when a 2nd date is booked. Related backlog item still open: "Add to Calendar" (iCal/Google) buttons on show pages.
 
-### ▶️ RECAPS — hidden drafts out for organizer review (2026-06-09)
-Both June recaps got a **personality pass** (Tyler's floor notes worked in: pulls, sponsors, the birds,
-Max's deals, Sir Darkrai, gimme-gimmes, "WEST SIDE BEST SIDE", Paul's quote, @jlxtcg/@shakasoles free
-entry, the @rocket_relics + @fromthehearthawaii/@shophavenmae/@ditzypulls credits, 2 community IG embeds).
-Now set as **hidden pages** (`noindex,nofollow`, NOT in recap-map.js/sitemap, "Draft for review" banner) so
-Tyler can send the direct links to Kamaka + Paul/Ken for feedback. **Live once pushed** (Cloudflare deploys
-the static files; noindex keeps them out of search).
-- [recaps/keep-it-aloha-june-2026.html](recaps/keep-it-aloha-june-2026.html) — KIA #2
-- [recaps/west-side-show-iii-june-2026.html](recaps/west-side-show-iii-june-2026.html) — West Side III (flagship)
+### ▶️ RECAPS — hidden drafts, organizer review in progress (updated 2026-06-09 pm)
+Both June recaps are **hidden** (`noindex,nofollow`, NOT in recap-map.js/sitemap, "Draft for review" banner)
+and **pushed/live** so Tyler can share the direct links for feedback:
+- **KIA #2** — https://hawaiicardshows.com/recaps/keep-it-aloha-june-2026 — **8 photos in** (hero banner =
+  show-floor + 7-photo gallery), full sponsor mahalo mirroring Kamaka's caption (@getcollectr / @alohacardshop /
+  @merchlabs / @7elevenhi / @kaponowmusic / @saltourkakaako), Kamaka's reel embedded. **Sent to Kamaka for review.**
+- **West Side Card Show III** (flagship) — https://hawaiicardshows.com/recaps/west-side-show-iii-june-2026 —
+  review pass done (new lead "hobbyists, side hustlers, or card show owners"; Darkrai SAR + keiki free packs;
+  gimme-gimmes; Paul's year-ago origin; 2 community reels). **No hero photo yet** — awaiting West Side photos.
+  Tyler gathering Paul's feedback.
 
-**To publish later:** flip `robots` to `index, follow`, fill the `TBC` stats + add photos, register in
-recap-map.js + sitemap.xml (paste-ready entries in the June 8 entry below), remove the review banner + the
-top DRAFT comment.
+**RENAME shipped + verified live:** "West Side Show" → "West Side Card Show" everywhere — DB events III/IV,
+series page display + `SERIES_NAME_PATTERN`, `HCS_SERIES_URLS` routing (index.html + shows/show.html), recap,
+draft blast, big-week social slides. **URL slug `/shows/west-side-show` kept** (display-only rename; changing
+the slug would break links/SEO/API). Also fixed @rocketrelics→@rocket_relics on the series page.
 
-**Still waiting on Tyler:** vendor/attendance counts (both shows, the `TBC` stat boxes); the MC's @handle
-(West Side shout-out); photos (filenames listed in each draft's top comment).
-DB note: West Side + The Card District rows updated to **@rocket_relics** (Paul also runs Card District w/
-Ken @fromthehearthawaii). KIA next show confirmed **July 4–5**.
+**Still NEEDED before publish (both):** vendor + attendance counts (the `TBC` stat boxes); West Side also needs
+the MC's @handle + a hero photo. Then: flip `robots`→`index, follow`, register in recap-map.js + sitemap.xml
+(paste-ready entries in the June 8 entry below), remove the review banner + top DRAFT comment.
+
+**✅ RESOLVED (2026-06-09): hero image is now a REQUIRED recap-template element.**
+Every recap leads with a `.recap-hero-banner` that is ALSO the og/twitter image (`/recaps/images/{slug}-hero.jpg`).
+- KIA #2 = real-photo hero. West Side = **branded fallback** built (`recaps/_hero-src/west-side-show-iii-june-2026.html`
+  → `-hero.jpg`, 1600×840, gradient + "Max Holloway's Vendor Debut") — swap for a real photo when Tyler has one.
+- Codified in `recaps/_TEMPLATE.html` (hero block + og:image/twitter:image now standard, keyed to `{{SLUG}}-hero.jpg`)
+  and `recaps/RECAP-KIT.md` (hero render + branded-fallback recipe). West Side photo gallery commented out
+  until real photos exist (no broken images on the review page).
 
 ### ▶️ THEN: refresh carousels with Tyler's voice
 Current slides in [recaps/social/](recaps/social/) were intentionally plain (no Tyler input yet). After the

@@ -30,6 +30,7 @@
     {{META_DESCRIPTION}}   — 160ish-char meta description
     {{META_KEYWORDS}}      — comma-separated keywords
     {{OG_DESCRIPTION}}     — slightly punchier version of meta description
+    {{HERO_ALT}}           — alt text describing the hero banner image (e.g. "packed floor at SALT Kaka'ako")
     {{ORGANIZER_NAME}}     — e.g. "Kamaka Dias & Hawaii Collectibles"
     {{LEAD_PARAGRAPH}}     — Your opening 2-3 sentence setup
     {{BODY_PARAGRAPH_1}}   — Continue the narrative; what happened, who was there
@@ -86,11 +87,13 @@
 <meta property="og:url" content="https://hawaiicardshows.com/recaps/{{SLUG}}.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Hawaii Card Shows">
+<meta property="og:image" content="https://hawaiicardshows.com/recaps/images/{{SLUG}}-hero.jpg">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{SHOW_NAME}} Recap — {{DATE_DISPLAY}}">
 <meta name="twitter:description" content="{{OG_DESCRIPTION}}">
+<meta name="twitter:image" content="https://hawaiicardshows.com/recaps/images/{{SLUG}}-hero.jpg">
 
 <!-- Structured Data: Article + Event -->
 <script type="application/ld+json">
@@ -197,6 +200,14 @@
     <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
   </button>
 </nav>
+
+<!-- ═════ HERO BANNER (REQUIRED — every recap leads with one) ═════
+     Use a real wide show photo when you have one (1600×840 ideal). If photos aren't ready yet,
+     render a BRANDED FALLBACK hero from recaps/_hero-src/{{SLUG}}.html (see RECAP-KIT.md → "Hero image").
+     This image is ALSO the og:image / twitter:image — keep all three in sync. -->
+<div class="recap-hero-banner">
+  <img src="/recaps/images/{{SLUG}}-hero.jpg" alt="{{SHOW_NAME}} — {{HERO_ALT}}" loading="eager">
+</div>
 
 <div class="recap-hero">
   <div class="recap-tag">Show Recap</div>
