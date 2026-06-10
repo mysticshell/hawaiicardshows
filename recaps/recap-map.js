@@ -17,6 +17,15 @@
 (function () {
   const RECAPS = [
     {
+      slug: 'keep-it-aloha-june-2026',
+      title: 'Keep It Aloha #2 — 1,500+ on a Friday Night',
+      date: '2026-06-05',
+      event_id: '13961a95-543a-4930-8de2-98ecf08322f9',
+      thumbnail: '/recaps/images/keep-it-aloha-june-2026-show-floor.jpg',
+      url: '/recaps/keep-it-aloha-june-2026.html',
+      blurb: '70+ vendors and 1,500+ collectors — free for everyone, all on a single Friday night at SALT.'
+    },
+    {
       slug: 'keep-it-aloha-may-2026',
       title: 'Keep It Aloha #1 — Festival Energy at SALT Kaka’ako',
       date: '2026-05-02',
