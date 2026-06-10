@@ -18,22 +18,25 @@ Done and pushed/deployed. Four related pieces:
 ### ▶️ RECAPS — hidden drafts, organizer review in progress (updated 2026-06-09 pm)
 Both June recaps are **hidden** (`noindex,nofollow`, NOT in recap-map.js/sitemap, "Draft for review" banner)
 and **pushed/live** so Tyler can share the direct links for feedback:
-- **KIA #2** — https://hawaiicardshows.com/recaps/keep-it-aloha-june-2026 — **8 photos in** (hero banner =
-  show-floor + 7-photo gallery), full sponsor mahalo mirroring Kamaka's caption (@getcollectr / @alohacardshop /
-  @merchlabs / @7elevenhi / @kaponowmusic / @saltourkakaako), Kamaka's reel embedded. **Sent to Kamaka for review.**
+- **KIA #2** — https://hawaiicardshows.com/recaps/keep-it-aloha-june-2026 — **✅ CONTENT-COMPLETE.**
+  Stats in: **70+ vendors / 1,500+ attendees** (single Friday night vs May's 5,000 over two days — framed as
+  a strong showing). 8 photos (hero = show-floor + 7 gallery), full sponsor mahalo mirroring Kamaka's caption
+  (@getcollectr / @alohacardshop / @merchlabs / @7elevenhi / @kaponowmusic / @saltourkakaako), Kamaka's reel
+  embedded. **Sent to Kamaka — awaiting sign-off, then publish.** (Optional: a direct Kamaka quote.)
 - **West Side Card Show III** (flagship) — https://hawaiicardshows.com/recaps/west-side-show-iii-june-2026 —
   review pass done (new lead "hobbyists, side hustlers, or card show owners"; Darkrai SAR + keiki free packs;
-  gimme-gimmes; Paul's year-ago origin; 2 community reels). **No hero photo yet** — awaiting West Side photos.
-  Tyler gathering Paul's feedback.
+  gimme-gimmes; Paul's year-ago origin; 2 community reels). **Branded fallback hero in place** (swap for a real
+  photo later). Still needs: vendor/attendance counts (TBC), MC's @handle, real photos. Tyler gathering Paul's feedback.
 
 **RENAME shipped + verified live:** "West Side Show" → "West Side Card Show" everywhere — DB events III/IV,
 series page display + `SERIES_NAME_PATTERN`, `HCS_SERIES_URLS` routing (index.html + shows/show.html), recap,
 draft blast, big-week social slides. **URL slug `/shows/west-side-show` kept** (display-only rename; changing
 the slug would break links/SEO/API). Also fixed @rocketrelics→@rocket_relics on the series page.
 
-**Still NEEDED before publish (both):** vendor + attendance counts (the `TBC` stat boxes); West Side also needs
-the MC's @handle + a hero photo. Then: flip `robots`→`index, follow`, register in recap-map.js + sitemap.xml
-(paste-ready entries in the June 8 entry below), remove the review banner + top DRAFT comment.
+**Still NEEDED before publish:** KIA #2 is content-complete (just awaiting Kamaka's OK). **West Side** still
+needs vendor/attendance counts + the MC's @handle (real photos optional — branded fallback hero is live).
+To publish either: flip `robots`→`index, follow`, register in recap-map.js + sitemap.xml (paste-ready entries
+in the June 8 entry below), remove the review banner + top DRAFT comment.
 
 **✅ RESOLVED (2026-06-09): hero image is now a REQUIRED recap-template element.**
 Every recap leads with a `.recap-hero-banner` that is ALSO the og/twitter image (`/recaps/images/{slug}-hero.jpg`).
