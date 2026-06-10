@@ -74,6 +74,17 @@ If a breaking change is genuinely needed: email Adam (and any future partners) *
 ### Slug URLs — clean URLs are LIVE (2nd attempt)
 Tyler asked for cleaner `/shows/<slug>` URLs instead of `?id=<uuid>`. First attempt (`_redirects` with status 200) broke production with redirect loops — reverted in `b65c891`. **Second attempt using Cloudflare Pages Function works correctly** — commit `866b92f`. URLs like `/shows/pokemon-rave` now resolve via [functions/shows/[slug].js](functions/shows/[slug].js).
 
+### Google Search Console — NOW CONNECTED (2026-06-XX)
+The GA4 service account (`analytics-viewer@hawaii-card-shows.iam.gserviceaccount.com`) now has Search Console access too. Two setup steps were done: (1) enabled the Search Console API in the `hawaii-card-shows` Cloud project, (2) Tyler added the service account as a user in the GSC property.
+
+- **Script:** `.agents/scripts/gsc_report.py` (local-only, gitignored like ga4_report.py). Usage:
+  - `python3 .agents/scripts/gsc_report.py` → top 25 queries, last 28 days
+  - `python3 .agents/scripts/gsc_report.py "west side"` → queries containing a term
+  - `python3 .agents/scripts/gsc_report.py --page west-side-show` → all queries for one page
+- **Site property:** `sc-domain:hawaiicardshows.com` (domain property). If a query 403s, the URL-prefix form may be needed — override via `GSC_SITE_URL` in .agents/.env.
+- **What GSC gives that GA4 can't:** the actual search QUERY strings + impressions + average rank position. GA4 only shows "organic search sessions." Use GSC for "what are people typing to find us / what do we rank for."
+- **Data caveat:** ~2-3 day lag, ~16 month retention, data starts from property verification.
+
 ### Emi (recent college grad) — social media collab idea
 Tyler had coffee with Emi May 31 — anime fan, wants to work in TV/marketing, has social media experience, no job this summer. I drafted three deal shapes for a win-win collab. **Tyler paused this to focus on Collectr — reminder to come back to it.** Concrete proposal queued: 2-week paid trial ($300, 5 IG posts + 1 Reel + 1 newsletter section), then $150/show per-show coverage if it works. Full thinking in TaskGet #1.
 
