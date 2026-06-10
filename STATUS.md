@@ -15,14 +15,13 @@ Done and pushed/deployed. Four related pieces:
 
 **Small follow-up (low priority, self-resolving):** ~a few of the 15 `one-time` rows may actually be series we couldn't confirm (Moiliili, Spotlight, Kauai Collectors Con, Ya Maui). Bump to `series` when a 2nd date is booked. Related backlog item still open: "Add to Calendar" (iCal/Google) buttons on show pages.
 
-### ▶️ RECAPS — hidden drafts, organizer review in progress (updated 2026-06-09 pm)
-Both June recaps are **hidden** (`noindex,nofollow`, NOT in recap-map.js/sitemap, "Draft for review" banner)
-and **pushed/live** so Tyler can share the direct links for feedback:
-- **KIA #2** — https://hawaiicardshows.com/recaps/keep-it-aloha-june-2026 — **✅ CONTENT-COMPLETE.**
-  Stats in: **70+ vendors / 1,500+ attendees** (single Friday night vs May's 5,000 over two days — framed as
-  a strong showing). 8 photos (hero = show-floor + 7 gallery), full sponsor mahalo mirroring Kamaka's caption
-  (@getcollectr / @alohacardshop / @merchlabs / @7elevenhi / @kaponowmusic / @saltourkakaako), Kamaka's reel
-  embedded. **Sent to Kamaka — awaiting sign-off, then publish.** (Optional: a direct Kamaka quote.)
+### ▶️ RECAPS — KIA #2 PUBLISHED; West Side in organizer review (updated 2026-06-09 pm)
+- **KIA #2 — ✅ PUBLISHED & LIVE** https://hawaiicardshows.com/recaps/keep-it-aloha-june-2026 (indexable; in
+  recap-map.js → homepage "Latest From Hawaii" + recaps index + KIA show page; in sitemap). 70+ vendors /
+  1,500+ attendees (single Friday night vs May's 5,000 over two days), 8 photos, full sponsor mahalo, Kamaka's
+  reel, Tyler's "night out with friends" voice. **KIA recap newsletter drafted** at
+  emails/blasts/blast-recap-keep-it-aloha-june-2026.html (HCS Team note in; "1,500+ on a Friday night" hook) —
+  **send Tue–Wed**, NOT Monday. **Big-week carousel + stories refreshed**: "Oahu's biggest week" + real numbers.
 - **West Side Card Show III** (flagship) — https://hawaiicardshows.com/recaps/west-side-show-iii-june-2026 —
   review pass done (new lead "hobbyists, side hustlers, or card show owners"; Darkrai SAR + keiki free packs;
   gimme-gimmes; Paul's year-ago origin; 2 community reels). **Branded fallback hero in place** (swap for a real
@@ -33,10 +32,21 @@ series page display + `SERIES_NAME_PATTERN`, `HCS_SERIES_URLS` routing (index.ht
 draft blast, big-week social slides. **URL slug `/shows/west-side-show` kept** (display-only rename; changing
 the slug would break links/SEO/API). Also fixed @rocketrelics→@rocket_relics on the series page.
 
-**Still NEEDED before publish:** KIA #2 is content-complete (just awaiting Kamaka's OK). **West Side** still
-needs vendor/attendance counts + the MC's @handle (real photos optional — branded fallback hero is live).
-To publish either: flip `robots`→`index, follow`, register in recap-map.js + sitemap.xml (paste-ready entries
-in the June 8 entry below), remove the review banner + top DRAFT comment.
+**Still NEEDED — West Side only:** vendor/attendance counts + the MC's @handle (real photos optional — branded
+fallback hero is live). Publish steps (mirror what KIA did): flip `robots`→`index, follow`, register in
+recap-map.js + sitemap.xml, remove the review banner + top DRAFT comment.
+
+### 📬 NEWSLETTER ENGAGEMENT PLAN (CMO — Claude owns this metric)
+Baseline (the one fully-owned channel): ~110 subs · opens **48–55%** · clicks sliding **12%→~5%** (dilution) ·
+only **~0.9%** of visitors convert (71 form_submits / 7,650 sessions / 30d). Prioritized levers:
+1. **Activate the welcome sequence** — Day 0/7/21 drafts in `emails/welcome-sequence/` were NEVER uploaded to
+   Buttondown. New subs get silence until the next digest = worst-moment churn. **#1 ROI, free, already written.**
+2. **Convert existing traffic** — 0.9%→1.8% ≈ doubles signups with zero new audience. Sharpen the recap-page
+   inline signup copy for recap-readers; ship the **100-sub giveaway** (needs a prize); A/B popup/bar (we have
+   per-surface `form_id` attribution).
+3. **Sharpen sends** — curiosity/benefit subject lines (the "Max Holloway" blast beat generic weekly subjects);
+   ONE clear CTA per send (reverse the click slide); recaps = a high-open 2nd weekly touchpoint; segment by island.
+Targets: **150 subs + opens ≥45%** next month; visitor→sub **0.9%→1.5%**.
 
 **✅ RESOLVED (2026-06-09): hero image is now a REQUIRED recap-template element.**
 Every recap leads with a `.recap-hero-banner` that is ALSO the og/twitter image (`/recaps/images/{slug}-hero.jpg`).
