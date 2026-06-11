@@ -59,7 +59,12 @@ Targets: **150 subs + opens ≥45%** next month; visitor→sub **0.9%→1.5%**.
 inline signup copy for recap-readers; 100-sub giveaway (needs Tyler's prize pick — CMO rec: vendor-sponsored).
 Segmentation = back pocket (Tyler's call).
 
-### 🪪 EMAIL AUTH + INBOX LOGO (BIMI) — Tyler asked re: logo-in-inbox like PayPal/eBay (2026-06-09)
+### 🪪 EMAIL AUTH + INBOX LOGO (BIMI) — ⏸️ PARKED (Tyler 2026-06-09: not urgent)
+**Decision: deferred.** Deliverability is healthy (opens 48–55% = mail is NOT hitting spam), so there's no fire.
+This work only matters as (a) the prerequisite for the inbox logo (which also needs a ~$1k/yr Gmail VMC), or
+(b) future-proofing as the list grows past a few hundred / nears bulk-sender thresholds. **Revisit when Tyler
+wants the logo or the list scales.** Focus stays on the real engagement levers (welcome seq, giveaway, recap CTAs).
+Details kept below for whoever picks this up later:
 Current DNS: SPF `v=spf1 include:_spf.google.com ~all` (Google only — does NOT cover Buttondown sends);
 **DMARC `p=none`** (monitoring only); **no BIMI record**. The PayPal/eBay logo-in-inbox = **BIMI**, which needs:
 (1) DMARC at **enforcement** (`p=quarantine`/`reject`) — we're at `none`; (2) a BIMI DNS record + compliant SVG;
