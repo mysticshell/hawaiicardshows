@@ -69,6 +69,19 @@ domain, then move DMARC `none → quarantine`. **Free partial win:** BIMI SVG (n
 Apple. **Free 1:1 polish:** set a Google Workspace profile photo (logo) on tyler@/aloha@ for founder mail.
 Revisit the Gmail VMC when the list + budget justify it.
 
+**🔎 DNS investigation (2026-06-09):** Cloudflare API token in `.agents/.env` is scoped to Pages/Workers only —
+**no DNS read/write** (auth error 10000), so Claude can't apply DNS changes; needs a DNS-scoped CF token OR Tyler
+does the DNS steps. Public DNS state (via dig): root SPF = Google only; root DMARC `p=none`; **Google DKIM present**
+(`google._domainkey`); **NO Buttondown DKIM selector found** → the newsletter is almost certainly NOT DKIM-aligned
+to our domain. Also found: `mail.hawaiicardshows.com` runs Postmark (MX→inbound.postmarkapp.com, DMARC `p=quarantine`).
+**⚠️ GATE:** do NOT enforce root DMARC until Buttondown is sending DKIM-aligned, or the newsletter risks spam.
+**Order of ops:** (1) set up Buttondown custom-domain sending in their dashboard → add the CNAME(s) they give us;
+(2) confirm newsletter passes SPF/DKIM/DMARC; (3) move root DMARC `none → quarantine`; (4) add BIMI SVG + record
+(free logo on Yahoo/Apple); (5) later: Gmail VMC. **Blocked on:** DNS-scoped CF token (or Tyler applies records).
+
+**📊 GROWTH STORY shipped** (recaps/social/2026-06-09-growth-stats-story/) — IG story flexing 7,800+ visits /
+4,100+ collectors / 113 subs / +75% MoM + teasing the newsletter giveaway. Ready to post (add a link sticker).
+
 **✅ RESOLVED (2026-06-09): hero image is now a REQUIRED recap-template element.**
 Every recap leads with a `.recap-hero-banner` that is ALSO the og/twitter image (`/recaps/images/{slug}-hero.jpg`).
 - KIA #2 = real-photo hero. West Side = **branded fallback** built (`recaps/_hero-src/west-side-show-iii-june-2026.html`
