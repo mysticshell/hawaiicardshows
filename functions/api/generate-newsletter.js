@@ -56,7 +56,7 @@ export async function onRequestGet({ request, env }) {
     const endStr = getHawaiiDateStr(startOffset + days - 1);
     const weekLabel = `${formatHawaiiDate(startStr, { month: 'short', day: 'numeric' })} – ${formatHawaiiDate(endStr, { month: 'short', day: 'numeric' })}`;
     const totalCount = oneTime.length + recurring.length;
-    const subject = url.searchParams.get('title') || `Hawaii Card Shows — ${weekLabel}`;
+    const subject = url.searchParams.get('title') || buildSubject({ totalCount, oneTime, recurring, startStr });
     const previewText = totalCount === 0
       ? 'Quiet week coming up — check back for updates.'
       : `${totalCount} show${totalCount === 1 ? '' : 's'} this week in Hawaii.`;
@@ -333,6 +333,27 @@ function expandWindow(allEvents, days, startOffset = 0) {
 // HTML BUILDERS
 // ═══════════════════════════════════════════════════════════════
 
+// Auto-catchy weekly subject line — data-driven, rotates so consecutive weeks differ.
+// No manual input: leads with the show count (curiosity) and names a headliner when we have one.
+function buildSubject({ totalCount, oneTime, recurring, startStr }) {
+  if (totalCount === 0) return 'Hawaii Card Shows — a quiet week ahead';
+  const n = totalCount;
+  const shows = n === 1 ? 'show' : 'shows';
+  const raw = (oneTime[0] && oneTime[0].name) || (recurring[0] && recurring[0].name) || '';
+  const headliner = raw ? truncate(raw, 34) : '';
+  // rotate by day-of-month so back-to-back sends don't repeat the same phrasing
+  const seed = parseInt(String(startStr).slice(-2), 10) || 0;
+  const options = [`${n} card ${shows} in Hawaii this week 🃏`];
+  if (headliner && n > 1) {
+    options.push(`This week: ${headliner} + ${n - 1} more`);
+    options.push(`${n} shows this week, starting with ${headliner} 🃏`);
+  } else if (headliner) {
+    options.push(`This week in Hawaii cards: ${headliner}`);
+  }
+  options.push(`Your week in Hawaii cards: ${n} ${shows} 🗓️`);
+  return options[seed % options.length];
+}
+
 function buildEmail({ subject, previewText, weekLabel, totalCount, oneTime, recurring }) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -393,6 +414,16 @@ function buildIntro(weekLabel, totalCount) {
     ? `Quiet week coming up. Check back at <a href="${withUtm('https://hawaiicardshows.com', 'empty-week-fallback')}" style="color:#1a6b5a;text-decoration:none;font-weight:600;">hawaiicardshows.com</a> for updates.`
     : `${totalCount} show${totalCount === 1 ? '' : 's'} coming up ${esc(weekLabel)}. Mark your calendar.`;
 
+  // Single, consistent weekly CTA → the full calendar page (drives planning beyond this week).
+  const cta = totalCount === 0 ? '' : `
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:22px;">
+  <tr>
+    <td align="center" style="background-color:#d4582a;border-radius:8px;mso-padding-alt:13px 28px;">
+      <a href="${withUtm('https://hawaiicardshows.com/calendar/', 'intro-calendar-cta')}" style="display:inline-block;padding:13px 28px;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:8px;letter-spacing:0.3px;">📅 See the Full Calendar &rarr;</a>
+    </td>
+  </tr>
+  </table>`;
+
   return `<tr>
 <td style="padding:40px 28px 24px 28px;">
   <h1 style="font-family:'Phudu',Arial,Helvetica,sans-serif;font-size:28px;font-weight:800;color:#1a1a1a;margin:0 0 16px 0;line-height:1.3;">
@@ -401,6 +432,7 @@ function buildIntro(weekLabel, totalCount) {
   <p style="font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:15px;color:#444444;line-height:1.7;margin:0;">
     ${blurb}
   </p>
+  ${cta}
 </td>
 </tr>`;
 }
