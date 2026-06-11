@@ -53,11 +53,21 @@ Targets: **150 subs + opens ≥45%** next month; visitor→sub **0.9%→1.5%**.
   the subject from the week's data (show count + headliner, rotates by date so weeks don't repeat). Replaces
   the flat "Hawaii Card Shows — {dates}". Verified live via `?preview=1` (e.g. "Your week in Hawaii cards: 5 shows 🗓️").
 - **Consistent weekly CTA** — "📅 See the Full Calendar" button in the intro → `/calendar/` (UTM `intro-calendar-cta`).
-- **KIA #2 recap newsletter** staged as a Buttondown DRAFT (`em_1abvfv7tzj8sgb39xvb73rayjv`, subject
-  "1,500+ collectors. One Friday night.") — Tyler to review + schedule Tue–Wed.
+- **KIA #2 recap newsletter — ✅ SENT 2026-06-09** to all **113 subscribers** (Buttondown `em_1abvfv7tzj8sgb39xvb73rayjv`,
+  subject "1,500+ collectors. One Friday night."). Tyler approved; sent via API (`status: about_to_send`).
 **⬜ NEXT:** welcome sequence (Tyler reviewing the 3 drafts, then ~30-min Buttondown upload); sharpen recap-page
 inline signup copy for recap-readers; 100-sub giveaway (needs Tyler's prize pick — CMO rec: vendor-sponsored).
 Segmentation = back pocket (Tyler's call).
+
+### 🪪 EMAIL AUTH + INBOX LOGO (BIMI) — Tyler asked re: logo-in-inbox like PayPal/eBay (2026-06-09)
+Current DNS: SPF `v=spf1 include:_spf.google.com ~all` (Google only — does NOT cover Buttondown sends);
+**DMARC `p=none`** (monitoring only); **no BIMI record**. The PayPal/eBay logo-in-inbox = **BIMI**, which needs:
+(1) DMARC at **enforcement** (`p=quarantine`/`reject`) — we're at `none`; (2) a BIMI DNS record + compliant SVG;
+(3) **for Gmail, a paid VMC** (~$1k+/yr + a registered trademark of the logo). **CMO call: the Gmail logo is
+premature** for a 113-sub list. **Do now (free, helps deliverability/opens):** get Buttondown DKIM-aligned to the
+domain, then move DMARC `none → quarantine`. **Free partial win:** BIMI SVG (no VMC) shows the logo on Yahoo/AOL/
+Apple. **Free 1:1 polish:** set a Google Workspace profile photo (logo) on tyler@/aloha@ for founder mail.
+Revisit the Gmail VMC when the list + budget justify it.
 
 **✅ RESOLVED (2026-06-09): hero image is now a REQUIRED recap-template element.**
 Every recap leads with a `.recap-hero-banner` that is ALSO the og/twitter image (`/recaps/images/{slug}-hero.jpg`).
