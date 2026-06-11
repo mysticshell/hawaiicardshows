@@ -48,6 +48,17 @@ only **~0.9%** of visitors convert (71 form_submits / 7,650 sessions / 30d). Pri
    ONE clear CTA per send (reverse the click slide); recaps = a high-open 2nd weekly touchpoint; segment by island.
 Targets: **150 subs + opens ≥45%** next month; visitor→sub **0.9%→1.5%**.
 
+**✅ SHIPPED (2026-06-09):**
+- **Auto-catchy weekly subject lines** — `buildSubject()` in `functions/api/generate-newsletter.js` now builds
+  the subject from the week's data (show count + headliner, rotates by date so weeks don't repeat). Replaces
+  the flat "Hawaii Card Shows — {dates}". Verified live via `?preview=1` (e.g. "Your week in Hawaii cards: 5 shows 🗓️").
+- **Consistent weekly CTA** — "📅 See the Full Calendar" button in the intro → `/calendar/` (UTM `intro-calendar-cta`).
+- **KIA #2 recap newsletter** staged as a Buttondown DRAFT (`em_1abvfv7tzj8sgb39xvb73rayjv`, subject
+  "1,500+ collectors. One Friday night.") — Tyler to review + schedule Tue–Wed.
+**⬜ NEXT:** welcome sequence (Tyler reviewing the 3 drafts, then ~30-min Buttondown upload); sharpen recap-page
+inline signup copy for recap-readers; 100-sub giveaway (needs Tyler's prize pick — CMO rec: vendor-sponsored).
+Segmentation = back pocket (Tyler's call).
+
 **✅ RESOLVED (2026-06-09): hero image is now a REQUIRED recap-template element.**
 Every recap leads with a `.recap-hero-banner` that is ALSO the og/twitter image (`/recaps/images/{slug}-hero.jpg`).
 - KIA #2 = real-photo hero. West Side = **branded fallback** built (`recaps/_hero-src/west-side-show-iii-june-2026.html`
