@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Growth Stats — Story (giveaway tease)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body {
+    background: #1a1a1a; color: #ffffff; font-family: 'Archivo', sans-serif;
+    position: relative; padding: 240px 80px; /* safe zones */
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  body::before { content:''; position:absolute; top:-200px; right:-250px; width:900px; height:900px; background: radial-gradient(circle, rgba(212,88,42,0.34), transparent 70%); pointer-events:none; }
+  body::after  { content:''; position:absolute; bottom:-220px; left:-250px; width:900px; height:900px; background: radial-gradient(circle, rgba(20,180,160,0.22), transparent 70%); pointer-events:none; }
+  .inner { position: relative; z-index: 1; }
+  .eyebrow { font-family:'Archivo',sans-serif; font-weight:800; font-size:30px; letter-spacing:7px; color:#d4582a; text-transform:uppercase; margin-bottom:24px; }
+  h1 { font-family:'Phudu',sans-serif; font-weight:800; font-size:96px; line-height:0.96; letter-spacing:-3px; margin-bottom:56px; }
+  h1 em { font-style:normal; color:#d4582a; }
+  .stats { display:flex; flex-direction:column; gap:24px; margin-bottom:48px; }
+  .stat { background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.12); border-radius:26px; padding:36px 44px; display:flex; align-items:baseline; gap:26px; }
+  .stat-num { font-family:'Phudu',sans-serif; font-weight:800; font-size:104px; line-height:0.9; color:#ffffff; min-width:300px; }
+  .stat-num.accent { color:#f5d7a3; }
+  .stat-label { font-family:'Archivo',sans-serif; font-weight:600; font-size:34px; line-height:1.25; color:rgba(255,255,255,0.78); }
+  .growth { display:inline-block; font-family:'Archivo',sans-serif; font-weight:800; font-size:34px; color:#1a1a1a; background:#2cdfb6; padding:16px 30px; border-radius:999px; margin-bottom:56px; }
+  .tease { background: linear-gradient(135deg, #d4582a 0%, #b04621 100%); border-radius:30px; padding:48px 52px; }
+  .tease-eyebrow { font-family:'Archivo',sans-serif; font-weight:800; font-size:26px; letter-spacing:3px; text-transform:uppercase; color:#fff3cf; margin-bottom:14px; }
+  .tease-head { font-family:'Phudu',sans-serif; font-weight:800; font-size:64px; line-height:1.0; color:#ffffff; margin-bottom:18px; }
+  .tease-sub { font-family:'Archivo',sans-serif; font-weight:600; font-size:34px; line-height:1.4; color:#ffffff; }
+  .tease-sub strong { color:#fff3cf; }
+  .brand { position:absolute; bottom:150px; left:80px; font-family:'Phudu',sans-serif; font-weight:700; font-size:30px; letter-spacing:2px; color:rgba(255,255,255,0.7); text-transform:uppercase; }
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div class="eyebrow">The Month in Review</div>
+    <h1>The community<br>is <em>growing</em>. 🌺</h1>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-num">7,800<span style="font-size:60px;">+</span></div><div class="stat-label">site visits<br>last month</div></div>
+      <div class="stat"><div class="stat-num">4,100<span style="font-size:60px;">+</span></div><div class="stat-label">collectors<br>reached</div></div>
+      <div class="stat"><div class="stat-num accent">113</div><div class="stat-label">on the<br>newsletter</div></div>
+    </div>
+
+    <div class="growth">📈 Up 75% month over month</div>
+
+    <div class="tease">
+      <div class="tease-eyebrow">🎁 Coming Soon</div>
+      <div class="tease-head">A newsletter giveaway.</div>
+      <div class="tease-sub">Subscribe free at <strong>hawaiicardshows.com</strong> to be in it.</div>
+    </div>
+  </div>
+  <div class="brand">Hawaii Card Shows</div>
+</body>
+</html>
