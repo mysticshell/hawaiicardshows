@@ -17,6 +17,15 @@
 (function () {
   const RECAPS = [
     {
+      slug: 'west-side-show-iii-june-2026',
+      title: 'West Side Card Show III — Max Holloway Works the Floor',
+      date: '2026-06-06',
+      event_id: 'b920cfb3-7168-46b6-b888-a7ec743f0a8e',
+      thumbnail: '/recaps/images/west-side-show-iii-june-2026-hero.jpg',
+      url: '/recaps/west-side-show-iii-june-2026.html',
+      blurb: '9,000+ collectors, 100+ vendors, and a UFC champ behind a table — Max Holloway vended his first card show.'
+    },
+    {
       slug: 'keep-it-aloha-june-2026',
       title: 'Keep It Aloha #2 — 1,500+ on a Friday Night',
       date: '2026-06-05',
