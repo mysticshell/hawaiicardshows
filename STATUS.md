@@ -1,10 +1,25 @@
 # Hawaii Card Shows — Project Status
 
-*Last updated: 2026-06-12 (approved 2 portal submissions live — "Die Cast & Collectibles Show" @ Ala Moana Hotel Hibiscus Ballroom Aug 2 2026, and "HNL Card Fest" @ Hawaii Convention Center Exhibit Hall III Jul 10–11 2027; both submitters' `annual` → `one-time` per taxonomy. Deleted "Saint Louis Collectors Expo" (organizer resubmitting fresh; HNL Card Fest 2027 kept). Snapshot: `.agents/deleted-event-saint-louis-20260612.json`. Added Hawaii Shows "Pokemon, Sports Cards & More" series — 4 dates: Sep 27 + Nov 29 2026 @ Ala Moana Hotel, Oct 25 2026 @ Prince Waikiki, Feb 6–7 2027 @ Hawaii Convention Center Exhibition Hall III; org @hawaiishows, `series`, brand color #dc2626. Renamed the old May 31 2026 "Hawaii Shows" row → "Pokemon, Sports Cards & More" + `series` to match. Pushed HNL Card Fest **Summer 2026** edition live — Jul 18–19 2026 @ Hawaii Convention Center Room 313 A+B+C, 9a–8p, `one-time` (now 2 HNL Card Fest editions booked: Jul 2026 + Jul 2027 — both bumped to `series`. Toby's Card Garage Card Show: hero `logo_url` = shop TCG logo (`shops/images/tobys-card-garage-logo.jpg`), flyer (`shows/flyers/tobys-card-garage-july-2026.jpg`) moved to `photos` gallery below the description; both committed+deployed & verified live))*
+*Last updated: 2026-06-12 (**Fixed GSC "Duplicate without user-selected canonical"** — 45 public pages had canonical tags pointing at `.html` URLs that Cloudflare 308-redirects to clean form, so Google discarded the canonical and saw dupes. Stripped `.html` from all canonicals + `og:url` + JSON-LD `@id`, fixed sitemap + recap template, swept ~389 internal `.html` links → clean. 59 files, verified zero indexable pages reference `.html`. Not yet pushed; after deploy click "Validate Fix" in GSC. PRIOR 2026-06-11: **Planned the OG Reward / Ambassador Program** — new thread below: Phase 1 = referral-weighted, newsletter-only giveaway w/ local-shop-sponsored sealed-product prize (the IG→newsletter + evangelism engine); Phase 2 = Founding Member metal card, full design spec banked in `plans/founding-member-card-spec.md`. Pulled verified Buttondown baseline (114 active subs, 41.2% open, accelerating growth) + confirmed native referral feature (tracking-only, currently OFF). PRIOR 2026-06-12: approved 2 portal submissions live — "Die Cast & Collectibles Show" @ Ala Moana Hotel Hibiscus Ballroom Aug 2 2026, and "HNL Card Fest" @ Hawaii Convention Center Exhibit Hall III Jul 10–11 2027; both submitters' `annual` → `one-time` per taxonomy. Deleted "Saint Louis Collectors Expo" (organizer resubmitting fresh; HNL Card Fest 2027 kept). Snapshot: `.agents/deleted-event-saint-louis-20260612.json`. Added Hawaii Shows "Pokemon, Sports Cards & More" series — 4 dates: Sep 27 + Nov 29 2026 @ Ala Moana Hotel, Oct 25 2026 @ Prince Waikiki, Feb 6–7 2027 @ Hawaii Convention Center Exhibition Hall III; org @hawaiishows, `series`, brand color #dc2626. Renamed the old May 31 2026 "Hawaii Shows" row → "Pokemon, Sports Cards & More" + `series` to match. Pushed HNL Card Fest **Summer 2026** edition live — Jul 18–19 2026 @ Hawaii Convention Center Room 313 A+B+C, 9a–8p, `one-time` (now 2 HNL Card Fest editions booked: Jul 2026 + Jul 2027 — both bumped to `series`. Toby's Card Garage Card Show: hero `logo_url` = shop TCG logo (`shops/images/tobys-card-garage-logo.jpg`), flyer (`shows/flyers/tobys-card-garage-july-2026.jpg`) moved to `photos` gallery below the description; both committed+deployed & verified live))*
 
 ---
 
 ## 🔥 Active Threads (next session — pick up here)
+
+### ✅ FIXED — Google Search Console "Duplicate without user-selected canonical" (2026-06-12)
+GSC flagged pages not being indexed. **Root cause:** Cloudflare Pages 308-redirects every `/foo.html` → clean
+`/foo` (clean is the 200 URL), but 45 public pages had their `<link rel="canonical">` pointing at the `.html`
+form — a canonical pointing to a *redirect*, which Google treats as invalid and discards, then sees the page at
+both `/foo` and `/foo.html` and can't pick → "Duplicate without user-selected canonical." A half-finished
+migration: `shows/` pages + all directory index pages were already on clean canonicals; `shops/`, `recaps/`, and
+root pages weren't. **Fix (59 files):** stripped `.html` from all canonical tags, `og:url` meta, and JSON-LD
+`@id` so every indexable page's self-reference = its clean 200 URL; fixed 8 stale `.html` entries in
+`sitemap.xml`; fixed the recap `_TEMPLATE.html` canonical so future recaps are born clean. Also swept ~389
+internal `.html` links → clean to kill redirect hops and reinforce the signal (left `preview.html` self-links and
+the dynamic `/shows/show.html?id=` JS template alone — the latter already sets a correct per-event clean
+canonical in JS). Verified: zero indexable pages reference any `.html` URL; clean URLs return 200 live.
+**Next:** push + deploy, then in GSC open the Duplicate report and click **"Validate Fix"** (re-indexing takes
+days–weeks). Not yet committed/pushed.
 
 ### ✅ SHIPPED — Full Calendar page + `series` taxonomy + clickable calendar (2026-06-09)
 Done and pushed/deployed. Four related pieces:
@@ -59,8 +74,31 @@ Targets: **150 subs + opens ≥45%** next month; visitor→sub **0.9%→1.5%**.
 - **KIA #2 recap newsletter — ✅ SENT 2026-06-09** to all **113 subscribers** (Buttondown `em_1abvfv7tzj8sgb39xvb73rayjv`,
   subject "1,500+ collectors. One Friday night."). Tyler approved; sent via API (`status: about_to_send`).
 **⬜ NEXT:** welcome sequence (Tyler reviewing the 3 drafts, then ~30-min Buttondown upload); sharpen recap-page
-inline signup copy for recap-readers; 100-sub giveaway (needs Tyler's prize pick — CMO rec: vendor-sponsored).
-Segmentation = back pocket (Tyler's call).
+inline signup copy for recap-readers. Segmentation = back pocket (Tyler's call).
+
+### 🏆 OG REWARD / AMBASSADOR PROGRAM (CMO — decided 2026-06-11)
+**Goal (Tyler's words):** turn the ~110 newsletter OGs into *ambassadors* who evangelize HCS, building a large
+engaged owned audience → future newsletter **sponsorship** revenue. Show attendance = byproduct of a useful platform.
+**Strategy = giveaway now, founding card later** (sequence spend behind proof):
+- **PHASE 1 (now) — Referral-weighted, newsletter-only giveaway.** Every active sub auto-entered; **each Buttondown
+  referral = bonus entries**; must be subscribed to win → pulls the 350+ IG followers onto the list. Makes the
+  giveaway *itself* the ambassador engine + the IG→newsletter conversion lever. **Prize = sealed product / chase
+  card** (Tyler's pick), **CMO rec: local-shop co-sponsored** (firebird / toby's / paradise / toylynx — pilots the
+  sponsorship endgame + cross-promo, ~$0 HCS spend). This is the executable form of the old "100-sub giveaway" item.
+- **PHASE 2 (later) — Founding Member metal card.** Mint once referral data reveals the real ambassadors. Full
+  ready-to-go design spec banked in [plans/founding-member-card-spec.md](plans/founding-member-card-spec.md):
+  black steel + silver-etched "H" + gold serial, **per-card name+number** (variable data, $0 extra), QR→Founders
+  registry page. Vendor My Metal Business Card, verified ~$480–$550/150 (~$700–$780/250). `#001–114` = founders,
+  higher numbers earned via referrals.
+**Verified baseline (pulled 2026-06-11):** 114 active subs (119 total, 5 undeliverable) · born **Apr 8 2026** ·
+growth Apr +29 → May +50 → **Jun +38 in 11 days (accelerating)** · lifetime avg open **41.2%** / click **6.3%**.
+**Buttondown referral feature:** native (unique code/link per sub, tracked in Notes/Analytics/API/export), but
+**tracking-only** (no auto reward tiers / no built-in leaderboard — we build recognition manually) and **currently
+OFF** (0 codes assigned). HARD DEPENDENCY for Phase 1: enable Settings → General → "Referrals".
+**Data gaps to fix (the sponsor-pitch dataset):** (1) enable referrals; (2) no UTM tagging → blind on channel
+attribution; (3) **location data unusable** (geo = proxy-IP noise: Djibouti 45 / unknown 42 / US 21) → can't yet
+prove the Hawaii concentration that *local* sponsors buy — add an island/zip signup field. Giveaway = ideal moment
+to turn all three on (IG→newsletter traffic spike to attribute).
 
 ### 🪪 EMAIL AUTH + INBOX LOGO (BIMI) — ⏸️ PARKED (Tyler 2026-06-09: not urgent)
 **Decision: deferred.** Deliverability is healthy (opens 48–55% = mail is NOT hitting spam), so there's no fire.
