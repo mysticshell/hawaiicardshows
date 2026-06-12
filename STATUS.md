@@ -1,6 +1,6 @@
 # Hawaii Card Shows — Project Status
 
-*Last updated: 2026-06-09 pm (KIA #2 recap photos + "West Side Card Show" rename shipped; recaps live as hidden review drafts)*
+*Last updated: 2026-06-12 (approved 2 portal submissions live — "Die Cast & Collectibles Show" @ Ala Moana Hotel Hibiscus Ballroom Aug 2 2026, and "HNL Card Fest" @ Hawaii Convention Center Exhibit Hall III Jul 10–11 2027; both submitters' `annual` → `one-time` per taxonomy. Deleted "Saint Louis Collectors Expo" (organizer resubmitting fresh; HNL Card Fest 2027 kept). Snapshot: `.agents/deleted-event-saint-louis-20260612.json`. Added Hawaii Shows "Pokemon, Sports Cards & More" series — 4 dates: Sep 27 + Nov 29 2026 @ Ala Moana Hotel, Oct 25 2026 @ Prince Waikiki, Feb 6–7 2027 @ Hawaii Convention Center Exhibition Hall III; org @hawaiishows, `series`, brand color #dc2626. Renamed the old May 31 2026 "Hawaii Shows" row → "Pokemon, Sports Cards & More" + `series` to match. Pushed HNL Card Fest **Summer 2026** edition live — Jul 18–19 2026 @ Hawaii Convention Center Room 313 A+B+C, 9a–8p, `one-time` (now 2 HNL Card Fest editions booked: Jul 2026 + Jul 2027 — both bumped to `series`. Added Toby's Card Garage Card Show flyer (`shows/flyers/tobys-card-garage-july-2026.jpg`) + set its `logo_url` — **needs commit+deploy for the image to go live**))*
 
 ---
 
@@ -15,26 +15,29 @@ Done and pushed/deployed. Four related pieces:
 
 **Small follow-up (low priority, self-resolving):** ~a few of the 15 `one-time` rows may actually be series we couldn't confirm (Moiliili, Spotlight, Kauai Collectors Con, Ya Maui). Bump to `series` when a 2nd date is booked. Related backlog item still open: "Add to Calendar" (iCal/Google) buttons on show pages.
 
-### ▶️ RECAPS — KIA #2 PUBLISHED; West Side in organizer review (updated 2026-06-09 pm)
+### ▶️ RECAPS — both June recaps PUBLISHED & LIVE (updated 2026-06-09 pm)
 - **KIA #2 — ✅ PUBLISHED & LIVE** https://hawaiicardshows.com/recaps/keep-it-aloha-june-2026 (indexable; in
   recap-map.js → homepage "Latest From Hawaii" + recaps index + KIA show page; in sitemap). 70+ vendors /
   1,500+ attendees (single Friday night vs May's 5,000 over two days), 8 photos, full sponsor mahalo, Kamaka's
   reel, Tyler's "night out with friends" voice. **KIA recap newsletter drafted** at
   emails/blasts/blast-recap-keep-it-aloha-june-2026.html (HCS Team note in; "1,500+ on a Friday night" hook) —
   **send Tue–Wed**, NOT Monday. **Big-week carousel + stories refreshed**: "Oahu's biggest week" + real numbers.
-- **West Side Card Show III** (flagship) — https://hawaiicardshows.com/recaps/west-side-show-iii-june-2026 —
-  review pass done (new lead "hobbyists, side hustlers, or card show owners"; Darkrai SAR + keiki free packs;
-  gimme-gimmes; Paul's year-ago origin; 2 community reels). **Branded fallback hero in place** (swap for a real
-  photo later). Still needs: vendor/attendance counts (TBC), MC's @handle, real photos. Tyler gathering Paul's feedback.
+- **West Side Card Show III — ✅ PUBLISHED & LIVE** (flagship) https://hawaiicardshows.com/recaps/west-side-show-iii-june-2026
+  (indexable; in recap-map.js → homepage + recaps index + show page; in sitemap). **100+ vendors / 9,000+ attendees**
+  (biggest show we've covered), Sat 11–7 / Sun 11–6, $2 admission (keiki 11 & under free, raffle ticket), Max's
+  debut, MC energy, "WEST SIDE BEST SIDE", Paul's origin story, the **lanai trade-night** beat (food open 7–10pm,
+  Hawaii outdoor twist on mainland hotel trade nights), 2 community reels. **Branded fallback hero** (swap for real
+  photos later — gallery commented out, ready to un-comment). Optional follow-ups: MC's @handle shout-out, real photos.
 
 **RENAME shipped + verified live:** "West Side Show" → "West Side Card Show" everywhere — DB events III/IV,
 series page display + `SERIES_NAME_PATTERN`, `HCS_SERIES_URLS` routing (index.html + shows/show.html), recap,
 draft blast, big-week social slides. **URL slug `/shows/west-side-show` kept** (display-only rename; changing
 the slug would break links/SEO/API). Also fixed @rocketrelics→@rocket_relics on the series page.
 
-**Still NEEDED — West Side only:** vendor/attendance counts + the MC's @handle (real photos optional — branded
-fallback hero is live). Publish steps (mirror what KIA did): flip `robots`→`index, follow`, register in
-recap-map.js + sitemap.xml, remove the review banner + top DRAFT comment.
+**Optional recap follow-ups (non-blocking, both are live):** swap real photos into either recap when available
+(KIA gallery is live; West Side gallery is commented out + ready to un-comment, hero is a branded fallback to
+swap); add the West Side MC's @handle shout-out when Tyler grabs it. Build the West Side recap newsletter (its
+own send — strong Max Holloway hook) when ready.
 
 ### 📬 NEWSLETTER ENGAGEMENT PLAN (CMO — Claude owns this metric)
 Baseline (the one fully-owned channel): ~110 subs · opens **48–55%** · clicks sliding **12%→~5%** (dilution) ·
