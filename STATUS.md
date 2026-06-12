@@ -63,10 +63,10 @@ series page display + `SERIES_NAME_PATTERN`, `HCS_SERIES_URLS` routing (index.ht
 draft blast, big-week social slides. **URL slug `/shows/west-side-show` kept** (display-only rename; changing
 the slug would break links/SEO/API). Also fixed @rocketrelics→@rocket_relics on the series page.
 
-**West Side recap newsletter — ✅ DRAFTED + STAGED in Buttondown** (`em_7a5xzmy5gg8s487e30pszd8tc8`, subject
-"A UFC champ vended a card show — and 9,000 showed up"; file `emails/blasts/blast-recap-west-side-iii-june-2026.html`).
-HCS Team note is pre-drafted (Tyler may personalize). **Tyler's plan: send it Tue–Wed morning, then post the
-big-week carousel** (`recaps/social/2026-06-09-big-week-carousel/`, 6 slides w/ standout punch lines, caption ready).
+**West Side recap newsletter — ✅ SENT** (`em_7a5xzmy5gg8s487e30pszd8tc8`, subject "A UFC champ vended a card show
+— and 9,000 showed up"; file `emails/blasts/blast-recap-west-side-iii-june-2026.html`). Sent via API (about_to_send).
+**NEXT (Tyler): post the big-week carousel** — `recaps/social/2026-06-09-big-week-carousel/` (6 slides w/ standout
+punch lines; paste-ready caption.txt). That completes the tomorrow-morning plan (newsletter → carousel).
 **Optional recap follow-ups (non-blocking, both recaps live):** swap real photos into either recap when available
 (KIA gallery live; West Side gallery commented out + ready to un-comment, hero is a branded fallback to swap);
 add the West Side MC's @handle shout-out when Tyler grabs it.
