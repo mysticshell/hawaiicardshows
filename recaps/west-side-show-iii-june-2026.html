@@ -87,8 +87,9 @@
 .recap-cta a:hover { background: var(--lava-light); }
 
 @media (max-width: 768px) { .recap-content { font-size: 16px; } }
-/* Branded text hero: on mobile, show it at full aspect so the title isn't center-cropped. */
-@media (max-width: 768px) { .recap-hero-banner { height: auto; aspect-ratio: 1600 / 840; min-height: 0; max-height: none; } }
+/* Branded text hero: on mobile, show it at full aspect (no center-crop) AND below the floating
+   nav (drop the -92px full-bleed pull so the nav doesn't cover the title on the short banner). */
+@media (max-width: 768px) { .recap-hero-banner { height: auto; aspect-ratio: 1600 / 840; min-height: 0; max-height: none; margin-top: 0; } }
 </style>
 </head>
 <body>
