@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Slide 2 — The Lineup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Phudu:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; }
+  body {
+    background: #1a1a1a; color: #ffffff; font-family: 'Archivo', sans-serif;
+    position: relative; padding: 100px 90px; display: flex; flex-direction: column;
+  }
+  body::before { content:''; position:absolute; top:-280px; right:-200px; width:820px; height:820px; background: radial-gradient(circle, rgba(212,88,42,0.26), transparent 70%); pointer-events:none; }
+  body::after  { content:''; position:absolute; bottom:-220px; left:-220px; width:760px; height:760px; background: radial-gradient(circle, rgba(124,58,237,0.20), transparent 70%); pointer-events:none; }
+  .inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+  .eyebrow { font-family:'Archivo',sans-serif; font-weight:800; font-size:26px; letter-spacing:6px; color:#d4582a; text-transform:uppercase; margin-bottom:18px; }
+  h1 { font-family:'Phudu',sans-serif; font-weight:800; font-size:104px; line-height:0.95; letter-spacing:-3px; margin-bottom:56px; }
+  .shows { display:flex; flex-direction:column; gap:10px; }
+  .show { display:flex; align-items:center; gap:30px; background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.12); border-left-width:10px; border-radius:22px; padding:34px 38px; }
+  .show .day { font-family:'Phudu',sans-serif; font-weight:800; font-size:34px; letter-spacing:1px; min-width:180px; }
+  .show .name { font-family:'Phudu',sans-serif; font-weight:800; font-size:50px; line-height:1.0; color:#ffffff; }
+  .show .place { font-family:'Archivo',sans-serif; font-weight:600; font-size:28px; color:rgba(255,255,255,0.6); margin-top:6px; }
+  .arrow { text-align:center; font-size:40px; color:rgba(255,255,255,0.35); margin:6px 0; }
+  .s-bayview { border-left-color:#a78bfa; } .s-bayview .day { color:#a78bfa; }
+  .s-kia     { border-left-color:#2cdfb6; } .s-kia .day     { color:#2cdfb6; }
+  .s-west    { border-left-color:#f0714a; } .s-west .day    { color:#f0714a; }
+  .footer-row { display:flex; justify-content:space-between; align-items:center; margin-top:auto; }
+  .brand { font-family:'Phudu',sans-serif; font-weight:700; font-size:24px; letter-spacing:1.5px; color:rgba(255,255,255,0.75); text-transform:uppercase; }
+  .swipe { font-family:'Archivo',sans-serif; font-weight:700; font-size:24px; color:rgba(255,255,255,0.55); letter-spacing:1.5px; text-transform:uppercase; }
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div class="eyebrow">One Week · Three Shows</div>
+    <h1>The Lineup</h1>
+    <div class="shows">
+      <div class="show s-bayview">
+        <div class="day">TUE</div>
+        <div><div class="name">Bayview Night Market</div><div class="place">Kaneohe · East Side</div></div>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="show s-kia">
+        <div class="day">FRI</div>
+        <div><div class="name">Keep It Aloha #2</div><div class="place">SALT Kaka&rsquo;ako · Town</div></div>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="show s-west">
+        <div class="day">SAT&ndash;SUN</div>
+        <div><div class="name">West Side Card Show III</div><div class="place">Ewa Beach · West Side</div></div>
+      </div>
+    </div>
+    <div class="footer-row">
+      <div class="brand">Hawaii Card Shows</div>
+      <div class="swipe">Swipe →</div>
+    </div>
+  </div>
+</body>
+</html>
