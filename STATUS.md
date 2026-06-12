@@ -18,8 +18,22 @@ root pages weren't. **Fix (59 files):** stripped `.html` from all canonical tags
 internal `.html` links → clean to kill redirect hops and reinforce the signal (left `preview.html` self-links and
 the dynamic `/shows/show.html?id=` JS template alone — the latter already sets a correct per-event clean
 canonical in JS). Verified: zero indexable pages reference any `.html` URL; clean URLs return 200 live.
-**Next:** push + deploy, then in GSC open the Duplicate report and click **"Validate Fix"** (re-indexing takes
-days–weeks). Not yet committed/pushed.
+**✅ COMMITTED + PUSHED + LIVE** (bundled into commits `607985b`/`ed22448` by a concurrent session, then verified
+live: clean URLs 200, all canonicals clean, 39 internal links crawled 0 broken). **Next (Tyler):** in GSC open
+the Duplicate report and click **"Validate Fix"** (re-indexing takes days–weeks).
+
+### ✅ FIXED — GSC "Soft 404" on `/shows/show` (2026-06-12)
+Same GSC indexing-report pass surfaced a **Soft 404** (1 page) = the dynamic event template `/shows/show` loaded
+with no `?id`/slug returned a contentless HTTP 200 (indexable thin content). Fixed in `shows/show.html`: added a
+`showUnavailable()` helper that injects `<meta name="robots" content="noindex">` + a friendly "← Browse all shows"
+message in BOTH failure branches (no id/slug, and bad/missing event). Real event pages never hit those branches →
+stay index-by-default (verified: real event renders with NO robots meta + clean canonical). Also fixed a latent
+crash (invalid `?id` previously threw on `event.name` and hung on "Loading Event…"). Commit `6b36911`, pushed +
+**verified live** (preview + served source). **Other GSC rows triaged as benign** (no action): "Page with redirect"
+(63) = the `.html`→clean 308s working correctly; "Alternate page with proper canonical" (23) = healthy; 401
+`/api/analytics` + 404 `/api/subscribe` = internal API endpoints under `Disallow: /api/`; 404
+`/cdn-cgi/l/email-protection` = Cloudflare email-obfuscation artifact, not ours. Optional tidy-up not done: add
+`Disallow: /cdn-cgi/` to robots.txt.
 
 ### ✅ SHIPPED — Full Calendar page + `series` taxonomy + clickable calendar (2026-06-09)
 Done and pushed/deployed. Four related pieces:
