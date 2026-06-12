@@ -473,6 +473,21 @@ function hcsSlugify(s){
     .replace(/[^a-z0-9]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
 }
 
+// Render a "not available" state for the bare template or a missing/invalid event.
+// Adds noindex so crawlers don't index a contentless 200 page (prevents Soft 404
+// flags). Real events never call this, so they stay index-by-default.
+function showUnavailable(message) {
+  let robots = document.head.querySelector('meta[name="robots"]');
+  if (!robots) {
+    robots = document.createElement('meta');
+    robots.name = 'robots';
+    document.head.appendChild(robots);
+  }
+  robots.content = 'noindex';
+  const loader = document.getElementById('loader');
+  loader.innerHTML = `${message}<br><br><a href="/shows/" style="color:var(--ocean);font-weight:600;text-decoration:none;">← Browse all shows</a>`;
+}
+
 async function loadData() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
@@ -488,7 +503,7 @@ async function loadData() {
   }
 
   if (!id && !slug) {
-    document.getElementById('loader').textContent = "Invalid setup. No Event ID or slug provided.";
+    showUnavailable("This event link is missing an event ID.");
     return;
   }
 
@@ -518,6 +533,13 @@ async function loadData() {
         event = upcoming[0] || past[0];
       }
     }
+  }
+
+  // No matching/valid event (bad id, removed event, or lookup error) — show a
+  // friendly not-found state with noindex instead of crashing on event.name below.
+  if (error || !event) {
+    showUnavailable("Sorry, we couldn't find that event. It may have ended or been removed.");
+    return;
   }
 
   // If this event belongs to a series with a static page, send the user there.
