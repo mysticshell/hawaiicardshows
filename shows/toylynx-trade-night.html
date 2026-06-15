@@ -504,8 +504,8 @@
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <div class="detail-card-label">Hours</div>
-        <div class="detail-card-value">Evening</div>
-        <div class="detail-card-note">During regular store hours — shop closes at 6:30 PM on weeknights</div>
+        <div class="detail-card-value">3:00 – 8:00 PM</div>
+        <div class="detail-card-note">Trade Night runs 3–8 PM — shop singles &amp; sealed before or after</div>
       </div>
 
       <div class="detail-card">
@@ -706,25 +706,32 @@
 </script>
 
 <script>
-// ═══ Next Trade Night — set manually, falls back to "Coming Soon" ═══
-// To update: change the date string below. Set to null when unknown.
-const NEXT_TRADE_NIGHT = '2026-04-16';
-
+// ═══ Next Trade Night — auto-computed: 2nd & 4th Thursday of every month ═══
+// No manual upkeep: always shows the next upcoming 2nd/4th Thursday.
 (function() {
   const el = document.getElementById('nextDate');
-  if (NEXT_TRADE_NIGHT) {
-    const d = new Date(NEXT_TRADE_NIGHT + 'T12:00:00');
-    const now = new Date();
-    // Only show if the date is in the future
-    if (d >= new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
-      el.textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
-    } else {
-      el.textContent = 'Coming Soon';
-      el.parentElement.querySelector('.next-show-details').textContent = 'Follow @toylynx on Instagram for the next date';
-    }
+  // nth Thursday (n = 2 or 4) of a given year/month (month is 0-indexed)
+  function nthThursday(year, month, n) {
+    const first = new Date(year, month, 1);
+    const offset = (4 - first.getDay() + 7) % 7; // Thu = 4
+    return new Date(year, month, 1 + offset + (n - 1) * 7);
+  }
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  // 2nd & 4th Thursday across this month + the next two, pick the soonest still ahead
+  const candidates = [];
+  for (let m = 0; m < 3; m++) {
+    const base = new Date(now.getFullYear(), now.getMonth() + m, 1);
+    candidates.push(nthThursday(base.getFullYear(), base.getMonth(), 2));
+    candidates.push(nthThursday(base.getFullYear(), base.getMonth(), 4));
+  }
+  const next = candidates.filter(d => d >= today).sort((a, b) => a - b)[0];
+  const details = el.parentElement.querySelector('.next-show-details');
+  if (next) {
+    el.textContent = next.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
   } else {
     el.textContent = 'Coming Soon';
-    el.parentElement.querySelector('.next-show-details').textContent = 'Follow @toylynx on Instagram for the next date';
+    if (details) details.textContent = 'Follow @toylynx on Instagram for the next date';
   }
 })();
 </script>
