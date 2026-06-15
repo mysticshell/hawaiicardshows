@@ -30,6 +30,16 @@ export async function onRequest(context) {
     return next();
   }
 
+  // Legacy slug redirects. This function intercepts /shows/<slug> before
+  // _redirects gets a chance, so 301s for extension-less slugs must live here
+  // (the .html variants are still handled by _redirects via the fall-through above).
+  const LEGACY_REDIRECTS = {
+    'west-side-card-show': '/shows/west-side-show',
+  };
+  if (LEGACY_REDIRECTS[slug]) {
+    return Response.redirect(new URL(LEGACY_REDIRECTS[slug], request.url).toString(), 301);
+  }
+
   const reqUrl = new URL(request.url);
 
   // STEP 1: try a dedicated static page at /shows/<slug>.html.
