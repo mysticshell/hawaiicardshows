@@ -37,32 +37,32 @@ These clear Cardboard Connection's bar (multi-day and/or convention-scale).
 - **Hours:** 9:00 AM – 8:00 PM
 - **Organizer:** HNL Card Fest LLC (@hnlcardfest)
 - **Category:** Sports cards / Pokemon / TCG / collectibles
-- **Teaser description:** Two-day card fest at the Hawaii Convention Center — one of Hawaii's marquee convention-center card events, spanning sports, Pokemon, and TCG. Full details and the complete Hawaii show calendar at hawaiicardshows.com.
-- **Link to use:** `https://hawaiicardshows.com` (no dedicated page yet — see note below)
+- **Teaser description:** Two-day card fest at the Hawaii Convention Center — one of Hawaii's marquee convention-center card events, spanning sports, Pokemon, and TCG. Full details, dates, and hours at hawaiicardshows.com/shows/hnl-card-fest.
+- **Link to use:** `https://hawaiicardshows.com/shows/hnl-card-fest`
 
 ### Aloha Card Show
 - **Dates:** Sep 19–20, 2026 (two-day, annual flagship)
 - **Venue:** Neal S. Blaisdell Center, 777 Ward Ave, Honolulu, HI
 - **Organizer:** Aloha Card Shop (@alohacardshop)
 - **Category:** Sports cards / Pokemon / TCG
-- **Teaser description:** Hawaii's flagship annual card show at the Blaisdell Center. Dates, hours, and every other Hawaii show in one place at hawaiicardshows.com.
-- **Link to use:** `https://hawaiicardshows.com`
+- **Teaser description:** Hawaii's flagship annual card show at the Blaisdell Center, plus Windward Mall editions. All Aloha Card Show dates and venues at hawaiicardshows.com/shows/aloha-card-show.
+- **Link to use:** `https://hawaiicardshows.com/shows/aloha-card-show`
 
 ### The Collectors Hale
 - **Dates:** Aug 21–23, 2026 (three-day)
 - **Venue:** Maui (venue TBA — check @mauisportscards)
 - **Organizer:** Maui Sports Cards (@mauisportscards)
 - **Category:** Sports cards / Pokemon / collectibles
-- **Teaser description:** Three-day collectibles event on Maui — the Valley Isle's biggest card weekend. Confirmed venue and full Hawaii show calendar at hawaiicardshows.com.
-- **Link to use:** `https://hawaiicardshows.com`
+- **Teaser description:** Three-day collectibles event on Maui — the Valley Isle's biggest card weekend, with a Friday trade night plus two full show days. Details and confirmed venue at hawaiicardshows.com/shows/the-collectors-hale.
+- **Link to use:** `https://hawaiicardshows.com/shows/the-collectors-hale`
 
 ### Hawaii Pop Con
 - **Dates:** Jan 9–10, 2027 (two-day, annual)
 - **Venue:** Oahu (TBA)
 - **Organizer:** Aloha Card Shop (@hawaiipopcon)
 - **Category:** Pop culture / cards / collectibles
-- **Teaser description:** Annual pop-culture convention with a major card-vendor floor alongside comics, toys, and anime. Details and the full Hawaii calendar at hawaiicardshows.com.
-- **Link to use:** `https://hawaiicardshows.com`
+- **Teaser description:** Annual pop-culture convention with a major card-vendor floor alongside comics, toys, and anime. Details and dates at hawaiicardshows.com/shows/hawaii-pop-con.
+- **Link to use:** `https://hawaiicardshows.com/shows/hawaii-pop-con`
 
 ---
 
@@ -134,4 +134,6 @@ For these, use the short teaser: **"[Show] — [date], [venue]. Full details on 
 
 ## Note: shows without dedicated pages
 
-HNL Card Fest, Aloha Card Show, The Collectors Hale, Hawaii Pop Con, and the Hawaii Shows series are flagship-level but currently only live on the dynamic calendar (`/shows/show.html?id=…`), not clean static pages — so submissions point to the homepage. **Recommendation (my call as your CMO):** these five earn enough national interest to justify dedicated static show pages like West Side / Keep It Aloha already have. That converts each directory submission into a backlink to a keyword-targeted page instead of the homepage, AND gives each a richer point-back destination so the teaser strategy works harder. Flag if you want me to build those pages — it's a high-leverage follow-up.
+✅ **Resolved 2026-06-22** — HNL Card Fest, Aloha Card Show, The Collectors Hale, and Hawaii Pop Con now have hand-built dedicated pages (`/shows/hnl-card-fest`, `/shows/aloha-card-show`, `/shows/the-collectors-hale`, `/shows/hawaii-pop-con`), and the "Link to use" entries above point at them — so every flagship submission is now a deep link to a keyword-targeted page, not the homepage.
+
+**Still on the templated fallback:** the **Hawaii Shows "Pokemon, Sports Cards & More" series** (still routes to `/shows/show.html?id=…`) — its submissions point to the homepage for now. Build a dedicated page if it earns enough directory interest to justify one.
