@@ -6,6 +6,32 @@
 
 ## 🔥 Active Threads (next session — pick up here)
 
+### ▶️ START HERE NEXT SESSION — Execute Phase 0 directory submissions (teed up 2026-06-22)
+**Goal:** start the National Directory Blitz by submitting our shows to the top-ranked directories. This is the
+lever that finally moves DR off 0.2. Everything is prepped — this is execution, not planning.
+
+**The two top-ranked targets to do first** (full ranking in the NATIONAL PIVOT thread below):
+1. **Card Show Hub** — `cardshowhub.com/submit`, **no account needed → do this one first, frictionless.**
+2. **Trading Card Database (TCDb)** — `tcdb.com/CardShows.cfm`, **highest authority but needs a free account.**
+   ⛔ **GATING ITEM: Tyler must create the TCDb account** (or authorize me to) before TCDb can be submitted.
+
+**How to execute (all data is ready):**
+- Copy-paste source = `backlink-submission-packet.md` — already in **teaser format** (commodity facts + hook +
+  point-back URL; withhold full vendor/recap content). Flagships now deep-link to their dedicated `/shows/*`
+  pages (HNL Card Fest, Aloha Card Show, Hawaii Pop Con, The Collectors Hale); only the Hawaii Shows series +
+  Get Nutz + Tier-3 one-times still point at the homepage.
+- **Submit flagships everywhere; top 4–5 shows to thinner directories.** Lead Hawaii Pop Con with the
+  "Hawaii's biggest card show of the year" hook.
+- **Log every submission in `backlink-tracker.csv`** — date, dofollow vs nofollow, whether our URL displays.
+  Guardrail: drop/deprioritize any directory that strips our link or wants to republish full content.
+- After top 2, work down the ranked list: Sports Card Investor → StackNSlabs → Player One → Sports Collectors
+  Digest → Cardshows.com; Cardboard Connection is editorial (email pitch, flagships only) — separate, slower.
+- **Measure:** re-pull DR monthly (`public-domain-rating-free`); referring-domains count read off Ahrefs
+  Webmaster Tools / GSC Links. Expect DR movement only after links go live + get crawled.
+
+**First action next session:** confirm whether Tyler made the TCDb account. If yes → do TCDb + Card Show Hub.
+If not → do Card Show Hub now (no account) and nudge Tyler on TCDb.
+
 ### ✅ SHIPPED — Dedicated pages for 4 flagship shows (2026-06-22)
 Built hand-crafted, Keep-It-Aloha-quality static pages (branded gradient hero, About, FAQ, EventSeries
 schema, dynamic Supabase next/upcoming/past via name-pattern `ilike`) for the 4 flagships that previously
