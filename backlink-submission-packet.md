@@ -1,14 +1,21 @@
-# Directory Submission Packet — copy-paste ready
+# Directory Submission Packet — copy-paste ready (TEASER format)
 
-Pulled from live Supabase data on 2026-06-12. Use this to blast our shows onto the national card-show directories (see Phase 0 in `BACKLINK-PLAYBOOK.md`). **Each submission = one niche-relevant backlink.**
+Pulled from live Supabase data on 2026-06-12 (reworked to teaser format 2026-06-22). Use this to list our shows on the national card-show directories (see Phase 0 in `BACKLINK-PLAYBOOK.md`). **Each submission = one niche-relevant backlink.**
+
+## Teaser philosophy — why these descriptions are deliberately thin
+We submit the **commodity facts** (name, date, venue, city) plus a **one-line hook**, and we always end the description with a **point-back to our page for the full details**. We do *not* paste full vendor lineups, recap content, attendance breakdowns, or photos into a directory — that's the stuff that keeps people on our site and that we don't want a directory to absorb. The goal: give the directory just enough to justify the listing, and make that listing a **funnel into us**, not a substitute for us.
 
 ## How to use
 1. Open a directory's submit form (list at bottom).
 2. Pick a show below, paste the fields.
 3. In the **Website / Link** field, ALWAYS use the "Link to use" URL — that's the backlink.
-4. Log it in `backlink-tracker.csv` (date, directory, dofollow vs nofollow).
+4. Paste the **Teaser description** verbatim — it already includes the point-back line.
+5. Log it in `backlink-tracker.csv` — and **record dofollow vs nofollow + whether our URL displays**. Drop/deprioritize directories that strip our link or take the data without linking back.
 
-**Rule of thumb:** submit the flagships everywhere; for thinner directories, just the top 4-5. If a form only takes one URL and only allows the organizer's site, use `https://hawaiicardshows.com` so the link still points to us.
+**Rules of thumb:**
+- Submit flagships everywhere; for thinner directories, just the top 4-5 shows.
+- If a form only takes one URL and only allows the organizer's site, use `https://hawaiicardshows.com` so the link still points to us.
+- If a directory wants to **republish full content** (not just list + link), skip it — that's the only profile that's actually a "vampire."
 
 ---
 
@@ -21,7 +28,7 @@ These clear Cardboard Connection's bar (multi-day and/or convention-scale).
 - **Venue:** Kroc Center Hawaii, 91-3257 Kualakai Pkwy, Ewa Beach, HI 96706
 - **Organizer:** Rocket Relics (@rocket_relics)
 - **Category:** Pokemon / TCG / sports cards
-- **Short desc:** Two-day Pokemon-focused card show on West Oahu — 100+ vendors, $2 admission, keiki free. One of Hawaii's largest card shows (9,000+ attendees in 2026).
+- **Teaser description:** Two-day Pokemon & sports card show on West Oahu — one of Hawaii's largest. $2 admission, keiki free. Full vendor lineup, hours, and recaps from past editions at hawaiicardshows.com/shows/west-side-show.
 - **Link to use:** `https://hawaiicardshows.com/shows/west-side-show`
 
 ### HNL Card Fest
@@ -30,7 +37,7 @@ These clear Cardboard Connection's bar (multi-day and/or convention-scale).
 - **Hours:** 9:00 AM – 8:00 PM
 - **Organizer:** HNL Card Fest LLC (@hnlcardfest)
 - **Category:** Sports cards / Pokemon / TCG / collectibles
-- **Short desc:** Two-day card fest at the Hawaii Convention Center — Hawaii's marquee convention-center card event, vendors across sports, Pokemon, and TCG.
+- **Teaser description:** Two-day card fest at the Hawaii Convention Center — one of Hawaii's marquee convention-center card events, spanning sports, Pokemon, and TCG. Full details and the complete Hawaii show calendar at hawaiicardshows.com.
 - **Link to use:** `https://hawaiicardshows.com` (no dedicated page yet — see note below)
 
 ### Aloha Card Show
@@ -38,7 +45,7 @@ These clear Cardboard Connection's bar (multi-day and/or convention-scale).
 - **Venue:** Neal S. Blaisdell Center, 777 Ward Ave, Honolulu, HI
 - **Organizer:** Aloha Card Shop (@alohacardshop)
 - **Category:** Sports cards / Pokemon / TCG
-- **Short desc:** Hawaii's flagship annual card show at the Blaisdell — among the largest single-show attendance numbers in the state.
+- **Teaser description:** Hawaii's flagship annual card show at the Blaisdell Center. Dates, hours, and every other Hawaii show in one place at hawaiicardshows.com.
 - **Link to use:** `https://hawaiicardshows.com`
 
 ### The Collectors Hale
@@ -46,7 +53,7 @@ These clear Cardboard Connection's bar (multi-day and/or convention-scale).
 - **Venue:** Maui (venue TBA — check @mauisportscards)
 - **Organizer:** Maui Sports Cards (@mauisportscards)
 - **Category:** Sports cards / Pokemon / collectibles
-- **Short desc:** Three-day collectibles event on Maui — the Valley Isle's biggest card weekend.
+- **Teaser description:** Three-day collectibles event on Maui — the Valley Isle's biggest card weekend. Confirmed venue and full Hawaii show calendar at hawaiicardshows.com.
 - **Link to use:** `https://hawaiicardshows.com`
 
 ### Hawaii Pop Con
@@ -54,7 +61,7 @@ These clear Cardboard Connection's bar (multi-day and/or convention-scale).
 - **Venue:** Oahu (TBA)
 - **Organizer:** Aloha Card Shop (@hawaiipopcon)
 - **Category:** Pop culture / cards / collectibles
-- **Short desc:** Annual pop-culture convention with a major card-vendor floor alongside comics, toys, and anime.
+- **Teaser description:** Annual pop-culture convention with a major card-vendor floor alongside comics, toys, and anime. Details and the full Hawaii calendar at hawaiicardshows.com.
 - **Link to use:** `https://hawaiicardshows.com`
 
 ---
@@ -66,7 +73,7 @@ These clear Cardboard Connection's bar (multi-day and/or convention-scale).
 - **Venue:** SALT at Our Kakaako, 691 Auahi St, Honolulu, HI 96813
 - **Hours:** 2:00 PM – 9:00 PM
 - **Organizer:** Hawaii Collectibles / Kamaka Dias (@kamakarips, @hicollectibles)
-- **Short desc:** Recurring community card show at SALT Kakaako — 70+ vendors, evening hours, strong Pokemon presence. Drew 1,500+ on a single Friday night.
+- **Teaser description:** Recurring community card show at SALT Kakaako — evening hours, strong Pokemon presence, one of Honolulu's best-attended nights. Full schedule, vendor info, and recaps at hawaiicardshows.com/shows/keep-it-aloha.
 - **Link to use:** `https://hawaiicardshows.com/shows/keep-it-aloha`
 
 ### Paradise Card Show
@@ -74,14 +81,14 @@ These clear Cardboard Connection's bar (multi-day and/or convention-scale).
 - **Venue:** The Republik, 1349 Kapiolani Blvd #30, Honolulu, HI 96814
 - **Hours:** 1:00 PM – 7:00 PM
 - **Organizer:** Javin / Paradise Card Show (@paradisecards_)
-- **Short desc:** Recurring Honolulu card show at The Republik — large vendor floor, keiki goodie bags, sponsor giveaways.
+- **Teaser description:** Recurring Honolulu card show at The Republik — large vendor floor, keiki goodie bags, sponsor giveaways. All upcoming dates and details at hawaiicardshows.com/shows/paradise-card-show.
 - **Link to use:** `https://hawaiicardshows.com/shows/paradise-card-show`
 
 ### Pokemon, Sports Cards & More (Hawaii Shows)
 - **Next dates:** Sep 27 (Ala Moana Hotel), Oct 25 (Prince Waikiki), Nov 29 (Ala Moana Hotel), Feb 6–7, 2027 (Hawaii Convention Center)
 - **Organizer:** Hawaii Shows (@hawaiishows)
 - **Hours:** 10:00 AM – 5:00 PM
-- **Short desc:** Recurring Oahu card show series rotating through hotel ballrooms and the convention center — Pokemon and sports cards.
+- **Teaser description:** Recurring Oahu card show series rotating through hotel ballrooms and the convention center — Pokemon and sports cards. All dates and venues at hawaiicardshows.com.
 - **Link to use:** `https://hawaiicardshows.com`
 
 ### Get Nutz In Paradise
@@ -89,21 +96,24 @@ These clear Cardboard Connection's bar (multi-day and/or convention-scale).
 - **Venue:** Kroc Center Hawaii, 91-3257 Kualakai Pkwy, Ewa Beach, HI 96706
 - **Hours:** 9:00 AM – 7:00 PM
 - **Organizer:** GetNutz, Paradise Cards, So V'i Hawai'i & ToyLynx (@getnutzwearhawaii, @paradisecards_)
-- **Short desc:** West Oahu collab show at the Kroc Center — multiple respected organizers under one roof.
+- **Teaser description:** West Oahu collab show at the Kroc Center bringing several respected organizers under one roof. Details and the full Hawaii calendar at hawaiicardshows.com.
 - **Link to use:** `https://hawaiicardshows.com`
 
 ---
 
 ## Tier 3 — Notable one-times (submit to TCDb + Card Show Hub)
 
+For these, use the short teaser: **"[Show] — [date], [venue]. Full details on the Hawaii show calendar at hawaiicardshows.com."**
+
 | Show | Date | Venue | Link to use |
 |---|---|---|---|
-| Spotlight Card Show | Jun 20–21, 2026 | Blaisdell Arena, Honolulu | `https://hawaiicardshows.com` |
 | HNL x Fandom | Aug 8–9, 2026 | Blaisdell Exhibition Hall, Honolulu | `https://hawaiicardshows.com` |
 | Next Drop Hawaii Card Show | Aug 22, 2026 | Steadfast Center, Kapolei | `https://hawaiicardshows.com` |
 | Big Island Breaks Kona Show | Jul 11–12, 2026 | King Kamehameha Kona Beach Hotel, Kailua-Kona | `https://hawaiicardshows.com` |
 | Big Island Breaks 1st Annual | Aug 29, 2026 | Sangha Hall, Hilo | `https://hawaiicardshows.com` |
 | The Hilo Collectible Show | Jun 27, 2026 | Prince Kuhio Plaza, Hilo | `https://hawaiicardshows.com` |
+
+*(Spotlight Card Show Jun 20–21 has passed — now a recap, not a listing. Submit its recap as a linkable asset, not a directory event.)*
 
 ---
 
@@ -124,4 +134,4 @@ These clear Cardboard Connection's bar (multi-day and/or convention-scale).
 
 ## Note: shows without dedicated pages
 
-HNL Card Fest, Aloha Card Show, The Collectors Hale, Hawaii Pop Con, and the Hawaii Shows series are flagship-level but currently only live on the dynamic calendar (`/shows/show.html?id=…`), not clean static pages — so submissions point to the homepage. **Recommendation (my call as your CMO):** these five earn enough national interest to justify dedicated static show pages like West Side / Keep It Aloha already have. That converts each directory submission into a backlink to a keyword-targeted page instead of the homepage. Flag if you want me to build those pages — it's a high-leverage follow-up.
+HNL Card Fest, Aloha Card Show, The Collectors Hale, Hawaii Pop Con, and the Hawaii Shows series are flagship-level but currently only live on the dynamic calendar (`/shows/show.html?id=…`), not clean static pages — so submissions point to the homepage. **Recommendation (my call as your CMO):** these five earn enough national interest to justify dedicated static show pages like West Side / Keep It Aloha already have. That converts each directory submission into a backlink to a keyword-targeted page instead of the homepage, AND gives each a richer point-back destination so the teaser strategy works harder. Flag if you want me to build those pages — it's a high-leverage follow-up.
