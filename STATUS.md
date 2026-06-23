@@ -6,6 +6,22 @@
 
 ## 🔥 Active Threads (next session — pick up here)
 
+### ✅ SHIPPED — Dedicated pages for 4 flagship shows (2026-06-22)
+Built hand-crafted, Keep-It-Aloha-quality static pages (branded gradient hero, About, FAQ, EventSeries
+schema, dynamic Supabase next/upcoming/past via name-pattern `ilike`) for the 4 flagships that previously
+only rendered via the generic `functions/shows/[slug].js` template: **HNL Card Fest** (`/shows/hnl-card-fest`,
+Convention Center, 2026+2027 editions), **Aloha Card Show** (`/shows/aloha-card-show`, pattern catches both
+the Blaisdell annual flagship + Windward Mall editions), **Hawaii Pop Con** (`/shows/hawaii-pop-con`), **The
+Collectors Hale** (`/shows/the-collectors-hale`, Maui). Why: directory backlink submissions now land on rich,
+keyword-targeted pages instead of the homepage/templated fallback. **Wiring:** added 5 name→URL keys to
+`HCS_SERIES_URLS` in index.html + calendar/index.html + shows/show.html (kept in sync); static files shadow
+the `[slug].js` function (verified live — `About …` + 5 FAQ blocks served, self-canonical, indexable).
+**Sitemap:** added all 4 + the 3 existing dedicated pages that were never listed (keep-it-aloha, west-side-show,
+bayview-night-market) — now 54 URLs, all 200. Logos downloaded into `shows/images/`; HNL has no logo → text-only
+gradient hero. Commit `ef97c15`, pushed + verified live. **Note:** branded-fallback heroes (no real photos yet)
+— swap in event photos post-show. Other series/one-times still use the templated fallback — build more if they
+earn national interest.
+
 ### ✅ FIXED — Half-deployed pages causing live 404s + Ahrefs errors (2026-06-22)
 Ahrefs Site Audit (crawl Jun 19, Health Score 56) flagged "4XX page in sitemap (1)", "4XX page (2)",
 "404 page (2)". **Root cause:** `/hawaii-card-show-trip-planner` was wired into the **live** sitemap +
@@ -391,6 +407,11 @@ via @import + inline stacks. Bonus fix: welcome-email.html had a broken
 - [ ] **Newsletter popup** enhancements — A/B test copy, track conversion rate
 - [ ] **Welcome email sequence — add tips & tricks email** (Tyler 2026-05-06). The 3-email sequence is shipped (Day 0 / 7 / 21). A great place to inject a "how to get the most out of a Hawaii card show" email — possibly between #2 and #3 (Day 14). Content idea: arrive early, what cash to bring, how to negotiate, what to bring to a trade night, etiquette, kid-friendly tips. Tyler's POV adds authenticity here.
 - [ ] **"Guide to going to a card show" guide** (Tyler 2026-05-06). Create a long-form guide page (likely `/how-to-attend-a-card-show.html` or extend `/hawaii-card-shows-guide.html`) covering: what to expect, what to bring, how to vendor for the first time, how trade nights differ from card shows, kid-friendly considerations, vendor etiquette. Pure SEO play targeting "how to attend a card show" / "first time card show tips" / "card show vendor guide" queries. Reusable in the welcome email sequence (above) once written. **Note 2026-05-13:** the `/what-is-a-card-show.html` pillar and `/card-show-etiquette.html` companion now cover most of this. This backlog item can probably be closed or merged into the pillar; revisit when reviewing content gaps.
+
+- [ ] **Article cluster — "new collector / casual seller" guides** (Tyler 2026-06-22). Three evergreen SEO articles to write when there's time. Logged as workstreams, not yet scoped/built. These target high-intent beginner queries we don't own yet and feed the welcome email sequence + newsletter. Each is its own long-form page (likely under a `/learn/` or guide path) cross-linked to the `/what-is-a-card-show.html` pillar and `/card-show-etiquette.html`.
+  - [ ] **"What to do at your first card show"** — beginner walk-through: what to expect walking in, cash vs. cards, how to browse, how to talk to vendors, kid-friendly tips. Overlaps the parked "Guide to going to a card show" item above (line ~393) — decide whether this is the same page or a tighter first-timer companion. Target: "first card show tips" / "what to do at a card show."
+  - [ ] **"How to sell a card at a card show"** — first-time seller/vendor angle: setting a fair price, reading comps, vendor vs. table-walking, what to bring, negotiation basics, trade-night vs. show selling. Target: "how to sell cards at a card show" / "sell cards in person Hawaii."
+  - [ ] **"Is that box of cards in my closet worth anything? / Are my kids' cards worth anything?"** — the highest-intent casual query of the three; huge for capturing parents/non-collectors. Cover: how to ID era/set, junk-wax vs. valuable, how to look up comps, when to grade, where to sell locally (tie back to HCS shows/shops). Strong newsletter + social hook. Target: "are my old cards worth anything" / "value of old Pokemon cards."
 
 - [ ] **External backlinking workflow** (Tyler 2026-05-13). The internal linking foundation is solid (May 13 — pillar + etiquette + series pages + recaps now cross-link properly). The bigger ranking lever from here is external backlinks pointing to hawaiicardshows.com. The [Press kit page](press.html) is the foundation. Workflow to build:
   - **Tier 1 targets** (hobby press, immediate fit): Beckett, The Hobby News Daily, Cardboard Connection, Card Talk Podcast, Probably Magic, sports-card podcasts (Money Card Pod, Sports Card Investor)
