@@ -220,8 +220,10 @@ recaps lock, pull the real moments/voice into the graphics. Render flow: edit `s
 deadline; "Send Us Your Moments" voice (team vs signed founder note).
 
 
-### Collectr partnership — LIVE, awaiting Tyler reply
-Adam (Collectr CEO) responded asking for an API to poll shows. **We shipped the API + finalized the email reply same-day.** Tyler is sending the reply (was reviewing the final copy-paste version).
+### Collectr partnership — no reply from Adam; FOLLOW-UP DRAFTED (2026-06-12), awaiting Tyler send
+Adam (Collectr CEO) responded asking for an API to poll shows. **We shipped the API + finalized the email reply same-day.** Tyler sent that first reply; **no response since.**
+
+**Follow-up drafted (2026-06-12) — ready for Tyler to send (founder-to-founder, plain-text copy-paste like the first).** Warm re-ping leading with traction. Subject: "Hawaii Card Shows — quick update + our API's still live for you." Core points: API live w/ 49 upcoming events; site traffic ~10,400 sessions/30d (+106% MoM, 77% organic); newsletter 136 subs (2x in a month, opens 50–67%, peak 67% Jun 15); reiterate offer to shape API (extra fields / webhook / auth = buying signal). **Live metrics pulled 2026-06-12 for the draft:** Buttondown 136 active subs (56 recipients 5/25 → 136, born Apr 8); recent opens — 6/15 67.5%, 6/11–12 recaps ~53%, weekly digests 38–52%; GA4 10,372 sessions/30d vs 5,030 (+106%); `/api/events?days=365` = 49 events. Full draft text was shared in chat; not saved to a file (matches first email — copy-paste only). **Watch for:** Adam's reply (buying signal if he asks for fields/webhooks/auth → say yes, build it).
 
 - **Endpoint:** `https://hawaiicardshows.com/api/events` (Cloudflare Pages Function at [functions/api/events.js](functions/api/events.js))
 - **Latest good commit: `64016f3`** — API verified HEALTHY (returns proper JSON, `application/json` content-type, HEAD/GET/OPTIONS supported, filter validation, 502s genericized, no upstream leakage). Docs at [functions/api/README.md](functions/api/README.md) include the stability contract.
@@ -229,6 +231,12 @@ Adam (Collectr CEO) responded asking for an API to poll shows. **We shipped the 
 - **Final email** was delivered as plain-text copy-paste (endpoint + filters + curl example + GitHub README link + a paragraph inviting Adam's feedback on the most-useful shape, since the site is still iterating). Sent from `tyler@hawaiicardshows.com`.
 - **Watch for:** Adam's reply with technical questions (auth? webhooks? specific fields?) or scheduling a call. He's a CEO; expect 24-72hr turnaround.
 - **If he asks for more fields/webhooks/auth:** that's a buying signal — say yes and build it. Roadmap options already documented in the README (webhook on new event, diff endpoint, per-event detail endpoint, past-event archive, API keys, extra fields like vendor_count/pricing).
+
+### 📝 TODO (held, low priority) — add `series` to API README `type` enum
+The [functions/api/README.md](functions/api/README.md) `type` filter table still lists only `one-time, annual,
+recurring, music` — missing `series` (added 2026-06-09, additive/API-safe so nothing's broken, just stale in the
+partner-facing doc). Tyler asked to **hold off** updating it for now (2026-06-12). Revisit — likely fold into the
+next Collectr touchpoint so Adam's team sees the full enum.
 
 ### ⚠️ API stability rule — read before changing event data structure
 
