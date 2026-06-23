@@ -6,6 +6,57 @@ Practical workflow for earning backlinks to `hawaiicardshows.com`. Built for Tyl
 
 ---
 
+## 🌐 NATIONAL PIVOT (updated 2026-06-12)
+
+**Strategic context:** We now dominate Hawaii TCG search. The original playbook below (organizer Linktrees, Hawaii local press) builds *local* authority — the market we've already won. Those plays are tapped out for **reach**. To grow beyond local, every new link should pass authority from a site whose audience is **national/mainland collectors**.
+
+**Primary KPI: referring domains + Domain Rating (DR).** Not raw mainland traffic — a collector in Ohio can't attend a Honolulu show, so that visit rarely converts. We build national links for the *authority they pass*, which lifts **every** page including the local money pages. Authority compounds; a traffic spike doesn't. Secondary proof metrics: mainland GA4 referral traffic + newsletter signups from the trip-planner asset.
+
+**Reprioritized order of operations:**
+1. **Phase 0 — National Directory Blitz** (new, below) — guaranteed relevant high-DR backlinks, lowest skill. **Do this first.**
+2. **Linkable Assets** (new, below) — the passive-link engine + the only legit way to capture the valuable mainland slice (trip planners).
+3. **Phase 2 — National Hobby Press** (below) — still fully valid.
+4. **Phase 4 — National Communities** (below) — Reddit/Discord, still valid.
+5. **Phase 1 (organizer Linktrees) + Phase 3 (Hawaii local press)** — now *maintenance*, not growth. Local links won't move us beyond a market we already own. Do them opportunistically, don't spend the week on them.
+
+---
+
+## Phase 0 — National Directory Blitz (this week — highest ROI)
+
+The single best beyond-local play: get our shows **listed on every national card-show directory**, using our own `hawaiicardshows.com/shows/[slug]` pages as the event URL. Each listing is a niche-relevant backlink from an established domain, and most directories have **thin or zero Hawaii coverage** — so we can become *the* Hawaii data source they point to. No pitching skill required; these are submission forms.
+
+**Submit target = our clean show pages** (all verified live with clean canonicals):
+`/shows/west-side-show` · `/shows/keep-it-aloha` · `/shows/paradise-card-show` · `/shows/bayview-night-market` · `/shows/toylynx-trade-night` — plus the homepage `hawaiicardshows.com` as the Hawaii source link, and `/calendar/` where a "calendar" field is offered.
+
+| # | Directory | Submit path | DR (est.) | Notes |
+|---|---|---|---|---|
+| 1 | **Trading Card Database (TCDb)** | tcdb.com/CardShows.cfm → "Add a Show" (free account) | Very high | Biggest hobby DB. Per-state calendar w/ almost no HI shows — prime gap to own. |
+| 2 | **Card Show Hub** | cardshowhub.com/submit (free) | Medium-high | Tracks 3,000+ US shows, adds daily. Free listing; "featured" is paid (skip). |
+| 3 | **Player One Collectibles** | playeronecollectibles.com/events.php (free account) | Medium | "World's most complete" calendar, accepts worldwide events incl. US. |
+| 4 | **Sports Collectors Digest** | sportscollectorsdigest.com/collecting-101/show-calendar | High | Legacy hobby authority. Submit via their show-calendar form/contact. |
+| 5 | **Sports Card Investor** | sportscardinvestor.com/card-shows/ | High | Big audience; check for submit form or email the show in. |
+| 6 | **StackNSlabs Card Show Finder** | stacknslabs.com/sns-card-show-finder/ | Medium | Community card-show finder. |
+| 7 | **Cardshows.com** | cardshows.com | Low-medium | Dedicated calendar domain. |
+| 8 | **Cardboard Connection — regional convention guide** | cardboardconnection.com major-regional convention guide | High | **Flagships only** (their bar = 150+ tables and/or multi-day w/ signers): West Side, Aloha Card Show, HNL Card Fest. |
+
+**Rule:** submit the event with our show-page URL in the "website/link" field. If a directory only links the organizer, list HCS as the organizer/source. **Log every submission in the tracker** so we can watch which ones actually create a live `dofollow` link (some are `nofollow` — still worth it for referral + discovery, but note it).
+
+**Recurring habit:** every time a new show is approved in the portal, submit it to TCDb + Card Show Hub. Bake this into the event-approval routine.
+
+---
+
+## Linkable Assets — the passive-link engine (week 2-4)
+
+Right now every page says "come to a Hawaii show." Nobody on the mainland links to that. Linkable assets give national blogs, subreddits, and the directories above a *reason* to cite us — and the trip-planner doubles as our one honest mainland-audience capture.
+
+### Asset 1 — "State of the Hawaii TCG Scene" annual data report
+A genuine data piece: # of shows tracked, attendance numbers (West Side 9,000+, May SALT 5,000+), # of shops by island, YoY growth, vendor counts. Hobby press and YouTubers cite **data**, not event listings. Publish at a stable URL (e.g. `/state-of-hawaii-tcg-2026`), pitch it to the Phase 2 outlets, and update it yearly so the link compounds.
+
+### Asset 2 — "Planning a Hawaii Trip? Card Show & Shop Guide" (the mainland magnet)
+The one page a mainland collector *will* link to and share: "visiting Oahu/Maui — here are the shows, shops, and trade nights worth hitting." Targets a real national search intent (`card shops in honolulu`, `pokemon hawaii`), earns links from travel/hobby contexts, and is the natural newsletter opt-in ("get the calendar before your trip"). This is how we convert national reach into the secondary KPIs without chasing junk traffic.
+
+---
+
 ## Phase 1 — Quick Wins (this week, ~1 hour total)
 
 These are the lowest-friction, highest-relevance backlinks. Start here.
