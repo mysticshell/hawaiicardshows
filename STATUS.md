@@ -1,10 +1,54 @@
 # Hawaii Card Shows — Project Status
 
-*Last updated: 2026-06-12 (**Fixed GSC "Duplicate without user-selected canonical"** — 45 public pages had canonical tags pointing at `.html` URLs that Cloudflare 308-redirects to clean form, so Google discarded the canonical and saw dupes. Stripped `.html` from all canonicals + `og:url` + JSON-LD `@id`, fixed sitemap + recap template, swept ~389 internal `.html` links → clean. 59 files, verified zero indexable pages reference `.html`. Not yet pushed; after deploy click "Validate Fix" in GSC. PRIOR 2026-06-11: **Planned the OG Reward / Ambassador Program** — new thread below: Phase 1 = referral-weighted, newsletter-only giveaway w/ local-shop-sponsored sealed-product prize (the IG→newsletter + evangelism engine); Phase 2 = Founding Member metal card, full design spec banked in `plans/founding-member-card-spec.md`. Pulled verified Buttondown baseline (114 active subs, 41.2% open, accelerating growth) + confirmed native referral feature (tracking-only, currently OFF). PRIOR 2026-06-12: approved 2 portal submissions live — "Die Cast & Collectibles Show" @ Ala Moana Hotel Hibiscus Ballroom Aug 2 2026, and "HNL Card Fest" @ Hawaii Convention Center Exhibit Hall III Jul 10–11 2027; both submitters' `annual` → `one-time` per taxonomy. Deleted "Saint Louis Collectors Expo" (organizer resubmitting fresh; HNL Card Fest 2027 kept). Snapshot: `.agents/deleted-event-saint-louis-20260612.json`. Added Hawaii Shows "Pokemon, Sports Cards & More" series — 4 dates: Sep 27 + Nov 29 2026 @ Ala Moana Hotel, Oct 25 2026 @ Prince Waikiki, Feb 6–7 2027 @ Hawaii Convention Center Exhibition Hall III; org @hawaiishows, `series`, brand color #dc2626. Renamed the old May 31 2026 "Hawaii Shows" row → "Pokemon, Sports Cards & More" + `series` to match. Pushed HNL Card Fest **Summer 2026** edition live — Jul 18–19 2026 @ Hawaii Convention Center Room 313 A+B+C, 9a–8p, `one-time` (now 2 HNL Card Fest editions booked: Jul 2026 + Jul 2027 — both bumped to `series`. Toby's Card Garage Card Show: hero `logo_url` = shop TCG logo (`shops/images/tobys-card-garage-logo.jpg`), flyer (`shows/flyers/tobys-card-garage-july-2026.jpg`) moved to `photos` gallery below the description; both committed+deployed & verified live))*
+*Last updated: 2026-06-12 (**Fixed GSC "Duplicate without user-selected canonical"** — 45 public pages had canonical tags pointing at `.html` URLs that Cloudflare 308-redirects to clean form, so Google discarded the canonical and saw dupes. Stripped `.html` from all canonicals + `og:url` + JSON-LD `@id`, fixed sitemap + recap template, swept ~389 internal `.html` links → clean. 59 files, verified zero indexable pages reference `.html`. Not yet pushed; after deploy click "Validate Fix" in GSC. PRIOR 2026-06-11: **Planned the OG Reward / Ambassador Program** — new thread below: Phase 1 = referral-weighted, newsletter-only giveaway w/ local-shop-sponsored sealed-product prize (the IG→newsletter + evangelism engine); Phase 2 = Founding Member metal card, full design spec banked in `plans/founding-member-card-spec.md`. Pulled verified Buttondown baseline (114 active subs, 41.2% open, accelerating growth) + confirmed native referral feature (tracking-only, currently OFF). PRIOR 2026-06-12: approved 2 portal submissions live — "Die Cast & Collectibles Show" @ Ala Moana Hotel Hibiscus Ballroom Aug 2 2026, and "HNL Card Fest" @ Hawaii Convention Center Exhibit Hall III Jul 10–11 2027; both submitters' `annual` → `one-time` per taxonomy. Deleted "Saint Louis Collectors Expo" (organizer resubmitting fresh; HNL Card Fest 2027 kept). Snapshot: `.agents/deleted-event-saint-louis-20260612.json`. Added Hawaii Shows "Pokemon, Sports Cards & More" series — 4 dates: Sep 27 + Nov 29 2026 @ Ala Moana Hotel, Oct 25 2026 @ Prince Waikiki, Feb 6–7 2027 @ Hawaii Convention Center Exhibition Hall III; org @hawaiishows, `series`, brand color #dc2626. Renamed the old May 31 2026 "Hawaii Shows" row → "Pokemon, Sports Cards & More" + `series` to match. Pushed HNL Card Fest **Summer 2026** edition live — Jul 18–19 2026 @ Hawaii Convention Center Room 313 A+B+C, 9a–8p, `one-time` (now 2 HNL Card Fest editions booked: Jul 2026 + Jul 2027 — both bumped to `series`. Toby's Card Garage Card Show: hero `logo_url` = shop TCG logo (`shops/images/tobys-card-garage-logo.jpg`), flyer (`shows/flyers/tobys-card-garage-july-2026.jpg`) moved to `photos` gallery below the description; both committed+deployed & verified live. ToyLynx Trade Night hours → 3–8pm (DB). Reverted DB description off IG copy → matches dedicated page (also fixed stale "1st & 3rd"→"2nd & 4th Thursday"). Dedicated page `shows/toylynx-trade-night.html`: replaced hardcoded `NEXT_TRADE_NIGHT` (stale → "Coming Soon") with auto-compute of next 2nd/4th Thursday; fixed Hours card "Evening/closes 6:30PM" → "3–8 PM"; cleaned all "weekly/Every Thursday" copy → "2nd & 4th Thursday" (title, meta/og/twitter, schema, About). **Calendar→dedicated-page linking:** added `toylynx trade night` to `HCS_SERIES_URLS` in all 3 in-sync maps (index.html, calendar/index.html, shows/show.html) + fixed STALE West Side keys in calendar's map ("west side show iii"→"west side card show iii", missed during the rename — was breaking West Side links in the calendar only). Dedicated-page shows now linked from calendar: ToyLynx, West Side, Keep It Aloha, Paradise, Bayview. **Deploy episode:** c6fc05f Cloudflare Pages build hung in "pending" ~25min (GitHub commit status stuck pending, CF token is zone-scoped so no Pages API access) — cleared by pushing an empty nudge commit (6a15c58) which superseded the stuck build; verified consistently live. **Site audit (live):** all 52 unique event-link URLs + 19 core/dedicated pages + 2 recaps + 32 sitemap URLs return 200; no slug collisions; all key pages have title/meta/canonical, no accidental noindex. Routing confirmed sound (calendar getShowUrl + show.html share identical hcsSlugify + series map). **Resolved:** legacy `/shows/west-side-card-show` redirect (was shadowed by `functions/shows/[slug].js`) now handled in-function via a `LEGACY_REDIRECTS` map → 301s to `/shows/west-side-show` (verified live, be09161). The .html variant still falls through to `_redirects`. TCG Tavern Trade Day skipping this weekend (added 2026-06-20 + 06-21 to skip_dates) — they'll be at Spotlight Card Show Jun 20 instead))*
 
 ---
 
 ## 🔥 Active Threads (next session — pick up here)
+
+### ✅ FIXED — Half-deployed pages causing live 404s + Ahrefs errors (2026-06-22)
+Ahrefs Site Audit (crawl Jun 19, Health Score 56) flagged "4XX page in sitemap (1)", "4XX page (2)",
+"404 page (2)". **Root cause:** `/hawaii-card-show-trip-planner` was wired into the **live** sitemap +
+linked from `hawaii-card-shows-guide.html`, but the page HTML was never committed/pushed → returned 404.
+The new `/recaps/spotlight-card-show-june-2026` recap (built Jun 22, in recap-map.js + local sitemap) was
+the same trap waiting to fire. **This mattered beyond the score:** the trip-planner is the linkable asset
+we plan to submit in the national-directory blitz — it was a live 404. **Fix:** committed + pushed both
+pages, hero image, `sitemap.xml`, `recap-map.js`, and the guide reciprocal link together; verified all
+return 200 live. **Triaged as noise (no action):** "Page has links to broken page (70)" = sitewide IG
+footer link (`instagram.com/hawaiicardshows`, in 89 files) — Instagram login-walls AhrefsBot, returns 200
+to real users; known false-positive. "Meta description too long (49)" = cosmetic (Google truncates, no
+penalty), optional batch trim later. **Marketing snapshot (GA4, 2026-06-22):** 30d sessions 10,372 vs
+prior 5,030 (**+106%**), 77% Organic Search; form_submit 82 vs 23 prior (+257%) but conv rate 0.79%
+(traffic outrunning conversion — next lever). DR still 0.2 (directory blitz not yet submitted). Newsletter
+124 subs; Jun 15 weekly hit 65.9% open on the new auto-subject system.
+
+### ▶️ IN PROGRESS — Backlink workflow: NATIONAL PIVOT (2026-06-12)
+Goal: grow beyond local now that we dominate HI SEO. **Primary KPI = referring domains + DR** (authority that
+compounds & lifts all pages), NOT raw mainland traffic (a mainland collector can't attend a HI show → low-value
+visit). Secondary = mainland GA4 referral + trip-planner newsletter signups.
+- **Baseline captured 2026-06-12: Domain Rating = 0.2 / 100** (Ahrefs free `public-domain-rating-free` endpoint).
+  Near-zero — confirms the thesis: we win local on relevance/on-page, NOT backlink authority, so DR is wide open
+  and even a handful of referring domains will move it. Ahrefs API v3 MCP returns "Insufficient plan" on free
+  tier (paid-only), so DR is the one number we can pull programmatically; **referring-domains count = Tyler reads
+  it off the Ahrefs Webmaster Tools dashboard (now verified) or GSC Links report.** Re-pull DR monthly to track.
+  Competitor backlink data is paid → competitor research stays manual (web search).
+- **Strategy reprioritized** in `BACKLINK-PLAYBOOK.md` (new "🌐 NATIONAL PIVOT" + "Phase 0 — National Directory
+  Blitz" + "Linkable Assets" sections). Old organizer-Linktree / HI-local-press phases demoted to *maintenance*
+  (they build local authority we already own).
+- **Phase 0 = National Directory Blitz** (highest ROI, do first): submit our shows — using `/shows/[slug]` clean
+  pages as the event URL — to TCDb, Card Show Hub, Player One Collectibles, Sports Collectors Digest, Sports Card
+  Investor, StackNSlabs, Cardshows.com, Cardboard Connection (flagships only). Most have ~zero HI coverage → own
+  the gap. Submissions are forms → need Tyler to submit OR authorize me to. Seeded in `backlink-tracker.csv`.
+- **Linkable assets:** (1) ✅ **BUILT — "Planning a Hawaii Trip? Card Show & Shop Guide"** at
+  `hawaii-card-show-trip-planner.html` (clean URL `/hawaii-card-show-trip-planner`). Evergreen (links to
+  `/calendar/`, no hardcoded dates), matches guide-page template, has newsletter opt-in ("Get the calendar before
+  your trip"). Wired into `sitemap.xml` + reciprocal internal link from `hawaii-card-shows-guide.html`. Verified:
+  renders clean, 200, no console errors. **NOT yet committed/pushed.** (2) "State of Hawaii TCG" annual data
+  report — not built yet (needs real attendance/shop/show counts).
+- **Submission packet** built: `backlink-submission-packet.md` — copy-paste-ready data for 12+ flagship/recurring
+  shows pulled from live Supabase, mapped to the right backlink target URL per show.
+- **Tracker:** `backlink-tracker.csv` (repo root) — log every submission, note dofollow vs nofollow, measure
+  referring-domain growth vs effort.
 
 ### ✅ FIXED — Google Search Console "Duplicate without user-selected canonical" (2026-06-12)
 GSC flagged pages not being indexed. **Root cause:** Cloudflare Pages 308-redirects every `/foo.html` → clean

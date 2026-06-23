@@ -17,6 +17,15 @@
 (function () {
   const RECAPS = [
     {
+      slug: 'spotlight-card-show-june-2026',
+      title: 'Spotlight Card Show — A Card Show in the Arena',
+      date: '2026-06-20',
+      event_id: '1ee419a3-1180-444f-9480-9289305e9126',
+      thumbnail: '/recaps/images/spotlight-card-show-june-2026-hero.jpg',
+      url: '/recaps/spotlight-card-show-june-2026.html',
+      blurb: '100+ vendors took over the Blaisdell Arena floor — a brand-new show that packed the house through the hottest weekend of the year, drawing collectors from across the islands and beyond.'
+    },
+    {
       slug: 'west-side-show-iii-june-2026',
       title: 'West Side Card Show III — Max Holloway Works the Floor',
       date: '2026-06-06',

@@ -109,6 +109,12 @@
 
   <!-- Recap pages -->
   <url>
+    <loc>https://hawaiicardshows.com/recaps/spotlight-card-show-june-2026</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://hawaiicardshows.com/recaps/west-side-show-iii-june-2026</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
