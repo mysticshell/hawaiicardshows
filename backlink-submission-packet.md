@@ -58,10 +58,10 @@ These clear Cardboard Connection's bar (multi-day and/or convention-scale).
 
 ### Hawaii Pop Con
 - **Dates:** Jan 9–10, 2027 (two-day, annual)
-- **Venue:** Oahu (TBA)
+- **Venue:** Neal S. Blaisdell Center, 777 Ward Ave, Honolulu, HI
 - **Organizer:** Aloha Card Shop (@hawaiipopcon)
 - **Category:** Pop culture / cards / collectibles
-- **Teaser description:** Annual pop-culture convention with a major card-vendor floor alongside comics, toys, and anime. Details and dates at hawaiicardshows.com/shows/hawaii-pop-con.
+- **Teaser description:** Hawaii's biggest card show of the year — an annual pop-culture & trading card convention at the Blaisdell Center, drawing vendors from across the country alongside comics, toys, and anime. Details and dates at hawaiicardshows.com/shows/hawaii-pop-con.
 - **Link to use:** `https://hawaiicardshows.com/shows/hawaii-pop-con`
 
 ---
