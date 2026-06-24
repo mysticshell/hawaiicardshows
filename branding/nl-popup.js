@@ -18,8 +18,8 @@
   'use strict';
   var CONFIG = {
     scrollPct: 0.55,            // fire after this fraction of the page is scrolled
-    minDelayMs: 8000,           // don't fire in the first N ms (let them read)
-    dismissDays: 30,            // re-show window after a dismiss
+    minDelayMs: 5000,           // don't fire in the first N ms (let them read)
+    dismissDays: 7,             // re-show a week after a dismiss (weekly returners get re-asked)
     formId: 'newsletter-popup-recap',
     storeKey: 'hcs_nl_popup',   // { dismissedAt: ts } or { subscribed: true }
     headline: 'Never miss a show',
