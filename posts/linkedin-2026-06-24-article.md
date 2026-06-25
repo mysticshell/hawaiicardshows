@@ -2,15 +2,12 @@
 
 **Post date:** Wednesday, June 24, 2026
 **Format:** LinkedIn Article (long-form, not a regular post) + companion feed post
-**Version:** v3 — voice pass round 2
+**Version:** v4 — final, ready to publish
 
-> **Round 2 changelog (vs v2):**
-> - [P2] Rewrote first paragraph with more narrative flow (less choppy, more "this then this and wrapping together")
-> - [P5] "I started looking sideways" → "pulling on the other threads in my life, letting curiosity lead the way"
-> - [P9] Added cheeky parenthetical about money driving the digital community space
-> - [P12] Expanded the "five years" section to include team-building, finding good talent, and shipping quality product
-> - [P19] Rewrote the "kids, uncles, aunties" beat to lean into specific personas (restaurant owners, valets, business owners) and "walls down" framing
-> - ⏳ One pending: "The international ed dream wasn't wrong. The format was." — your feedback got cut off mid-sentence. Confirm what you wanted to change.
+> **v4 changelog (vs v3):**
+> - [P33] Decided to keep original snappy version: *"The international ed dream wasn't wrong. The format was."* (Tyler chose snap over softening — the "format was" phrasing already honors int'l ed enough)
+> - All 3 image slots locked in (see asset list at bottom)
+> - All TBD/⚠️ flags resolved
 
 ---
 
@@ -18,7 +15,7 @@
 
 1. LinkedIn home page → click **Write Article**
 2. **Title:** `How I ended up running a card show calendar in Hawaii`
-3. **Hero image:** TBD — `IMG_3263.jpeg` (you + crew at the indoor show) is my strongest pick if it's the "first vending" shot, otherwise let me know which file to use
+3. **Hero image:** `posts/assets/article-2026-06-24/hero-first-ever-vending.jpeg` (you + friend at card shop, throwing shakas)
 4. **Body:** Paste the essay below. `[IMAGE-N]` markers in the body indicate inline image spots
 5. **At the top of the body**, italic + small:
    > *Originally published at [hawaiicardshows.com/founders-note](https://hawaiicardshows.com/founders-note)*
@@ -44,7 +41,7 @@
 
 *Originally published at [hawaiicardshows.com/founders-note](https://hawaiicardshows.com/founders-note)*
 
-**[HERO IMAGE — IMG_3263.jpeg or your "first vending" pick]**
+**[HERO IMAGE — `posts/assets/article-2026-06-24/hero-first-ever-vending.jpeg`]**
 
 **[P1]** In 2020 I was on a path I thought would last my whole life.
 
@@ -100,7 +97,7 @@ I wasn't sure what to do with that observation. I just sat with it.
 
 I was getting into golf. A friend invited me to play a round at a course on Oahu, and that same morning at the same course there happened to be a card show. I figured I'd swing by before the round started. I went with him and his two daughters and immediately got hooked.
 
-**[IMAGE-1 — Pearl Country Club show shot (TBD: file from Downloads OR IG post screenshot)]**
+**[IMAGE-1 — `posts/assets/article-2026-06-24/image-1-pearl-country-club-show-floor.png` (Pearl at Kalauao show floor, April 2025 — the moment that started it all)]**
 
 **[P20]** I hadn't seen that many people gathered in person around a shared hobby in years. Kids. Uncles. Aunties. Pros. Locals and visitors. Restaurant owners next to valets next to business owners — strangers who probably wouldn't have stopped each other on the street, walls down because of a shared love for cardboard.
 
@@ -147,13 +144,13 @@ I figured I'd try to fix that.
 
 Zero paid marketing. All organic, all word-of-mouth, all SEO.
 
-**[IMAGE-2 — Website/calendar screenshot (TBD)]**
+**[IMAGE-2 — `posts/assets/article-2026-06-24/image-2-website-homepage.png` (the homepage you're driving traffic to)]**
 
 **[P32]** And those numbers don't fully capture it. A festival weekend in early June — Keep It Aloha at SALT Kaka'ako on Friday, West Side Cardshow at the Kroc Center on Saturday and Sunday — drew **over 14,000 combined attendees** across the two shows. UFC champion Max Holloway showed up to vend his own personal collection at the West Side show. Real people, real gathering, in real life.
 
 ### What this is really about
 
-**[P33]** **The international ed dream wasn't wrong. The format was.** *⚠️ ← Tyler's feedback was cut off here. Confirm what you wanted to change.*
+**[P33]** **The international ed dream wasn't wrong. The format was.**
 
 **[P34]** The thing I was chasing in 2020 — communities that genuinely connect people across difference — was right there the whole time. It just didn't look like a classroom in Spain. It looked like a folding table in a Kaka'ako warehouse with a 60-year-old retired teacher and a 12-year-old kid arguing over a Charizard.
 
@@ -177,15 +174,14 @@ That's what Hawaii Card Shows is. A digital tool that exists to make the in-pers
 
 ---
 
-## 🖼️ Image asset list (TBD slots — needs your confirmation)
+## 🖼️ Image asset list (locked in)
 
-| Spot | Status | Candidates from Downloads |
+| Spot | File | Description |
 |---|---|---|
-| **HERO** | TBD | `IMG_3263.jpeg` (you + crew indoor show, throwing shakas) — strongest if this is the "first vending" shot. Alt: `IMG_1154.jpeg` (you in Pikachu hat with friends at card shop counter) |
-| **IMAGE-1** (Pearl Country Club moment) | TBD | `IMG_6761.jpeg` (outdoor Deester Collectibles tent w/ trees) — most likely Pearl Country Club candidate. Plus your Pearl IG post screenshots (need you to add to Downloads) |
-| **IMAGE-2** (website/calendar screenshot) | TBD | You'll grab a screenshot of `hawaiicardshows.com` homepage or `/calendar/` |
-
-When you confirm the picks, I'll move them into `posts/assets/article-2026-06-24/` with descriptive filenames so they're tracked in the repo.
+| **HERO** | `posts/assets/article-2026-06-24/hero-first-ever-vending.jpeg` | Tyler + friend at card shop, throwing shakas — captures the energy of "I went deeper" |
+| **IMAGE-1** (Pearl Country Club moment) | `posts/assets/article-2026-06-24/image-1-pearl-country-club-show-floor.png` | The packed Pearl at Kalauao show floor, April 2025 — the Saturday morning that started it all |
+| **IMAGE-1 alt** (IG post variant, if Tyler prefers context) | `posts/assets/article-2026-06-24/image-1-pearl-country-club-ig-post.png` | Same photo but with the @hawaiicollectiblesshow IG sidebar visible — adds proof/context |
+| **IMAGE-2** (website/calendar screenshot) | `posts/assets/article-2026-06-24/image-2-website-homepage.png` | The hawaiicardshows.com homepage — what readers find when they click through |
 
 ---
 
