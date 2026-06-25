@@ -156,7 +156,12 @@
   </url>
 
   <!-- Recap pages -->
-  <!-- Spotlight Card Show (June 2026) recap is STAGED/HIDDEN for organizer review — omitted on purpose. Add when publishing. -->
+  <url>
+    <loc>https://hawaiicardshows.com/recaps/spotlight-card-show-june-2026</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://hawaiicardshows.com/recaps/west-side-show-iii-june-2026</loc>
     <lastmod>2026-06-09</lastmod>
