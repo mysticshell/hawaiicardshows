@@ -16,11 +16,15 @@
    ───────────────────────────────────────────────────────────────────── */
 (function () {
   'use strict';
+  // Optional per-surface attribution: <script ... data-form-id="newsletter-popup-shop">.
+  // Falls back to the recap default so existing includes are unchanged.
+  var THIS_SCRIPT = document.currentScript;
+  var FORM_ID_OVERRIDE = THIS_SCRIPT && THIS_SCRIPT.getAttribute('data-form-id');
   var CONFIG = {
     scrollPct: 0.55,            // fire after this fraction of the page is scrolled
     minDelayMs: 5000,           // don't fire in the first N ms (let them read)
     dismissDays: 7,             // re-show a week after a dismiss (weekly returners get re-asked)
-    formId: 'newsletter-popup-recap',
+    formId: FORM_ID_OVERRIDE || 'newsletter-popup-recap',
     storeKey: 'hcs_nl_popup',   // { dismissedAt: ts } or { subscribed: true }
     headline: 'Never miss a show',
     sub: 'A weekly digest of every card show in Hawaii — plus the occasional recap. Free.',
