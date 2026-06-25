@@ -31,6 +31,8 @@
 >
 > Five years in digital communities (web3, gaming, AI) before stumbling into a Saturday morning card show that rerouted everything I thought I was doing.
 >
+> Now I run the calendar — and help organize one of the shows on it.
+>
 > Full essay → [link to LinkedIn article]
 >
 > #BuildingInPublic #FoundersJourney #Hawaii
