@@ -32,6 +32,29 @@ lever that finally moves DR off 0.2. Everything is prepped — this is execution
 **First action next session:** confirm whether Tyler made the TCDb account. If yes → do TCDb + Card Show Hub.
 If not → do Card Show Hub now (no account) and nudge Tyler on TCDb.
 
+### 🔧 TOOLING — Improve how we collaborate on written content (raised 2026-06-24)
+**Problem Tyler raised:** Our current article-editing loop (markdown draft in repo → Tyler feedback in chat →
+Claude rewrites → repeat) works but lacks true comment/suggestion-style dialogue. Tyler often wants to ask
+*"why this word?"* or leave a suggestion that needs discussion before applying. Doing that through chat is
+clunky compared to Google Docs / Notion-style inline commenting.
+
+**Options scoped 2026-06-24 (longer thinking later):**
+- **Google Docs** via Drive MCP — familiar UI + Suggesting mode. Downside: Drive MCP doesn't expose comment
+  reply API, so Claude's responses come back in chat (not inside the doc thread).
+- **Notion** via Notion MCP — full comment threading (`notion-create-comment` + `notion-get-comments`).
+  True back-and-forth dialogue inside the doc. Downside: less polished prose-editing UI vs Google Docs.
+- **GitHub PR comments** — line-level commenting works, but dev-UX-heavy and Tyler isn't a dev.
+
+**Action when revisited:**
+1. Tyler to confirm whether to use **personal gmail** (`tylerjbartels@gmail.com`) or **business gmail**
+   (TBD — Tyler will share when ready) for whichever platform we land on.
+2. Run a pilot with one piece of content (probably Week 3 LinkedIn post or a future blog/email draft) and
+   measure friction reduction.
+3. If friction is real, formalize the workflow in [posts/](posts/) as a template.
+
+**Status:** Parked for now. Week 2 Article is being published tomorrow (2026-06-25) via the current
+chat-based workflow.
+
 ### ✅ SHIPPED — Dedicated pages for 4 flagship shows (2026-06-22)
 Built hand-crafted, Keep-It-Aloha-quality static pages (branded gradient hero, About, FAQ, EventSeries
 schema, dynamic Supabase next/upcoming/past via name-pattern `ilike`) for the 4 flagships that previously
