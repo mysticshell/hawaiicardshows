@@ -17,6 +17,15 @@
 (function () {
   const RECAPS = [
     {
+      slug: 'space-62-collectibles-show-june-2026',
+      title: 'Space 62 Collectibles Show — Room to Roam at Ala Moana',
+      date: '2026-06-27',
+      event_id: '81dcbfce-503d-4a9c-b31a-348b4eed171d',
+      thumbnail: '/recaps/images/space-62-collectibles-show-june-2026-hero.jpg',
+      url: '/recaps/space-62-collectibles-show-june-2026.html',
+      blurb: '4,800+ collectors over three days, a floor that still felt roamable, $10K+ in raffles, and 40+ boxes of food for the Hawaii Food Bank — Space 62’s first show.'
+    },
+    {
       slug: 'spotlight-card-show-june-2026',
       title: 'Spotlight Card Show — A Card Show in the Arena',
       date: '2026-06-20',
