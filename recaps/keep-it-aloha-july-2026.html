@@ -74,6 +74,14 @@
 .highlight-box { background: var(--ocean-pale); border-radius: var(--radius); padding: 24px; margin: 24px 0; border-left: 4px solid var(--lava); }
 .highlight-box strong { color: var(--lava); }
 
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin: 32px 0; }
+.photo-grid img { width: 100%; border-radius: var(--radius); object-fit: cover; aspect-ratio: 4/3; cursor: pointer; transition: transform 0.2s; display: block; }
+.photo-grid img:hover { transform: scale(1.02); }
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; cursor: pointer; justify-content: center; align-items: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; object-fit: contain; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+.lightbox-close { position: absolute; top: 20px; right: 24px; color: white; font-size: 32px; font-weight: 300; cursor: pointer; font-family: 'Archivo', sans-serif; }
+
 .recap-cta { background: var(--night); border-radius: 16px; padding: 48px 32px; text-align: center; margin: 48px 0; }
 .recap-cta h3 { font-family: 'Phudu', sans-serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
 .recap-cta p { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 20px; }
@@ -106,10 +114,10 @@
   </button>
 </nav>
 
-<!-- BRANDED HERO — teal Keep It Aloha fallback. Source at recaps/_hero-src/keep-it-aloha-july-2026.html.
-     Swap this src to a real crowd/Keiki-Corner photo when available, and update og:image/twitter:image to match. -->
+<!-- HERO — real photo of the packed Keep It Aloha floor at SALT. Teal branded fallback
+     is regenerable from recaps/_hero-src/keep-it-aloha-july-2026.html. -->
 <div class="recap-hero-banner">
-  <img src="/recaps/images/keep-it-aloha-july-2026-hero.jpg" alt="Keep It Aloha Card Show — Community First & the Keiki Corner, July 4–5, 2026 at SALT at Our Kaka'ako, Honolulu" loading="eager">
+  <img src="/recaps/images/keep-it-aloha-july-2026-hero.jpg" alt="A packed Keep It Aloha Card Show floor at SALT at Our Kaka'ako — collectors, vendor tables, and Kaka'ako murals under string lights, July 2026" loading="eager">
 </div>
 
 <div class="recap-hero">
@@ -177,6 +185,17 @@
 
   <p>It&rsquo;s turned into a win for the whole neighborhood, too. SALT has handed Keep It Aloha the <strong>first weekend of every month through the end of the year</strong>, and all those collectors spill out into Kaka&rsquo;ako afterward for food, drinks, and &mdash; by the organizers&rsquo; own count &mdash; a suspicious amount of ice cream.</p>
 
+  <h2>Photos from the Show</h2>
+
+  <div class="photo-grid">
+    <img src="/recaps/images/keep-it-aloha-july-2026-keiki-corner.jpg" alt="The Keiki Corner at Keep It Aloha — a Collectr-sponsored space for developing young collectors" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/keep-it-aloha-july-2026-keiki-prizes.jpg" alt="Kids at the Keiki Corner prize wheel at Keep It Aloha" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/keep-it-aloha-july-2026-mural-vendor.jpg" alt="A vendor table set against a bold Kaka'ako mural at SALT" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/keep-it-aloha-july-2026-collectors.jpg" alt="Collectors browsing a vendor's cards at Keep It Aloha" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/keep-it-aloha-july-2026-vendor-food.jpg" alt="Food set out for the vendors at Keep It Aloha" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+    <img src="/recaps/images/keep-it-aloha-july-2026-organizers.jpg" alt="The Keep It Aloha organizers at SALT" loading="lazy" onclick="document.querySelector('.lightbox').classList.add('active'); document.querySelector('.lightbox-img').src = this.src;">
+  </div>
+
   <!-- ═════ FROM THE FLOOR — community walkthrough auto-populated from /community/walkthroughs.js ═════ -->
 <section id="from-the-floor" class="from-the-floor" hidden style="max-width:760px;margin:48px auto;padding:32px 28px;background:#e8f4f0;border-radius:16px;border-left:4px solid #1a6b5a;box-sizing:border-box;">
   <div style="font-family:'Phudu',sans-serif;font-size:11px;font-weight:700;color:#1a6b5a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">From the Floor</div>
@@ -194,6 +213,11 @@
 
   <p>Keep It Aloha is a monthly fixture now &mdash; the <strong>first weekend of every month</strong> at SALT through year&rsquo;s end, with the next one in early August. Follow <a href="https://www.instagram.com/keepitalohaevents" target="_blank" rel="noopener">@keepitalohaevents</a>, <a href="https://www.instagram.com/kamakarips" target="_blank" rel="noopener">@kamakarips</a>, <a href="https://www.instagram.com/hnlcollectibles" target="_blank" rel="noopener">@hnlcollectibles</a>, and <a href="https://www.instagram.com/hicollectibles" target="_blank" rel="noopener">@hicollectibles</a> for dates, and keep an eye on <a href="https://www.instagram.com/hawaiicardshows" target="_blank" rel="noopener">@hawaiicardshows</a> &mdash; we post new shows across the islands as they come up.</p>
 
+</div>
+
+<div class="lightbox" onclick="this.classList.remove('active');">
+  <span class="lightbox-close">×</span>
+  <img class="lightbox-img" src="" alt="">
 </div>
 
 <script>
