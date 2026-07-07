@@ -28,8 +28,8 @@
     {
       recap_slug: 'keep-it-aloha-july-2026',
       ig_post_url: 'https://www.instagram.com/reel/DadpM5DB9PV/',
-      creator_handle: 'sarukofamcollects',
-      creator_name: 'Saruko Fam Collects',
+      creator_handle: 'keepitalohaevents',
+      creator_name: 'Keep It Aloha',
       date: '2026-07-04',
       type: 'walkthrough',
       caption: 'Floor walkthrough of Keep It Aloha at SALT Kaka\'ako.'
