@@ -26,6 +26,15 @@
 (function () {
   const WALKTHROUGHS = [
     {
+      recap_slug: 'keep-it-aloha-july-2026',
+      ig_post_url: 'https://www.instagram.com/reel/DadpM5DB9PV/',
+      creator_handle: 'sarukofamcollects',
+      creator_name: 'Saruko Fam Collects',
+      date: '2026-07-04',
+      type: 'walkthrough',
+      caption: 'Floor walkthrough of Keep It Aloha at SALT Kaka\'ako.'
+    },
+    {
       recap_slug: 'keep-it-aloha-may-2026',
       ig_post_url: 'https://www.instagram.com/reel/DX3N5YViy08/',
       creator_handle: 'sarukofamcollects',
