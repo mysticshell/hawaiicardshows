@@ -17,6 +17,15 @@
 (function () {
   const RECAPS = [
     {
+      slug: 'keep-it-aloha-july-2026',
+      title: 'Keep It Aloha — Bets on the Next Generation',
+      date: '2026-07-04',
+      event_id: '65909966-7540-4772-862d-4b7060e0aee9',
+      thumbnail: '/recaps/images/keep-it-aloha-july-2026-hero.jpg',
+      url: '/recaps/keep-it-aloha-july-2026.html',
+      blurb: '4,000+ collectors, kids behind the tables at Collectr’s Keiki Corner, a David Choe cameo, and Hawaii News Now stopping by — Keep It Aloha’s July show at SALT.'
+    },
+    {
       slug: 'space-62-collectibles-show-june-2026',
       title: 'Space 62 Collectibles Show — Room to Roam at Ala Moana',
       date: '2026-06-27',
