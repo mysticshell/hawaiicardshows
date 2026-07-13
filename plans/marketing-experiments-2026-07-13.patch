@@ -1,0 +1,66 @@
+diff --git a/functions/api/generate-newsletter.js b/functions/api/generate-newsletter.js
+index 88dcb09..404ee03 100644
+--- a/functions/api/generate-newsletter.js
++++ b/functions/api/generate-newsletter.js
+@@ -336,21 +336,28 @@ function expandWindow(allEvents, days, startOffset = 0) {
+ // Auto-catchy weekly subject line — data-driven, rotates so consecutive weeks differ.
+ // No manual input: leads with the show count (curiosity) and names a headliner when we have one.
+ function buildSubject({ totalCount, oneTime, recurring, startStr }) {
+-  if (totalCount === 0) return 'Hawaii Card Shows — a quiet week ahead';
++  if (totalCount === 0) return 'Quiet week for Hawaii card shows — one to plan ahead for';
+   const n = totalCount;
+   const shows = n === 1 ? 'show' : 'shows';
+   const raw = (oneTime[0] && oneTime[0].name) || (recurring[0] && recurring[0].name) || '';
+-  const headliner = raw ? truncate(raw, 34) : '';
++  const headliner = raw ? truncate(raw, 46) : '';
+   // rotate by day-of-month so back-to-back sends don't repeat the same phrasing
+   const seed = parseInt(String(startStr).slice(-2), 10) || 0;
+-  const options = [`${n} card ${shows} in Hawaii this week 🃏`];
++  const options = [];
++  // Lead with the headliner — a specific show name is more curiosity-driving than a raw count.
+   if (headliner && n > 1) {
+-    options.push(`This week: ${headliner} + ${n - 1} more`);
+-    options.push(`${n} shows this week, starting with ${headliner} 🃏`);
++    options.push(`${headliner} — and ${n - 1} more shows this week`);
++    options.push(`Where to be this week: ${headliner} 🃏`);
++    options.push(`${headliner} leads a big week of Hawaii shows`);
+   } else if (headliner) {
+-    options.push(`This week in Hawaii cards: ${headliner}`);
++    options.push(`This week's one to hit: ${headliner}`);
++    options.push(`Your show this week — ${headliner} 🃏`);
+   }
+-  options.push(`Your week in Hawaii cards: ${n} ${shows} 🗓️`);
++  // Benefit/curiosity framings that don't open on a number (keeps the rotation fresh).
++  options.push(`Your Hawaii card weekend, sorted 🗓️`);
++  options.push(`Here's where the cards are this week in Hawaii`);
++  // Keep one count-led option in the mix as a fallback / variety.
++  options.push(`${n} card ${shows} in Hawaii this week 🃏`);
+   return options[seed % options.length];
+ }
+ 
+diff --git a/index.html b/index.html
+index 73d391a..1d260db 100644
+--- a/index.html
++++ b/index.html
+@@ -190,8 +190,8 @@
+ </section>
+ <div style="padding:0 24px;">
+   <div class="newsletter" style="margin-top:-20px;">
+-    <h2>Never Miss a Show</h2>
+-    <p>Get show announcements and community updates delivered to your inbox.</p>
++    <h2>Every Hawaii Card Show — In One Weekly Email</h2>
++    <p>Join 180+ collectors who get the rundown of every show across the islands — plus recaps and early drops. Free, one email a week.</p>
+     <form class="newsletter-form" id="newsletterForm">
+       <input class="newsletter-input" type="email" placeholder="your@email.com" required id="newsletterEmail">
+       <button type="submit" class="newsletter-btn" id="newsletterBtn">Subscribe</button>
+@@ -666,8 +666,8 @@ loadEvents();
+ <div class="nl-overlay" id="nlOverlay">
+   <div class="nl-popup">
+     <button class="nl-close" id="nlClose" aria-label="Close">&times;</button>
+-    <h2>Never Miss a Show</h2>
+-    <p>Get show announcements and community updates delivered to your inbox.</p>
++    <h2>Never Miss a Hawaii Card Show</h2>
++    <p>Join 180+ collectors getting the weekly rundown of every show across the islands — plus recaps and early drops. Free.</p>
+     <form class="nl-popup-form" id="nlPopupForm">
+       <input class="nl-popup-input" type="email" placeholder="your@email.com" required id="nlPopupEmail">
+       <button type="submit" class="nl-popup-btn" id="nlPopupBtn">Subscribe</button>

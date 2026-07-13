@@ -6,6 +6,22 @@
 
 ## 🔥 Active Threads (next session — pick up here)
 
+### 🗄️ BANKED (not deployed) — 2 marketing experiments awaiting Tyler's go (2026-07-13)
+Drafted + reviewed + liked by Tyler, but **deploy paused** (busy work week, can't monitor). Working tree was
+reverted → live site unchanged. Full spec + rationale + re-apply steps in
+[`plans/marketing-experiments-2026-07-13.md`](plans/marketing-experiments-2026-07-13.md); exact diff in
+`plans/marketing-experiments-2026-07-13.patch` (`git apply` it to restore).
+- **Exp A — homepage signup copy** (`index.html` inline module + popup): new headline + social proof
+  ("180+ collectors" — refresh the count) + frequency clarity ("one email a week"). Targets the slipping
+  visitor→sub rate (~0.49%).
+- **Exp B — `buildSubject()`** (`functions/api/generate-newsletter.js`): lead with the headliner show name
+  + varied curiosity hooks instead of predictable count-led templates; widened name truncation 34→46.
+  Targets weekly open-rate dilution (66% June → 53% July as the list grew +52%).
+- **Exp C (concept only, not coded):** re-engagement/win-back email to ~dormant subs; needs a Buttondown
+  last-opened segment.
+- **To ship later:** `git apply` the patch (or re-edit from the spec), refresh the "180+" number, deploy,
+  then watch visitor→sub rate + open rate over 2–3 sends.
+
 ### ✅ SHIPPED — Space 62 dedicated page + newsletter popups on ALL shop pages (2026-06-24, f6f6bcc)
 - **Space 62 dedicated page** [`/shows/space-62-collectibles-show`](shows/space-62-collectibles-show.html) — indigo "Space" theme on the lean Bayview/KIA template, but **DB-driven date list** (not weekday recurrence): pulls all `Space 62%` events, renders upcoming with multi-day range formatting ("JUN 26–28 / Fri–Sun"). `Event` schema for the headline Jun 26–28 show (~60 tables, Ala Moana 3rd floor — Tyler expects heavy lookups this week). Registered in all 3 `HCS_SERIES_URLS` maps for both `Space 62 Collectibles Show` + `Space 62 Trade Night`; added to sitemap. Verified in preview (live data, no console errors) + production.
 - **Data fix:** Space 62 show times were stored as `"10:00 AM"`/`"9:00 PM"` strings → `fmtTime` parsed "9:00 PM" as **9 AM**. Normalized to 24h `10:00`/`21:00` (also corrects calendar display).
