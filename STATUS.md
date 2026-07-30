@@ -6,21 +6,18 @@
 
 ## 🔥 Active Threads (next session — pick up here)
 
-### 🗄️ BANKED (not deployed) — 2 marketing experiments awaiting Tyler's go (2026-07-13)
-Drafted + reviewed + liked by Tyler, but **deploy paused** (busy work week, can't monitor). Working tree was
-reverted → live site unchanged. Full spec + rationale + re-apply steps in
-[`plans/marketing-experiments-2026-07-13.md`](plans/marketing-experiments-2026-07-13.md); exact diff in
-`plans/marketing-experiments-2026-07-13.patch` (`git apply` it to restore).
-- **Exp A — homepage signup copy** (`index.html` inline module + popup): new headline + social proof
-  ("180+ collectors" — refresh the count) + frequency clarity ("one email a week"). Targets the slipping
-  visitor→sub rate (~0.49%).
-- **Exp B — `buildSubject()`** (`functions/api/generate-newsletter.js`): lead with the headliner show name
-  + varied curiosity hooks instead of predictable count-led templates; widened name truncation 34→46.
-  Targets weekly open-rate dilution (66% June → 53% July as the list grew +52%).
-- **Exp C (concept only, not coded):** re-engagement/win-back email to ~dormant subs; needs a Buttondown
-  last-opened segment.
-- **To ship later:** `git apply` the patch (or re-edit from the spec), refresh the "180+" number, deploy,
-  then watch visitor→sub rate + open rate over 2–3 sends.
+### 📊 MEASURING — Exp A (homepage signup copy) SHIPPED 2026-07-30; Exp B parked
+Full spec: [`plans/marketing-experiments-2026-07-13.md`](plans/marketing-experiments-2026-07-13.md).
+- **✅ Exp A — homepage signup copy — DEPLOYED 2026-07-30.** New headline ("Every Hawaii Card Show — In One
+  Weekly Email") + social proof ("200+ collectors", refreshed from 216 subs) + frequency clarity + specific
+  value prop, on both the inline `.newsletter` module and the exit-intent popup (`index.html`). Shipped
+  because on-site conversion had dropped hard (30d: 0.80%→0.32%, 95→51 signups) as event-lookup traffic
+  (HNL Card Fest surge) diluted intent. **NEXT: watch visitor→sub rate over 2–3 weeks vs the ~0.32% baseline.**
+  Button label kept "Subscribe" (shared reset JS w/ mobile bar) — optional "Join Free" micro-test still open.
+- **⏸️ Exp B — `buildSubject()` — PARKED (not deployed).** Weekly open rate recovered on its own (66%→53%
+  scare in early July → back to **68–70%** on Jul 13/20/27 sends), so the subject-line rewrite is no longer
+  urgent. Spec + patch still banked if we want it later.
+- **Exp C (concept only):** re-engagement/win-back email to dormant subs; needs a Buttondown last-opened segment.
 
 ### ✅ SHIPPED — Space 62 dedicated page + newsletter popups on ALL shop pages (2026-06-24, f6f6bcc)
 - **Space 62 dedicated page** [`/shows/space-62-collectibles-show`](shows/space-62-collectibles-show.html) — indigo "Space" theme on the lean Bayview/KIA template, but **DB-driven date list** (not weekday recurrence): pulls all `Space 62%` events, renders upcoming with multi-day range formatting ("JUN 26–28 / Fri–Sun"). `Event` schema for the headline Jun 26–28 show (~60 tables, Ala Moana 3rd floor — Tyler expects heavy lookups this week). Registered in all 3 `HCS_SERIES_URLS` maps for both `Space 62 Collectibles Show` + `Space 62 Trade Night`; added to sitemap. Verified in preview (live data, no console errors) + production.
@@ -32,7 +29,10 @@ reverted → live site unchanged. Full spec + rationale + re-apply steps in
 **Decision: not now** — going into a big weekend, don't risk the site. Today: 24 multi-day shows are single date-range rows with ONE `start_time`/`end_time` applied to every day, so the calendar can't show different Fri/Sat/Sun hours. **Dedicated-page shows already solve "one page from any day"** (single row + series map → click any day, land on the same page); the gap is per-day *times* on the calendar. **Planned fix:** add nullable `day_schedule` JSONB on `events` (`[{date,start,end,label}]`); calendar `fmtTimeRange(e, ds)` reads it per day, falls back to start/end when absent (all 24 existing shows untouched); show pages render a Daily Schedule block; admin gets a per-day entry UI; backfill the ~handful of shows whose hours truly vary (Fri trade night + weekend types: Space 62, HNL Card Fest, KIA 2nd Edition…). MVP ~2 hrs, full ~half day. **One dependency:** the column add is DDL — service-role key can't run it via REST + no migration/management token in repo → needs one line in Supabase SQL editor: `alter table events add column if not exists day_schedule jsonb;`. NOTE: Pacific Rim Festival is currently 2 separate single-day rows (the interim workaround) — collapse to one row w/ `day_schedule` when this lands. **Interim shipped (a47610f):** calendar now shows `See times` on multi-day single-row tiles instead of the possibly-wrong single time — `calTimeLabel(e)` in calendar/index.html (agenda + day-modal); single-day events unchanged. Multi-day rows already render once per day, each linking to the one dedicated page via the series map = "3 tiles → 1 page" already. Also added the **Space 62 official flyer** (`shows/flyers/space-62-collectibles-show-june-2026.jpg`, compressed 5.7MB→495KB) as a flyer module on the dedicated page.
 
 ### ✅ SHIPPED — July calendar renames + Sneaker Expo (aed2234)
-Cross-checked our calendar vs the @eeveelution_cosplay July Oʻahu flyer — had all but 3. Renamed DB events to match community naming: **Urban Card Show → Urban Soccer Hawaii Card Show**, **Uncle Tony's Trade Night → 808 Showcase Trade Night** (rebrand; same 808Showcase/Datz Collectiblez @ Pearlridge, 3rd Fri), **Sports Cards & Collectibles Show → Pearlridge Sports Cards & Collectibles Show**. Propagated the last two into SEO/content pages (index FAQ schema + visible FAQ, card-shows-oahu meta/keywords/prose, pokemon-card-shops links); `preview.html` left (noindex, not in sitemap). Added **Hawaii Sneaker Expo 2026** (Jul 26, 10a–4p, Ala Moana Hotel Hibiscus Ballroom, 50+ vendors incl. new Pokémon vendors; `one-time`, **no IG handle yet**). **Still not added (awaiting Tyler's OK):** Space 62 Trade Night Jul 24 (5–9p) + Tipsy Mew Social Night Jul 31 (3–8p, Uncle's Fish Market Bar & Grill) — both were in the gap check; Tyler only greenlit the Sneaker Expo so far.
+Cross-checked our calendar vs the @eeveelution_cosplay July Oʻahu flyer — had all but 3. Renamed DB events to match community naming: **Urban Card Show → Urban Soccer Hawaii Card Show**, **Uncle Tony's Trade Night → 808 Showcase Trade Night** (rebrand; same 808Showcase/Datz Collectiblez @ Pearlridge, 3rd Fri), **Sports Cards & Collectibles Show → Pearlridge Sports Cards & Collectibles Show**. Propagated the last two into SEO/content pages (index FAQ schema + visible FAQ, card-shows-oahu meta/keywords/prose, pokemon-card-shops links); `preview.html` left (noindex, not in sitemap). Added **Hawaii Sneaker Expo 2026** (Jul 26, 10a–4p, Ala Moana Hotel Hibiscus Ballroom, 50+ vendors incl. new Pokémon vendors; `one-time`, **no IG handle yet**). **Still not added (awaiting Tyler's OK):** Space 62 Trade Night Jul 24 (5–9p) + Tipsy Mew Social Night Jul 31 (3–8p, Uncle's Fish Market Bar & Grill) — both were in the gap check; Tyler only greenlit the Sneaker Expo so far. **Later added (Tyler OK'd):** Space 62 Trade Night Jul 24 + Tipsy Mew Social Night Jul 31.
+
+### ✅ SHIPPED — Hawaii Diecast + Card District dedicated page (a5bc453)
+Consolidated the two co-located Aug 2 Ala Moana Hotel shows into ONE calendar entry: renamed the Diecast event → **"Hawaii Diecast & Collectibles Show + The Card District"**, venue → Hibiscus & Garden Ballrooms, combined description ($6 both shows, kids 10 & under free, 65 diecast tables + 40+ card dealers), and **deleted the redundant standalone Card District Aug 2 row** (Card District series keeps Jul 19 / Aug 23 / Sep 6). Compressed the combined flyer (5.7MB→644KB) to `shows/flyers/hawaii-diecast-collectibles-show-august-2026.jpg`, attached to the event (`photos`). Built a **standalone page** [`/shows/hawaii-diecast-collectibles-show`](shows/hawaii-diecast-collectibles-show.html) (red/gold theme, two-show split, flyer feature, $6 combo, DB-driven dates via `Hawaii Diecast%` pattern), registered in all 3 `HCS_SERIES_URLS` maps + sitemap. Verified in Browser pane: no console errors, dynamic data correct, flyer loads (removed `loading="lazy"` — wasn't firing in preview), responsive desktop+mobile, no horizontal overflow. Deploy converged 4/4.
 
 ### ▶️ START HERE NEXT SESSION — Execute Phase 0 directory submissions (teed up 2026-06-22)
 **Goal:** start the National Directory Blitz by submitting our shows to the top-ranked directories. This is the
