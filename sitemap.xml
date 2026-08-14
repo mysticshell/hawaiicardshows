@@ -169,6 +169,12 @@
 
   <!-- Recap pages -->
   <url>
+    <loc>https://hawaiicardshows.com/recaps/getnutz-in-paradise-august-2026</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://hawaiicardshows.com/recaps/keep-it-aloha-july-2026</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>

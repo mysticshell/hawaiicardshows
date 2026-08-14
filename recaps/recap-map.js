@@ -17,6 +17,15 @@
 (function () {
   const RECAPS = [
     {
+      slug: 'getnutz-in-paradise-august-2026',
+      title: 'Get Nutz in Paradise — A Card Show, Craft Fair & Block Party in One',
+      date: '2026-08-09',
+      event_id: 'd73b2d5a-5fcc-45b8-b288-96883796d53a',
+      thumbnail: '/recaps/images/getnutz-in-paradise-august-2026-hero.jpg',
+      url: '/recaps/getnutz-in-paradise-august-2026.html',
+      blurb: '5,000+ people, 140+ vendors across cards, crafts, and food, live music all day, and a first-time table that sold out — GetNutz and Paradise’s first joint show at the Kroc Center.'
+    },
+    {
       slug: 'keep-it-aloha-july-2026',
       title: 'Keep It Aloha — Bets on the Next Generation',
       date: '2026-07-04',
