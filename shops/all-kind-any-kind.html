@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 <title>All Kind Any Kind Card Shop &mdash; Card Shop on Kauai | Hawaii Card Shows</title>
-<meta name="description" content="All Kind Any Kind Card Shop is a card shop on Kauai for buying, selling, and trading. Open seven days a week. Follow @allkindanykindcardshop for the latest.">
+<meta name="description" content="All Kind Any Kind Card Shop in Anahola, Kauai — Pokemon cards, Magic, One Piece, Funko Pops, Sanrio, and more. Buy, sell, and trade, open seven days a week.">
 <meta name="keywords" content="All Kind Any Kind Card Shop, card shop Kauai, buy sell trade cards Kauai, Pokemon cards Kauai, sports cards Kauai, trading cards Hawaii, Kauai card store">
 
 <!-- Open Graph -->
@@ -45,7 +45,10 @@
   "sameAs": ["https://www.instagram.com/allkindanykindcardshop"],
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "4523 Ioane Rd #12.5",
+    "addressLocality": "Anahola",
     "addressRegion": "HI",
+    "postalCode": "96703",
     "addressCountry": "US"
   },
   "openingHoursSpecification": [
@@ -269,6 +272,15 @@
     line-height: 1.5;
   }
 
+  /* ═══════ WHAT THEY CARRY ═══════ */
+  .carry-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .carry-item { background: var(--white); border: 1px solid var(--sand-dark); border-radius: 10px; padding: 12px 20px; font-size: 14px; font-weight: 600; color: var(--night); transition: border-color 0.2s, background 0.2s; }
+  .carry-item:hover { border-color: var(--shop-primary); background: var(--shop-primary-pale); }
+
+  /* ═══════ MAP ═══════ */
+  .map-wrap { margin-top: 32px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--sand-dark); }
+  .map-wrap iframe { width: 100%; height: 300px; border: 0; }
+
   /* ═══════ FOOTER CTA ═══════ */
   .footer-cta {
     background: var(--shop-hero-bg);
@@ -331,16 +343,16 @@
     <h1>All Kind, <em>Any Kind</em></h1>
     <p class="hero-tagline">Kauai's card shop for buying, selling, and trading &mdash; all kinds, any kind, open seven days a week.</p>
     <div class="hero-tags">
-      <span class="hero-tag" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.2);">Kauai</span>
-      <span class="hero-tag" style="background:#e8f0e9;color:#3d6643;">TCG &amp; Sports</span>
+      <span class="hero-tag" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.2);">Kauai &middot; Anahola</span>
+      <span class="hero-tag" style="background:#e8f0e9;color:#3d6643;">TCG &amp; Collectibles</span>
       <span class="hero-tag" style="background:#f0fdf4;color:#166534;">Buy / Sell / Trade</span>
     </div>
     <div class="hero-cta-group">
-      <a href="https://www.instagram.com/allkindanykindcardshop" target="_blank" rel="noopener" class="btn-primary">
-        Follow on Instagram
+      <a href="https://www.google.com/maps/search/?api=1&query=4523+Ioane+Rd+Anahola+HI+96703" target="_blank" rel="noopener" class="btn-primary">
+        Get Directions
       </a>
-      <a href="mailto:allkindanykindcardshopllc@yahoo.com" class="btn-secondary">
-        Email the Shop
+      <a href="https://www.instagram.com/allkindanykindcardshop" target="_blank" rel="noopener" class="btn-secondary">
+        Follow on Instagram
       </a>
     </div>
   </div>
@@ -352,7 +364,7 @@
   <section id="about">
     <div class="section-label">About the Shop</div>
     <h2 class="section-title">A Card Shop on Kauai</h2>
-    <p class="section-text">All Kind Any Kind Card Shop is a card shop on Kauai &mdash; a buy, sell, and trade spot for collectors across the Garden Isle. Whether you're looking to move part of your collection, hunt for new additions, or work out a trade, it's a home base for the island's collector community.</p>
+    <p class="section-text">All Kind Any Kind Card Shop is a card shop in Anahola on Kauai's east side &mdash; a buy, sell, and trade spot for collectors across the Garden Isle. Pokémon, Magic, One Piece, Funko Pops, Sanrio, and more, whether you're looking to move part of your collection, hunt for new additions, or work out a trade.</p>
     <p class="section-text">Open seven days a week, it's an easy stop any day &mdash; and one of the newer additions to Kauai's growing card scene. Follow <a href="https://www.instagram.com/allkindanykindcardshop" target="_blank" rel="noopener" style="color:var(--shop-primary);font-weight:600;text-decoration:none;">@allkindanykindcardshop</a> for the latest drops and updates.</p>
   </section>
 
@@ -379,8 +391,8 @@
           <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div class="detail-card-label">Location</div>
-        <div class="detail-card-value">Kauai, HI</div>
-        <div class="detail-card-note">Street address coming soon</div>
+        <div class="detail-card-value" style="font-size:16px;">4523 Ioane Rd #12.5</div>
+        <div class="detail-card-note">Mile Marker &middot; Anahola, HI 96703</div>
       </div>
 
       <div class="detail-card">
@@ -394,10 +406,30 @@
         <div class="detail-card-note"><a href="mailto:allkindanykindcardshopllc@yahoo.com" style="color:var(--text-light);">allkindanykindcardshopllc@yahoo.com</a></div>
       </div>
     </div>
+
+    <!-- Map -->
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps?q=4523+Ioane+Rd,+Anahola,+HI+96703&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="All Kind Any Kind Card Shop location map"></iframe>
+    </div>
   </section>
 
   <!-- Photo gallery mount (populated by /shops/shop-photos.js if slug has photos) -->
   <div id="shop-photos-mount"></div>
+
+  <!-- ═══════ WHAT THEY CARRY ═══════ -->
+  <section id="carry">
+    <div class="section-label">On the Shelves</div>
+    <h2 class="section-title">What They Carry</h2>
+    <p class="section-text">All kind, any kind &mdash; a mix of trading cards and collectibles.</p>
+    <div class="carry-grid">
+      <span class="carry-item">Pokémon</span>
+      <span class="carry-item">Magic: The Gathering</span>
+      <span class="carry-item">One Piece</span>
+      <span class="carry-item">Funko Pops</span>
+      <span class="carry-item">Sanrio</span>
+      <span class="carry-item">&amp; more</span>
+    </div>
+  </section>
 
   <!-- ═══════ HIGHLIGHTS ═══════ -->
   <section id="highlights">
@@ -424,7 +456,7 @@
       <div class="highlight-card">
         <div class="emoji">🃏</div>
         <div class="label">All Kinds</div>
-        <div class="desc">All kind, any kind &mdash; Pokémon, sports, and more.</div>
+        <div class="desc">Pokémon, Magic, One Piece, Funko, Sanrio &amp; more.</div>
       </div>
     </div>
   </section>
