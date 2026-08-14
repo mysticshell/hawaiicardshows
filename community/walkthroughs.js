@@ -26,6 +26,15 @@
 (function () {
   const WALKTHROUGHS = [
     {
+      recap_slug: 'getnutz-in-paradise-august-2026',
+      ig_post_url: 'https://www.instagram.com/reel/Db4OCHSMyyV/',
+      creator_handle: 'getnutzinparadise',
+      creator_name: 'Get Nutz in Paradise',
+      date: '2026-08-09',
+      type: 'walkthrough',
+      caption: 'Inside the first-ever Get Nutz in Paradise at the Kroc Center, Ewa Beach.'
+    },
+    {
       recap_slug: 'keep-it-aloha-july-2026',
       ig_post_url: 'https://www.instagram.com/reel/DadpM5DB9PV/',
       creator_handle: 'keepitalohaevents',
