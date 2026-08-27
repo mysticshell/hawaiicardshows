@@ -6,6 +6,23 @@
 
 ## 🔥 Active Threads (next session — pick up here)
 
+### 📊 QUARTERLY SNAPSHOT — Summer marketing review (2026-08-26)
+Full visual dashboard: https://claude.ai/code/artifact/bdf7ca53-1cba-4a02-ae13-fecdc94a84d4 (baseline for next review).
+- **Traffic 5×'d:** 90d sessions **43,199 vs 8,504 prior (+408%)**, accelerating monthly (May 6.8k → Jun 11.6k →
+  Jul 16.8k → Aug ~13.3k MTD). Organic Search = **79%** of traffic. Engagement 45%→~50%.
+- **Dedicated-pages strategy validated:** HNL Card Fest page = **7,304 views/90d** (3rd behind home + calendar);
+  KIA 4,118, Aloha Card Show 3,089, long tail of show pages. The build is now a durable traffic base.
+- **Newsletter 265 subs (+135% on the quarter);** but opens softening as list grows (~70% Jul → mid-50s Aug) —
+  the parked **Exp B** subject-line rewrite + re-engagement send are the fix.
+- **⚠️ Conversion is the one concern:** traffic 5×'d but on-site signups plateaued ~50/mo (Jun peak was 93);
+  conv rate **0.80% (Jun) → 0.30% (Jul) → 0.39% (Aug)** — event-lookup traffic diluting intent. Exp A (shipped
+  Jul 30) gave the small Aug recovery. **Next quarter's #1 priority = conversion, not traffic.**
+- **National lever still untapped:** DR last measured **0.2** (Jun; Ahrefs free endpoint now plan-gated), traffic
+  ~98% US/local. Directory blitz built + packet-ready but **not launched** — still gated on the free TCDb account.
+- **Recos for next quarter:** (1) focus conversion — "Join Free" button test + sharpen recap/top-show-page
+  signups; (2) ship parked Exp B + re-engagement email; (3) launch the directory blitz (needs TCDb account).
+- Site health at snapshot: homepage 200, all 61 sitemap URLs 200.
+
 ### 📝 DRAFTED — SEO + referral-monetization article program (Tyler 2026-07-30, Rev 2 w/ affiliate research)
 Tyler's ask: SEO articles designed to **monetize via traffic + affiliate/referral links**; then review own work "as CEO," research the most lucrative referral programs + recommend which to join, and update drafts w/ placeholders. All in `posts/drafts/` (NOT deployed, awaiting review):
 - **`SEO-MONETIZATION-PLAN.md` (Rev 2)** — now leads with a **CEO self-critique** of Rev 1 (over-indexed on ~3% Amazon; buried the highest-RPM "where to sell / what's it worth" article; no revenue model; ignored cookie windows; Amazon platform-risk). Adds **affiliate-program research table** + a **rough RPM model** + a **ranked signup recommendation.**
