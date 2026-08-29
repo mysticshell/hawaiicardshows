@@ -35,6 +35,16 @@
       caption: 'Inside the first-ever Get Nutz in Paradise at the Kroc Center, Ewa Beach.'
     },
     {
+      recap_slug: 'keep-it-aloha-june-2026',
+      show_slug: 'keep-it-aloha',
+      ig_post_url: 'https://www.instagram.com/p/DcUTZoBkttk/',
+      creator_handle: 'faaithrogers',
+      creator_name: 'Faaith Rogers',
+      date: '2026-06-05',
+      type: 'highlight',
+      caption: 'Keep It Aloha in June at SALT Kaka\'ako, captured on film.'
+    },
+    {
       recap_slug: 'keep-it-aloha-july-2026',
       ig_post_url: 'https://www.instagram.com/reel/DadpM5DB9PV/',
       creator_handle: 'keepitalohaevents',
