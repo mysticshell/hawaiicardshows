@@ -168,11 +168,14 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
 .info-cell-value{font-family:'Phudu',sans-serif;font-weight:600;color:var(--night);font-size:15px;line-height:1.35}
 .info-cell-value a{color:var(--gc-primary-dark);text-decoration:none}
 
-/* FAQ */
-.faq-item{border-bottom:1px solid var(--sand-dark);padding:16px 0}
-.faq-item:last-child{border-bottom:none}
-.faq-q{font-family:'Phudu',sans-serif;font-weight:700;color:var(--night);margin-bottom:6px;font-size:16px}
-.faq-a{color:var(--text-light);font-size:15px;line-height:1.6}
+/* FAQ — click-to-expand accordion (scoped to beat site.css defaults) */
+section.module .faq-item{border-bottom:1px solid var(--sand-dark)}
+section.module .faq-item:last-child{border-bottom:none}
+section.module .faq-q{font-family:'Phudu',sans-serif;font-weight:700;color:var(--night);font-size:16px;cursor:pointer;padding:16px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none}
+section.module .faq-arrow{color:var(--gc-primary);font-size:24px;font-weight:700;line-height:1;flex-shrink:0;transition:transform 0.25s ease}
+section.module .faq-item.open .faq-arrow{transform:rotate(45deg)}
+section.module .faq-a{max-height:0;overflow:hidden;color:var(--text-light);font-size:15px;line-height:1.6;padding:0;transition:max-height 0.3s ease,padding 0.3s ease}
+section.module .faq-item.open .faq-a{max-height:800px;padding-bottom:16px}
 
 .loading{text-align:center;color:var(--text-lighter);font-size:14px;padding:14px;font-style:italic}
 
@@ -360,24 +363,24 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
   <!-- FAQ -->
   <section class="module">
     <h2>FAQ</h2>
-    <div class="faq-item">
-      <div class="faq-q">What is Juan Guy's Gym Challenge?</div>
+    <div class="faq-item open">
+      <div class="faq-q"><span>What is Juan Guy's Gym Challenge?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">It's a Maui card show series where each show is branded after a Pokémon gym city (Pewter, Cerulean, Vermillion…). At each stop you can earn a serialized, limited gym badge — a real numbered collectible — building the feel of a trainer's journey toward the Indigo League.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">When and where is the next gym?</div>
+      <div class="faq-q"><span>When and where is the next gym?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">The Vermillion City Trade Show is Sept 25–26, 2026 at 1552 Mill Street, Wailuku — Friday 4–10 PM and Saturday 12–8 PM, $5 cover (12 and under free). Upcoming dates are always listed above.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">How do I get a gym badge?</div>
+      <div class="faq-q"><span>How do I get a gym badge?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Badges are earned from participating vendors — the "Gym Leaders" — and each Leader sets their own challenge to earn theirs. Badges are serialized and limited, so they're first-come while they last. Get each badge validated at the show to lock in your entry.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What's the grand prize?</div>
+      <div class="faq-q"><span>What's the grand prize?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">At Vermillion City, collecting badges earns entries toward a $1,000 grand-prize shopping spree, with the winner drawn Saturday at 8 PM (or once all badges are claimed). Prize details are set per event.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What can I buy, sell, and trade?</div>
+      <div class="faq-q"><span>What can I buy, sell, and trade?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">The whole hobby — Pokémon, Premium One Piece, and sports cards, plus whatever the Maui vendor community brings to trade.</div>
     </div>
   </section>
@@ -550,6 +553,19 @@ function renderPast(events){
   }).join('');
 }
 
+function friendlyWhen(startDate){
+  if(!startDate)return '';
+  const d=new Date(startDate+'T12:00:00');
+  const now=new Date();
+  const month=d.toLocaleDateString('en-US',{month:'long'});
+  const diffDays=(d-now)/86400000;
+  if(diffDays<0)return month;
+  if(diffDays<=7)return 'This Week';
+  // same calendar month, or within ~6 weeks (covers late-prev-month → this one) → "This <Month>"
+  if((d.getFullYear()===now.getFullYear() && d.getMonth()===now.getMonth()) || diffDays<=45)return 'This '+month;
+  return month+' '+d.getFullYear();
+}
+
 function renderNextShow(events){
   const wrap=document.getElementById('nextShow');
   if(!events.length){
@@ -560,13 +576,14 @@ function renderNextShow(events){
   const dateStr=fmtDateRange(e.start_date, e.end_date);
   const timeStr=fmtTimeRange(e);
   const venue=e.venue||'Venue TBA';
+  const when=friendlyWhen(e.start_date);
   wrap.innerHTML=`
-    <div class="next-show-badge">Next Gym</div>
+    <div class="next-show-badge">Next Gym${when?` · ${esc(when)}`:''}</div>
     <div class="next-show-content">
-      <div class="next-show-date">${esc(dateStr)}${timeStr?` · ${esc(timeStr)}`:''}</div>
-      <div class="next-show-meta">${esc(e.name)} · ${esc(venue)}</div>
+      <div class="next-show-date">${esc(e.name)}</div>
+      <div class="next-show-meta">${esc(dateStr)}${timeStr?` · ${esc(timeStr)}`:''}<br>${esc(venue)}</div>
     </div>
-    <a class="next-show-cta" href="/shows/show.html?id=${esc(e.id)}">View Details →</a>
+    <a class="next-show-cta" href="/shows/show.html?id=${esc(e.id)}">View This Show →</a>
   `;
 }
 
@@ -597,6 +614,17 @@ async function loadSeries(){
 }
 
 loadSeries();
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q=item.querySelector('.faq-q');
+  if(!q)return;
+  q.setAttribute('tabindex','0');
+  q.setAttribute('role','button');
+  const toggle=()=>item.classList.toggle('open');
+  q.addEventListener('click',toggle);
+  q.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();toggle();}});
+});
 </script>
 </body>
 </html>
