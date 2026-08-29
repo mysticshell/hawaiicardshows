@@ -155,6 +155,14 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
   section.module{padding:24px}
   .next-show{padding:18px 20px}
 }
+
+/* FAQ accordion (interactive) — scoped to beat static defaults */
+section.module .faq-item{border-bottom:1px solid var(--sand-dark);padding:0}
+section.module .faq-q{font-family:'Phudu',sans-serif;font-weight:700;color:var(--night);font-size:16px;cursor:pointer;padding:16px 0;margin:0;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none}
+section.module .faq-arrow{color:var(--sp-primary);font-size:24px;font-weight:700;line-height:1;flex-shrink:0;transition:transform 0.25s ease}
+section.module .faq-item.open .faq-arrow{transform:rotate(45deg)}
+section.module .faq-a{max-height:0;overflow:hidden;color:var(--text-light);font-size:15px;line-height:1.6;padding:0;transition:max-height 0.3s ease,padding 0.3s ease}
+section.module .faq-item.open .faq-a{max-height:800px;padding-bottom:16px}
 </style>
 </head>
 <body>
@@ -270,24 +278,24 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
   <!-- FAQ (STATIC, SEO) -->
   <section class="module">
     <h2>FAQ</h2>
-    <div class="faq-item">
-      <div class="faq-q">When is the next Spotlight Card Show in Hawaii?</div>
+    <div class="faq-item open">
+      <div class="faq-q"><span>When is the next Spotlight Card Show in Hawaii?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">The next confirmed Hawaii date, hours, and venue are listed in the upcoming-dates section above — updated as soon as Spotlight announces each show. Follow <a href="https://www.instagram.com/spotlightcardshow" target="_blank" rel="noopener">@spotlightcardshow</a> for drops in between.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Where is the Spotlight Card Show held in Honolulu?</div>
+      <div class="faq-q"><span>Where is the Spotlight Card Show held in Honolulu?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Spotlight has run its O‘ahu shows at the Hawaii Convention Center (1801 Kalakaua Ave) and Blaisdell Arena. The confirmed venue for each edition is shown with its date above.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">How much are tickets?</div>
+      <div class="faq-q"><span>How much are tickets?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Tickets are sold through spotlightcardshow.com, with presale pricing online and a higher walk-up price at the door. Active/retired military (with ID) and kids under 13 have gotten in free at past Hawaii editions — always confirm current pricing on Spotlight's ticket page for your date.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What can I find at the show?</div>
+      <div class="faq-q"><span>What can I find at the show?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">The full hobby — sports cards, Pokemon, and TCG (modern and vintage), plus breakers, grading, and collectibles across a large vendor floor.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">How do I become a vendor?</div>
+      <div class="faq-q"><span>How do I become a vendor?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Message <a href="https://www.instagram.com/spotlightcardshow" target="_blank" rel="noopener">@spotlightcardshow</a> on Instagram or use spotlightcardshow.com to ask about table availability for an upcoming Hawaii date.</div>
     </div>
   </section>
@@ -504,6 +512,16 @@ async function loadSeries(){
 }
 
 loadSeries();
+</script>
+<script>
+document.querySelectorAll('.faq-item').forEach(function(item){
+  var q=item.querySelector('.faq-q');
+  if(!q)return;
+  q.setAttribute('tabindex','0');q.setAttribute('role','button');
+  var t=function(){item.classList.toggle('open');};
+  q.addEventListener('click',t);
+  q.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();t();}});
+});
 </script>
 </body>
 </html>

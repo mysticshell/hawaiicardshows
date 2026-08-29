@@ -150,6 +150,14 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
   section.module{padding:24px}
   .next-show{padding:18px 20px}
 }
+
+/* FAQ accordion (interactive) — scoped to beat static defaults */
+section.module .faq-item{border-bottom:1px solid var(--sand-dark);padding:0}
+section.module .faq-q{font-family:'Phudu',sans-serif;font-weight:700;color:var(--night);font-size:16px;cursor:pointer;padding:16px 0;margin:0;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none}
+section.module .faq-arrow{color:var(--tch-primary);font-size:24px;font-weight:700;line-height:1;flex-shrink:0;transition:transform 0.25s ease}
+section.module .faq-item.open .faq-arrow{transform:rotate(45deg)}
+section.module .faq-a{max-height:0;overflow:hidden;color:var(--text-light);font-size:15px;line-height:1.6;padding:0;transition:max-height 0.3s ease,padding 0.3s ease}
+section.module .faq-item.open .faq-a{max-height:800px;padding-bottom:16px}
 </style>
 </head>
 <body>
@@ -241,20 +249,20 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
   <!-- FAQ (STATIC, SEO) -->
   <section class="module">
     <h2>FAQ</h2>
-    <div class="faq-item">
-      <div class="faq-q">Where on Maui is The Collectors Hale?</div>
+    <div class="faq-item open">
+      <div class="faq-q"><span>Where on Maui is The Collectors Hale?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">The venue is announced closer to the event by Maui Sports Cards. The confirmed location for the next date appears in the upcoming-dates section above.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What's the schedule?</div>
+      <div class="faq-q"><span>What's the schedule?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">It's a three-day weekend: a Friday trade night in the ballroom, then two full days of vendors on Saturday and Sunday.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What kinds of cards are there?</div>
+      <div class="faq-q"><span>What kinds of cards are there?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Sports cards, Pokemon, and collectibles — a full-hobby mix, which is a treat for a neighbor-island show.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">How do I become a vendor?</div>
+      <div class="faq-q"><span>How do I become a vendor?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Reach out to <a href="https://www.instagram.com/mauisportscards" target="_blank" rel="noopener">@mauisportscards</a> on Instagram to ask about table availability.</div>
     </div>
   </section>
@@ -471,6 +479,16 @@ async function loadSeries(){
 }
 
 loadSeries();
+</script>
+<script>
+document.querySelectorAll('.faq-item').forEach(function(item){
+  var q=item.querySelector('.faq-q');
+  if(!q)return;
+  q.setAttribute('tabindex','0');q.setAttribute('role','button');
+  var t=function(){item.classList.toggle('open');};
+  q.addEventListener('click',t);
+  q.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();t();}});
+});
 </script>
 </body>
 </html>

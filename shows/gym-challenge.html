@@ -65,6 +65,7 @@
 
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 :root{
   --sand:#f5f0e8;--sand-dark:#e8e0d0;--ocean:#1a6b5a;--ocean-light:#2a8b72;--ocean-pale:#e8f4f0;
   --lava:#d4582a;--lava-light:#f0714a;--night:#1a1a1a;--night-soft:#2a2a2a;
@@ -310,7 +311,7 @@ section.module .faq-item.open .faq-a{max-height:800px;padding-bottom:16px}
   </section>
 
   <!-- NEXT GYM FLYER -->
-  <section class="module">
+  <section class="module" id="next-gym" style="scroll-margin-top:84px">
     <h2>Next Gym: Vermillion City Trade Show</h2>
     <p><strong>Sept 25–26, 2026</strong> · Friday 4–10 PM &amp; Saturday 12–8 PM · <strong>1552 Mill Street, Wailuku</strong> · $5 cover (12 &amp; under free). Buy, sell, and trade <strong>Pokémon</strong>, <strong>Premium One Piece</strong>, and <strong>sports</strong>. Presented by Juanguys Collection with Nakamura Wrestling. Earn serialized Vermillion Gym badges from participating vendors for a shot at the $1,000 grand-prize shopping spree.</p>
     <div class="flyer-wrap">
@@ -569,7 +570,11 @@ function friendlyWhen(startDate){
 function renderNextShow(events){
   const wrap=document.getElementById('nextShow');
   if(!events.length){
-    wrap.innerHTML=`<div class="next-show-empty">No upcoming gym announced yet.</div>`;
+    // No gym scheduled — Vermillion (or the latest) has passed. Show a "coming soon" prompt
+    // and hide the now-stale hard-coded next-gym details section.
+    wrap.innerHTML=`<div class="next-show-empty">The next gym is coming soon — follow <a href="https://www.instagram.com/juanguyscollection" target="_blank" rel="noopener" style="color:var(--gc-primary-dark);font-weight:700">@juanguyscollection</a> for the next city.</div>`;
+    const ng=document.getElementById('next-gym');
+    if(ng)ng.style.display='none';
     return;
   }
   const e=events[0];
@@ -583,7 +588,7 @@ function renderNextShow(events){
       <div class="next-show-date">${esc(e.name)}</div>
       <div class="next-show-meta">${esc(dateStr)}${timeStr?` · ${esc(timeStr)}`:''}<br>${esc(venue)}</div>
     </div>
-    <a class="next-show-cta" href="/shows/show.html?id=${esc(e.id)}">View This Show →</a>
+    <a class="next-show-cta" href="#next-gym">View This Show →</a>
   `;
 }
 

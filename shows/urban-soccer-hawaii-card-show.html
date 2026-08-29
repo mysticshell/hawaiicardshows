@@ -134,6 +134,14 @@ section.module a:hover{text-decoration:underline}
   section.module{padding:24px}
   .next-date{padding:18px 20px}
 }
+
+/* FAQ accordion (interactive) — scoped to beat static defaults */
+section.module .faq-item{border-bottom:1px solid var(--sand-dark);padding:0}
+section.module .faq-q{font-family:'Phudu',sans-serif;font-weight:700;color:var(--night);font-size:16px;cursor:pointer;padding:16px 0;margin:0;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none}
+section.module .faq-arrow{color:var(--u-primary);font-size:24px;font-weight:700;line-height:1;flex-shrink:0;transition:transform 0.25s ease}
+section.module .faq-item.open .faq-arrow{transform:rotate(45deg)}
+section.module .faq-a{max-height:0;overflow:hidden;color:var(--text-light);font-size:15px;line-height:1.6;padding:0;transition:max-height 0.3s ease,padding 0.3s ease}
+section.module .faq-item.open .faq-a{max-height:800px;padding-bottom:16px}
 </style>
 </head>
 <body>
@@ -221,20 +229,20 @@ section.module a:hover{text-decoration:underline}
   <!-- FAQ -->
   <section class="module">
     <h2>FAQ</h2>
-    <div class="faq-item">
-      <div class="faq-q">When is the next Urban Soccer Hawaii Card Show?</div>
+    <div class="faq-item open">
+      <div class="faq-q"><span>When is the next Urban Soccer Hawaii Card Show?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">The next confirmed date is shown above, and all upcoming dates are listed in the Upcoming Dates section — pulled live from our calendar.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Where is it?</div>
+      <div class="faq-q"><span>Where is it?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Urban Soccer Hawaii, 218 Mohonua Pl, Honolulu, HI 96819.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What can I buy, sell, or trade?</div>
+      <div class="faq-q"><span>What can I buy, sell, or trade?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Pokémon, sports cards, and other TCG — sealed product, singles, and slabs, with the local collector community.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">How do I become a vendor?</div>
+      <div class="faq-q"><span>How do I become a vendor?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Reach out to <a href="https://www.instagram.com/urbansoccerhawaii" target="_blank" rel="noopener">@urbansoccerhawaii</a> on Instagram.</div>
     </div>
   </section>
@@ -395,5 +403,15 @@ async function loadSeries(){
 loadSeries();
 </script>
 <script src="/branding/nl-popup.js" defer data-form-id="newsletter-popup-show"></script>
+<script>
+document.querySelectorAll('.faq-item').forEach(function(item){
+  var q=item.querySelector('.faq-q');
+  if(!q)return;
+  q.setAttribute('tabindex','0');q.setAttribute('role','button');
+  var t=function(){item.classList.toggle('open');};
+  q.addEventListener('click',t);
+  q.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();t();}});
+});
+</script>
 </body>
 </html>

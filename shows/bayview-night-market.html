@@ -163,6 +163,14 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
   section.module{padding:24px}
   .next-date{padding:18px 20px}
 }
+
+/* FAQ accordion (interactive) — scoped to beat static defaults */
+section.module .faq-item{border-bottom:1px solid var(--sand-dark);padding:0}
+section.module .faq-q{font-family:'Phudu',sans-serif;font-weight:700;color:var(--night);font-size:16px;cursor:pointer;padding:16px 0;margin:0;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none}
+section.module .faq-arrow{color:var(--bv-primary);font-size:24px;font-weight:700;line-height:1;flex-shrink:0;transition:transform 0.25s ease}
+section.module .faq-item.open .faq-arrow{transform:rotate(45deg)}
+section.module .faq-a{max-height:0;overflow:hidden;color:var(--text-light);font-size:15px;line-height:1.6;padding:0;transition:max-height 0.3s ease,padding 0.3s ease}
+section.module .faq-item.open .faq-a{max-height:800px;padding-bottom:16px}
 </style>
 </head>
 <body>
@@ -278,28 +286,28 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
   <!-- FAQ (STATIC, SEO) -->
   <section class="module">
     <h2>FAQ</h2>
-    <div class="faq-item">
-      <div class="faq-q">When is the next Bayview Night Market trade night?</div>
+    <div class="faq-item open">
+      <div class="faq-q"><span>When is the next Bayview Night Market trade night?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">It runs every 1st and 3rd Tuesday of the month. The next confirmed date is shown above — all upcoming dates are listed in the Upcoming Dates section.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Where exactly is the venue?</div>
+      <div class="faq-q"><span>Where exactly is the venue?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Bayview Golf Course, 45-285 Kaneohe Bay Dr, Kaneohe, HI 96744 — on the Windward / East Side of Oahu, about 30 minutes from Honolulu.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What can I buy, sell, or trade?</div>
+      <div class="faq-q"><span>What can I buy, sell, or trade?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Pokémon, One Piece, sports, and other TCG — sealed product, singles, slabs, and crafts. The night market itself adds food trucks, drinks, and other vendors.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Is it free to attend?</div>
+      <div class="faq-q"><span>Is it free to attend?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Yes — attending the trade night and the broader night market is free.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">How do I become a vendor?</div>
+      <div class="faq-q"><span>How do I become a vendor?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Reach out to <a href="https://www.instagram.com/pkmn.collective" target="_blank" rel="noopener">@pkmn.collective</a> on Instagram. They handle vendor coordination for the trade-night portion.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Is parking available?</div>
+      <div class="faq-q"><span>Is parking available?</span><span class="faq-arrow">+</span></div>
       <div class="faq-a">Yes — Bayview Golf Course has its own parking lot and the night market crowd shares the space.</div>
     </div>
   </section>
@@ -513,6 +521,16 @@ async function loadSeries(){
 }
 
 loadSeries();
+</script>
+<script>
+document.querySelectorAll('.faq-item').forEach(function(item){
+  var q=item.querySelector('.faq-q');
+  if(!q)return;
+  q.setAttribute('tabindex','0');q.setAttribute('role','button');
+  var t=function(){item.classList.toggle('open');};
+  q.addEventListener('click',t);
+  q.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();t();}});
+});
 </script>
 </body>
 </html>
