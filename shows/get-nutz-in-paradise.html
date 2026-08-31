@@ -71,8 +71,8 @@ html{scroll-behavior:smooth}
   --lava:#d4582a;--lava-light:#f0714a;--night:#1a1a1a;--night-soft:#2a2a2a;
   --text:#2c2c2c;--text-light:#6a6a6a;--text-lighter:#999;--white:#ffffff;
   --radius:12px;--shadow:0 2px 20px rgba(0,0,0,0.06);--shadow-lg:0 8px 40px rgba(0,0,0,0.1);
-  /* Get Nutz in Paradise accent — black & gold */
-  --gn-primary:#e0a80f;--gn-primary-dark:#8a6600;--gn-warm:#f5e6b0;--gn-cream:#fdf8ea;
+  /* Get Nutz in Paradise accent — GetNutz orange & navy */
+  --gn-primary:#f26522;--gn-primary-dark:#b8480e;--gn-navy:#17324f;--gn-warm:#fbd6bf;--gn-cream:#fef4ee;
 }
 /* HERO */
 .hero-banner{
@@ -99,12 +99,12 @@ html{scroll-behavior:smooth}
 /* NEXT SHOW callout */
 .next-show-wrap{max-width:900px;margin:-44px auto 0;padding:0 24px;position:relative;z-index:10}
 .next-show{background:var(--white);border:2px solid var(--gn-primary);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.next-show-badge{background:var(--gn-primary);color:#3a2c08;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:6px 14px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.next-show-badge{background:var(--gn-primary);color:#17324f;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:6px 14px;border-radius:20px;white-space:nowrap;flex-shrink:0}
 .next-show-content{flex:1;min-width:200px}
 .next-show-date{font-family:'Phudu',sans-serif;font-weight:700;font-size:18px;color:var(--night);margin-bottom:2px}
 .next-show-meta{font-size:14px;color:var(--text-light)}
-.next-show-cta{background:var(--gn-primary);color:#3a2c08;padding:12px 24px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;transition:background 0.2s}
-.next-show-cta:hover{background:#c99400}
+.next-show-cta{background:var(--gn-primary);color:#17324f;padding:12px 24px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;transition:background 0.2s}
+.next-show-cta:hover{background:#d4560f}
 .next-show-empty{text-align:center;color:var(--text-light);font-style:italic;font-size:14px;padding:8px 0}
 
 /* CONTENT */
@@ -119,8 +119,8 @@ section.module ul{margin:0 0 14px 22px}
 section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
 
 /* CTA button */
-.gn-cta{display:inline-flex;align-items:center;gap:8px;background:var(--gn-primary);color:#3a2c08!important;padding:14px 26px;border-radius:8px;font-weight:800;font-size:15px;text-decoration:none;margin-top:6px;transition:background 0.2s}
-.gn-cta:hover{background:#c99400;text-decoration:none!important}
+.gn-cta{display:inline-flex;align-items:center;gap:8px;background:var(--gn-primary);color:#17324f!important;padding:14px 26px;border-radius:8px;font-weight:800;font-size:15px;text-decoration:none;margin-top:6px;transition:background 0.2s}
+.gn-cta:hover{background:#d4560f;text-decoration:none!important}
 
 /* WHAT'S INSIDE cards */
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:8px}
@@ -134,10 +134,14 @@ section.module li{margin-bottom:6px;font-size:15px;color:var(--text)}
 .flyer-wrap img{max-width:100%;width:640px;border-radius:12px;box-shadow:var(--shadow-lg);border:1px solid var(--sand-dark)}
 .flyer-cap{font-size:13px;color:var(--text-lighter);margin-top:10px;font-style:italic}
 
+/* FROM THE FLOOR — IG reel embeds */
+.reel-row{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:16px}
+.reel-row .instagram-media{flex:1 1 300px!important;max-width:340px!important;min-width:280px!important;margin:0!important}
+
 /* SHOW LIST CARDS */
 .show-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:8px}
 .show-card{background:var(--gn-cream);border:1px solid var(--gn-warm);border-radius:10px;padding:20px;text-decoration:none;display:block;transition:transform 0.15s,box-shadow 0.15s;color:inherit}
-.show-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(224,168,15,0.18);text-decoration:none}
+.show-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(242,101,34,0.18);text-decoration:none}
 .show-card-date{font-family:'Phudu',sans-serif;font-weight:700;color:var(--gn-primary-dark);font-size:13px;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px}
 .show-card-name{font-family:'Phudu',sans-serif;font-weight:700;font-size:18px;color:var(--night);line-height:1.25;margin-bottom:8px}
 .show-card-meta{font-size:13px;color:var(--text-light);line-height:1.4}
@@ -236,6 +240,18 @@ section.module .faq-item.open .faq-a{max-height:800px;padding-bottom:16px}
     </div>
   </section>
 
+  <!-- FROM THE FLOOR -->
+  <section class="module">
+    <h2>From the Floor</h2>
+    <p>Real footage from Get Nutz in Paradise at the Kroc Center — the cards, the crafts, the food, and the block-party energy, straight from the show floor. Clips via <a href="https://www.instagram.com/getnutzinparadise" target="_blank" rel="noopener">@getnutzinparadise</a>.</p>
+    <div class="reel-row">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Db4OCHSMyyV/" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);padding:0;width:100%;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Db33EhgyNf2/" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);padding:0;width:100%;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Db1qQCsi-_q/" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);padding:0;width:100%;"></blockquote>
+    </div>
+  </section>
+  <script async src="//www.instagram.com/embed.js"></script>
+
   <!-- NEXT EVENT FEATURE -->
   <section class="module" id="next-show" style="scroll-margin-top:84px">
     <h2>Next Up: Get Nutz Christmas in Paradise</h2>
@@ -314,7 +330,7 @@ section.module .faq-item.open .faq-a{max-height:800px;padding-bottom:16px}
   <p style="color:rgba(255,255,255,0.62);font-size:15px;line-height:1.6;margin:0 0 22px;">Weekly digest of every card show in Hawaii — plus the occasional recap email. Free.</p>
   <form class="nl-inline-form" id="nlInlineForm" style="display:flex;gap:8px;max-width:440px;margin:0 auto;">
     <input class="nl-inline-input" type="email" required placeholder="your@email.com" id="nlInlineEmail" style="flex:1;padding:14px 16px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;background:rgba(255,255,255,0.08);color:#ffffff;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:14px;outline:none;">
-    <button class="nl-inline-btn" type="submit" id="nlInlineBtn" style="background:#e0a80f;color:#3a2c08;border:none;padding:14px 24px;border-radius:8px;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background 0.2s;">Subscribe</button>
+    <button class="nl-inline-btn" type="submit" id="nlInlineBtn" style="background:#f26522;color:#17324f;border:none;padding:14px 24px;border-radius:8px;font-family:'Archivo',Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background 0.2s;">Subscribe</button>
   </form>
   <div class="nl-inline-success" id="nlInlineSuccess" style="color:#74e0b6;font-size:14px;margin-top:14px;display:none;">You're in! Mahalo for subscribing.</div>
   <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:14px;">We'll never share your email. Unsubscribe anytime.</p>
