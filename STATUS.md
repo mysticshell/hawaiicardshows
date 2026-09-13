@@ -6,6 +6,16 @@
 
 ## 🔥 Active Threads (next session — pick up here)
 
+### 🔎 DIAGNOSTIC — Sept traffic dip = seasonality, NOT ranking loss (2026-09-12)
+Sept traffic softened (trailing 30d −21%, Sep 1-11 −28% vs same Aug window). Ran Search Console to diagnose
+(service account now has GSC access to `sc-domain:hawaiicardshows.com` — reusable going forward). **Verdict:
+seasonality/calendar, confirmed.** Sep 1-10 vs Aug 1-10: clicks −38%, **impressions −37%, but avg position
+IMPROVED 5.5→5.2 and CTR held 9.9→9.7%** — we rank as well/better, there are just fewer searches. All losses
+are **past-event pages** (get-nutz Aug 9, hnl-x-fandom Aug 8-9, die-cast, pearlridge, west-side) whose demand
+evaporates after the show; core term "hawaii card shows" still #1 (1.1→1.0). **Action: none — SEO is healthy,
+ride it out; traffic rebounds with the show calendar.** Reinforces that the durable next-growth lever is the
+national/directory blitz (authority independent of the local calendar). GSC pull script: `/tmp/gsc2.py` pattern.
+
 ### 📊 QUARTERLY SNAPSHOT — Summer marketing review (2026-08-26)
 Full visual dashboard: https://claude.ai/code/artifact/bdf7ca53-1cba-4a02-ae13-fecdc94a84d4 (baseline for next review).
 - **Traffic 5×'d:** 90d sessions **43,199 vs 8,504 prior (+408%)**, accelerating monthly (May 6.8k → Jun 11.6k →
