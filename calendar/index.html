@@ -264,7 +264,7 @@ function openDayModal(ds){const evs=getEventsForDate(ds);if(!evs.length)return;d
 function closeDayModal(){document.getElementById('dayModal').style.display='none';}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDayModal();});
 
-async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true});if(error){console.error(error);document.getElementById('calCount').textContent='Could not load calendar. Please refresh.';return;}allEvents=data||[];renderCalendar();renderAgenda();updateCount();}
+async function loadEvents(){const{data,error}=await sb.from('events').select('*').eq('status','approved').order('start_date',{ascending:true}).order('start_time',{ascending:true,nullsFirst:false});if(error){console.error(error);document.getElementById('calCount').textContent='Could not load calendar. Please refresh.';return;}allEvents=data||[];renderCalendar();renderAgenda();updateCount();}
 loadEvents();
 </script>
 </html>
